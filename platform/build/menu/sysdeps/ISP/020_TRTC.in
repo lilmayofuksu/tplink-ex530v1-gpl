@@ -1,0 +1,9 @@
+config INCLUDE_TRTC_OPTIONS
+	bool "TRTC all options (B&C)"
+	depends on INCLUDE_TRTC
+	select INCLUDE_PPP_PASSWORD_HIDE
+
+config INCLUDE_TRTC_DEFAULT_EE
+	bool "Support Create Default EE"
+	default n
+	depends on INCLUDE_TRTC_OPTIONS && INCLUDE_SMART_HOME_V2

@@ -1,0 +1,47 @@
+#!/bin/sh /etc/rc.common
+
+START=94
+
+USE_PROCD=1
+
+PROG=/usr/sbin/stun-client
+
+UCI_GET="/sbin/uci -q ${UCI_CONFIG_DIR:+-c $UCI_CONFIG_DIR} get"
+
+start_service() {
+
+	local stun_enable stun_srvr port srvr_port min max inetrface_ip
+	stun_enable=`$UCI_GET stun.@stun[0].stun_enable`
+	stun_srvr=`$UCI_GET stun.@stun[0].serveraddress`
+	port=`$UCI_GET easycwmp.@local[0].port`
+	srvr_port=`$UCI_GET stun.@stun[0].serverport`
+	min=`$UCI_GET stun.@stun[0].min_keepalive`
+	max=`$UCI_GET stun.@stun[0].max_keepalive`
+	inetrface_ip=`$UCI_GET easycwmp.@local[0].ip`
+		
+	if [ $stun_enable == "1"  ];then
+		local inform_flag=`grep 'common_execute_method_param \"\$DMROOT\.ManagementServer\.UDPConnectionRequestAddress\" \"0\" \"\$UCI\_GET stun\.\@stun\[0\]\.udpcontnreqaddr\" \"\" \"xsd\:string\" \"1\"' /usr/share/easycwmp/functions/management_server`
+                if [ -z "$inform_flag" ];then
+                        sed -i 's/\(common_execute_method_param "$DMROOT.ManagementServer.UDPConnectionRequestAddress" "0" "\$UCI\_GET stun.\@stun\[0\].udpcontnreqaddr" "" "xsd:string"\)/\1\ \"1\"/g' /usr/share/easycwmp/functions/management_server
+                else
+			echo "Nothing to be done concerning inform message for TR069"
+                fi	
+		procd_open_instance
+        	procd_set_param command "$PROG" "$stun_srvr" -v -p "$port" -i "$inetrface_ip" -min "$min" -max "$max" -sp "$srvr_port"
+        	procd_append_param command 
+        	procd_set_param respawn "3" "7" "0"
+        	procd_close_instance
+	else
+		sed -i 's/\(common_execute_method_param "$DMROOT.ManagementServer.UDPConnectionRequestAddress" "0" "\$UCI\_GET stun.\@stun\[0\].udpcontnreqaddr" "" "xsd:string"\)\ \"1\"/\1/g' /usr/share/easycwmp/functions/management_server
+	fi
+}
+
+stop() {
+	 procd_kill stun-client ''
+}
+
+restart() {
+	stop "$@"
+        start "$@"
+}
+

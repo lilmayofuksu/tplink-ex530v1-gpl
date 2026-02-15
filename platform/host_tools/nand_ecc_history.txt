@@ -1,0 +1,54 @@
+Project Name: BCH ECC utility.
+=================================================
+Source Code Record
+=================================================
+Project Name: BCH utilty
+Platform Information:
+OS: ubuntu16.04
+gcc Version: 5.4.0
+-------------------------------------------------
+* Utility version: bch ecc utility rev.00 
+*************************************************
+Author               : Caffery Wang
+Modify               : 2016/11/01
+-------------------------------------------------
+1. Coding finish.
+2. [R01]utility could be produce 7 bytes ECC each 512 bytes block. So u-boot-nand.bin is able to produce 2744 bytes ECC value.
+   FILEs:
+        bch_control_mid.c
+3. Add bch initializtion function and caculate_bch_ecc function
+   FILEs:
+        bch_control_mid.c 
+        bch_main.c
+4. Add Makefile
+   FILEs:
+        Makefile
+        
+-------------------------------------------------
+* Utility version: bch ecc utility rev.00 
+*************************************************
+Author               :  Caffery Wang
+Modify               :  2016/11/02
+-------------------------------------------------        
+1. Add data structure that generate new binary. the structure consist of 2k data + 64bytes oob package + 2k data + 64bytes oob +... ... +2k data + 64bytes oob and so on.
+
+-------------------------------------------------
+* Utility version: bch ecc utility rev.1.0 
+*************************************************
+Author               :  Caffery Wang
+Modify               :  2016/11/04
+-------------------------------------------------        
+1. Add function which would convert input file from little-endian to big-endian
+2. Add print help notification.
+3. Add function You need follow prompt type input file name and type output file name then create new u-boot binary with ecc.
+4. export uboot nand_bch.c which can reduce side effect and reconstruct utility code.
+
+-------------------------------------------------
+* Utility version: bch ecc utility rev.1.0 
+*************************************************
+Author               :  Caffery Wang
+Modify               :  2016/11/07
+-------------------------------------------------   
+1. add function for dynamic cacluate file size.
+2. add function for support 4 bit and 8 bit BCH algo that 8bit bch maybe need tuning. however 4 bit MLC algo is ready. 
+      

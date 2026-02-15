@@ -1,0 +1,220 @@
+\hypertarget{ecnt__lib__dbg_8h}{}\section{ecnt\+\_\+lib\+\_\+dbg.\+h File Reference}
+\label{ecnt__lib__dbg_8h}\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+
+
+This file is ecnt lib dbg header file for dbg A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_a88d72b77086e76119a4f7c5a6dd2ad10}\label{ecnt__lib__dbg_8h_a88d72b77086e76119a4f7c5a6dd2ad10}} 
+\#define {\bfseries E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+BG}
+\item 
+\#define {\bfseries E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}(level,  type,  fmt, ...)
+\item 
+\#define {\bfseries E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}(level,  enable\+Type,  fmt, ...)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_ae2c2640ea58756ab49c721e46e5fecf4}\label{ecnt__lib__dbg_8h_ae2c2640ea58756ab49c721e46e5fecf4}} 
+typedef enum \+\_\+ecnt\+\_\+itf\+\_\+debug\+\_\+level\+\_\+ {\bfseries e\+\_\+ecnt\+\_\+itf\+\_\+debug\+\_\+level\+\_\+t}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_ad6e873c69573d6874e47f2582500005d}\label{ecnt__lib__dbg_8h_ad6e873c69573d6874e47f2582500005d}} 
+typedef enum \+\_\+ecnt\+\_\+blapi\+\_\+debug\+\_\+enable\+\_\+ {\bfseries e\+\_\+ecnt\+\_\+blapi\+\_\+debug\+\_\+enable\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_af366a23832fc980ab170beddc2751fb3}\label{ecnt__lib__dbg_8h_af366a23832fc980ab170beddc2751fb3}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+L\+I\+B\+\_\+\+T\+Y\+PE} \{ \newline
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+C\+IE} = 0, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+CL}, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+V\+O\+IP}, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+G\+P\+ON}, 
+\newline
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+B\+R\+T\+A\+B\+E\+LE}, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+P\+ON}, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+FI}, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+AX}
+ \}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_a1ed659ca32649897d0d52ce355f1fb8f}\label{ecnt__lib__dbg_8h_a1ed659ca32649897d0d52ce355f1fb8f}} 
+enum {\bfseries \+\_\+ecnt\+\_\+itf\+\_\+debug\+\_\+level\+\_\+} \{ {\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+E\+R\+R\+OR} = 1 $<$$<$ 0, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+W\+A\+RN} = 1 $<$$<$ 1, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+N\+O\+T\+I\+CE} = 1 $<$$<$ 2, 
+{\bfseries E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG} = 1 $<$$<$ 3
+ \}
+\item 
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_a3166a39c6e4008af30e4f5fb57e785f4}\label{ecnt__lib__dbg_8h_a3166a39c6e4008af30e4f5fb57e785f4}} 
+enum {\bfseries \+\_\+ecnt\+\_\+blapi\+\_\+debug\+\_\+enable\+\_\+} \{ \newline
+{\bfseries E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+P\+E\+R\+F\+O\+R\+M\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE} = 1 $<$$<$ 0, 
+{\bfseries E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE} = 1 $<$$<$ 1, 
+{\bfseries E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE} = 1 $<$$<$ 2, 
+{\bfseries E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+X\+D\+S\+L\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE} = 1 $<$$<$ 3, 
+\newline
+{\bfseries E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+W\+L\+A\+N\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE} = 1 $<$$<$ 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ecnt__lib__dbg_8h_ab0090ecf95aa50a03237a15f274a7af8}{ecnt\+\_\+itf\+\_\+printf} (char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em This function print ecnt dbg message. \end{DoxyCompactList}\item 
+int \hyperlink{ecnt__lib__dbg_8h_af3c36cd643da4aead113e8d6ba89f559}{get\+\_\+itf\+\_\+dbg\+\_\+switch} (unsigned int level, unsigned int type)
+\begin{DoxyCompactList}\small\item\em This function get ecnt debug switch. \end{DoxyCompactList}\item 
+void \hyperlink{ecnt__lib__dbg_8h_a85cc24112ec4fcc688fc6f9cc1e554a4}{ecnt\+\_\+blapi\+\_\+printf} (char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em This function print blapi dbg message. \end{DoxyCompactList}\item 
+int \hyperlink{ecnt__lib__dbg_8h_ab89ac5721c6a960f89e89bae5bf6a65a}{get\+\_\+blapi\+\_\+dbg\+\_\+switch} (unsigned int level, unsigned int enable\+Type)
+\begin{DoxyCompactList}\small\item\em This function get blapi debug switch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is ecnt lib dbg header file for dbg A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Lei.\+Zhang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/23 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_ad8d5ad28d99da0e1cf5ad5ff8ed34c72}\label{ecnt__lib__dbg_8h_ad8d5ad28d99da0e1cf5ad5ff8ed34c72}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}}
+\index{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}{ECNT\_LIB\_BLAPI\_DBG\_PRINT}}
+{\footnotesize\ttfamily \#define E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+B\+L\+A\+P\+I\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(\begin{DoxyParamCaption}\item[{}]{level,  }\item[{}]{enable\+Type,  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+                                            if(\hyperlink{ecnt__lib__dbg_8h_ab89ac5721c6a960f89e89bae5bf6a65a}{get\_blapi\_dbg\_switch}(level,enableType))\(\backslash\)
+                                                ecnt\_blapi\_printf(\textcolor{stringliteral}{"[%s:%d]:"} fmt,\_\_FUNCTION\_\_,\_\_LINE\_\_,##
+      \_\_VA\_ARGS\_\_);\(\backslash\)
+                                         \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_a8cf3f190e0aa88a1673239c70c629f31}\label{ecnt__lib__dbg_8h_a8cf3f190e0aa88a1673239c70c629f31}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}}
+\index{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}{ECNT\_LIB\_DBG\_PRINT}}
+{\footnotesize\ttfamily \#define E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(\begin{DoxyParamCaption}\item[{}]{level,  }\item[{}]{type,  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+                                            if(\hyperlink{ecnt__lib__dbg_8h_af3c36cd643da4aead113e8d6ba89f559}{get\_itf\_dbg\_switch}(level,type))\(\backslash\)
+                                                ecnt\_itf\_printf(\textcolor{stringliteral}{"[%s]:"} fmt,\_\_FUNCTION\_\_,##\_\_VA\_ARGS\_\_);\(\backslash\)
+                                         \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_a85cc24112ec4fcc688fc6f9cc1e554a4}\label{ecnt__lib__dbg_8h_a85cc24112ec4fcc688fc6f9cc1e554a4}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!ecnt\+\_\+blapi\+\_\+printf@{ecnt\+\_\+blapi\+\_\+printf}}
+\index{ecnt\+\_\+blapi\+\_\+printf@{ecnt\+\_\+blapi\+\_\+printf}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+blapi\+\_\+printf()}{ecnt\_blapi\_printf()}}
+{\footnotesize\ttfamily void ecnt\+\_\+blapi\+\_\+printf (\begin{DoxyParamCaption}\item[{char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+This function print blapi dbg message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fmt} & Variable parameter list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Print blapi dbg message. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_ab0090ecf95aa50a03237a15f274a7af8}\label{ecnt__lib__dbg_8h_ab0090ecf95aa50a03237a15f274a7af8}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!ecnt\+\_\+itf\+\_\+printf@{ecnt\+\_\+itf\+\_\+printf}}
+\index{ecnt\+\_\+itf\+\_\+printf@{ecnt\+\_\+itf\+\_\+printf}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+itf\+\_\+printf()}{ecnt\_itf\_printf()}}
+{\footnotesize\ttfamily void ecnt\+\_\+itf\+\_\+printf (\begin{DoxyParamCaption}\item[{char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+This function print ecnt dbg message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fmt} & Variable parameter list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Print ecnt dbg message. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_ab89ac5721c6a960f89e89bae5bf6a65a}\label{ecnt__lib__dbg_8h_ab89ac5721c6a960f89e89bae5bf6a65a}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!get\+\_\+blapi\+\_\+dbg\+\_\+switch@{get\+\_\+blapi\+\_\+dbg\+\_\+switch}}
+\index{get\+\_\+blapi\+\_\+dbg\+\_\+switch@{get\+\_\+blapi\+\_\+dbg\+\_\+switch}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+blapi\+\_\+dbg\+\_\+switch()}{get\_blapi\_dbg\_switch()}}
+{\footnotesize\ttfamily int get\+\_\+blapi\+\_\+dbg\+\_\+switch (\begin{DoxyParamCaption}\item[{unsigned int}]{level,  }\item[{unsigned int}]{enable\+Type }\end{DoxyParamCaption})}
+
+
+
+This function get blapi debug switch. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em level} & E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+E\+R\+R\+OR=1,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+W\+A\+RN = 2,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+N\+O\+T\+I\+CE=4,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG=8 \\
+\hline
+\mbox{\tt in}  & {\em type} & E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+P\+E\+R\+F\+O\+R\+M\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE=1,E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE=2,E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE=4,E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+X\+D\+S\+L\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE=5,E\+C\+N\+T\+\_\+\+B\+L\+A\+P\+I\+\_\+\+W\+L\+A\+N\+\_\+\+D\+B\+U\+G\+\_\+\+E\+N\+A\+B\+LE=6 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Get blapi dbg switch. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{ecnt__lib__dbg_8h_af3c36cd643da4aead113e8d6ba89f559}\label{ecnt__lib__dbg_8h_af3c36cd643da4aead113e8d6ba89f559}} 
+\index{ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}!get\+\_\+itf\+\_\+dbg\+\_\+switch@{get\+\_\+itf\+\_\+dbg\+\_\+switch}}
+\index{get\+\_\+itf\+\_\+dbg\+\_\+switch@{get\+\_\+itf\+\_\+dbg\+\_\+switch}!ecnt\+\_\+lib\+\_\+dbg.\+h@{ecnt\+\_\+lib\+\_\+dbg.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+itf\+\_\+dbg\+\_\+switch()}{get\_itf\_dbg\_switch()}}
+{\footnotesize\ttfamily int get\+\_\+itf\+\_\+dbg\+\_\+switch (\begin{DoxyParamCaption}\item[{unsigned int}]{level,  }\item[{unsigned int}]{type }\end{DoxyParamCaption})}
+
+
+
+This function get ecnt debug switch. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em level} & E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+E\+R\+R\+OR=1,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+W\+A\+RN = 2,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+N\+O\+T\+I\+CE=4,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG=8 \\
+\hline
+\mbox{\tt in}  & {\em type} & E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+C\+IE = 0,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+CL=1,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+V\+O\+IP=2,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+G\+P\+ON=3,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+B\+R\+T\+A\+B\+E\+LE=4,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+P\+ON=5,E\+C\+N\+T\+\_\+\+D\+B\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+FI=6 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Get ecnt dbg switch. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

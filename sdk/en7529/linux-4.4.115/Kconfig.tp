@@ -1,0 +1,29 @@
+
+menu "TP-LINK Configure"
+
+config TP_EASYMESH
+	bool "Support TP-LINK Easymesh"
+	default n
+
+config HYFI_BRIDGE
+	bool "Linux Bridge Hyfi-bridge Support"
+	default n
+
+config QOE
+	bool "Support TPUC Wi-Fi QoE related info"
+	default n
+
+config TP_FIREWALL_LOG
+	bool "Support advanced firewall log"
+	default n
+
+config TP_FIREWALL_LOG_MARK
+	string "Mark added in front of firewall log"
+	default "1F1W4L5O1G4"
+	depends on TP_FIREWALL_LOG
+	help
+	   We add mark in front of the origin firewall log, \
+	   and we also filter out firewall log from kmsg through the mark.
+
+endmenu
+

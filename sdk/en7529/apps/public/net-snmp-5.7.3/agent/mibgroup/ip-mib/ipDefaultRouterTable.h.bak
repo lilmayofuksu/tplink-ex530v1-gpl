@@ -1,0 +1,9 @@
+/*
+ * module to include the modules
+ */
+
+config_require(ip-mib/ipDefaultRouterTable/ipDefaultRouterTable)
+config_require(ip-mib/ipDefaultRouterTable/ipDefaultRouterTable_data_access)
+config_require(ip-mib/ipDefaultRouterTable/ipDefaultRouterTable_data_get)
+config_require(ip-mib/ipDefaultRouterTable/ipDefaultRouterTableinterface)
+

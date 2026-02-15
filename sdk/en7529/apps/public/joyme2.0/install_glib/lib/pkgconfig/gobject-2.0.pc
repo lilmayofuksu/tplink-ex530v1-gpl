@@ -1,0 +1,12 @@
+prefix=/proj/mtk14508/workspace/branch_joyme3_0711/tclinux_phoenix/apps/public/joyme2.0/install_glib
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: GObject
+Description: GLib Type, Object, Parameter and Signal Library
+Requires: glib-2.0
+Version: 2.41.1
+Libs: -L${libdir} -lgobject-2.0
+Libs.private: -L/proj/mtk14508/workspace/branch_joyme3_0711/tclinux_phoenix/apps/public/joyme2.0/install_glib_prelib/lib -lffi
+Cflags:

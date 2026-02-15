@@ -1,0 +1,5 @@
+modules/private/ra_hwnat_v3
+BSP/xpon_bsp/modules/pon_vlan/
+apps/xpon_app/omci/
+BSP/xpon_bsp/app_bsp/xpon_lib/
+BSP/xpon_bsp/app_bsp/xpon_cmd/

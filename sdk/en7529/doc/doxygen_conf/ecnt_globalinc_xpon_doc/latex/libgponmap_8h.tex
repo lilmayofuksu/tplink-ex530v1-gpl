@@ -1,0 +1,428 @@
+\hypertarget{libgponmap_8h}{}\section{public/libgponmap.h File Reference}
+\label{libgponmap_8h}\index{public/libgponmap.\+h@{public/libgponmap.\+h}}
+
+
+This file is lib gponmap header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+map\+\_\+public.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libgponmap_8h_a99496f7308834e8b220f7894efa0b6ab}\label{libgponmap_8h_a99496f7308834e8b220f7894efa0b6ab}} 
+\#define {\bfseries D\+I\+S\+A\+B\+LE}~0
+\item 
+\mbox{\Hypertarget{libgponmap_8h_a514ad415fb6125ba296793df7d1a468a}\label{libgponmap_8h_a514ad415fb6125ba296793df7d1a468a}} 
+\#define {\bfseries E\+N\+A\+B\+LE}~1
+\item 
+\mbox{\Hypertarget{libgponmap_8h_a902fe160115b058cc3bdb8e993446f0f}\label{libgponmap_8h_a902fe160115b058cc3bdb8e993446f0f}} 
+\#define {\bfseries D\+S\+\_\+\+T\+R\+T\+C\+M\+\_\+\+E\+N\+A\+B\+LE}~2
+\item 
+\mbox{\Hypertarget{libgponmap_8h_ac11b9d42b2b4df7d18a928bb49b7f4df}\label{libgponmap_8h_ac11b9d42b2b4df7d18a928bb49b7f4df}} 
+\#define {\bfseries T\+R\+A\+F\+F\+I\+C\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+M\+O\+DE}~0
+\item 
+\mbox{\Hypertarget{libgponmap_8h_a8b5e15bb9b50f53eccb386713ea6a025}\label{libgponmap_8h_a8b5e15bb9b50f53eccb386713ea6a025}} 
+\#define {\bfseries T\+R\+A\+F\+F\+I\+C\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+M\+U\+L\+T\+I\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+M\+O\+DE}~1
+\item 
+\mbox{\Hypertarget{libgponmap_8h_af96ccf79dbc1c76bcb9a84cc88a7fd3e}\label{libgponmap_8h_af96ccf79dbc1c76bcb9a84cc88a7fd3e}} 
+\#define {\bfseries G\+E\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+I\+C\+A\+ST}~0
+\item 
+\mbox{\Hypertarget{libgponmap_8h_ad15d37057a4f4204193941ecc278a131}\label{libgponmap_8h_ad15d37057a4f4204193941ecc278a131}} 
+\#define {\bfseries G\+E\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+U\+L\+T\+I\+C\+A\+ST}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libgponmap_8h_a5e624618cd9dcb4e9ae00bd8703ff07e}{add\+Gem\+Port\+Mapping\+Rule} (gem\+Port\+Mapping\+Ioctl\+\_\+t $\ast$table\+Entry)
+\begin{DoxyCompactList}\small\item\em This function is used to add gemport mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a013a20bcea75d356dddc31b8a7904fc3}{del\+Gem\+Port\+Mapping\+Rule} (gem\+Port\+Mapping\+Ioctl\+\_\+t $\ast$table\+Entry)
+\begin{DoxyCompactList}\small\item\em This function is used to delete gemport mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a79cfc7b00b11a417925a897442da3404}{add\+Queue\+Mapping\+Rule} (gpon\+Queue\+Mapping\+Ioctl\+\_\+t $\ast$table\+Entry)
+\begin{DoxyCompactList}\small\item\em This function is used to add queue mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a9f9d339a82b06131a0187bb7c7000ddf}{del\+Queue\+Mapping\+Rule} (gpon\+Queue\+Mapping\+Ioctl\+\_\+t $\ast$table\+Entry)
+\begin{DoxyCompactList}\small\item\em This function is used to delete queue mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_acf04c6a9729dfb05fa226ef13232c1e2}{display\+All\+Gem\+Port\+Mapping\+Rule} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to display all gemport mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_ac16aab51522a2fd87d7feab10cc087a0}{display\+All\+Queue\+Mapping\+Rule} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to display all queue mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_aff6b52a609d2011e9e492daa208cef2a}{enable\+Down\+Mapping} (uint8\+\_\+t mode\+Switch)
+\begin{DoxyCompactList}\small\item\em This function is used to enable downstream mapping. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a3d32a35756644afd569bf1c22ca54704}{disable\+Downstream\+Mapping} ()
+\begin{DoxyCompactList}\small\item\em This function is used to disable down mapping. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a3b2ff81435a083b749d082b83cc3d6db}{add\+Gem\+Downstream\+Mapping\+Rule} (gpon\+\_\+downstream\+\_\+mapping\+\_\+ioctl data)
+\begin{DoxyCompactList}\small\item\em This function is used to add gemport downstream mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a64b7c5412e95db14ae50ae58178212d8}{del\+Gem\+Downstream\+Mapping\+Rule} (int gemport)
+\begin{DoxyCompactList}\small\item\em This function is used to delete gemport downstream mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_ad9fdf155c6133c62cdd393ff046a1ec3}{clean\+Gem\+Downstream\+Mapping\+Rule} ()
+\begin{DoxyCompactList}\small\item\em This function is used to clean gemport downstream mapping rule. \end{DoxyCompactList}\item 
+int \hyperlink{libgponmap_8h_a39d2830e6a9285e686fcbc2e7f061d03}{show\+Gem\+Downstream\+Mapping\+Rule} ()
+\begin{DoxyCompactList}\small\item\em This function is used to show gemport downstream mapping rule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib gponmap header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libgponmap_8h_a3b2ff81435a083b749d082b83cc3d6db}\label{libgponmap_8h_a3b2ff81435a083b749d082b83cc3d6db}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!add\+Gem\+Downstream\+Mapping\+Rule@{add\+Gem\+Downstream\+Mapping\+Rule}}
+\index{add\+Gem\+Downstream\+Mapping\+Rule@{add\+Gem\+Downstream\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{add\+Gem\+Downstream\+Mapping\+Rule()}{addGemDownstreamMappingRule()}}
+{\footnotesize\ttfamily int add\+Gem\+Downstream\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{gpon\+\_\+downstream\+\_\+mapping\+\_\+ioctl}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to add gemport downstream mapping rule. 
+
+This function is used to add gemport downstream mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & the struct type of gpon\+\_\+downstream\+\_\+mapping\+\_\+ioctl \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add gemport downstream mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a5e624618cd9dcb4e9ae00bd8703ff07e}\label{libgponmap_8h_a5e624618cd9dcb4e9ae00bd8703ff07e}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!add\+Gem\+Port\+Mapping\+Rule@{add\+Gem\+Port\+Mapping\+Rule}}
+\index{add\+Gem\+Port\+Mapping\+Rule@{add\+Gem\+Port\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{add\+Gem\+Port\+Mapping\+Rule()}{addGemPortMappingRule()}}
+{\footnotesize\ttfamily int add\+Gem\+Port\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{gem\+Port\+Mapping\+Ioctl\+\_\+t $\ast$}]{table\+Entry }\end{DoxyParamCaption})}
+
+
+
+This function is used to add gemport mapping rule. 
+
+This function is used to add gemport mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em table\+Entry} & pointer to the struct type of gem\+Port\+Mapping\+Ioctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add gemport mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a79cfc7b00b11a417925a897442da3404}\label{libgponmap_8h_a79cfc7b00b11a417925a897442da3404}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!add\+Queue\+Mapping\+Rule@{add\+Queue\+Mapping\+Rule}}
+\index{add\+Queue\+Mapping\+Rule@{add\+Queue\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{add\+Queue\+Mapping\+Rule()}{addQueueMappingRule()}}
+{\footnotesize\ttfamily int add\+Queue\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{gpon\+Queue\+Mapping\+Ioctl\+\_\+t $\ast$}]{table\+Entry }\end{DoxyParamCaption})}
+
+
+
+This function is used to add queue mapping rule. 
+
+This function is used to add queue mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em table\+Entry} & pointer to the struct type of gpon\+Queue\+Mapping\+Ioctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add queue mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_ad9fdf155c6133c62cdd393ff046a1ec3}\label{libgponmap_8h_ad9fdf155c6133c62cdd393ff046a1ec3}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!clean\+Gem\+Downstream\+Mapping\+Rule@{clean\+Gem\+Downstream\+Mapping\+Rule}}
+\index{clean\+Gem\+Downstream\+Mapping\+Rule@{clean\+Gem\+Downstream\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{clean\+Gem\+Downstream\+Mapping\+Rule()}{cleanGemDownstreamMappingRule()}}
+{\footnotesize\ttfamily int clean\+Gem\+Downstream\+Mapping\+Rule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to clean gemport downstream mapping rule. 
+
+This function is used to clean gemport downstream mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clean gemport downstream mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a64b7c5412e95db14ae50ae58178212d8}\label{libgponmap_8h_a64b7c5412e95db14ae50ae58178212d8}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!del\+Gem\+Downstream\+Mapping\+Rule@{del\+Gem\+Downstream\+Mapping\+Rule}}
+\index{del\+Gem\+Downstream\+Mapping\+Rule@{del\+Gem\+Downstream\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{del\+Gem\+Downstream\+Mapping\+Rule()}{delGemDownstreamMappingRule()}}
+{\footnotesize\ttfamily int del\+Gem\+Downstream\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{int}]{gemport }\end{DoxyParamCaption})}
+
+
+
+This function is used to delete gemport downstream mapping rule. 
+
+This function is used to delete gemport downstream mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gemport} & gemport id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete gemport downstream mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a013a20bcea75d356dddc31b8a7904fc3}\label{libgponmap_8h_a013a20bcea75d356dddc31b8a7904fc3}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!del\+Gem\+Port\+Mapping\+Rule@{del\+Gem\+Port\+Mapping\+Rule}}
+\index{del\+Gem\+Port\+Mapping\+Rule@{del\+Gem\+Port\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{del\+Gem\+Port\+Mapping\+Rule()}{delGemPortMappingRule()}}
+{\footnotesize\ttfamily int del\+Gem\+Port\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{gem\+Port\+Mapping\+Ioctl\+\_\+t $\ast$}]{table\+Entry }\end{DoxyParamCaption})}
+
+
+
+This function is used to delete gemport mapping rule. 
+
+This function is used to delete gemport mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em table\+Entry} & pointer to the struct type of gem\+Port\+Mapping\+Ioctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete gemport mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a9f9d339a82b06131a0187bb7c7000ddf}\label{libgponmap_8h_a9f9d339a82b06131a0187bb7c7000ddf}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!del\+Queue\+Mapping\+Rule@{del\+Queue\+Mapping\+Rule}}
+\index{del\+Queue\+Mapping\+Rule@{del\+Queue\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{del\+Queue\+Mapping\+Rule()}{delQueueMappingRule()}}
+{\footnotesize\ttfamily int del\+Queue\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{gpon\+Queue\+Mapping\+Ioctl\+\_\+t $\ast$}]{table\+Entry }\end{DoxyParamCaption})}
+
+
+
+This function is used to delete queue mapping rule. 
+
+This function is used to delete queue mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em table\+Entry} & pointer to the struct type of gpon\+Queue\+Mapping\+Ioctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete queue mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a3d32a35756644afd569bf1c22ca54704}\label{libgponmap_8h_a3d32a35756644afd569bf1c22ca54704}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!disable\+Downstream\+Mapping@{disable\+Downstream\+Mapping}}
+\index{disable\+Downstream\+Mapping@{disable\+Downstream\+Mapping}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{disable\+Downstream\+Mapping()}{disableDownstreamMapping()}}
+{\footnotesize\ttfamily int disable\+Downstream\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to disable down mapping. 
+
+This function is used to display all queue mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Disable down mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_acf04c6a9729dfb05fa226ef13232c1e2}\label{libgponmap_8h_acf04c6a9729dfb05fa226ef13232c1e2}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!display\+All\+Gem\+Port\+Mapping\+Rule@{display\+All\+Gem\+Port\+Mapping\+Rule}}
+\index{display\+All\+Gem\+Port\+Mapping\+Rule@{display\+All\+Gem\+Port\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{display\+All\+Gem\+Port\+Mapping\+Rule()}{displayAllGemPortMappingRule()}}
+{\footnotesize\ttfamily int display\+All\+Gem\+Port\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to display all gemport mapping rule. 
+
+This function is used to display all gemport mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Display all gemport mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_ac16aab51522a2fd87d7feab10cc087a0}\label{libgponmap_8h_ac16aab51522a2fd87d7feab10cc087a0}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!display\+All\+Queue\+Mapping\+Rule@{display\+All\+Queue\+Mapping\+Rule}}
+\index{display\+All\+Queue\+Mapping\+Rule@{display\+All\+Queue\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{display\+All\+Queue\+Mapping\+Rule()}{displayAllQueueMappingRule()}}
+{\footnotesize\ttfamily int display\+All\+Queue\+Mapping\+Rule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to display all queue mapping rule. 
+
+This function is used to display all queue mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Display all queue mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_aff6b52a609d2011e9e492daa208cef2a}\label{libgponmap_8h_aff6b52a609d2011e9e492daa208cef2a}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!enable\+Down\+Mapping@{enable\+Down\+Mapping}}
+\index{enable\+Down\+Mapping@{enable\+Down\+Mapping}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{enable\+Down\+Mapping()}{enableDownMapping()}}
+{\footnotesize\ttfamily int enable\+Down\+Mapping (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode\+Switch }\end{DoxyParamCaption})}
+
+
+
+This function is used to enable downstream mapping. 
+
+This function is used to display all queue mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mode\+Switch} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Enable downstream mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgponmap_8h_a39d2830e6a9285e686fcbc2e7f061d03}\label{libgponmap_8h_a39d2830e6a9285e686fcbc2e7f061d03}} 
+\index{libgponmap.\+h@{libgponmap.\+h}!show\+Gem\+Downstream\+Mapping\+Rule@{show\+Gem\+Downstream\+Mapping\+Rule}}
+\index{show\+Gem\+Downstream\+Mapping\+Rule@{show\+Gem\+Downstream\+Mapping\+Rule}!libgponmap.\+h@{libgponmap.\+h}}
+\subsubsection{\texorpdfstring{show\+Gem\+Downstream\+Mapping\+Rule()}{showGemDownstreamMappingRule()}}
+{\footnotesize\ttfamily int show\+Gem\+Downstream\+Mapping\+Rule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to show gemport downstream mapping rule. 
+
+This function is used to show gemport downstream mapping rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Show gemport downstream mapping rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

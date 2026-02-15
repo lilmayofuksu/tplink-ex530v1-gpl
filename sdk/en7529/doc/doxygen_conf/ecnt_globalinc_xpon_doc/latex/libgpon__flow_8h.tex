@@ -1,0 +1,133 @@
+\hypertarget{libgpon__flow_8h}{}\section{public/libgpon\+\_\+flow.h File Reference}
+\label{libgpon__flow_8h}\index{public/libgpon\+\_\+flow.\+h@{public/libgpon\+\_\+flow.\+h}}
+
+
+This file is lib gpon flow header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$asm/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gpon\+\_\+flow\+\_\+public.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libgpon__flow_8h_a6b3001dc2fae2dbcef97bbeaf36da665}{gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data} (\hyperlink{structFlowRawData__s}{Flow\+Raw\+Data\+\_\+p} omci\+Msg)
+\begin{DoxyCompactList}\small\item\em This function is used to gpon flow import me data. \end{DoxyCompactList}\item 
+int \hyperlink{libgpon__flow_8h_ae1fad5445ed139bbe5b2324e64bc7f54}{gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data} (\hyperlink{structFlowCfgData__s}{Flow\+Cfg\+Data\+\_\+p} cfg\+\_\+data\+\_\+ptr)
+\begin{DoxyCompactList}\small\item\em This function is used to gpon flow cfg data. \end{DoxyCompactList}\item 
+int \hyperlink{libgpon__flow_8h_ac42e088f48fac4cc167b3c996c5b2b56}{gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to gpon flow clean all me inst. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib gpon flow header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libgpon__flow_8h_ae1fad5445ed139bbe5b2324e64bc7f54}\label{libgpon__flow_8h_ae1fad5445ed139bbe5b2324e64bc7f54}} 
+\index{libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}!gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data@{gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data}}
+\index{gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data@{gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data}!libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}}
+\subsubsection{\texorpdfstring{gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data()}{gpon\_flow\_ioctl\_cfg\_data()}}
+{\footnotesize\ttfamily int gpon\+\_\+flow\+\_\+ioctl\+\_\+cfg\+\_\+data (\begin{DoxyParamCaption}\item[{\hyperlink{structFlowCfgData__s}{Flow\+Cfg\+Data\+\_\+p}}]{cfg\+\_\+data\+\_\+ptr }\end{DoxyParamCaption})}
+
+
+
+This function is used to gpon flow cfg data. 
+
+This function is used to gpon flow cfg data. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+data\+\_\+ptr} & pointer the struct type of \hyperlink{structFlowCfgData__s}{Flow\+Cfg\+Data\+\_\+s}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Gpon flow cfg data. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgpon__flow_8h_ac42e088f48fac4cc167b3c996c5b2b56}\label{libgpon__flow_8h_ac42e088f48fac4cc167b3c996c5b2b56}} 
+\index{libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}!gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all@{gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all}}
+\index{gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all@{gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all}!libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}}
+\subsubsection{\texorpdfstring{gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all()}{gpon\_flow\_ioctl\_clean\_all()}}
+{\footnotesize\ttfamily int gpon\+\_\+flow\+\_\+ioctl\+\_\+clean\+\_\+all (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to gpon flow clean all me inst. 
+
+This function is used to gpon flow clean all me inst. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Gpon flow clean all me inst. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libgpon__flow_8h_a6b3001dc2fae2dbcef97bbeaf36da665}\label{libgpon__flow_8h_a6b3001dc2fae2dbcef97bbeaf36da665}} 
+\index{libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}!gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data@{gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data}}
+\index{gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data@{gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data}!libgpon\+\_\+flow.\+h@{libgpon\+\_\+flow.\+h}}
+\subsubsection{\texorpdfstring{gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data()}{gpon\_flow\_ioctl\_import\_me\_data()}}
+{\footnotesize\ttfamily int gpon\+\_\+flow\+\_\+ioctl\+\_\+import\+\_\+me\+\_\+data (\begin{DoxyParamCaption}\item[{\hyperlink{structFlowRawData__s}{Flow\+Raw\+Data\+\_\+p}}]{omci\+Msg }\end{DoxyParamCaption})}
+
+
+
+This function is used to gpon flow import me data. 
+
+This function is used to gpon flow import me data. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em omci\+Msg} & Pointer the struct type of \hyperlink{structFlowRawData__s}{Flow\+Raw\+Data\+\_\+s}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Gpon flow import me data. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

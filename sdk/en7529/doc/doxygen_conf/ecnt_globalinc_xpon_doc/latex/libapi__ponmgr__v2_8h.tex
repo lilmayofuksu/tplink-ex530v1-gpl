@@ -1,0 +1,2441 @@
+\hypertarget{libapi__ponmgr__v2_8h}{}\section{public/libapi\+\_\+ponmgr\+\_\+v2.h File Reference}
+\label{libapi__ponmgr__v2_8h}\index{public/libapi\+\_\+ponmgr\+\_\+v2.\+h@{public/libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+
+
+This file is lib ponmgr header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+ioctl\+\_\+if.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgpon__lib__config__t}{gpon\+\_\+lib\+\_\+config\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a37df5ccd75a31daaad05603196b3c04f}\label{libapi__ponmgr__v2_8h_a37df5ccd75a31daaad05603196b3c04f}} 
+\#define {\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+C\+O\+NT}~(0\+X\+F\+F\+F\+F)
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a7e6dcdda7f23a97f7a66cc595ae3f296}\label{libapi__ponmgr__v2_8h_a7e6dcdda7f23a97f7a66cc595ae3f296}} 
+\#define {\bfseries M\+A\+X\+\_\+\+I\+P\+C\+\_\+\+P\+A\+T\+H\+\_\+\+L\+EN}~64
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a58ebc945ba9d2c7a296b0d7f3facc15b}\label{libapi__ponmgr__v2_8h_a58ebc945ba9d2c7a296b0d7f3facc15b}} 
+\#define {\bfseries C\+O\+N\+S\+T\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+N\+U\+M\+B\+ER}~X\+P\+O\+N\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+N\+U\+M\+B\+ER
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_afbd9952aa69c422b0534be5e8d04989c}\label{libapi__ponmgr__v2_8h_afbd9952aa69c422b0534be5e8d04989c}} 
+\#define {\bfseries C\+O\+N\+S\+T\+\_\+\+S\+H\+A\+P\+I\+N\+G\+\_\+\+N\+U\+M\+B\+ER}~X\+P\+O\+N\+\_\+\+S\+H\+A\+P\+I\+N\+G\+\_\+\+N\+U\+M\+B\+ER
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_adf8f5a7867314ec9b777b93a4d32ba33}\label{libapi__ponmgr__v2_8h_adf8f5a7867314ec9b777b93a4d32ba33}} 
+\#define {\bfseries P\+O\+R\+T\+\_\+\+A\+LL}~0x\+FF
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a622670ed6e81cea060bffac2478d77a9}\label{libapi__ponmgr__v2_8h_a622670ed6e81cea060bffac2478d77a9}} 
+typedef enum W\+A\+N\+\_\+\+T\+X\+\_\+\+R\+X\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+T {\bfseries W\+A\+N\+\_\+\+T\+X\+\_\+\+R\+X\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+t}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a49ee168ebbda76957f67d33c4b044673}\label{libapi__ponmgr__v2_8h_a49ee168ebbda76957f67d33c4b044673}} 
+typedef void($\ast$ {\bfseries gpon\+\_\+event\+\_\+callback}) (X\+P\+O\+N\+\_\+\+E\+V\+E\+N\+T\+\_\+t $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a32d5627cc1a7a4c39c0f879ec958c13c}\label{libapi__ponmgr__v2_8h_a32d5627cc1a7a4c39c0f879ec958c13c}} 
+enum {\bfseries P\+Wan\+Congest\+Cfg\+Mask\+\_\+t} \{ \newline
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Trtcm\+Mode} = (1$<$$<$0), 
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Dei\+Drop\+Mode} = (1$<$$<$1), 
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Threshold\+Mode} = (1$<$$<$2), 
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Scale} = (1$<$$<$3), 
+\newline
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Drop\+Probability} = (1$<$$<$4), 
+{\bfseries M\+A\+S\+K\+\_\+\+O\+F\+\_\+\+Congest\+Threshold} = (1$<$$<$5)
+ \}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a437658a2f07485f7b2ff2f60d8c317bd}\label{libapi__ponmgr__v2_8h_a437658a2f07485f7b2ff2f60d8c317bd}} 
+enum {\bfseries Event\+\_\+\+Filter\+\_\+\+Type} \{ {\bfseries B\+L\+A\+C\+K\+\_\+\+L\+I\+S\+T\+\_\+\+F\+I\+L\+T\+ER}, 
+{\bfseries W\+H\+I\+T\+E\+\_\+\+L\+I\+S\+T\+\_\+\+F\+I\+L\+T\+ER}
+ \}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ac0268360af3b5050d60016371da2f901}\label{libapi__ponmgr__v2_8h_ac0268360af3b5050d60016371da2f901}} 
+enum {\bfseries W\+A\+N\+\_\+\+T\+X\+\_\+\+R\+X\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+T} \{ {\bfseries W\+A\+N\+\_\+\+T\+X\+\_\+\+C\+NT} = 1, 
+{\bfseries W\+A\+N\+\_\+\+R\+X\+\_\+\+C\+NT}
+ \}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a426471ed498fa1836d77c4ae21193087}\label{libapi__ponmgr__v2_8h_a426471ed498fa1836d77c4ae21193087}} 
+enum {\bfseries gpon\+\_\+lib\+\_\+config\+\_\+mask\+\_\+t} \{ {\bfseries C\+O\+N\+F\+I\+G\+\_\+\+I\+P\+C\+\_\+\+P\+A\+TH} = 1
+ \}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a505fc39451432f9c66ecd459ba6aaaea}\label{libapi__ponmgr__v2_8h_a505fc39451432f9c66ecd459ba6aaaea}} 
+enum {\bfseries evt\+\_\+handler\+\_\+id\+\_\+t} \{ {\bfseries E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+M\+CI} = 0, 
+{\bfseries E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+AM}, 
+{\bfseries E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+T\+E\+ST}, 
+{\bfseries E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+X\+\_\+\+N\+UM}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a91a69c3ae61d0dd4aebc457278cb27a9}\label{libapi__ponmgr__v2_8h_a91a69c3ae61d0dd4aebc457278cb27a9}} 
+int {\bfseries ponmgr\+\_\+lib\+\_\+fetch\+\_\+event\+\_\+from\+\_\+driver} (void)
+\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a09a0b260c74865a22052258a0aed4fe9}{ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block} (X\+P\+O\+N\+\_\+\+E\+V\+E\+N\+T\+\_\+t $\ast$pevent, evt\+\_\+handler\+\_\+id\+\_\+t handler\+\_\+id)
+\begin{DoxyCompactList}\small\item\em This function is used to get event block. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_aac0108cb9db0ca98d6283ddb8150e48a}{ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler} (evt\+\_\+handler\+\_\+id\+\_\+t handler\+\_\+id)
+\begin{DoxyCompactList}\small\item\em This function is used to register event handler. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_adb4aeb96368a5889a4c41b90693271ff}{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport} (struct X\+M\+C\+S\+\_\+\+Gem\+Port\+Info\+\_\+S $\ast$pgpon\+Gem\+Info)
+\begin{DoxyCompactList}\small\item\em This function is used to get gpon gemport info. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a28ea26782fe60f3c1fa31939172188f9}{gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em This function is used to assign gpon gemport. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ae350ff33fd0228d2fce91fe95a8d73f6}{gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em This function is used to unassign gpon gemport. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a763725c697a21a8d7ab8676983c3e55e}{gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac} (unsigned char $\ast$dev\+Mac)
+\begin{DoxyCompactList}\small\item\em This function is used to get onu mac address. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a9e401d82ec6511b186319dafa4912d1c}{gponmgr\+\_\+lib\+\_\+set\+\_\+emergency} (unsigned char Emergency\+State)
+\begin{DoxyCompactList}\small\item\em This function is used to set gpon emergencystate. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_abfdbb0eb59e2891f72bebd7f72d1940e}{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler} (struct X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S $\ast$pwan\+Channel\+Qos)
+\begin{DoxyCompactList}\small\item\em This function is used to configure QoS scheduler. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a404623b9c4cc03dd464fc5d642912814}{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg} (struct X\+M\+C\+S\+\_\+\+Qo\+S\+Weight\+Config\+\_\+S $\ast$pwan\+Qos\+Weight\+Cfg)
+\begin{DoxyCompactList}\small\item\em This function is used to configure QoS weight configuration. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_af1c5599fc1aac98413520b288427eb8f}{gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config} (unsigned int cmd, struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$pwan\+Congest)
+\begin{DoxyCompactList}\small\item\em This function is used to configure congest. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ab78a33f6d709245d0cc2da5f8c66df84}{gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para} (struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S $\ast$pwan\+Trtcm\+Parameters)
+\begin{DoxyCompactList}\small\item\em This function is used to configure trtcm parameter. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a39f23a2d5e66705836a87f6d010b34d5}{gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time} (struct X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S $\ast$pgpon\+Tod\+Cfg)
+\begin{DoxyCompactList}\small\item\em This function is used to set tod time. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a2f6ed2a7d5f10df751d9a4fe1f2cccd2}{gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type} (int $\ast$Onu\+Type)
+\begin{DoxyCompactList}\small\item\em This function is used to get onu type. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ae1baadb648f8d31e188dabb1c92cd74a}{gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler} (unsigned char channel, struct X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S $\ast$pwan\+Channel\+Qos)
+\begin{DoxyCompactList}\small\item\em This function is used to get QoS scheduler information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a0cbaefb57a97df35c25f241b03f70f5e}{gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config} (struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$pwan\+Congest)
+\begin{DoxyCompactList}\small\item\em This function is used to get congest information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a2d3390be4dc0ddcd75a3987bf4f730bb}{gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration} (unsigned long $\ast$duration\+Ptr)
+\begin{DoxyCompactList}\small\item\em This function is used to get xpon online duration. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a2e130adcd325c3d31af069954bfe8fbc}{gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod} (struct X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S $\ast$pgpon\+Tod\+Cfg)
+\begin{DoxyCompactList}\small\item\em This function is used to get the current ToD. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a518329081a6715885c5d84dbebe97c14}{gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id} (struct X\+M\+C\+S\+\_\+\+Gem\+Port\+Create\+\_\+S gpon\+Gem\+Create)
+\begin{DoxyCompactList}\small\item\em This function is used to config gemport by allocid. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ad547329320c716279417f30eaf57500b}{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic} (unsigned short gem\+Port\+Id, G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$statistic)
+\begin{DoxyCompactList}\small\item\em This function is used to get gemport statistic. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a0bf58f221c1f870735fb343e8392d7dc}{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic} (unsigned char tcont\+Id, G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$statistic)
+\begin{DoxyCompactList}\small\item\em This function is used to get tcont statistic. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_afa2b2002e670ed8963a7af5439554c6b}{gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic} (W\+A\+N\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$p\+Wan\+Cnt\+Stats)
+\begin{DoxyCompactList}\small\item\em This function is used to get wan statistics. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ac6c1c1cab5f52520886780820d46163c}{gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg} (W\+A\+N\+\_\+\+L\+I\+N\+K\+C\+F\+G\+\_\+t $\ast$sys\+Link\+Cfg)
+\begin{DoxyCompactList}\small\item\em This function is used to get sys link config. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a6406ed52483e45ac6b2f83883d456b42}{gponmgr\+\_\+lib\+\_\+get\+\_\+info} (G\+P\+O\+N\+\_\+\+O\+N\+U\+\_\+\+I\+N\+F\+O\+\_\+t $\ast$gpon\+Onu\+Info)
+\begin{DoxyCompactList}\small\item\em This function is used to get gpon detail information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a104258fb2b43c14d5ddf87a39d2640e9}{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params} (P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t $\ast$p\+Phy\+Trans\+Params)
+\begin{DoxyCompactList}\small\item\em This function is used to get phy trans params. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a5631db070e4a15bfe4fe9cfe32354a82}{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg} (P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t $\ast$phy\+Fec\+Config)
+\begin{DoxyCompactList}\small\item\em This function is used to get phy rx fec config. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a672ce00207f039c5628bc97535be114e}{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt} (P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t $\ast$p\+Phy\+Rx\+Fec\+Config)
+\begin{DoxyCompactList}\small\item\em This function is used to get the P\+HY Rx F\+EC counter information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_aa11f411371cde4032334c129594683a6}{gponmgr\+\_\+lib\+\_\+set\+\_\+silence} (unsigned int flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set gpon silence. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a7255724dba76fc1a30fcfc44ed3d26a4}{gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter} (unsigned short gem\+Port\+Id, G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$pgpon\+Gem\+Counter)
+\begin{DoxyCompactList}\small\item\em This function is used to get the G\+P\+ON G\+EM counter information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a7c6e51dac2c07ce1b3c08ee5cdff02a3}{gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time} (unsigned short $\ast$time)
+\begin{DoxyCompactList}\small\item\em This function is used to get the G\+P\+ON response time. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ae700d22334bb69ef09f5eb78b98fb0c7}{gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag} (unsigned int mib\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set mib flag. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_aaecf9f4e16a1e36f21ad57b13c798a98}{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq} (unsigned short detect\+Frequency)
+\begin{DoxyCompactList}\small\item\em This function is used to set the ctc private ME 65528 loop detection message frequency. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a6249cf05a01f12caca535a83425dd838}{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval} (unsigned short recv\+Interval)
+\begin{DoxyCompactList}\small\item\em This function is used to set the ctc private ME 65528 loop detection receive interval. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a4eecc293886e0192fa9ded17e5ef9c2a}{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index} (struct X\+M\+C\+S\+\_\+\+Gpon\+Tcont\+Info\+\_\+S $\ast$tcont\+Info)
+\begin{DoxyCompactList}\small\item\em This function is used to get tcont index information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a7b967f3f8f93bd4e7b85e555e313ef28}{gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit} (struct X\+M\+C\+S\+\_\+\+Gpon\+Tx\+Rate\+Limit\+\_\+S $\ast$tx\+Rate\+Limitdata)
+\begin{DoxyCompactList}\small\item\em This function is used to set tx rate limit. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a691993a51f09a3124eb6089a020d018f}{xgponmgr\+\_\+lib\+\_\+get\+\_\+info} (struct X\+G\+M\+C\+S\+\_\+\+Xgpon\+Onu\+Info\+\_\+S $\ast$pxgpon\+Onu\+Info)
+\begin{DoxyCompactList}\small\item\em This function is used to get xgpon detail information. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_affb8e580f74d02e9b37551d8407f5776}{xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time} (unsigned short $\ast$onu\+Resp\+Time)
+\begin{DoxyCompactList}\small\item\em This function is used to get the xgpon onu response time. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ad27d90a1e1f375a56e2717c44fb4e469}{xgponmgr\+\_\+lib\+\_\+set\+\_\+msk} (unsigned char $\ast$msk)
+\begin{DoxyCompactList}\small\item\em This function is used to set xgpon master session key. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_afe0eb8b981686664f9a765b536c29616}{xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key} (uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to set xgpon omci broadcast key. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a6590599561162a1fcc6fefee0b4a3c19}{xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key} (uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to clean xgpon omci broadcast key . \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ab389b0362d52323903457f28c40b8534}{xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter} (G\+P\+O\+N\+\_\+10\+G\+\_\+\+T\+C\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$xgpon\+T\+C\+Counter)
+\begin{DoxyCompactList}\small\item\em This function is used to get 10G G\+P\+ON TC counter. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_af6ed9f0636ee22b07099f251ebff291f}{xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter} (G\+P\+O\+N\+\_\+10\+G\+\_\+\+D\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$xgpon\+Ds\+Mgnt\+Counter)
+\begin{DoxyCompactList}\small\item\em This function is used to get 10G G\+P\+ON downstream ploam counter. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a6f9cc03e587b01859934a9bc1cc5fead}{xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter} (G\+P\+O\+N\+\_\+10\+G\+\_\+\+U\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$xgpon\+Us\+Mgnt\+Counter)
+\begin{DoxyCompactList}\small\item\em This function is used to get 10G G\+P\+ON upstream ploam counter. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_af8efa9c68e9bf7da193dfbf5db9c89cd}{eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac} (uint8\+\_\+t $\ast$dev\+Mac)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon onu mac address. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a8b1d1ee6eca9698d8c0767e539640888}{eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type} (X\+M\+C\+S\+I\+F\+\_\+\+Onu\+Type\+\_\+t $\ast$onu\+Type)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon onu type. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a26611d1294b116c324d6296d8eeed2d6}{eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info} (P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t $\ast$info)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon phy transceiver information(temperature,voltage,tx\+Current,tx\+Power rx\+Power). \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ac3699f4f6e008e4df76fff4e0798f2be}{eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config} (Epon\+Rx\+Config\+\_\+t $\ast$epon\+Rx\+Config)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon rx config. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a8e722276b2d836eb1729c5eb03ffe094}{eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config} (Epon\+Tx\+Config\+\_\+t $\ast$epon\+Tx\+Config)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon tx config. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_aeeba0a44e3c884ec3b50b1097015b6dc}{eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config} (unsigned int mask, struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$pwan\+Congest)
+\begin{DoxyCompactList}\small\item\em This function is used to epon configure congest. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ae960f0de379b06b57672a0a6fc459835}{eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params} (struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S $\ast$pwan\+Trtcm\+Parameters)
+\begin{DoxyCompactList}\small\item\em This function is used to epon configure trtcm parameter. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a65e93795d5d03eb1414b08c1e5c02aac}{eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time} (uint32\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon phy power disable time. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_acfdcb01c28949cf227b1b4abf8985dd1}{eponmgr\+\_\+lib\+\_\+event\+\_\+init} (void $\ast$pf\+\_\+mpcp\+\_\+state\+\_\+callback)
+\begin{DoxyCompactList}\small\item\em This function is used to init event. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_acbd147b1b63174a51e616ab8af8156d0}{eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status} (uint8\+\_\+t auth\+Status)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon auth fail. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a3316a50aae08fa904cf6951510bfe441}{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value} (uint8\+\_\+t llid\+Idx, uint16\+\_\+t $\ast$value)
+\begin{DoxyCompactList}\small\item\em This function is used to get llid value. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a304ba47fa7e9e0cbd53f7e23e9cf8b14}{eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t key\+Index, uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to set 1g E\+P\+ON llid key. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ad18b6fcae21be3fe16ee177a814787d2}{eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t key\+Index, uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to set 10g E\+P\+ON llid key. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a2cbe4474a284a16e52f42a1616e7c8f0}{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec} (uint8\+\_\+t llid\+Idx, unsigned char $\ast$fec\+\_\+tx)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon llid tx fec. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a1f605934d3078b8f2307fcc0829ab70e}{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t fec\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon llid tx fec. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a6ee4eaf6e6816fb1bea3ce4b98f3aa26}{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec} (uint8\+\_\+t llid\+Idx, unsigned char $\ast$fec\+\_\+rx)
+\begin{DoxyCompactList}\small\item\em This function is used to get llid rx fec. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_af8119ed2cfe3a16586af472585b8f0ed}{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t fec\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon llid rx fec. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_abdccd1d1c69ed481888b2e318086067d}{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num} (uint8\+\_\+t llid, unsigned char Queue\+Set\+Num)
+\begin{DoxyCompactList}\small\item\em This function is used to set the queue sets number of a certain L\+L\+ID. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a20df786b43a5d6dddd8b4d4e6bca0ed3}{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num} (uint8\+\_\+t llid\+Index, uint8\+\_\+t $\ast$queue\+Set\+Num)
+\begin{DoxyCompactList}\small\item\em This function is used to get the number of queue sets of a certain L\+L\+ID. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a49a3471579b2f45560096729d807c36b}{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld} (uint8\+\_\+t llid, uint16\+\_\+t $\ast$threshold, uint8\+\_\+t bitmap, uint8\+\_\+t queue\+Set\+Idx)
+\begin{DoxyCompactList}\small\item\em This function is used to set the epon llid D\+BA thrshld. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a7e72ecc399c9c0697780979bc742f5b2}{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld} (uint8\+\_\+t llid\+Index, uint16\+\_\+t $\ast$threshold, uint8\+\_\+t $\ast$bitmap, uint8\+\_\+t queue\+Set\+Index)
+\begin{DoxyCompactList}\small\item\em This function is used to get the epon llid D\+BA thrshld. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_ac72d26eddb16814edfb0a487b0d257bb}{eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg} (uint8\+\_\+t enable, uint16\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em This function is used to set onu hold over cfg. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_aeaee58ac2c0c261fb467009fabd4a62b}{set\+Port\+Loop\+Detect} (uint8\+\_\+t port\+Id, uint32\+\_\+t active)
+\begin{DoxyCompactList}\small\item\em This function is used to set port loop detect. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_adaaaa47af957d383c2567e43f80d236a}{set\+Port\+Disable\+Looped} (uint8\+\_\+t port\+Id, uint32\+\_\+t active)
+\begin{DoxyCompactList}\small\item\em This function is used to set port disable looped. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_afe98be0f1342237b6bae48efcb2841b8}{set\+Port\+Loop\+Parameter\+Config} (uint8\+\_\+t port\+Id, uint16\+\_\+t detect\+Frequency, uint16\+\_\+t reco\+Interval, uint16\+\_\+t svlan, uint16\+\_\+t cvlan)
+\begin{DoxyCompactList}\small\item\em This function is used to set port loop parameter config. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_a62ef43d021a780fd273783c512e901b9}{get\+Loop\+Status} (int port)
+\begin{DoxyCompactList}\small\item\em This function is used to get port loop detect. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__ponmgr__v2_8h_afcc26321d8ae786d24db13217ead6829}{eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data} (unsigned char $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function is used to get gnx M\+D5 key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib ponmgr header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_acfdcb01c28949cf227b1b4abf8985dd1}\label{libapi__ponmgr__v2_8h_acfdcb01c28949cf227b1b4abf8985dd1}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+event\+\_\+init@{eponmgr\+\_\+lib\+\_\+event\+\_\+init}}
+\index{eponmgr\+\_\+lib\+\_\+event\+\_\+init@{eponmgr\+\_\+lib\+\_\+event\+\_\+init}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+event\+\_\+init()}{eponmgr\_lib\_event\_init()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+event\+\_\+init (\begin{DoxyParamCaption}\item[{void $\ast$}]{pf\+\_\+mpcp\+\_\+state\+\_\+callback }\end{DoxyParamCaption})}
+
+
+
+This function is used to init event. 
+
+This function is used to init event. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pf\+\_\+mpcp\+\_\+state\+\_\+callback} & pointer to the callback \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Init event. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_af8efa9c68e9bf7da193dfbf5db9c89cd}\label{libapi__ponmgr__v2_8h_af8efa9c68e9bf7da193dfbf5db9c89cd}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac@{eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac@{eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac()}{eponmgr\_lib\_get\_dev\_mac()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{dev\+Mac }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon onu mac address. 
+
+This function is used to get epon onu mac address. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em dev\+Mac} & pointer to the unsigned uint8\+\_\+t type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon onu mac address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_afcc26321d8ae786d24db13217ead6829}\label{libapi__ponmgr__v2_8h_afcc26321d8ae786d24db13217ead6829}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data@{eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data@{eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data()}{eponmgr\_lib\_get\_gnx\_MD5\_data()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+gnx\+\_\+\+M\+D5\+\_\+data (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to get gnx M\+D5 key. 
+
+This function is used to get gnx M\+D5 key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & pointer to the value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Success\+:return} & active/deactive \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get gnx M\+D5 key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a7e72ecc399c9c0697780979bc742f5b2}\label{libapi__ponmgr__v2_8h_a7e72ecc399c9c0697780979bc742f5b2}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld()}{eponmgr\_lib\_get\_llid\_DBA\_thrshld()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Index,  }\item[{uint16\+\_\+t $\ast$}]{threshold,  }\item[{uint8\+\_\+t $\ast$}]{bitmap,  }\item[{uint8\+\_\+t}]{queue\+Set\+Index }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the epon llid D\+BA thrshld. 
+
+This function is used to get the epon llid D\+BA thrshld. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\mbox{\tt out}  & {\em threshold} & pointer to the uint16\+\_\+t type \\
+\hline
+\mbox{\tt out}  & {\em bitmap} & pointer to the uint8\+\_\+t type \\
+\hline
+\mbox{\tt out}  & {\em queue\+Set\+Idx} & pointer to the uint8\+\_\+t type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the epon llid D\+BA thrshld. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a20df786b43a5d6dddd8b4d4e6bca0ed3}\label{libapi__ponmgr__v2_8h_a20df786b43a5d6dddd8b4d4e6bca0ed3}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num()}{eponmgr\_lib\_get\_llid\_queue\_sets\_num()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Index,  }\item[{uint8\+\_\+t $\ast$}]{queue\+Set\+Num }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the number of queue sets of a certain L\+L\+ID. 
+
+This function is used to get the number of queue sets of a certain L\+L\+ID. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Index} & llid\+Index \\
+\hline
+\mbox{\tt out}  & {\em queue\+Set\+Num} & queue sets number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the number of queue sets of a certain L\+L\+ID. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a6ee4eaf6e6816fb1bea3ce4b98f3aa26}\label{libapi__ponmgr__v2_8h_a6ee4eaf6e6816fb1bea3ce4b98f3aa26}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec()}{eponmgr\_lib\_get\_llid\_rx\_fec()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+rx\+\_\+fec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{unsigned char $\ast$}]{fec\+\_\+rx }\end{DoxyParamCaption})}
+
+
+
+This function is used to get llid rx fec. 
+
+This function is used to get llid rx fec. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt in}  & {\em fec\+\_\+rx} & pointer to the vlaue of rx fec. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get llid rx fec. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a2cbe4474a284a16e52f42a1616e7c8f0}\label{libapi__ponmgr__v2_8h_a2cbe4474a284a16e52f42a1616e7c8f0}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec()}{eponmgr\_lib\_get\_llid\_tx\_fec()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+tx\+\_\+fec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{unsigned char $\ast$}]{fec\+\_\+tx }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon llid tx fec. 
+
+This function is used to get epon llid tx fec. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt out}  & {\em fec\+\_\+tx} & pointer to the unsigned char type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon llid tx fec. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a3316a50aae08fa904cf6951510bfe441}\label{libapi__ponmgr__v2_8h_a3316a50aae08fa904cf6951510bfe441}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value@{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value()}{eponmgr\_lib\_get\_llid\_value()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+llid\+\_\+value (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint16\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+This function is used to get llid value. 
+
+This function is used to get llid value. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em value} & pointer to the value of llid \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get llid value. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a8b1d1ee6eca9698d8c0767e539640888}\label{libapi__ponmgr__v2_8h_a8b1d1ee6eca9698d8c0767e539640888}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type@{eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type@{eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type()}{eponmgr\_lib\_get\_onu\_type()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type (\begin{DoxyParamCaption}\item[{X\+M\+C\+S\+I\+F\+\_\+\+Onu\+Type\+\_\+t $\ast$}]{onu\+Type }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon onu type. 
+
+This function is used to get epon onu type. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em onu\+Type} & pointer to the struct type of X\+M\+C\+S\+I\+F\+\_\+\+Onu\+Type\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon onu type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a26611d1294b116c324d6296d8eeed2d6}\label{libapi__ponmgr__v2_8h_a26611d1294b116c324d6296d8eeed2d6}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info@{eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info}}
+\index{eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info@{eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info()}{eponmgr\_lib\_get\_transceiver\_info()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+get\+\_\+transceiver\+\_\+info (\begin{DoxyParamCaption}\item[{P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon phy transceiver information(temperature,voltage,tx\+Current,tx\+Power rx\+Power). 
+
+This function is used to get epon phy transceiver information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em info} & pointer to the struct type of P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t this struct contain information about bosa \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon phy transceiver information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ad18b6fcae21be3fe16ee177a814787d2}\label{libapi__ponmgr__v2_8h_ad18b6fcae21be3fe16ee177a814787d2}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key@{eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key@{eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key()}{eponmgr\_lib\_set\_10g\_llid\_key()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+10g\+\_\+llid\+\_\+key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{key\+Index,  }\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to set 10g E\+P\+ON llid key. 
+
+This function is used to set 10g E\+P\+ON llid key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt in}  & {\em key\+Index} & key\+Index \\
+\hline
+\mbox{\tt in}  & {\em key} & key value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set 10g E\+P\+ON llid key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a304ba47fa7e9e0cbd53f7e23e9cf8b14}\label{libapi__ponmgr__v2_8h_a304ba47fa7e9e0cbd53f7e23e9cf8b14}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key@{eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key@{eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key()}{eponmgr\_lib\_set\_1g\_llid\_key()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+1g\+\_\+llid\+\_\+key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{key\+Index,  }\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to set 1g E\+P\+ON llid key. 
+
+This function is used to set 1g E\+P\+ON llid key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt in}  & {\em key\+Index} & key\+Index \\
+\hline
+\mbox{\tt in}  & {\em key} & key value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set 1g E\+P\+ON llid key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_acbd147b1b63174a51e616ab8af8156d0}\label{libapi__ponmgr__v2_8h_acbd147b1b63174a51e616ab8af8156d0}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status@{eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status@{eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status()}{eponmgr\_lib\_set\_auth\_status()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+auth\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{auth\+Status }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon auth fail. 
+
+This function is used to set epon auth fail. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em auth\+Status} & auth\+Status \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon auth fail. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_aeeba0a44e3c884ec3b50b1097015b6dc}\label{libapi__ponmgr__v2_8h_aeeba0a44e3c884ec3b50b1097015b6dc}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config()}{eponmgr\_lib\_set\_congest\_config()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config (\begin{DoxyParamCaption}\item[{unsigned int}]{mask,  }\item[{struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$}]{pwan\+Congest }\end{DoxyParamCaption})}
+
+
+
+This function is used to epon configure congest. 
+
+This function is used to epon configure congest. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mask} & mask \\
+\hline
+\mbox{\tt in}  & {\em pwan\+Congest} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+E\+P\+ON configure congest. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a49a3471579b2f45560096729d807c36b}\label{libapi__ponmgr__v2_8h_a49a3471579b2f45560096729d807c36b}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld()}{eponmgr\_lib\_set\_llid\_DBA\_thrshld()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+\+D\+B\+A\+\_\+thrshld (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid,  }\item[{uint16\+\_\+t $\ast$}]{threshold,  }\item[{uint8\+\_\+t}]{bitmap,  }\item[{uint8\+\_\+t}]{queue\+Set\+Idx }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the epon llid D\+BA thrshld. 
+
+This function is used to set the epon llid D\+BA thrshld. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\mbox{\tt in}  & {\em threshold} & pointer to the uint16\+\_\+t type \\
+\hline
+\mbox{\tt in}  & {\em bitmap} & bitmap \\
+\hline
+\mbox{\tt in}  & {\em queue\+Set\+Idx} & queue\+Set\+Idx \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the epon llid D\+BA thrshld. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_abdccd1d1c69ed481888b2e318086067d}\label{libapi__ponmgr__v2_8h_abdccd1d1c69ed481888b2e318086067d}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num()}{eponmgr\_lib\_set\_llid\_queue\_sets\_num()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+queue\+\_\+sets\+\_\+num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid,  }\item[{unsigned char}]{Queue\+Set\+Num }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the queue sets number of a certain L\+L\+ID. 
+
+This function is used to set the queue sets number of a certain L\+L\+ID. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\mbox{\tt in}  & {\em Queue\+Set\+Num} & queue sets number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the queue sets number of a certain L\+L\+ID. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_af8119ed2cfe3a16586af472585b8f0ed}\label{libapi__ponmgr__v2_8h_af8119ed2cfe3a16586af472585b8f0ed}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec()}{eponmgr\_lib\_set\_llid\_rx\_fec()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+rx\+\_\+fec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{fec\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon llid rx fec. 
+
+This function is used to set epon llid rx fec. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt in}  & {\em fec\+Flag} & fec Flag \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon llid rx fec. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a1f605934d3078b8f2307fcc0829ab70e}\label{libapi__ponmgr__v2_8h_a1f605934d3078b8f2307fcc0829ab70e}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec@{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec()}{eponmgr\_lib\_set\_llid\_tx\_fec()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+llid\+\_\+tx\+\_\+fec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{fec\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon llid tx fec. 
+
+This function is used to set epon llid tx fec. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid\+Idx \\
+\hline
+\mbox{\tt in}  & {\em fec\+Flag} & fec Flag \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon llid tx fec. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ac72d26eddb16814edfb0a487b0d257bb}\label{libapi__ponmgr__v2_8h_ac72d26eddb16814edfb0a487b0d257bb}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg@{eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg@{eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg()}{eponmgr\_lib\_set\_onu\_hold\_over\_cfg()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+onu\+\_\+hold\+\_\+over\+\_\+cfg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{enable,  }\item[{uint16\+\_\+t}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to set onu hold over cfg. 
+
+This function is used to set onu hold over cfg. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & enable \\
+\hline
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set onu hold over cfg. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a65e93795d5d03eb1414b08c1e5c02aac}\label{libapi__ponmgr__v2_8h_a65e93795d5d03eb1414b08c1e5c02aac}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time@{eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time@{eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time()}{eponmgr\_lib\_set\_phy\_power\_disable\_time()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+phy\+\_\+power\+\_\+disable\+\_\+time (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon phy power disable time. 
+
+This function is used to set epon phy power disable time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon phy power disable time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ac3699f4f6e008e4df76fff4e0798f2be}\label{libapi__ponmgr__v2_8h_ac3699f4f6e008e4df76fff4e0798f2be}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config()}{eponmgr\_lib\_set\_rx\_config()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+rx\+\_\+config (\begin{DoxyParamCaption}\item[{Epon\+Rx\+Config\+\_\+t $\ast$}]{epon\+Rx\+Config }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon rx config. 
+
+This function is used to set epon rx config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em epon\+Rx\+Config} & pointer to the struct type of Epon\+Rx\+Config\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon rx config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ae960f0de379b06b57672a0a6fc459835}\label{libapi__ponmgr__v2_8h_ae960f0de379b06b57672a0a6fc459835}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params@{eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params@{eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params()}{eponmgr\_lib\_set\_trtcm\_params()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+params (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S $\ast$}]{pwan\+Trtcm\+Parameters }\end{DoxyParamCaption})}
+
+
+
+This function is used to epon configure trtcm parameter. 
+
+This function is used to epon configure trtcm parameter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pwan\+Trtcm\+Parameters} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+E\+P\+ON configure trtcm parameter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a8e722276b2d836eb1729c5eb03ffe094}\label{libapi__ponmgr__v2_8h_a8e722276b2d836eb1729c5eb03ffe094}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config}}
+\index{eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config@{eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config()}{eponmgr\_lib\_set\_tx\_config()}}
+{\footnotesize\ttfamily int eponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+config (\begin{DoxyParamCaption}\item[{Epon\+Tx\+Config\+\_\+t $\ast$}]{epon\+Tx\+Config }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon tx config. 
+
+This function is used to set epon tx config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em epon\+Tx\+Config} & pointer to the struct type of Epon\+Tx\+Config\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon tx config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a62ef43d021a780fd273783c512e901b9}\label{libapi__ponmgr__v2_8h_a62ef43d021a780fd273783c512e901b9}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!get\+Loop\+Status@{get\+Loop\+Status}}
+\index{get\+Loop\+Status@{get\+Loop\+Status}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{get\+Loop\+Status()}{getLoopStatus()}}
+{\footnotesize\ttfamily int get\+Loop\+Status (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+This function is used to get port loop detect. 
+
+This function is used to get port loop detect. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & port id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Success\+:return} & active/deactive \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get port loop detect. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a518329081a6715885c5d84dbebe97c14}\label{libapi__ponmgr__v2_8h_a518329081a6715885c5d84dbebe97c14}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id@{gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id}}
+\index{gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id@{gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id()}{gponmgr\_lib\_config\_gemport\_by\_allocId()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+config\+\_\+gemport\+\_\+by\+\_\+alloc\+Id (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gem\+Port\+Create\+\_\+S}]{gpon\+Gem\+Create }\end{DoxyParamCaption})}
+
+
+
+This function is used to config gemport by allocid. 
+
+This function is used to config gemport by allocid. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gpon\+Gem\+Create\+:the} & struct type of X\+M\+C\+S\+\_\+\+Gem\+Port\+Create\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Config gemport by allocid. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a28ea26782fe60f3c1fa31939172188f9}\label{libapi__ponmgr__v2_8h_a28ea26782fe60f3c1fa31939172188f9}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign@{gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign}}
+\index{gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign@{gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign()}{gponmgr\_lib\_gemport\_assign()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+gemport\+\_\+assign (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+This function is used to assign gpon gemport. 
+
+This function is used to assign gpon gemport. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em arg} & pointer to gpon driver structure \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Assign gpon gemport. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ae350ff33fd0228d2fce91fe95a8d73f6}\label{libapi__ponmgr__v2_8h_ae350ff33fd0228d2fce91fe95a8d73f6}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign@{gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign}}
+\index{gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign@{gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign()}{gponmgr\_lib\_gemport\_unassign()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+gemport\+\_\+unassign (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+This function is used to unassign gpon gemport. 
+
+This function is used to unassign gpon gemport. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em arg} & pointer to gpon driver structure \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Unassign gpon gemport. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a0cbaefb57a97df35c25f241b03f70f5e}\label{libapi__ponmgr__v2_8h_a0cbaefb57a97df35c25f241b03f70f5e}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config@{gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config@{gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config()}{gponmgr\_lib\_get\_congest\_config()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+congest\+\_\+config (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$}]{pwan\+Congest }\end{DoxyParamCaption})}
+
+
+
+This function is used to get congest information. 
+
+This function is used to get congest information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em pwan\+Congest} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get congest information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a2e130adcd325c3d31af069954bfe8fbc}\label{libapi__ponmgr__v2_8h_a2e130adcd325c3d31af069954bfe8fbc}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod@{gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod@{gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod()}{gponmgr\_lib\_get\_current\_tod()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+current\+\_\+tod (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S $\ast$}]{pgpon\+Tod\+Cfg }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the current ToD. 
+
+This function is used to get the current ToD. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em pgpon\+Tod\+Cfg} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the current ToD. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a763725c697a21a8d7ab8676983c3e55e}\label{libapi__ponmgr__v2_8h_a763725c697a21a8d7ab8676983c3e55e}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac@{gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac@{gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac()}{gponmgr\_lib\_get\_dev\_mac()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+dev\+\_\+mac (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{dev\+Mac }\end{DoxyParamCaption})}
+
+
+
+This function is used to get onu mac address. 
+
+This function is used to get onu mac address. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em dev\+Mac} & pointer to the unsigned char type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get onu mac address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a7255724dba76fc1a30fcfc44ed3d26a4}\label{libapi__ponmgr__v2_8h_a7255724dba76fc1a30fcfc44ed3d26a4}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter()}{gponmgr\_lib\_get\_gemcounter()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+gemcounter (\begin{DoxyParamCaption}\item[{unsigned short}]{gem\+Port\+Id,  }\item[{G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$}]{pgpon\+Gem\+Counter }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the G\+P\+ON G\+EM counter information. 
+
+This function is used to get the G\+P\+ON G\+EM counter information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gem\+Port\+Id} & gem\+Port Id \\
+\hline
+\mbox{\tt out}  & {\em pgpon\+Gem\+Counter} & pointer to the struct type of G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the G\+P\+ON G\+EM counter information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_adb4aeb96368a5889a4c41b90693271ff}\label{libapi__ponmgr__v2_8h_adb4aeb96368a5889a4c41b90693271ff}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+gemport@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport()}{gponmgr\_lib\_get\_gemport()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+gemport (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gem\+Port\+Info\+\_\+S $\ast$}]{pgpon\+Gem\+Info }\end{DoxyParamCaption})}
+
+
+
+This function is used to get gpon gemport info. 
+
+This function is used to get gpon gemport info. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pgpon\+Gem\+Info} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Gem\+Port\+Info\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get gpon gemport info. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ad547329320c716279417f30eaf57500b}\label{libapi__ponmgr__v2_8h_ad547329320c716279417f30eaf57500b}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic()}{gponmgr\_lib\_get\_gemport\_statistic()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+gemport\+\_\+statistic (\begin{DoxyParamCaption}\item[{unsigned short}]{gem\+Port\+Id,  }\item[{G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$}]{statistic }\end{DoxyParamCaption})}
+
+
+
+This function is used to get gemport statistic. 
+
+This function is used to get gemport statistic. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gem\+Port\+Id\+:gemport} & ID \\
+\hline
+\mbox{\tt in}  & {\em statistic\+:pointer} & to the struct G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get gemport statistic. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a6406ed52483e45ac6b2f83883d456b42}\label{libapi__ponmgr__v2_8h_a6406ed52483e45ac6b2f83883d456b42}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+info@{gponmgr\+\_\+lib\+\_\+get\+\_\+info}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+info@{gponmgr\+\_\+lib\+\_\+get\+\_\+info}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+info()}{gponmgr\_lib\_get\_info()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+info (\begin{DoxyParamCaption}\item[{G\+P\+O\+N\+\_\+\+O\+N\+U\+\_\+\+I\+N\+F\+O\+\_\+t $\ast$}]{gpon\+Onu\+Info }\end{DoxyParamCaption})}
+
+
+
+This function is used to get gpon detail information. 
+
+This function is used to get gpon detail information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em gpon\+Onu\+Info} & pointer to the struct type of G\+P\+O\+N\+\_\+\+O\+N\+U\+\_\+\+I\+N\+F\+O\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get gpon detail information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a2f6ed2a7d5f10df751d9a4fe1f2cccd2}\label{libapi__ponmgr__v2_8h_a2f6ed2a7d5f10df751d9a4fe1f2cccd2}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type@{gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type@{gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type()}{gponmgr\_lib\_get\_onu\_type()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+onu\+\_\+type (\begin{DoxyParamCaption}\item[{int $\ast$}]{Onu\+Type }\end{DoxyParamCaption})}
+
+
+
+This function is used to get onu type. 
+
+This function is used to get onu type. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em Onu\+Type} & pointer to the int type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get onu type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a672ce00207f039c5628bc97535be114e}\label{libapi__ponmgr__v2_8h_a672ce00207f039c5628bc97535be114e}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt()}{gponmgr\_lib\_get\_phy\_fec\_cnt()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+fec\+\_\+cnt (\begin{DoxyParamCaption}\item[{P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t $\ast$}]{p\+Phy\+Rx\+Fec\+Config }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the P\+HY Rx F\+EC counter information. 
+
+This function is used to get the P\+HY Rx F\+EC counter information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em p\+Phy\+Rx\+Fec\+Config} & pointer to the struct type of P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the P\+HY Rx F\+EC counter information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a5631db070e4a15bfe4fe9cfe32354a82}\label{libapi__ponmgr__v2_8h_a5631db070e4a15bfe4fe9cfe32354a82}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg()}{gponmgr\_lib\_get\_phy\_rx\_fec\_cfg()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+rx\+\_\+fec\+\_\+cfg (\begin{DoxyParamCaption}\item[{P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t $\ast$}]{phy\+Fec\+Config }\end{DoxyParamCaption})}
+
+
+
+This function is used to get phy rx fec config. 
+
+This function is used to get phy rx fec config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em phy\+Fec\+Config} & pointer to the struct type of P\+H\+Y\+\_\+\+F\+E\+C\+C\+O\+N\+F\+I\+G\+\_\+t this struct contain information about rx fec config \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get phy rx fec config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a104258fb2b43c14d5ddf87a39d2640e9}\label{libapi__ponmgr__v2_8h_a104258fb2b43c14d5ddf87a39d2640e9}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params@{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params()}{gponmgr\_lib\_get\_phy\_trans\_params()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+phy\+\_\+trans\+\_\+params (\begin{DoxyParamCaption}\item[{P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t $\ast$}]{p\+Phy\+Trans\+Params }\end{DoxyParamCaption})}
+
+
+
+This function is used to get phy trans params. 
+
+This function is used to get phy trans params. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em p\+Phy\+Trans\+Params} & pointer to the struct type of P\+H\+Y\+\_\+\+P\+A\+R\+A\+M\+S\+\_\+t this struct contain information about bosa \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get phy trans params. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ae1baadb648f8d31e188dabb1c92cd74a}\label{libapi__ponmgr__v2_8h_ae1baadb648f8d31e188dabb1c92cd74a}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler@{gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler@{gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler()}{gponmgr\_lib\_get\_qos\_scheduler()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+qos\+\_\+scheduler (\begin{DoxyParamCaption}\item[{unsigned char}]{channel,  }\item[{struct X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S $\ast$}]{pwan\+Channel\+Qos }\end{DoxyParamCaption})}
+
+
+
+This function is used to get QoS scheduler information. 
+
+This function is used to get QoS scheduler information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em channel} & channel \\
+\hline
+\mbox{\tt out}  & {\em pwan\+Channel\+Qos} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get QoS scheduler information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a7c6e51dac2c07ce1b3c08ee5cdff02a3}\label{libapi__ponmgr__v2_8h_a7c6e51dac2c07ce1b3c08ee5cdff02a3}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time@{gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time@{gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time()}{gponmgr\_lib\_get\_response\_time()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+response\+\_\+time (\begin{DoxyParamCaption}\item[{unsigned short $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the G\+P\+ON response time. 
+
+This function is used to get the G\+P\+ON response time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em time} & pointer to the unsigned short type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the G\+P\+ON response time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ac6c1c1cab5f52520886780820d46163c}\label{libapi__ponmgr__v2_8h_ac6c1c1cab5f52520886780820d46163c}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg()}{gponmgr\_lib\_get\_sys\_link\_cfg()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+sys\+\_\+link\+\_\+cfg (\begin{DoxyParamCaption}\item[{W\+A\+N\+\_\+\+L\+I\+N\+K\+C\+F\+G\+\_\+t $\ast$}]{sys\+Link\+Cfg }\end{DoxyParamCaption})}
+
+
+
+This function is used to get sys link config. 
+
+This function is used to get sys link config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em sys\+Link\+Cfg} & pointer to the struct type of W\+A\+N\+\_\+\+L\+I\+N\+K\+C\+F\+G\+\_\+t this struct contain information about sys link config \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get sys link config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a4eecc293886e0192fa9ded17e5ef9c2a}\label{libapi__ponmgr__v2_8h_a4eecc293886e0192fa9ded17e5ef9c2a}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index@{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index@{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index()}{gponmgr\_lib\_get\_tcont\_index()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+index (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gpon\+Tcont\+Info\+\_\+S $\ast$}]{tcont\+Info }\end{DoxyParamCaption})}
+
+
+
+This function is used to get tcont index information. 
+
+This function is used to get tcont index information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em tcont\+Info} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Gpon\+Tcont\+Info\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get tcont index information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a0bf58f221c1f870735fb343e8392d7dc}\label{libapi__ponmgr__v2_8h_a0bf58f221c1f870735fb343e8392d7dc}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic()}{gponmgr\_lib\_get\_tcont\_statistic()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+tcont\+\_\+statistic (\begin{DoxyParamCaption}\item[{unsigned char}]{tcont\+Id,  }\item[{G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$}]{statistic }\end{DoxyParamCaption})}
+
+
+
+This function is used to get tcont statistic. 
+
+This function is used to get tcont statistic. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tcont\+Id\+:tcont} & ID \\
+\hline
+\mbox{\tt in}  & {\em statistic\+:pointer} & to the struct G\+E\+M\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get tcont statistic. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_afa2b2002e670ed8963a7af5439554c6b}\label{libapi__ponmgr__v2_8h_afa2b2002e670ed8963a7af5439554c6b}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic@{gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic()}{gponmgr\_lib\_get\_wan\_statistic()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+wan\+\_\+statistic (\begin{DoxyParamCaption}\item[{W\+A\+N\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t $\ast$}]{p\+Wan\+Cnt\+Stats }\end{DoxyParamCaption})}
+
+
+
+This function is used to get wan statistics. 
+
+This function is used to get wan statistics. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em p\+Wan\+Cnt\+Stats} & pointer to the struct type of W\+A\+N\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+C\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get wan statistics. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a2d3390be4dc0ddcd75a3987bf4f730bb}\label{libapi__ponmgr__v2_8h_a2d3390be4dc0ddcd75a3987bf4f730bb}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration@{gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration}}
+\index{gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration@{gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration()}{gponmgr\_lib\_get\_xpon\_online\_duration()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+get\+\_\+xpon\+\_\+online\+\_\+duration (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{duration\+Ptr }\end{DoxyParamCaption})}
+
+
+
+This function is used to get xpon online duration. 
+
+This function is used to get congest information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em duration\+Ptr} & pointer to the duration value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get xpon online duration. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_af1c5599fc1aac98413520b288427eb8f}\label{libapi__ponmgr__v2_8h_af1c5599fc1aac98413520b288427eb8f}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config@{gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config@{gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config()}{gponmgr\_lib\_set\_congest\_config()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+congest\+\_\+config (\begin{DoxyParamCaption}\item[{unsigned int}]{cmd,  }\item[{struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S $\ast$}]{pwan\+Congest }\end{DoxyParamCaption})}
+
+
+
+This function is used to configure congest. 
+
+This function is used to configure congest. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & cmd \\
+\hline
+\mbox{\tt in}  & {\em pwan\+Congest} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Tx\+Queue\+Congestion\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configure congest. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a9e401d82ec6511b186319dafa4912d1c}\label{libapi__ponmgr__v2_8h_a9e401d82ec6511b186319dafa4912d1c}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+emergency@{gponmgr\+\_\+lib\+\_\+set\+\_\+emergency}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+emergency@{gponmgr\+\_\+lib\+\_\+set\+\_\+emergency}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+emergency()}{gponmgr\_lib\_set\_emergency()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+emergency (\begin{DoxyParamCaption}\item[{unsigned char}]{Emergency\+State }\end{DoxyParamCaption})}
+
+
+
+This function is used to set gpon emergencystate. 
+
+This function is used to set gpon emergencystate. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Emergency\+State} & Emergency\+State \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set gpon emergencystate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_aaecf9f4e16a1e36f21ad57b13c798a98}\label{libapi__ponmgr__v2_8h_aaecf9f4e16a1e36f21ad57b13c798a98}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq@{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq@{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq()}{gponmgr\_lib\_set\_loop\_detect\_msg\_freq()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+detect\+\_\+msg\+\_\+freq (\begin{DoxyParamCaption}\item[{unsigned short}]{detect\+Frequency }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the ctc private ME 65528 loop detection message frequency. 
+
+This function is used to set the ctc private ME 65528 loop detection message frequency. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em detect\+Frequency} & used to set the send ploamu wait mode \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the ctc private ME 65528 loop detection message frequency. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a6249cf05a01f12caca535a83425dd838}\label{libapi__ponmgr__v2_8h_a6249cf05a01f12caca535a83425dd838}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval@{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval@{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval()}{gponmgr\_lib\_set\_loop\_Recv\_Interval()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+loop\+\_\+\+Recv\+\_\+\+Interval (\begin{DoxyParamCaption}\item[{unsigned short}]{recv\+Interval }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the ctc private ME 65528 loop detection receive interval. 
+
+This function is used to set the ctc private ME 65528 loop detection receive interval. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em recv\+Interval} & receive interval \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the ctc private ME 65528 loop detection receive interval. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ae700d22334bb69ef09f5eb78b98fb0c7}\label{libapi__ponmgr__v2_8h_ae700d22334bb69ef09f5eb78b98fb0c7}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag@{gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag@{gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag()}{gponmgr\_lib\_set\_mib\_flag()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+mib\+\_\+flag (\begin{DoxyParamCaption}\item[{unsigned int}]{mib\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set mib flag. 
+
+This function is used to set mib flag. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mib\+Flag} & mib Flag \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set mib flag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_abfdbb0eb59e2891f72bebd7f72d1940e}\label{libapi__ponmgr__v2_8h_abfdbb0eb59e2891f72bebd7f72d1940e}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler@{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler@{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler()}{gponmgr\_lib\_set\_qos\_scheduler()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+scheduler (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S $\ast$}]{pwan\+Channel\+Qos }\end{DoxyParamCaption})}
+
+
+
+This function is used to configure QoS scheduler. 
+
+This function is used to configure QoS scheduler. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pwan\+Channel\+Qos} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Channel\+Qo\+S\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configure QoS scheduler. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a404623b9c4cc03dd464fc5d642912814}\label{libapi__ponmgr__v2_8h_a404623b9c4cc03dd464fc5d642912814}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg@{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg()}{gponmgr\_lib\_set\_qos\_weight\_cfg()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+qos\+\_\+weight\+\_\+cfg (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Qo\+S\+Weight\+Config\+\_\+S $\ast$}]{pwan\+Qos\+Weight\+Cfg }\end{DoxyParamCaption})}
+
+
+
+This function is used to configure QoS weight configuration. 
+
+This function is used to configure QoS weight configuration. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pwan\+Qos\+Weight\+Cfg} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Qo\+S\+Weight\+Config\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configure QoS weight configuration. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_aa11f411371cde4032334c129594683a6}\label{libapi__ponmgr__v2_8h_aa11f411371cde4032334c129594683a6}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+silence@{gponmgr\+\_\+lib\+\_\+set\+\_\+silence}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+silence@{gponmgr\+\_\+lib\+\_\+set\+\_\+silence}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+silence()}{gponmgr\_lib\_set\_silence()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+silence (\begin{DoxyParamCaption}\item[{unsigned int}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set gpon silence. 
+
+This function is used to set gpon silence. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flag} & 1\+:start timer, 0\+:stop timer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set gpon silence. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a39f23a2d5e66705836a87f6d010b34d5}\label{libapi__ponmgr__v2_8h_a39f23a2d5e66705836a87f6d010b34d5}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time@{gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time@{gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time()}{gponmgr\_lib\_set\_tod\_time()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+tod\+\_\+time (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S $\ast$}]{pgpon\+Tod\+Cfg }\end{DoxyParamCaption})}
+
+
+
+This function is used to set tod time. 
+
+This function is used to set tod time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pgpon\+Tod\+Cfg} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Gpon\+Tod\+Cfg\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set tod time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ab78a33f6d709245d0cc2da5f8c66df84}\label{libapi__ponmgr__v2_8h_ab78a33f6d709245d0cc2da5f8c66df84}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para@{gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para@{gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para()}{gponmgr\_lib\_set\_trtcm\_para()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+trtcm\+\_\+para (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S $\ast$}]{pwan\+Trtcm\+Parameters }\end{DoxyParamCaption})}
+
+
+
+This function is used to configure trtcm parameter. 
+
+This function is used to configure trtcm parameter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pwan\+Trtcm\+Parameters} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Tx\+Queue\+Trtcm\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Configure trtcm parameter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a7b967f3f8f93bd4e7b85e555e313ef28}\label{libapi__ponmgr__v2_8h_a7b967f3f8f93bd4e7b85e555e313ef28}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit@{gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit}}
+\index{gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit@{gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit()}{gponmgr\_lib\_set\_tx\_rate\_limit()}}
+{\footnotesize\ttfamily int gponmgr\+\_\+lib\+\_\+set\+\_\+tx\+\_\+rate\+\_\+limit (\begin{DoxyParamCaption}\item[{struct X\+M\+C\+S\+\_\+\+Gpon\+Tx\+Rate\+Limit\+\_\+S $\ast$}]{tx\+Rate\+Limitdata }\end{DoxyParamCaption})}
+
+
+
+This function is used to set tx rate limit. 
+
+This function is used to set tx rate limit. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tx\+Rate\+Limitdata} & pointer to the struct type of X\+M\+C\+S\+\_\+\+Gpon\+Tx\+Rate\+Limit\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set tx rate limit. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a09a0b260c74865a22052258a0aed4fe9}\label{libapi__ponmgr__v2_8h_a09a0b260c74865a22052258a0aed4fe9}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block@{ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block}}
+\index{ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block@{ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block()}{ponmgr\_lib\_get\_event\_block()}}
+{\footnotesize\ttfamily int ponmgr\+\_\+lib\+\_\+get\+\_\+event\+\_\+block (\begin{DoxyParamCaption}\item[{X\+P\+O\+N\+\_\+\+E\+V\+E\+N\+T\+\_\+t $\ast$}]{pevent,  }\item[{evt\+\_\+handler\+\_\+id\+\_\+t}]{handler\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+This function is used to get event block. 
+
+This function is used to get event block. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em pevent} & pointer to the struct type of X\+P\+O\+N\+\_\+\+E\+V\+E\+N\+T\+\_\+t \\
+\hline
+\mbox{\tt in}  & {\em handler\+\_\+id} & 0\+: E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+M\+CI, 1\+: E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+AM \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get event block. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_aac0108cb9db0ca98d6283ddb8150e48a}\label{libapi__ponmgr__v2_8h_aac0108cb9db0ca98d6283ddb8150e48a}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler@{ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler}}
+\index{ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler@{ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler()}{ponmgr\_lib\_register\_event\_handler()}}
+{\footnotesize\ttfamily int ponmgr\+\_\+lib\+\_\+register\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{evt\+\_\+handler\+\_\+id\+\_\+t}]{handler\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+This function is used to register event handler. 
+
+This function is used to register event handler. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handler\+\_\+id} & 0\+: E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+M\+CI, 1\+: E\+V\+T\+\_\+\+H\+A\+N\+D\+L\+E\+R\+\_\+\+O\+AM \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Register event handler. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_adaaaa47af957d383c2567e43f80d236a}\label{libapi__ponmgr__v2_8h_adaaaa47af957d383c2567e43f80d236a}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!set\+Port\+Disable\+Looped@{set\+Port\+Disable\+Looped}}
+\index{set\+Port\+Disable\+Looped@{set\+Port\+Disable\+Looped}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{set\+Port\+Disable\+Looped()}{setPortDisableLooped()}}
+{\footnotesize\ttfamily int set\+Port\+Disable\+Looped (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{uint32\+\_\+t}]{active }\end{DoxyParamCaption})}
+
+
+
+This function is used to set port disable looped. 
+
+This function is used to set port disable looped. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em active} & active/deactive \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set port disable looped. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_aeaee58ac2c0c261fb467009fabd4a62b}\label{libapi__ponmgr__v2_8h_aeaee58ac2c0c261fb467009fabd4a62b}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!set\+Port\+Loop\+Detect@{set\+Port\+Loop\+Detect}}
+\index{set\+Port\+Loop\+Detect@{set\+Port\+Loop\+Detect}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{set\+Port\+Loop\+Detect()}{setPortLoopDetect()}}
+{\footnotesize\ttfamily int set\+Port\+Loop\+Detect (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{uint32\+\_\+t}]{active }\end{DoxyParamCaption})}
+
+
+
+This function is used to set port loop detect. 
+
+This function is used to set port loop detect. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em active} & active/deactive \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set port loop detect. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_afe98be0f1342237b6bae48efcb2841b8}\label{libapi__ponmgr__v2_8h_afe98be0f1342237b6bae48efcb2841b8}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!set\+Port\+Loop\+Parameter\+Config@{set\+Port\+Loop\+Parameter\+Config}}
+\index{set\+Port\+Loop\+Parameter\+Config@{set\+Port\+Loop\+Parameter\+Config}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{set\+Port\+Loop\+Parameter\+Config()}{setPortLoopParameterConfig()}}
+{\footnotesize\ttfamily int set\+Port\+Loop\+Parameter\+Config (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{uint16\+\_\+t}]{detect\+Frequency,  }\item[{uint16\+\_\+t}]{reco\+Interval,  }\item[{uint16\+\_\+t}]{svlan,  }\item[{uint16\+\_\+t}]{cvlan }\end{DoxyParamCaption})}
+
+
+
+This function is used to set port loop parameter config. 
+
+This function is used to set port loop parameter config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em detect\+Frequency} & detect\+Frequency \\
+\hline
+\mbox{\tt in}  & {\em reco\+Interval} & reco\+Interval \\
+\hline
+\mbox{\tt in}  & {\em svlan} & svlan \\
+\hline
+\mbox{\tt in}  & {\em cvlan} & cvlan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set port loop parameter config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a6590599561162a1fcc6fefee0b4a3c19}\label{libapi__ponmgr__v2_8h_a6590599561162a1fcc6fefee0b4a3c19}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key@{xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key}}
+\index{xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key@{xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key()}{xgponmgr\_lib\_clean\_omci\_broadcast\_key()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+clean\+\_\+omci\+\_\+broadcast\+\_\+key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to clean xgpon omci broadcast key . 
+
+This function is used to clean xgpon omci broadcast key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key} & pointer to the uint8\+\_\+t type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clean xgpon omci broadcast key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_af6ed9f0636ee22b07099f251ebff291f}\label{libapi__ponmgr__v2_8h_af6ed9f0636ee22b07099f251ebff291f}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter}}
+\index{xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter()}{xgponmgr\_lib\_get\_ds\_mgnt\_counter()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+get\+\_\+ds\+\_\+mgnt\+\_\+counter (\begin{DoxyParamCaption}\item[{G\+P\+O\+N\+\_\+10\+G\+\_\+\+D\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$}]{xgpon\+Ds\+Mgnt\+Counter }\end{DoxyParamCaption})}
+
+
+
+This function is used to get 10G G\+P\+ON downstream ploam counter. 
+
+This function is used to get 10G G\+P\+ON downstream ploam counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xgpon\+Ds\+Mgnt\+Counter} & pointer to the struct type of G\+P\+O\+N\+\_\+10\+G\+\_\+\+D\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get 10G G\+P\+ON downstream ploam counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a691993a51f09a3124eb6089a020d018f}\label{libapi__ponmgr__v2_8h_a691993a51f09a3124eb6089a020d018f}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+get\+\_\+info@{xgponmgr\+\_\+lib\+\_\+get\+\_\+info}}
+\index{xgponmgr\+\_\+lib\+\_\+get\+\_\+info@{xgponmgr\+\_\+lib\+\_\+get\+\_\+info}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+get\+\_\+info()}{xgponmgr\_lib\_get\_info()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+get\+\_\+info (\begin{DoxyParamCaption}\item[{struct X\+G\+M\+C\+S\+\_\+\+Xgpon\+Onu\+Info\+\_\+S $\ast$}]{pxgpon\+Onu\+Info }\end{DoxyParamCaption})}
+
+
+
+This function is used to get xgpon detail information. 
+
+This function is used to get xgpon detail information. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em pxgpon\+Onu\+Info} & pointer to the struct type of X\+G\+M\+C\+S\+\_\+\+Xgpon\+Onu\+Info\+\_\+S \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get xgpon detail information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_affb8e580f74d02e9b37551d8407f5776}\label{libapi__ponmgr__v2_8h_affb8e580f74d02e9b37551d8407f5776}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time@{xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time}}
+\index{xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time@{xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time()}{xgponmgr\_lib\_get\_onuRespTime()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+get\+\_\+onu\+Resp\+Time (\begin{DoxyParamCaption}\item[{unsigned short $\ast$}]{onu\+Resp\+Time }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the xgpon onu response time. 
+
+This function is used to get the xgpon onu response time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em onu\+Resp\+Time} & pointer to the unsigned short type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the xgpon onu response time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ab389b0362d52323903457f28c40b8534}\label{libapi__ponmgr__v2_8h_ab389b0362d52323903457f28c40b8534}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter}}
+\index{xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter()}{xgponmgr\_lib\_get\_TC\_counter()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+get\+\_\+\+T\+C\+\_\+counter (\begin{DoxyParamCaption}\item[{G\+P\+O\+N\+\_\+10\+G\+\_\+\+T\+C\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$}]{xgpon\+T\+C\+Counter }\end{DoxyParamCaption})}
+
+
+
+This function is used to get 10G G\+P\+ON TC counter. 
+
+This function is used to get 10G G\+P\+ON TC counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xgpon\+T\+C\+Counter} & pointer to the struct type of G\+P\+O\+N\+\_\+10\+G\+\_\+\+T\+C\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get 10G G\+P\+ON TC counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_a6f9cc03e587b01859934a9bc1cc5fead}\label{libapi__ponmgr__v2_8h_a6f9cc03e587b01859934a9bc1cc5fead}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter}}
+\index{xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter@{xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter()}{xgponmgr\_lib\_get\_us\_mgnt\_counter()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+get\+\_\+us\+\_\+mgnt\+\_\+counter (\begin{DoxyParamCaption}\item[{G\+P\+O\+N\+\_\+10\+G\+\_\+\+U\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T $\ast$}]{xgpon\+Us\+Mgnt\+Counter }\end{DoxyParamCaption})}
+
+
+
+This function is used to get 10G G\+P\+ON upstream ploam counter. 
+
+This function is used to get 10G G\+P\+ON upstream ploam counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xgpon\+Us\+Mgnt\+Counter} & pointer to the struct type of G\+P\+O\+N\+\_\+10\+G\+\_\+\+U\+S\+\_\+\+M\+G\+N\+T\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+T \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get 10G G\+P\+ON upstream ploam counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_ad27d90a1e1f375a56e2717c44fb4e469}\label{libapi__ponmgr__v2_8h_ad27d90a1e1f375a56e2717c44fb4e469}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+set\+\_\+msk@{xgponmgr\+\_\+lib\+\_\+set\+\_\+msk}}
+\index{xgponmgr\+\_\+lib\+\_\+set\+\_\+msk@{xgponmgr\+\_\+lib\+\_\+set\+\_\+msk}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+set\+\_\+msk()}{xgponmgr\_lib\_set\_msk()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+set\+\_\+msk (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{msk }\end{DoxyParamCaption})}
+
+
+
+This function is used to set xgpon master session key. 
+
+This function is used to set xgpon master session key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em msk} & master session key \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set xgpon master session key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__ponmgr__v2_8h_afe0eb8b981686664f9a765b536c29616}\label{libapi__ponmgr__v2_8h_afe0eb8b981686664f9a765b536c29616}} 
+\index{libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}!xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key@{xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key}}
+\index{xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key@{xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key}!libapi\+\_\+ponmgr\+\_\+v2.\+h@{libapi\+\_\+ponmgr\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key()}{xgponmgr\_lib\_set\_omci\_broadcast\_key()}}
+{\footnotesize\ttfamily int xgponmgr\+\_\+lib\+\_\+set\+\_\+omci\+\_\+broadcast\+\_\+key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to set xgpon omci broadcast key. 
+
+This function is used to set xgpon omci broadcast key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key} & pointer to the uint8\+\_\+t type \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set xgpon omci broadcast key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

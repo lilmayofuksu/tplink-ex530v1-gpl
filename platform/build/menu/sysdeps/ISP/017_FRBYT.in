@@ -1,0 +1,26 @@
+config INCLUDE_FRBYT_OPTIONS
+	bool "FR BYT all options (B&C)"
+	depends on INCLUDE_FRBYT
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+	select INCLUDE_FRBYT_IGNORE_IMS_SWITCH_DM
+	select INCLUDE_FRBYT_DISABLE_SLIC
+	select INCLUDE_FRBYT_HIDE_BANDSELECT
+	
+########## Define Type C ############
+config INCLUDE_FRBYT_IGNORE_IMS_SWITCH_DM
+	bool "ignore ims switch node in dm "
+	default n
+	depends on INCLUDE_FRBYT_OPTIONS
+
+config INCLUDE_FRBYT_DISABLE_SLIC
+	bool "disable slic and save it to modem config"
+	default n
+	depends on INCLUDE_FRBYT_OPTIONS
+
+config INCLUDE_FRBYT_HIDE_BANDSELECT
+	bool "hide band select option on UI"
+	default n
+	depends on INCLUDE_FRBYT_OPTIONS

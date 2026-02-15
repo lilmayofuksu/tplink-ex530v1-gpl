@@ -1,0 +1,4133 @@
+<?xml version="1.0"?>
+<DslCpeConfig>
+	<Device>
+		<InterfaceStackNumberOfEntries val=63 />
+		<DeviceInfo>
+			<X_TP_ConfigVersion val=0x5a000003 />
+		</DeviceInfo>
+		<ManagementServer>
+			<URL val=http://acs.superonline.net:8015/cwmpWeb/WGCPEMgt />
+			<Username val=superonlineacs />
+			<Password val=superonlineacs />
+			<PeriodicInformInterval val=86400 />
+			<ConnectionRequestUsername val=superonlineacs />
+			<ConnectionRequestPassword val=superonlineacs />
+			<X_TP_DMMAP_DataModel val=1 />
+		</ManagementServer>
+		<UserInterface>
+			<RemoteAccess>
+				<Enable val=1 />
+				<Port val=8080,443 />
+				<X_TP_RemoteHost val=85.29.13.1-85.29.13.30 />
+				<Protocol val=HTTP,HTTPS />
+			</RemoteAccess>
+		</UserInterface>
+		<X_TP_UserCfg>
+			<PwdSign val=1 />
+			<AdminName val=sUser />
+			<AdminPwd val=admin />
+			<AdminEnable val=1 />
+			<UserPwdSign val=1 />
+			<UserName val=admin />
+			<UserPwd val=superonline />
+			<UserEnable val=1 />
+		</X_TP_UserCfg>
+		<X_TP_AppCfg>
+			<SSHCfg>
+				<RemoteEnabled val=0 />
+				<LocalEnabled val=0 />
+			</SSHCfg>
+			<HttpCfg>
+				<TelnetLocalEnabled val=0 />
+				<TelnetLocalPort val=2323 />
+				<TelnetRemoteEnabled val=0 />
+				<TelnetRemotePort val=2323 />
+				<HttpRemoteEnabled val=1 />
+				<HttpRemotePort val=8080 />
+				<HttpsLocalEnabled val=1 />
+				<HttpsRemoteEnabled val=1 />
+				<RemoteAll val=0 />
+				<RemoteHost val=85.29.13.1-85.29.13.30 />
+			</HttpCfg>
+			<DynDnsCfg>
+				<Enable val=0 />
+				<Server val=members.dyndns.org />
+			</DynDnsCfg>
+			<NoipDnsCfg>
+				<Enable val=0 />
+				<Server val=dynupdate.no-ip.com />
+			</NoipDnsCfg>
+			<SnmpCfg>
+				<Enable val=0 />
+			</SnmpCfg>
+			<ACL instance=1>
+				<Enable val=1 />
+				<IPStart val=0.0.0.0 />
+				<IPEnd val=0.0.0.0 />
+				<Service val=Ping />
+				<Location val=Local />
+			</ACL>
+			<ACL nextInstance=2 />
+			<IGMPCfg>
+				<Version val=2 />
+			</IGMPCfg>
+		</X_TP_AppCfg>
+		<Time>
+			<NTPServer1 val=cpentp.superonline.net />
+			<NTPServer2 val=0.tr.pool.ntp.org />
+			<LocalTimeZone val=+03:00 />
+		</Time>
+		<X_TP_SysMode>
+			<Mode val="EWAN_MODE" />
+		</X_TP_SysMode>
+		<X_TP_Local>
+			<Country val="TR" />
+			<Language val="tr_TR" />
+		</X_TP_Local>
+		<X_TP_StatCfg>
+			<Enable val=1 />
+			<X_TP_DdosCfg>
+				<Enable val=1 />
+				<EnableIcmpFilter val=1 />
+				<IcmpThreshold val=1200 />
+				<EnableUdpFilter val=1 />
+				<UdpThreshold val=1200 />
+				<EnableSynFilter val=1 />
+				<SynThreshold val=1200 />
+			</X_TP_DdosCfg>
+		</X_TP_StatCfg>
+		<X_TP_IPTV>
+			<IptvLanPort val="LAN2" />
+			<AccessMode val="ADSL" />
+			<ATMDestAddr val="8/81" />
+		</X_TP_IPTV>
+		<InterfaceStack instance=1>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.2. />
+			<LowerLayer val=Device.Ethernet.Interface.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=2>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.3. />
+			<LowerLayer val=Device.Ethernet.Interface.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=3>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.4. />
+			<LowerLayer val=Device.Ethernet.Interface.3. />
+		</InterfaceStack>
+		<InterfaceStack instance=4>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.5. />
+			<LowerLayer val=Device.Ethernet.Interface.4. />
+		</InterfaceStack>
+		<InterfaceStack instance=5>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.6. />
+			<LowerLayer val=Device.Ethernet.Interface.5. />
+		</InterfaceStack>
+		<InterfaceStack instance=6>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=7>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.3. />
+		</InterfaceStack>
+		<InterfaceStack instance=8>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.4. />
+		</InterfaceStack>
+		<InterfaceStack instance=9>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.5. />
+		</InterfaceStack>
+		<InterfaceStack instance=10>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=11>
+			<HigherLayer val=Device.Ethernet.Link.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=12>
+			<HigherLayer val=Device.IP.Interface.1. />
+			<LowerLayer val=Device.Ethernet.Link.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=13>
+			<HigherLayer val=Device.WiFi.SSID.1. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=14>
+			<HigherLayer val=Device.WiFi.SSID.2. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=15>
+			<HigherLayer val=Device.WiFi.SSID.3. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=16>
+			<HigherLayer val=Device.WiFi.SSID.4. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=17>
+			<HigherLayer val=Device.Ethernet.Link.2. />
+			<LowerLayer val=Device.Ethernet.Interface.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=18>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.7. />
+			<LowerLayer val=Device.WiFi.SSID.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=19>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.8. />
+			<LowerLayer val=Device.WiFi.SSID.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=20>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.9. />
+			<LowerLayer val=Device.WiFi.SSID.3. />
+		</InterfaceStack>
+		<InterfaceStack instance=21>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.10. />
+			<LowerLayer val=Device.WiFi.SSID.4. />
+		</InterfaceStack>
+		<InterfaceStack instance=22>
+			<HigherLayer val=Device.WiFi.SSID.5. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=23>
+			<HigherLayer val=Device.WiFi.SSID.6. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>	
+		<InterfaceStack instance=24>
+			<HigherLayer val=Device.WiFi.SSID.7. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>	
+		<InterfaceStack instance=25>
+			<HigherLayer val=Device.WiFi.SSID.8. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=26>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.11. />
+			<LowerLayer val=Device.WiFi.SSID.5. />
+		</InterfaceStack>		
+		<InterfaceStack instance=27>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.12. />
+			<LowerLayer val=Device.WiFi.SSID.6. />
+		</InterfaceStack>		
+		<InterfaceStack instance=28>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.13. />
+			<LowerLayer val=Device.WiFi.SSID.7. />
+		</InterfaceStack>		
+		<InterfaceStack instance=29>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.14. />
+			<LowerLayer val=Device.WiFi.SSID.8. />
+		</InterfaceStack>
+		<InterfaceStack instance=30>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.7. />
+		</InterfaceStack>
+		<InterfaceStack instance=31>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.8. />
+		</InterfaceStack>
+		<InterfaceStack instance=32>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.11. />
+		</InterfaceStack>
+		<InterfaceStack instance=33>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.12. />
+		</InterfaceStack>
+		<InterfaceStack instance=34>
+			<HigherLayer val=Device.PPP.Interface.1. />
+			<LowerLayer val=Device.USB.Interface.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=35>
+			<HigherLayer val=Device.IP.Interface.2. />
+			<LowerLayer val=Device.PPP.Interface.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=36>
+			<HigherLayer val=Device.DSL.Channel.1. />
+			<LowerLayer val=Device.DSL.Line.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=37>
+			<HigherLayer val=Device.DSL.Channel.2. />
+			<LowerLayer val=Device.DSL.Line.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=38>
+			<HigherLayer val=Device.IP.Interface.3. />
+			<LowerLayer val=Device.USB.Interface.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=42>
+			<HigherLayer val=Device.WiFi.SSID.9. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=43>
+			<HigherLayer val=Device.WiFi.SSID.10. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=44>
+			<HigherLayer val=Device.WiFi.SSID.11. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=45>
+			<HigherLayer val=Device.WiFi.SSID.12. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=46>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.15. />
+			<LowerLayer val=Device.WiFi.SSID.9. />
+		</InterfaceStack>
+		<InterfaceStack instance=47>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.16. />
+			<LowerLayer val=Device.WiFi.SSID.10. />
+		</InterfaceStack>
+		<InterfaceStack instance=48>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.17. />
+			<LowerLayer val=Device.WiFi.SSID.11. />
+		</InterfaceStack>
+		<InterfaceStack instance=49>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.18. />
+			<LowerLayer val=Device.WiFi.SSID.12. />
+		</InterfaceStack>
+		<InterfaceStack instance=50>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.15. />
+		</InterfaceStack>
+		<InterfaceStack instance=51>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.16. />
+		</InterfaceStack>
+		<InterfaceStack instance=52>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.17. />
+		</InterfaceStack>
+		<InterfaceStack instance=53>
+			<HigherLayer val=Device.Bridging.Bridge.1.Port.1. />
+			<LowerLayer val=Device.Bridging.Bridge.1.Port.18. />
+		</InterfaceStack>
+		<InterfaceStack instance=54>
+			<HigherLayer val=Device.WiFi.SSID.13. />
+			<LowerLayer val=Device.WiFi.Radio.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=55>
+			<HigherLayer val=Device.WiFi.SSID.14. />
+			<LowerLayer val=Device.WiFi.Radio.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=56 >
+			<Alias val= />
+			<HigherLayer val=Device.Ethernet.Link.4. />
+			<LowerLayer val=Device.Ethernet.Interface.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=57 >
+			<Alias val= />
+			<HigherLayer val=Device.Ethernet.VLANTermination.1. />
+			<LowerLayer val=Device.Ethernet.Link.4. />
+		</InterfaceStack>
+		<InterfaceStack instance=58 >
+			<Alias val= />
+			<HigherLayer val=Device.IP.Interface.4. />
+			<LowerLayer val=Device.PPP.Interface.2. />
+		</InterfaceStack>
+		<InterfaceStack instance=59 >
+			<Alias val= />
+			<HigherLayer val=Device.PPP.Interface.2. />
+			<LowerLayer val=Device.Ethernet.VLANTermination.1. />
+		</InterfaceStack>
+		<InterfaceStack instance=60 >
+			<Alias val= />
+			<HigherLayer val=Device.Ethernet.Link.5. />
+			<LowerLayer val=Device.Ethernet.Interface.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=61 >
+			<Alias val= />
+			<HigherLayer val=Device.Ethernet.VLANTermination.2. />
+			<LowerLayer val=Device.Ethernet.Link.5. />
+		</InterfaceStack>
+		<InterfaceStack instance=62 >
+			<Alias val= />
+			<HigherLayer val=Device.IP.Interface.5. />
+			<LowerLayer val=Device.Ethernet.VLANTermination.2. />
+		</InterfaceStack>
+		    <InterfaceStack instance=63 >
+		  <Alias val= />
+		  <HigherLayer val=Device.Ethernet.Link.6. />
+		  <LowerLayer val=Device.Ethernet.Interface.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=64 >
+		  <Alias val= />
+		  <HigherLayer val=Device.Ethernet.VLANTermination.3. />
+		  <LowerLayer val=Device.Ethernet.Link.6. />
+		</InterfaceStack>
+		<InterfaceStack instance=65 >
+		  <Alias val= />
+		  <HigherLayer val=Device.IP.Interface.6. />
+		  <LowerLayer val=Device.PPP.Interface.3. />
+		</InterfaceStack>
+		<InterfaceStack instance=66 >
+		  <Alias val= />
+		  <HigherLayer val=Device.PPP.Interface.3. />
+		  <LowerLayer val=Device.Ethernet.VLANTermination.3. />
+		</InterfaceStack>
+		<InterfaceStack nextInstance=67 />
+		<Bridging>
+			<BridgeNumberOfEntries val=1 />
+			<Bridge instance=1 >
+				<Enable val=1 />
+				<PortNumberOfEntries val=17 />
+				<__brName val=br0 />
+				<X_TP_GroupName val=Default />
+				<Port instance=1 >
+					<Enable val=1 />
+					<LowerLayers val=Device.Bridging.Bridge.1.Port.2.,Device.Bridging.Bridge.1.Port.3.,Device.Bridging.Bridge.1.Port.4.,Device.Bridging.Bridge.1.Port.5.,Device.Bridging.Bridge.1.Port.6.,Device.Bridging.Bridge.1.Port.7.,Device.Bridging.Bridge.1.Port.8.,Device.Bridging.Bridge.1.Port.9.,Device.Bridging.Bridge.1.Port.10.,Device.Bridging.Bridge.1.Port.11.,Device.Bridging.Bridge.1.Port.12.,Device.Bridging.Bridge.1.Port.13.,Device.Bridging.Bridge.1.Port.14. />
+					<ManagementPort val=1 />
+				</Port>
+				<Port instance=2>
+					<Enable val=1 />
+					<LowerLayers val=Device.Ethernet.Interface.1. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=3>
+					<Enable val=1 />
+					<LowerLayers val=Device.Ethernet.Interface.2. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=4>
+					<Enable val=1 />
+					<LowerLayers val=Device.Ethernet.Interface.3. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=5>
+					<Enable val=1 />
+					<LowerLayers val=Device.Ethernet.Interface.4. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=6>
+					<Enable val=0 />
+					<LowerLayers val=Device.Ethernet.Interface.5. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=7>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.1. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=8>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.2. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=9>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.3. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=10>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.4. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=11>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.5. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=12>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.6. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=13>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.7. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=14>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.8. />
+					<ManagementPort val=0 />
+				</Port>	
+				<Port instance=15>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.9. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=16>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.10. />
+					<ManagementPort val=0 />
+				</Port>	
+				<Port instance=17>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.11. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port instance=18>
+					<Enable val=1 />
+					<LowerLayers val=Device.WiFi.SSID.12. />
+					<ManagementPort val=0 />
+				</Port>
+				<Port nextInstance=19 />
+			</Bridge>
+			<Bridge nextInstance=2 />
+		</Bridging>
+		<Ethernet>
+			<X_TP_EnableVirtualPorts val=1 />
+			<InterfaceNumberOfEntries val=7 />
+			<LinkNumberOfEntries val=5 />
+			<VLANTerminationNumberOfEntries val=3 />
+			<Interface instance=1>
+				<Enable val=0 />
+				<X_TP_IfNameAlias val=LAN />
+				<Upstream val=0 />
+			</Interface>
+			<Interface instance=2>
+				<Enable val=0 />
+				<X_TP_IfNameAlias val=LAN1 />
+				<Upstream val=0 />
+			</Interface>
+			<Interface instance=3>
+				<Enable val=1 />
+				<X_TP_IfNameAlias val=LAN2 />
+				<Upstream val=0 />
+			</Interface>
+			<Interface instance=4>
+				<Enable val=1 />
+				<X_TP_IfNameAlias val=LAN3 />
+				<Upstream val=0 />
+			</Interface>
+			<Interface instance=5>
+				<Enable val=0 />
+				<X_TP_IfNameAlias val=LAN4 />
+				<Upstream val=0 />
+			</Interface>
+			<Interface instance=6>
+				<Enable val=1 />
+				<X_TP_IfNameAlias val=EWAN />
+				<Upstream val=1 />
+			</Interface>
+			<Interface instance=7>
+				<Enable val=0 />
+				<X_TP_IfNameAlias val=LAN5 />
+				<Upstream val=0 />
+			</Interface>
+			<Interface nextInstance=8 />
+			<Link instance=1>
+			<Enable val=1 />
+			<LowerLayers val=Device.Bridging.Bridge.1.Port.1. />
+			</Link>
+			<Link instance=2>
+				<Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Interface.6. />
+			</Link>
+			<Link instance=4>
+				<Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Interface.6. />
+			</Link>
+			<Link instance=5 >
+				<Enable val=1 />
+				<__index val=3 />
+				<__WanIndex val=2 />
+				<LowerLayers val=Device.Ethernet.Interface.6. />
+			</Link>
+			<Link instance=6 >
+				<Enable val=1 />
+				<__index val=4 />
+				<__WanIndex val=3 />
+				<LowerLayers val=Device.Ethernet.Interface.6. />
+			</Link>
+			<Link nextInstance=7 />
+			<VLANTermination instance=1>
+				<Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Link.4. />
+				<X_TP_VLANEnable val=1 />
+				<VLANID val=0 />
+				<X_TP_VLANPr val=1 />
+			</VLANTermination>
+			<VLANTermination instance=2 >
+				<Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Link.5. />
+				<X_TP_VLANEnable val=1 />
+				<VLANID val=103 />
+				<X_TP_VLANPr val=4 />
+			</VLANTermination>
+			    <VLANTermination instance=3 >
+				<Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Link.6. />
+				<X_TP_VLANEnable val=1 />
+				<VLANID val=35 />
+			  </VLANTermination>
+			  <VLANTermination nextInstance=4 />
+		</Ethernet>
+		<USB>
+			<Interface instance=1>
+				<Enable val=1 />
+			</Interface>
+			<Interface nextInstance=2 />
+		</USB>
+		<PPP>
+			<InterfaceNumberOfEntries val=3 />
+			<Interface instance=1>
+				<Enable val=1 />
+				<LowerLayers val=Device.USB.Interface.1. />
+			</Interface>
+			<Interface instance=2 >
+				<Enable val=1 />
+				<__index val=0 />
+				<LowerLayers val=Device.Ethernet.VLANTermination.1. />
+				<X_TP_UsernameDomainEnable val=1 />
+				<X_TP_UsernameExcludeDomain val=fiber@fiber />
+				<Username val=fiber@fiber />
+				<Password val=fiber />
+				<AuthenticationProtocol val=AUTO_AUTH />
+				<MaxMRUSize val=1492 />
+			</Interface>
+			<Interface instance=3 >
+				<Enable val=1 />
+				<__index val=1 />
+				<LowerLayers val=Device.Ethernet.VLANTermination.3. />
+				<X_TP_UsernameDomainEnable val=1 />
+				<X_TP_UsernameExcludeDomain val=superonline@superonline />
+				<Username val=superonline@superonline />
+				<Password val=superonline />
+				<AuthenticationProtocol val=AUTO_AUTH />
+				<MaxMRUSize val=1492 />
+				<IPv6CPEnable val=0 />
+			</Interface>
+			<Interface nextInstance=4 />
+		</PPP>
+		<WiFi>
+			<__defaultCfg val=1 />
+			<__syncApStatus val=0 />
+			<__apLastStatus val=0 />
+			<RadioNumberOfEntries val=2 />
+			<SSIDNumberOfEntries val=14 />
+			<X_TP_PrimarySSIDFormat val=SUPERONLINE_Wi-Fi_|MAC[8:4] />
+			<X_TP_MultiSSIDFormat val=SUPERONLINE_Wi-Fi_|MAC[8:4] />
+			<X_TP_GuestSSIDFormat val=SUPERONLINE_Wi-Fi_|MAC[8:4] />
+			<AccessPointNumberOfEntries val=14 />
+			<X_TP_MultiAPSecurityMode val="No Security,WPA/WPA2/WPA3 Personal(Recommended)" />
+			<X_TP_PrimaryAPSecurityMode val="No Security,WPA-PSK[TKIP]+WPA2-PSK[AES],WPA2-PSK[AES],WPA2-PSK[AES]+WPA3-Personal,WPA3-Personal,WPA2-Enterprise" />
+			<Radio instance=1>
+				<Enable val=1 />
+				<OperatingFrequencyBand val=2.4GHz />
+				<OperatingStandards val="b,g,n,ax" />
+				<Channel val=1 />
+				<AutoChannelEnable val=1 />
+				<X_TP_AutoChWithDFSlEnable val=0 />
+				<OperatingChannelBandwidth val=Auto />
+				<GuardInterval val=Auto />
+				<TransmitPower val=100 />
+				<IEEE80211hEnabled val=0 />
+				<RegulatoryDomain val="US " />
+				<FragmentationThreshold val=2346 />
+				<RTSThreshold val=2347 />
+				<BeaconPeriod val=100 />
+				<DTIMPeriod val=1 />
+				<GuardInterval val="400nsec" />
+				<X_TP_HE_GI val="Auto" />
+				<PreambleType val=long />
+				<SupportedFrequencyBands val=2.4GHz />
+				<PossibleChannels val="1,2,3,4,5,6,7,8,9,10,11,12,13" />
+				<SupportedOperatingChannelBandwidths val="Auto,20MHz,40MHz" />
+				<X_TP_SupportedMode val="802.11gn mixed,802.11bgn mixed" />
+				<ATFEnable val=1 />
+			</Radio>
+			<Radio instance=2>
+				<Enable val=1 />
+				<OperatingFrequencyBand val=5GHz />
+				<OperatingStandards val="a,n,ac,ax" />
+				<Channel val=36 />
+				<AutoChannelEnable val=0 />
+				<X_TP_AutoChWithDFSlEnable val=1 />
+				<OperatingChannelBandwidth val=Auto />
+				<GuardInterval val=Auto />
+				<TransmitPower val=100 />
+				<IEEE80211hEnabled val=0 />
+				<RegulatoryDomain val="US " />
+				<FragmentationThreshold val=2346 />
+				<RTSThreshold val=2347 />
+				<BeaconPeriod val=100 />
+				<DTIMPeriod val=1 />
+				<GuardInterval val="400nsec" />
+				<X_TP_HE_GI val="Auto" />
+				<PreambleType val=long />
+				<SupportedFrequencyBands val=5GHz />
+				<PossibleChannels val="36,40,44,48,52,56,60,64,100,104,112,116,120,124,128" />
+				<SupportedOperatingChannelBandwidths val="Auto,20MHz,40MHz,80MHz,160MHz" />
+				<X_TP_SupportedMode val="802.11ac/n mixed,802.11a/n/ac mixed" />
+				<ATFEnable val=1 />
+			</Radio>
+			<Radio nextInstance=3 />
+			<SSID instance=1>
+				<Enable val=1 />
+				<__index val=1 />
+				<ATFEnable val=1 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=2>
+				<Enable val=1 />
+				<__index val=2 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=3>
+				<Enable val=1 />
+				<__index val=3 />
+				<ATFEnable val=1 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>
+			<SSID instance=4>
+				<Enable val=1 />
+				<__index val=4 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>
+			<SSID instance=5>
+				<Enable val=1 />
+				<__index val=5 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=6>
+				<Enable val=1 />
+				<__index val=6 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=7>
+				<Enable val=1 />
+				<__index val=7 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>
+			<SSID instance=8>
+				<Enable val=1 />
+				<__index val=8 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>			
+			<SSID instance=9>
+				<Enable val=1 />
+				<__index val=9 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=10>
+				<Enable val=1 />
+				<__index val=10 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>
+			<SSID instance=11>
+				<Enable val=1 />
+				<__index val=11 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=12>
+				<Enable val=1 />
+				<__index val=12 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>	
+			<SSID instance=13>
+				<Enable val=1 />
+				<__index val=13 />
+				<LowerLayers val=Device.WiFi.Radio.1. />
+			</SSID>
+			<SSID instance=14>
+				<Enable val=1 />
+				<__index val=14 />
+				<LowerLayers val=Device.WiFi.Radio.2. />
+			</SSID>
+			<SSID nextInstance=15 />
+			<AccessPoint instance=1>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.1. />
+				<X_TP_APType val=Primary />
+				<SSIDAdvertisementEnabled val=1 />
+				<ATFEnable val=1 />
+				<OFDMAEnable val=1 />
+				<TWTEnable val=0 />
+				<BSSColorEnable val=1 />
+				<WMMEnable val=1 />
+				<X_TP_FTEnable val=0 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<WPS>
+					<Enable val=1 />
+					<X_TP_DevicePassword val=0 />
+					<X_TP_ConfigurationState val=Configured />
+					<X_TP_SetupLock val=0 />
+				</WPS>
+				<X_TP_MACAddressControl>
+					<Enable val=0 />
+				</X_TP_MACAddressControl>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=5 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=5 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=4 />
+					<ECWMax val=5 />
+					<TxOpMax val=188 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=102 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=2>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.2. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=5 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=5 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=4 />
+					<ECWMax val=5 />
+					<TxOpMax val=188 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=102 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=3>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.3. />
+				<X_TP_APType val=Primary />
+				<SSIDAdvertisementEnabled val=1 />
+				<ATFEnable val=1 />
+				<OFDMAEnable val=1 />
+				<TWTEnable val=0 />
+				<BSSColorEnable val=1 />
+				<WMMEnable val=1 />
+				<X_TP_TxBFEnable val=1 />
+				<MUMIMOEnable val=1 />
+				<X_TP_FTEnable val=0 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<WPS>
+					<Enable val=1 />
+					<X_TP_DevicePassword val=0 />
+					<X_TP_ConfigurationState val=Configured />
+					<X_TP_SetupLock val=0 />
+				</WPS>
+				<X_TP_MACAddressControl>
+					<Enable val=0 />
+				</X_TP_MACAddressControl>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=4>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.4. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=5>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.5. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=6>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.6. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=7>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.7. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=8>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.8. />
+				<X_TP_APType val=Guest />
+				<SSIDAdvertisementEnabled val=1 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=1 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=9>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.9. />
+				<X_TP_APType val=Backhaul />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=10>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.10. />
+				<X_TP_APType val=Backhaul />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=11>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.11. />
+				<X_TP_APType val=Backhaul />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=12>
+				<Enable val=1 />
+				<SSIDReference val=Device.WiFi.SSID.12. />
+				<X_TP_APType val=Backhaul />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=13>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.13. />
+				<X_TP_APType val=Public />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<IsolationEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint instance=14>
+				<Enable val=0 />
+				<SSIDReference val=Device.WiFi.SSID.14. />
+				<X_TP_APType val=Public />
+				<SSIDAdvertisementEnabled val=0 />
+				<WMMEnable val=1 />
+				<IsolationEnable val=1 />
+				<Security>
+					<ModeEnabled val=None />
+				</Security>
+				<X_TP_ControlFunction>
+					<Enable val=0 />
+					<TCMaxUpBW val=200 />
+					<TCMinUpBW val=100 />
+					<TCMaxDownBW val=200 />
+					<TCMinDownBW val=100 />
+				</X_TP_ControlFunction>
+				<AC instance=1>
+					<AccessCategory val=BE />
+					<AIFSN val=3 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=2>
+					<AccessCategory val=BK />
+					<AIFSN val=7 />
+					<ECWMin val=4 />
+					<ECWMax val=10 />
+					<TxOpMax val=0 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=3>
+					<AccessCategory val=VI />
+					<AIFSN val=2 />
+					<ECWMin val=3 />
+					<ECWMax val=4 />
+					<TxOpMax val=94 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC instance=4>
+					<AccessCategory val=VO />
+					<AIFSN val=2 />
+					<ECWMin val=2 />
+					<ECWMax val=3 />
+					<TxOpMax val=47 />
+					<AckPolicy val=1 />
+				</AC>
+				<AC nextInstance=5 />
+			</AccessPoint>
+			<AccessPoint nextInstance=15 />
+			<X_TP_BandSteering>
+			<Enable val=1 />
+			</X_TP_BandSteering>
+			<X_TP_WDSBridge instance=1>
+				<BridgeEnable val=0 />
+				<BridgeName val=apcli0 />
+				<BridgeBand val=2.4GHz />
+			</X_TP_WDSBridge>
+			<X_TP_WDSBridge instance=2>
+				<BridgeEnable val=0 />
+				<BridgeName val=apclii0 />
+				<BridgeBand val=5GHz />
+			</X_TP_WDSBridge>
+			<X_TP_WDSBridge nextInstance=3 />
+		</WiFi>
+		<IP>
+			<InterfaceNumberOfEntries val=6 />
+			<Interface instance=1>
+				<Enable val=1 />
+				<IPv4Enable val=1 />
+				<IPv6Enable val=1 />
+				<LowerLayers val=Device.Ethernet.Link.1. />
+				<X_TP_ConnType val=LAN />
+				<X_TP_ConnName val=Default />
+				<IPv4AddressNumberOfEntries val=2 />
+				<IPv6AddressNumberOfEntries val=1 />
+				<IPv6PrefixNumberOfEntries val=1 />
+				<IPv4Address instance=1>
+					<Enable val=1 />
+					<IPAddress val=192.168.1.1 />
+					<SubnetMask val=255.255.255.0 />
+				</IPv4Address>
+				<IPv4Address instance=2>
+					<Enable val=0 />
+				</IPv4Address>
+				<IPv4Address nextInstance=3 />
+				<IPv6Address instance=1>
+					<Enable val=1 />
+					<Origin val="AutoConfigured" />
+				</IPv6Address>
+				<IPv6Address nextInstance=2 />
+				<IPv6Prefix instance=1>
+					<Enable val=1 />
+					<Origin val="Static" />
+					<StaticType val="Child" />
+					<ParentPrefix val=Device.IP.Interface.6.IPv6Prefix.1. />
+				</IPv6Prefix>
+				<IPv6Prefix nextInstance=2 />
+			</Interface>
+			<Interface instance=2>
+				<Enable val=1 />
+				<IPv4Enable val=1 />
+				<LowerLayers val=Device.PPP.Interface.1. />
+				<X_TP_ConnType val=PPP3G />
+				<X_TP_ConnName val="usb_ppp3g" />
+				<__index val=17 />
+			</Interface>
+			<Interface instance=3>
+				<Enable val=1 />
+				<IPv4Enable val=1 />
+				<LowerLayers val=Device.USB.Interface.1. />
+				<X_TP_ConnType val=DHCP4G />
+				<X_TP_ConnName val="usb_dhcp4g" />
+				<__index val=18 />
+			</Interface>
+			<Interface instance=4>
+				<Enable val=1 />
+				<Alias val=WAN_INTERNET />
+				<IPv4Enable val=1 />
+				<Name val=ppp0 />
+				<LowerLayers val=Device.PPP.Interface.2. />
+				<MaxMTUSize val=1492 />
+				<IPv4AddressNumberOfEntries val=1 />
+				<IPv6AddressNumberOfEntries val=1 />
+				<IPv6PrefixNumberOfEntries val=2 />
+				<X_TP_ConnType val=PPPoE />
+				<X_TP_ConnName val=WAN_INTERNET />
+				<X_TP_ServiceType val=Internet />
+				<__index val=0 />
+				<X_TP_IGMPProxyEnable val=0 />
+				<X_TP_DisableDHCP val=1 />
+				<IPv4Address instance=1>
+					<Enable val=1 />
+					<AddressingType val=IPCP />
+				</IPv4Address>
+				<IPv4Address nextInstance=2 />
+				<IPv6Address instance=1>
+					<Enable val=1 />
+					<Origin val=DHCPv6 />
+				</IPv6Address>
+				<IPv6Address nextInstance=2 />
+				<IPv6Prefix instance=1>
+					<Enable val=1 />
+					<StaticType val=PrefixDelegation />
+				</IPv6Prefix>
+				<IPv6Prefix nextInstance=2 />
+			</Interface>
+			<Interface instance=5 >
+				<IPv4Enable val=1 />
+				<Alias val=WAN_IPTV />
+				<Name val=nas10.103 />
+				<LowerLayers val=Device.Ethernet.VLANTermination.2. />
+				<MaxMTUSize val=1500 />
+				<IPv4AddressNumberOfEntries val=1 />
+				<IPv6AddressNumberOfEntries val=1 />
+				<IPv6PrefixNumberOfEntries val=1 />
+				<X_TP_ConnType val=DHCP />
+				<X_TP_ConnName val=WAN_IPTV />
+				<X_TP_ServiceType val=IPTV />
+				<__index val=1 />
+				<X_TP_IGMPProxyEnable val=0 />
+				<X_TP_DisableDHCP val=1 />
+				<IPv4Address instance=1 >
+				<Enable val=1 />
+				<AddressingType val=DHCP />
+				</IPv4Address>
+				<IPv4Address nextInstance=2 />
+				<IPv6Address instance=1 >
+				<Enable val=1 />
+				<Origin val=DHCPv6 />
+				</IPv6Address>
+				<IPv6Address nextInstance=2 />
+				<IPv6Prefix instance=1 >
+				<Enable val=1 />
+				<StaticType val=PrefixDelegation />
+				</IPv6Prefix>
+				<IPv6Prefix nextInstance=2 />
+			</Interface>
+			<Interface instance=6 >
+				<Enable val=1 />
+				<IPv4Enable val=1 />
+				<Alias val=TT_PVC />
+				<Name val=ppp1 />
+				<LowerLayers val=Device.PPP.Interface.3. />
+				<MaxMTUSize val=1492 />
+				<IPv4AddressNumberOfEntries val=1 />
+				<IPv6AddressNumberOfEntries val=1 />
+				<IPv6PrefixNumberOfEntries val=1 />
+				<X_TP_ConnType val=PPPoE />
+				<X_TP_ConnName val=TT_PVC />
+				<X_TP_ServiceType val=Internet />
+				<__index val=2 />
+				<X_TP_IGMPProxyEnable val=0 />
+				<X_TP_DisableDHCP val=1 />
+				<IPv4Address instance=1 >
+				  <Enable val=1 />
+				  <AddressingType val=IPCP />
+				</IPv4Address>
+				<IPv4Address nextInstance=2 />
+				<IPv6Address instance=1 >
+				  <Enable val=1 />
+				  <Origin val=DHCPv6 />
+				</IPv6Address>
+				<IPv6Address nextInstance=2 />
+				<IPv6Prefix instance=1 >
+				  <Enable val=1 />
+				  <StaticType val=PrefixDelegation />
+				</IPv6Prefix>
+				<IPv6Prefix nextInstance=2 />
+			</Interface>
+			<Interface nextInstance=7 />
+		</IP>
+		<MAP>
+			<DomainNumberOfEntries val=1 />
+			<Domain instance=1>
+				<Enable val=0 />
+				<TransportMode val="Translation" />
+				<X_TP_Origin val="DHCPv6" />
+				<RuleNumberOfEntries val=1 />
+				<Rule instance=1>
+					<Enable val=1 />
+					<X_TP_IsBMR val=1 />
+				</Rule>
+				<Rule nextInstance=2 />
+			</Domain>
+			<Domain nextInstance=2 />
+		</MAP>
+		<Routing>
+			<RouterNumberOfEntries val=1 />
+			<Router instance=1>
+				<Enable val=1 />
+				<X_TP_ETHDefaultIntf val=Device.IP.Interface.4. />
+				<X_TP_BackupIntf val=Device.IP.Interface.4. />
+				<X_TP_DefaultIntf val=Device.IP.Interface.4. />
+				<IPv4ForwardingNumberOfEntries val=12 />
+				<IPv6ForwardingNumberOfEntries val=3 />
+				<IPv4Forwarding instance=1>
+					<Enable val=0 />
+					<__used val=1 />
+					<StaticRoute val=0 />
+					<Interface val=Device.IP.Interface.2. />
+					<Origin val=IPCP />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=2>
+					<Enable val=0 />
+					<__used val=1 />
+					<StaticRoute val=0 />
+					<Interface val=Device.IP.Interface.3. />
+					<Origin val=DHCPv4 />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=4>
+					<Enable val=1 />
+					<__used val=1 />
+					<StaticRoute val=0 />
+					<Interface val=Device.IP.Interface.4. />
+					<Origin val=IPCP />
+					<X_TP_is_default_gateway val=1 />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=5 >
+					<X_TP_ConnName val=WAN_IPTV />
+					<__used val=1 />
+					<StaticRoute val=0 />
+					<Interface val=Device.IP.Interface.5. />
+					<Origin val=DHCPv4 />
+					<X_TP_is_default_gateway val=1 />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=6 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=172.31.128.0 />
+					<DestSubnetMask val=255.255.224.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=7 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=176.43.0.0 />
+					<DestSubnetMask val=255.255.255.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=8 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=10.31.0.0 />
+					<DestSubnetMask val=255.255.0.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=9 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=176.235.0.0 />
+					<DestSubnetMask val=255.255.240.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=10 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=85.153.240.0 />
+					<DestSubnetMask val=255.255.240.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=11 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=10.63.0.0 />
+					<DestSubnetMask val=255.255.240.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=12 >
+					<X_TP_ConnName val=TT_PVC />
+					<__used val=1 />
+					<StaticRoute val=0 />
+					<Interface val=Device.IP.Interface.6. />
+					<Origin val=IPCP />
+				</IPv4Forwarding>
+				<IPv4Forwarding instance=13 >
+					<Enable val=1 />
+					<X_TP_ConnName val=WAN_IPTV />
+					<DestIPAddress val=85.153.220.0 />
+					<DestSubnetMask val=255.255.252.0 />
+					<Interface val=Device.IP.Interface.5. />
+				</IPv4Forwarding>
+				<IPv4Forwarding nextInstance=14 />
+				<IPv6Forwarding instance=1>
+					<Interface val=Device.IP.Interface.4. />
+					<Origin val=DHCPv6 />
+					<__used val=1 />
+				</IPv6Forwarding>
+				<IPv6Forwarding instance=2 >
+					<Interface val=Device.IP.Interface.5. />
+					<Origin val=DHCPv6 />
+					<__used val=1 />
+				</IPv6Forwarding>
+				<IPv6Forwarding instance=3 >
+				    <Interface val=Device.IP.Interface.6. />
+				    <Origin val=DHCPv6 />
+				    <__used val=1 />
+				</IPv6Forwarding>
+				<IPv6Forwarding nextInstance=4 />
+			</Router>
+			<Router nextInstance=2 />
+			<RIP>
+				<Enable val=1 />
+				<SupportedModes val=Both />
+				<InterfaceSettingNumberOfEntries val=5 />
+				<InterfaceSetting instance=1>
+					<Interface val=Device.IP.Interface.2. />
+					<AcceptRA val=1 />
+				</InterfaceSetting>
+				<InterfaceSetting instance=2>
+					<Interface val=Device.IP.Interface.3. />
+					<AcceptRA val=1 />
+				</InterfaceSetting>
+				<InterfaceSetting instance=4>
+					<Interface val=Device.IP.Interface.4. />
+					<AcceptRA val=1 />
+				</InterfaceSetting>
+				<InterfaceSetting instance=5 >
+					<Interface val=Device.IP.Interface.5. />
+					<AcceptRA val=1 />
+				</InterfaceSetting>
+				<InterfaceSetting instance=6 >
+				    <Interface val=Device.IP.Interface.6. />
+				    <AcceptRA val=1 />
+				</InterfaceSetting>
+				<InterfaceSetting nextInstance=7 />
+			</RIP>
+		</Routing>
+		<RouterAdvertisement>
+			<Enable val=1 />
+			<InterfaceSettingNumberOfEntries val=1 />
+			<InterfaceSetting instance=1>
+				<Enable val=1 />
+				<Interface val=Device.IP.Interface.1. />
+				<AdvManagedFlag val=0 />
+				<AdvOtherConfigFlag val=1 />
+				<X_TP_SLAACEnable val=1 />
+				<OptionNumberOfEntries val=1 />
+				<Option instance=1>
+					<Enable val=0 />
+					<Tag val=25 />
+				</Option>
+				<Option nextInstance=2 />
+			</InterfaceSetting>
+			<InterfaceSetting nextInstance=2 />
+		</RouterAdvertisement>
+		<IPv6rd>
+			<InterfaceSettingNumberOfEntries val=1 />
+			<InterfaceSetting instance=1>
+				<Enable val=0 />
+			</InterfaceSetting>
+			<InterfaceSetting nextInstance=2 />
+		</IPv6rd>
+		<X_TP_IP6to4>
+			<InterfaceSettingNumberOfEntries val=1 />
+			<InterfaceSetting instance=1>
+				<Enable val=0 />
+			</InterfaceSetting>
+			<InterfaceSetting nextInstance=2 />
+		</X_TP_IP6to4>
+		<DSLite>
+			<InterfaceSettingNumberOfEntries val=1 />
+			<InterfaceSetting instance=1>
+				<Enable val=0 />
+				<EndpointAssignmentPrecedence val="DHCPv6" />
+				<EndpointAddressTypePrecedence val="FQDN" />
+			</InterfaceSetting>
+			<InterfaceSetting nextInstance=2 />
+		</DSLite>
+		<DNS>
+			<Relay>
+				<ForwardNumberOfEntries val=8 />
+				<Forwarding instance=1>
+					<Enable val=0 />
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.2. />
+					<Type val=IPCP />
+				</Forwarding>
+				<Forwarding instance=2>
+					<Enable val=0 />
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.3. />
+					<Type val=DHCPv4 />
+				</Forwarding>
+				<Forwarding instance=5>
+					<X_TP_DNSType val=DNS_AAAA />
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.4. />
+					<Type val=DHCPv6 />
+				</Forwarding>
+				<Forwarding instance=6>
+					<Enable val=1 />
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.4. />
+					<Type val=IPCP />
+				</Forwarding>
+				<Forwarding instance=7 >
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.5. />
+					<Type val=DHCPv4 />
+				</Forwarding>
+				<Forwarding instance=8 >
+					<X_TP_DNSType val=DNS_AAAA />
+					<__used val=1 />
+					<Interface val=Device.IP.Interface.5. />
+					<Type val=DHCPv6 />
+				</Forwarding>
+				<Forwarding instance=9 >
+				    <X_TP_DNSType val=DNS_AAAA />
+				    <__used val=1 />
+				    <Interface val=Device.IP.Interface.6. />
+				    <Type val=DHCPv6 />
+				</Forwarding>
+				<Forwarding instance=10 >
+				    <__used val=1 />
+				    <Interface val=Device.IP.Interface.6. />
+				    <Type val=IPCP />
+				</Forwarding>
+				<Forwarding nextInstance=11 />
+			</Relay>
+		</DNS>
+		<NAT>
+			<InterfaceSettingNumberOfEntries val=5 />
+			<InterfaceSetting instance=1>
+				<Enable val=1 />
+				<X_TP_FullconeNATEnabled val=0 />
+				<Interface val=Device.IP.Interface.2. />
+			</InterfaceSetting>
+			<InterfaceSetting instance=2>
+				<Enable val=1 />
+				<X_TP_FullconeNATEnabled val=0 />
+				<Interface val=Device.IP.Interface.3. />
+			</InterfaceSetting>
+			<InterfaceSetting instance=4>
+				<Enable val=1 />
+				<Interface val=Device.IP.Interface.4. />
+			</InterfaceSetting>
+			<InterfaceSetting instance=5 >
+				<Enable val=1 />
+				<Interface val=Device.IP.Interface.5. />
+			</InterfaceSetting>
+			<InterfaceSetting instance=6 >
+				<Enable val=1 />
+				<Interface val=Device.IP.Interface.6. />
+			</InterfaceSetting>
+			<InterfaceSetting nextInstance=7 />
+			<X_TP_UPnPCfg>
+				<Enable val=1 />
+			</X_TP_UPnPCfg>
+		</NAT>
+		<Firewall>
+			<Enable val=0 />
+			<X_TP_EnablePCtrl val=0 />
+			<X_TP_EnableACL val=0 />
+			<X_TP_PCtrlMode val=1 />
+			<X_TP_ACLMode val=1 />
+			<Config val=Low />
+			<Version val=2.2 />
+			<LevelNumberOfEntries val=4 />
+			<ChainNumberOfEntries val=4 />
+			<Level instance=1>
+				<X_TP_LevelType val=1 />
+				<X_TP_LevelMode val=1 />
+				<Name val="Parental Ctrl Black List" />
+				<Chain val=Device.Firewall.Chain.1. />
+			</Level>
+			<Level instance=2>
+				<X_TP_LevelType val=1 />
+				<X_TP_LevelMode val=0 />
+				<Name val="Parental Ctrl White List" />
+				<Chain val=Device.Firewall.Chain.1. />
+			</Level>
+			<Level instance=3>
+				<X_TP_LevelType val=2 />
+				<X_TP_LevelMode val=1 />
+				<Name val="Access Ctrl Black List" />
+				<Chain val=Device.Firewall.Chain.2. />
+			</Level>
+			<Level instance=4>
+				<X_TP_LevelType val=2 />
+				<X_TP_LevelMode val=0 />
+				<Name val="Access Ctrl White List" />
+				<Chain val=Device.Firewall.Chain.3. />
+			</Level>
+			<Level nextInstance=5 />
+			<Chain instance=1>
+				<Enable val=0 />
+				<Name val="PARENTCTL" />
+				<Creator val="Defaults" />
+				<RuleNumberOfEntries val=0 />
+			</Chain>
+			<Chain instance=2>
+				<Enable val=0 />
+				<Name val="ACCESSCTL_BLACK" />
+				<Creator val="Defaults" />
+				<RuleNumberOfEntries val=0 />
+			</Chain>
+			<Chain instance=3>
+				<Enable val=0 />
+				<Name val="ACCESSCTL_WHITE" />
+				<Creator val="Defaults" />
+				<RuleNumberOfEntries val=0 />
+			</Chain>
+			<Chain instance=4>
+				<Enable val=0 />
+				<Name val="PORTFILTERING" />
+				<Creator val="Defaults" />
+				<RuleNumberOfEntries val=0 />
+			</Chain>
+			<Chain nextInstance=5 />
+			<X_TP_URLList instance=1>
+				<EntryName val="PCtrl Black URL List" />
+				<AddUrl val=0 />
+			</X_TP_URLList>
+			<X_TP_URLList instance=2>
+				<EntryName val="PCtrl White URL List" />
+				<AddUrl val=0 />
+			</X_TP_URLList>
+			<X_TP_URLList nextInstance=3 />
+			<X_TP_URLCfg instance=1>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=2>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=3>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=4>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=5>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=6>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=7>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=8>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=9>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=10>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=11>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=12>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=13>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=14>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=15>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=16>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=17>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=18>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=19>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=20>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=21>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=22>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=23>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=24>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=25>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=26>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=27>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=28>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=29>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=30>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=31>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=32>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=33>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=34>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=35>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=36>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=37>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=38>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=39>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=40>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=41>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=42>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=43>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=44>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=45>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=46>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=47>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=48>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=49>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=50>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=51>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=52>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=53>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=54>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=55>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=56>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=57>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=58>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=59>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=60>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=61>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=62>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=63>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=64>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=65>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=66>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=67>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=68>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=69>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=70>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=71>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=72>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=73>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=74>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=75>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=76>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=77>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=78>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=79>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=80>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=81>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=82>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=83>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=84>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=85>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=86>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=87>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=88>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=89>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=90>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=91>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=92>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=93>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=94>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=95>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=96>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=97>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=98>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=99>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=100>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=101>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=102>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=103>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=104>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=105>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=106>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=107>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=108>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=109>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=110>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=111>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=112>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=113>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=114>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=115>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=116>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=117>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=118>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=119>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=120>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=121>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=122>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=123>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=124>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=125>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=126>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=127>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=128>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=129>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=130>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=131>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=132>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=133>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=134>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=135>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=136>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=137>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=138>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=139>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=140>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=141>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=142>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=143>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=144>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=145>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=146>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=147>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=148>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=149>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=150>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=151>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=152>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=153>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=154>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=155>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=156>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=157>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=158>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=159>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=160>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=161>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=162>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=163>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=164>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=165>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=166>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=167>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=168>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=169>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=170>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=171>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=172>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=173>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=174>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=175>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=176>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=177>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=178>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=179>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=180>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=181>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=182>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=183>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=184>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=185>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=186>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=187>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=188>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=189>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=190>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=191>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=192>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=193>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=194>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=195>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=196>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=197>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=198>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=199>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg instance=200>
+			</X_TP_URLCfg>
+			<X_TP_URLCfg nextInstance=201 />
+		</Firewall>
+		<QoS>
+			<X_TP_Interface instance=1>
+				<QueueNumberOfEntries val=0 />
+				<InterfaceKey val=1 />
+				<AppEnable val=0 />
+				<InterfaceEnable val=0 />
+				<InterfaceName val=WAN />
+				<SchedulerAlgorithm val=2 />
+				<LinkType val=1 />
+				<TotalBandwidth val=512 />
+				<DscpMarkEnable val=0 />
+				<EthernetPriorityMarkEnable val=0 />
+			</X_TP_Interface>
+			<X_TP_Interface instance=2>
+				<QueueNumberOfEntries val=0 />
+				<InterfaceKey val=2 />
+				<AppEnable val=0 />
+				<InterfaceEnable val=0 />
+				<InterfaceName val=LAN />
+				<SchedulerAlgorithm val=3 />
+				<LinkType val=1 />
+				<TotalBandwidth val=1024 />
+				<DscpMarkEnable val=0 />
+				<EthernetPriorityMarkEnable val=0 />
+			</X_TP_Interface>
+			<X_TP_Interface nextInstance=3 />
+			<App instance=1>
+				<Enable val=1 />
+				<Name val=Appid />
+				<ProtocolIdentifier val=MSN:2;Skype:5;BT:7;Emule:8;Facebook:33;Vonage:3117;netTalk:3118;iTalkBB:3119;GTalk:28;HTTP:9;HTTPS:10;SMTP:3009;POP3:3010;FTP:3012;PPTP:3013;L2TP:3014;IPSec:3015;Whatsapp:3150; />
+			</App>
+			<App nextInstance=2 />
+		</QoS>
+		<DHCPv4>
+			<ClientNumberOfEntries val=2 />
+			<Client instance=1>
+				<Enable val=1 />
+				<__defaultCfg val=1 />
+				<X_TP_ConnectionTrigger val=AlwaysOn />
+				<Interface val=Device.IP.Interface.3. />
+			</Client>
+			<Client instance=3>
+				<Enable val=1 />
+				<X_TP_Hostname val=EX530v />
+				<Interface val=Device.IP.Interface.5. />
+			</Client>
+			<Client nextInstance=4 />
+			<Server>
+				<Enable val=1 />
+				<PoolNumberOfEntries val=1 />
+				<Pool instance=1 >
+					<Enable val=1 />
+					<X_TP_DHCPAuto val=0 />
+					<Interface val=Device.IP.Interface.1. />
+					<X_TP_MainPool val=1 />
+					<X_TP_GroupName val=Default />
+					<MinAddress val=192.168.1.2 />
+					<MaxAddress val=192.168.1.254 />
+					<SubnetMask val=255.255.255.0 />
+					<X_TP_DHCPServerEnable_BK val=1 />
+					<X_TP_MinAddress_BK val=192.168.1.2 />
+					<X_TP_MaxAddress_BK val=192.168.1.249 />
+					<X_TP_DNSServers_BK val=192.168.1.1,0.0.0.0 />
+					<X_TP_IPRouters_BK val=192.168.1.1 />
+					<X_TP_IPAddress_BK val=192.168.1.1 />
+					<X_TP_RemoteGw val=192.168.1.1 />
+					<X_TP_DefaultIp val=192.168.1.1 />
+					<DNSServers val=192.168.1.1,0.0.0.0 />
+					<IPRouters val=192.168.1.1 />
+					<LeaseTime val=86400 />
+				</Pool>
+				<Pool nextInstance=2 />
+			</Server>
+			<Relay>
+				<Enable val=1 />
+				<ForwardingNumberOfEntries val=1 />
+				<Forwarding instance=1>
+					<Enable val=0 />
+					<Interface val=Device.IP.Interface.1. />
+					<X_TP_GroupName val=Default />
+				</Forwarding>
+				<Forwarding nextInstance=2 />
+			</Relay>
+		</DHCPv4>
+		<DHCPv6>
+			<ClientNumberOfEntries val=3 />
+			<Client instance=1>
+				<Enable val=1 />
+				<Interface val=Device.IP.Interface.4. />
+				<SupportedOptions val=23,24,31,32,64,95 />
+				<RequestedOptions val=23 />
+				<RequestAddresses val=1 />
+				<X_TP_EnableSLAAC val=1 />
+				<X_TP_EnableRaRouter val=1 />
+			</Client>
+			<Client instance=2 >
+				<Interface val=Device.IP.Interface.5. />
+				<SupportedOptions val=23,24,31,32,64,95 />
+				<RequestedOptions val=23 />
+				<X_TP_EnableSLAAC val=1 />
+				<X_TP_EnableRaRouter val=1 />
+			</Client>
+			<Client instance=3 >
+				<Interface val=Device.IP.Interface.6. />
+				<SupportedOptions val=23,24,31,32,64,95 />
+				<RequestedOptions val=23 />
+				<X_TP_EnableSLAAC val=1 />
+				<X_TP_EnableRaRouter val=1 />
+			</Client>
+			<Client nextInstance=4 />
+			<Server>
+				<Enable val=1 />
+				<PoolNumberOfEntries val=1 />
+				<Pool instance=1>
+					<Enable val=1 />
+					<Interface val=Device.IP.Interface.1. />
+					<IANAEnable val=1 />
+					<X_TP_MainPool val=1 />
+					<OptionNumberOfEntries val=1 />
+					<Option instance=1>
+						<Enable val=1 />
+						<Tag val=23 />
+					</Option>
+					<Option nextInstance=2 />
+				</Pool>
+				<Pool nextInstance=2 />
+			</Server>
+		</DHCPv6>
+		<Users>
+			<UserNumberOfEntries val=1 />
+			<User instance=1>
+			</User>
+			<User nextInstance=2 />
+		</Users>
+		<X_TP_Services>
+			<X_TP_VoiceService instance=1>
+				<BoundIfName val="Any_WAN" />
+				<BoundIpAddr val="0.0.0.0" />
+				<LoggingLevel val="Error" />
+				<LoggingDestination val="Standard Error" />
+				<Capabilities>
+					<SignalingProtocols val=SIP />
+					<SIP>
+						<Role val=BackToBackUserAgents />
+						<Transports val="UDP,TCP" />
+						<URISchemes val="sip" />
+					</SIP>
+					<Codecs instance=1>
+						<EntryID val=1 />
+						<Codec val=G.711MuLaw />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs instance=2>
+						<EntryID val=2 />
+						<Codec val=G.711ALaw />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs instance=3>
+						<EntryID val=3 />
+						<Codec val=G.726_32 />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs instance=4>
+						<EntryID val=4 />
+						<Codec val=G.722 />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs instance=5>
+						<EntryID val=5 />
+						<Codec val=G.729a />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs instance=6>
+						<EntryID val=6 />
+						<Codec val="X_TP_T38" />
+						<BitRate val=64000 />
+						<PacketizationPeriod val="10,20,30" />
+						<SilenceSuppression val=1 />
+					</Codecs>
+					<Codecs nextInstance=7 />
+				</Capabilities>
+
+				<VoiceProfile instance=1>
+					<SignalingProtocol val=SIP />
+					<DTMFMethod val=RFC2833 />
+					<HookFlashMethod val=None />
+					<Region val=TR />
+					<DigitMap val="118XX|[2-9]XXXXXX|0[1-9]XXXXXXXXX|00XXXXX.T|00XXXXXXXXXXXXXX|[*#][*#].T|[*#]X.T|X[*#].T|XX.T" />
+					<DigitMapEnable val=1 />
+					<SIP>
+						<ToTagMatching val=1 />
+						<RegistrationPeriod val=0 />
+						<TimerT1 val=500 />
+						<TimerT2 val=4000 />
+						<RegisterExpires val=3600 />
+						<RegisterRetryInterval val=30 />
+						<DSCPMark val=46 />
+						<VLANIDMark val=-1 />
+					</SIP>
+					<RTP>
+						<LocalPortMin val=53456 />
+						<LocalPortMax val=63456 />
+						<DSCPMark val=46 />
+						<TelephoneEventPayloadType val=0 />
+					</RTP>
+					<FaxT38>
+						<Enable val=0 />
+						<BitRate val=2400 />
+						<HighSpeedPacketRate val=10 />
+					</FaxT38>
+					<UsbVoiceMail>
+						<UsbVoiceNotify val=0 />
+						<UsbVoiceGlobalWav val=0 />
+						<UsbVoiceDeleteExpired val=1 />
+						<UsbVoiceExpiredDays val=7 />
+						<UsbVoiceRecordDuration val=60 />
+						<UsbVoiceMailCapacity val=128 />
+					</UsbVoiceMail>
+
+					<MultiIsp instance=1>
+						<MultiIndexing val=1 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiDomain val="" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+					<MultiIsp instance=2>
+						<MultiIndexing val=2 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=3>
+						<MultiIndexing val=3 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=4>
+						<MultiIndexing val=4 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=5>
+						<MultiIndexing val=5 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=6>
+						<MultiIndexing val=6 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=7>
+						<MultiIndexing val=7 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+
+					<MultiIsp instance=8>
+						<MultiIndexing val=8 />
+						<MultiProxyServerPort val=5060 />
+						<MultiRegistrarServerPort val=5060 />
+						<MultiOutboundProxyPort val=5060 />
+						<MultiProfileName val="" />
+						<MultiAccountEnable val=0 />
+						<MultiAccountPrior val=4 />
+						<MultiAccountInRoute val=4 />
+						<MultiAccountMwi val=0 />
+						<MultiProxyServer val="superonline.com" />
+						<MultiRegistrarServer val="res11.ims.superonline.com" />
+						<MultiOutboundProxy val="res11.ims.superonline.com" />
+						<MultiUserAgentDomain val="superonline.com" />
+						<MultiDomain val="" />
+						<MultiExtension val="" />
+						<MultiDisplayName val="" />
+						<MultiAuthUserName val="" />
+						<MultiAuthPassword val="" />
+						<Codec>
+							<List instance=1>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=2>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=3>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=4>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=5>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List instance=6>
+								<MultiBitRate val=64000 />
+								<MultiPacketizationPeriod val=20 />
+								<MultiSilenceSuppression val=1 />
+								<MultiEnable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+					</MultiIsp>
+					<MultiIsp nextInstance=9 />
+
+					<Line instance=1>
+						<Enable val="Enabled" />
+						<PhoneType val="FXS" />
+						<PhoneName val="Phone 1" />
+						<InternalNumber val="#" />
+						<DirectoryNumber val="" />
+						<Status val="Disabled" />
+						<CallState val="Idle" />
+						<PhyReferenceList val="" />
+						<LineUsbVoiceMail>
+							<UsbCustomNotify val=1 />
+							<UsbSelectNotify val=0 />
+							<UsbVoiceMailPinNum val="1234" />
+						</LineUsbVoiceMail>
+						<CallingFeatures>
+							<OutgoingCallprior val=3 />
+							<OutgoingCallpriorAccount val=4294967295 />
+							<OutgoingCallEndWithSharp val=1 />
+							<LineMwiEnable val=0 />
+							<CallerIDEnable val=1 />
+							<CallerIDName val="" />
+							<CallWaitingEnable val=1 />
+							<CallWaitingStart val=1 />
+							<MaxSessions val=0 />
+							<CallForwardUnconditionalEnable val=0 />
+							<CallForwardUnconditionalStart val=0 />
+							<CallForwardUnconditionalNumber val="" />
+							<CallForwardOnBusyEnable val=0 />
+							<CallForwardOnBusyStart val=0 />
+							<CallForwardOnBusyNumber val="" />
+							<CallForwardOnNoAnswerEnable val=0 />
+							<CallForwardOnNoAnswerStart val=0 />
+							<UsbVoiceEnable val=0 />
+							<CallForwardOnNoAnswerNumber val="" />
+							<CallForwardOnNoAnswerThresholdTime val=18 />
+							<CallTransferEnable val=0 />
+							<MWIEnable val=0 />
+							<AnonymousCallBlockEnable val=0 />
+							<AnonymousCallBlockStart val=0 />
+							<AnonymousCallEnable val=0 />
+							<AnonymousCallStart val=0 />
+							<DoNotDisturbEnable val=0 />
+							<DoNotDisturbStart val=0 />
+							<CallReturnEnable val=0 />
+							<RepeatDialEnable val=0 />
+							<CAllCompletionOnBusyEnable val=0 />
+							<SpeedDialEnable val=0 />
+							<WarmLineEnable val=0 />
+							<WarmLineStart val=0 />
+							<WarmLineNumber val="" />
+							<WarmLineTimer val=3 />
+							<CallBarringEnable val=0 />
+							<CallBarringMode val="2" />
+							<CallBarringDigitMap val="" />
+							<NetworkPrivacyEnable val=0 />
+							<NetworkPrivacyStart val=0 />
+							<VMWIEnable val=1 />
+						</CallingFeatures>
+
+						<VoiceProcessing>
+							<TransmitGain val=0 />
+							<ReceiveGain val=0 />
+						</VoiceProcessing>
+
+						<Codec>
+							<List instance=1>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List instance=2>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List instance=3>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List instance=4>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List instance=5>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List instance=6>
+								<BitRate val=64000 />
+								<PacketizationPeriod val=20 />
+								<SilenceSuppression val=1 />
+								<Enable val=1 />
+							</List>
+							<List nextInstance=7 />
+						</Codec>
+						<Stats>
+							<ResetStatistics val=0 />
+							<PacketsSent val=0 />
+							<PacketsReceived val=0 />
+							<BytesSent val=0 />
+							<BytesReceived val=0 />
+							<PacketsLost val=0 />
+							<IncomingCallsReceived val=0 />
+							<IncomingCallsAnswered val=0 />
+							<IncomingCallsConnected val=0 />
+							<IncomingCallsFailed val=0 />
+							<OutgoingCallsAttempted val=0 />
+							<OutgoingCallsAnswered val=0 />
+							<OutgoingCallsConnected val=0 />
+							<OutgoingCallsFailed val=0 />
+						</Stats>
+					</Line>
+					<Line nextInstance=2 />
+					<FeatureCode instance=1>
+						<ProvId val=0 />
+						<Number val="*60" />
+					</FeatureCode>
+					<FeatureCode instance=2>
+						<ProvId val=1 />
+						<Number val="*61" />
+					</FeatureCode>
+					<FeatureCode instance=3>
+						<ProvId val=2 />
+						<Number val="*62" />
+					</FeatureCode>
+					<FeatureCode instance=4>
+						<ProvId val=3 />
+						<Number val="*63" />
+					</FeatureCode>
+					<FeatureCode instance=5>
+						<ProvId val=4 />
+						<Number val="*99" />
+					</FeatureCode>
+					<FeatureCode instance=6>
+						<ProvId val=5 />
+						<Number val="*74" />
+					</FeatureCode>
+					<FeatureCode instance=7>
+						<ProvId val=6 />
+						<Number val="*70" />
+					</FeatureCode>
+					<FeatureCode instance=8>
+						<ProvId val=7 />
+						<Number val="*71" />
+					</FeatureCode>
+					<FeatureCode instance=9>
+						<ProvId val=8 />
+						<Number val="*72" />
+					</FeatureCode>
+					<FeatureCode instance=10>
+						<ProvId val=9 />
+						<Number val="*73" />
+					</FeatureCode>
+					<FeatureCode instance=11>
+						<ProvId val=10 />
+						<Number val="*69" />
+					</FeatureCode>
+					<FeatureCode instance=12>
+						<ProvId val=11 />
+						<Number val="*68" />
+					</FeatureCode>
+					<FeatureCode instance=13>
+						<ProvId val=13 />
+						<Number val="*78" />
+					</FeatureCode>
+					<FeatureCode instance=14>
+						<ProvId val=14 />
+						<Number val="*79" />
+					</FeatureCode>
+					<FeatureCode instance=15>
+						<ProvId val=15 />
+						<Number val="*80" />
+					</FeatureCode>
+					<FeatureCode instance=16>
+						<ProvId val=16 />
+						<Number val="*81" />
+					</FeatureCode>
+					<FeatureCode instance=17>
+						<ProvId val=17 />
+						<Number val="103" />
+					</FeatureCode>
+					<FeatureCode instance=18>
+						<ProvId val=18 />
+						<Number val="104" />
+					</FeatureCode>
+					<FeatureCode instance=19>
+						<ProvId val=19 />
+						<Number val="105" />
+					</FeatureCode>
+					<FeatureCode instance=20>
+						<ProvId val=20 />
+						<Number val="107" />
+					</FeatureCode>
+					<FeatureCode instance=21>
+						<ProvId val=21 />
+						<Number val="*82" />
+					</FeatureCode>
+					<FeatureCode instance=22>
+						<ProvId val=22 />
+						<Number val="*90" />
+					</FeatureCode>
+					<FeatureCode instance=23>
+						<ProvId val=23 />
+						<Number val="*83" />
+					</FeatureCode>
+					<FeatureCode instance=24>
+						<ProvId val=24 />
+						<Number val="*84" />
+					</FeatureCode>
+					<FeatureCode instance=25>
+						<ProvId val=25 />
+						<Number val="*85" />
+					</FeatureCode>
+					<FeatureCode instance=26>
+						<ProvId val=26 />
+						<Number val="*86" />
+					</FeatureCode>
+					<FeatureCode instance=27>
+						<ProvId val=27 />
+						<Number val="*87" />
+					</FeatureCode>
+					<FeatureCode instance=28>
+						<ProvId val=28 />
+						<Number val="*88" />
+					</FeatureCode>
+					<FeatureCode instance=29>
+						<ProvId val=29 />
+						<Number val="*89" />
+					</FeatureCode>
+					<FeatureCode instance=30>
+						<ProvId val=30 />
+						<Number val="*93" />
+					</FeatureCode>
+					<FeatureCode instance=31>
+						<ProvId val=31 />
+						<Number val="*95" />
+					</FeatureCode>
+					<FeatureCode instance=32>
+						<ProvId val=32 />
+						<Number val="*77" />
+					</FeatureCode>
+					<FeatureCode instance=33>
+						<ProvId val=33 />
+						<Number val="#" />
+					</FeatureCode>
+					<FeatureCode instance=34>
+						<ProvId val=34 />
+						<Number val="*20" />
+					</FeatureCode>
+					<FeatureCode instance=35>
+						<ProvId val=35 />
+						<Number val="*30" />
+					</FeatureCode>
+					<FeatureCode nextInstance=36 />
+				</VoiceProfile>
+				<VoiceProfile nextInstance=2 />
+
+				<SpeedDialCfg>
+					<SupportedMaxNumber val=4 />
+					<NumberPairs val="" />
+				</SpeedDialCfg>
+
+			</X_TP_VoiceService>
+			<X_TP_VoiceService nextInstance=2 />
+			<StorageService>
+				<UserAccount instance=1>
+					<Enable val=1 />
+					<Username val=admin />
+					<Password val=admin />
+					<UseLoginAccount val=1 />
+					<SupperUser val=1 />
+				</UserAccount>
+				<UserAccount instance=2>
+					<Enable val=0 />
+					<Username val="" />
+					<Password val="" />
+					<UseLoginAccount val=0 />
+					<SupperUser val=0 />
+				</UserAccount>
+				<UserAccount instance=3>
+					<Enable val=0 />
+					<Username val="" />
+					<Password val="" />
+					<UseLoginAccount val=0 />
+					<SupperUser val=0 />
+				</UserAccount>
+				<UserAccount instance=4>
+					<Enable val=0 />
+					<Username val="" />
+					<Password val="" />
+					<UseLoginAccount val=0 />
+					<SupperUser val=0 />
+				</UserAccount>
+				<UserAccount instance=5>
+					<Enable val=0 />
+					<Username val="" />
+					<Password val="" />
+					<UseLoginAccount val=0 />
+					<SupperUser val=0 />
+				</UserAccount>
+				<UserAccount nextInstance=6 />
+				<SMBService>
+					<Anonymous val=1 />
+					<ShareAll val=1 />
+				</SMBService>
+				<FTPServer>
+					<Enable val=0 />
+					<Anonymous val=1 />
+					<ShareAll val=1 />
+				</FTPServer>
+			</StorageService>
+		</X_TP_Services>
+		<Services>
+			<X_TP_IPTV>
+				<IGMPEnable val=1 />
+				<ProxyEnable val=1 />
+				<MLDProxyEnable val=1 />
+				<MLDSnoopingEnable val=1 />
+				<IGMPVersion val=2 />
+				<GenQueryInterval val=125 />
+				<GenResponseTime val=100 />
+				<SpQueryInterval val=10 />
+				<Robustness val=2 />
+			</X_TP_IPTV>
+		</Services>
+		<X_TP_USER_RESTRICTION>
+						  <FirstInit val=0 />
+      <PageAccessPermission instance=1 >
+        <Name val=qs />
+        <VisibilityLevel val=1 />
+        <Editable val=0 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=2 >
+        <Name val=int />
+        <PageListIndex val=1 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=3 >
+        <Name val=lan />
+        <PageListIndex val=2 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=4 >
+        <Name val=wl />
+        <PageListIndex val=3 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=5 >
+        <Name val=adv />
+        <PageListIndex val=4 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=6 >
+        <Name val=multi />
+        <PageListIndex val=5 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=7 >
+        <Name val=ddos />
+        <PageListIndex val=6 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=8 >
+        <Name val=alg />
+        <PageListIndex val=7 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=9 >
+        <Name val=vs />
+        <PageListIndex val=8 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=10 >
+        <Name val=pt />
+        <PageListIndex val=9 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=11 >
+        <Name val=dmz />
+        <PageListIndex val=10 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=12 >
+        <Name val=upnp />
+        <PageListIndex val=11 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=13 >
+        <Name val=softup />
+        <PageListIndex val=12 />
+        <VisibilityLevel val=1 />
+        <Editable val=0 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=14 >
+        <Name val=bnr />
+        <PageListIndex val=13 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=15 >
+        <Name val=account />
+        <PageListIndex val=14 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=16 >
+        <Name val=cwmp />
+        <PageListIndex val=15 />
+        <VisibilityLevel val=1 />
+        <Editable val=0 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=17 >
+        <Name val=admin />
+        <PageListIndex val=16 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=18 >
+        <Name val=mode />
+        <PageListIndex val=17 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=19 >
+        <Name val=pm />
+        <PageListIndex val=18 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=20 >
+        <Name val=macclone />
+        <PageListIndex val=19 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=21 >
+        <Name val=iptvop />
+        <PageListIndex val=20 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=22 >
+        <Name val=sessionid />
+        <PageListIndex val=21 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=23 >
+        <Name val=iptvqos />
+        <PageListIndex val=22 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=24 >
+        <Name val=voipqos />
+        <PageListIndex val=23 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=25 >
+        <Name val=landns />
+        <PageListIndex val=24 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=26 >
+        <Name val=pppoedomain />
+        <PageListIndex val=25 />
+        <VisibilityLevel val=1 />
+        <Editable val=0 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=27 >
+        <Name val=guest />
+        <PageListIndex val=26 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=28 >
+        <Name val=snmp />
+        <PageListIndex val=27 />
+        <VisibilityLevel val=1 />
+        <Editable val=0 />
+      </PageAccessPermission>
+      <PageAccessPermission instance=29 >
+        <Name val=syslog />
+        <PageListIndex val=28 />
+      </PageAccessPermission>
+      <PageAccessPermission nextInstance=30 />
+			<PageAccessRights>
+				<OperationMode>
+					<apDisplay val=1 />
+					<ReDisplay val=1 />
+				</OperationMode>
+			</PageAccessRights>
+		</X_TP_USER_RESTRICTION>
+		<X_TP_EasyMesh>
+			<Enable val=1 />
+			<WorkMode val=UnConfAgent />
+			<AutoToController val=3 />
+			<IsDefaultAgent val=0 />
+			<Nrd24gThreshold val=30 />
+			<Nrd5gThreshold val=30 />
+			<NrdBsThreshold val=15 />
+			<nrdBsThreshold_5g_to_2g val=7 />
+			<DefaultMode val=UnConfAgent />
+		</X_TP_EasyMesh>
+		<LocalAgent>
+			<SupportProtocols val="MQTT"/>
+		</LocalAgent>
+		<MQTT>
+		</MQTT>
+		<BulkData>
+			<Enable val=1 />
+			<EncodeTypes val="JSON" />
+			<ParameterWildCardSupported val=1 />
+			<Protocols val="HTTP" />
+			<Profile instance=1>
+				<Enable val=0 />
+				<Name val="ap" />
+				<EncodeType val="JSON" />
+				<Protocol val="HTTP" />
+				<ReportingInterval val=900 />
+				<X_TP_CollectInterval val=300 />
+				<X_TP_LiveMode val=0,0,0,0 />
+				<HTTP>
+					<URL val="http://aps1-tauc-event-beta.tplinkcloud.com/v1/bulk-data/ap"/>
+					<Method val="POST" />
+					<UseDateHeader val=1 />
+					<Username val="username" />
+					<Password val="password" />
+				</HTTP>
+				<JSONEncoding>
+					<ReportFormat val="ObjectHierarchy" />
+					<ReportTimestamp val="Unix-Epoch" />
+				</JSONEncoding>
+				<Parameter instance=1>
+					<Reference val="Device.WiFi.DataElements.Network.ControllerID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=2>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.ID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=3>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.MACAddress" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=4>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_BackhaulLinkType" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=5>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_LinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=6>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_SignalStrength" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=7>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_Utilization" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=8>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.Noise" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=9>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.Utilization" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=10>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_AssociatedDeviceNumberOfEntries" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=11>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_AverageRxRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=12>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_AverageTxRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=13>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_Band" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=14>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_Bandwidth" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=15>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_BytesSent" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=16>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_ErrorsPkt" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=17>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_IPAddress" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=18>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_PacketsReceived" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=19>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_PacketsSent" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=20>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Jitter" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=21>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Latency" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=22>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANBandwidth" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=23>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANConnectivity" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=24>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANThroughput" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=25>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.NumberOfAlerts" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=26>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.IsController" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=27>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.ConnectivityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=28>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.AvailableBandwidthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=29>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiCoverage2GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=30>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiCoverage5GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=31>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiAvailability2GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=32>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiAvailability5GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=33>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.InternetDelayScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=34>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.InternetJitterScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=35>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.SystemHealthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter nextInstance=36 />
+			</Profile>
+			<Profile instance=2>
+				<Enable val=0 />
+				<Name val="client" />
+				<EncodeType val="JSON" />
+				<Protocol val="HTTP" />
+				<ReportingInterval val=900 />
+				<X_TP_CollectInterval val=300 />
+				<X_TP_LiveMode val=0,0,0,0 />
+				<HTTP>
+					<URL val="http://aps1-tauc-event-beta.tplinkcloud.com/v1/bulk-data/client"/>
+					<Method val="POST" />
+					<UseDateHeader val=1 />
+					<Username val="username" />
+					<Password val="password" />
+				</HTTP>
+				<JSONEncoding>
+					<ReportFormat val="ObjectHierarchy" />
+					<ReportTimestamp val="Unix-Epoch" />
+				</JSONEncoding>
+				<Parameter instance=1>
+					<Reference val="Device.WiFi.DataElements.Network.ControllerID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=2>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.ID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=3>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.LastDataDownlinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=4>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.LastDataUplinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=5>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.MACAddress" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=6>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.SignalStrength" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=7>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_HostName" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=8>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_IPAddress" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=9>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.NetworkReadyTime" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=10>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.WiFiConnectivity" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=11>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_RxRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=12>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_TxRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=13>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_Band" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=14>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.Utilization" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=15>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANBandwidth" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=16>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANThroughput" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=17>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.NumberOfAlerts" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=18>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.AvailableWiFiServiceQualityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=19>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.NetworkReadyTimeScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=20>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.SignalStrengthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=21>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.WiFiConnectivityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=22>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.WiFiProtocolScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=23>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.EstMACDataRateDownlink" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=24>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.EstMACDataRateUplink" />
+					<Name val="" />
+				</Parameter>
+				<Parameter nextInstance=25 />
+			</Profile>
+			<Profile instance=3>
+				<Enable val=0 />
+				<Name val="live_mode" />
+				<EncodeType val="JSON" />
+				<Protocol val="HTTP" />
+				<ReportingInterval val=900 />
+				<X_TP_CollectInterval val=300 />
+				<X_TP_LiveMode val=0,60,60,1800 />
+				<HTTP>
+					<URL val="http://aps1-tauc-event-beta.tplinkcloud.com/v1/bulk-data/live-mode"/>
+					<Method val="POST" />
+					<UseDateHeader val=1 />
+					<Username val="username" />
+					<Password val="password" />
+				</HTTP>
+				<JSONEncoding>
+					<ReportFormat val="ObjectHierarchy" />
+					<ReportTimestamp val="Unix-Epoch" />
+				</JSONEncoding>
+				<Parameter instance=1>
+					<Reference val="Device.WiFi.DataElements.Network.ControllerID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=2>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.ID" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=3>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.NumberOfAlerts" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=4>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.IsController" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=5>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.ConnectivityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=6>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.AvailableBandwidthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=7>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiCoverage2GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=8>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiCoverage5GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=9>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiAvailability2GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=10>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.WiFiAvailability5GScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=11>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.InternetDelayScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=12>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.InternetJitterScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=13>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Factor.SystemHealthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=14>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.NumberOfAlerts" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=15>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.AvailableWiFiServiceQualityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=16>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.NetworkReadyTimeScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=17>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.SignalStrengthScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=18>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.WiFiConnectivityScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=19>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.Factor.WiFiProtocolScore" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=20>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANConnectivity" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=21>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANBandwidth" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=22>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.WANThroughput" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=23>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.SignalStrength" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=24>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.Utilization" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=25>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Latency" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=26>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.X_TP_QoE.Jitter" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=27>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.NetworkReadyTime" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=28>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_QoE.WiFiConnectivity" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=29>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_Band" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=30>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.LastDataDownlinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=31>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.LastDataUplinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=32>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_ErrorsPkt" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=33>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_PacketsReceived" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=34>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.X_TP_PacketsSent" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=35>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.MACAddress" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=36>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_HostName" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=37>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_Noise" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=38>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_SignalStrength" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=39>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BackhaulSta.X_TP_LinkRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=40>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.X_TP_TxRate" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=41>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.EstMACDataRateDownlink" />
+					<Name val="" />
+				</Parameter>
+				<Parameter instance=42>
+					<Reference val="Device.WiFi.DataElements.Network.Device.*.Radio.*.BSS.*.STA.*.EstMACDataRateUplink" />
+					<Name val="" />
+				</Parameter>
+				<Parameter nextInstance=43 />
+			</Profile>
+			<Profile nextInstance=4 />
+		</BulkData>
+		<X_TP_QoE>
+			<SpeedTest>
+				<DownloadURL val="" />
+				<UploadURL val="" />
+				<DownloadSpeed val=0 />
+				<UploadSpeed val=0 />
+			</SpeedTest>
+			<IPPing>
+				<Host val="" />
+				<Latency val=0 />
+				<Jitter val=0 />
+			</IPPing>
+		</X_TP_QoE>
+		<XMPP>
+			<ConnectionNumberOfEntries val=1 />
+			<Connection instance=1>
+				<ServerNumberOfEntries val=1 />
+				<Server instance=1>
+				</Server>
+				<Server nextInstance=2 />
+			</Connection>
+			<Connection nextInstance=2 />
+		</XMPP>
+		<X_TP_DefaultGateway>
+			<SupportWanList val=EWAN />
+			<HighPriorityWAN val=None />
+			<WanNumberOfEntries val=2 />
+			<WANSettings instance=1>
+				<Enable val=1 />
+				<WANType val=EWAN />
+				<HighPriOnlineType val=OnlineDetect />
+				<LowPriOnlineType val=OnlineDetect />
+			</WANSettings>
+			<WANSettings nextInstance=2 />
+		</X_TP_DefaultGateway>
+		<X_TP_OnlineDetection>
+			<NumberOfDetectionThread val=6 />
+			<DetectionThread instance=1 >
+				<OpCode val=None />
+				<Name val=PriWanV4 />
+				<Type val=IPv4 />
+				<SN val=0 />
+				<Mode val=Continue />
+				<OnlineTestInterval val=15 />
+				<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread instance=2 >
+				<OpCode val=None />
+				<Name val=SecWanV4 />
+				<Type val=IPv4 />
+				<SN val=0 />
+				<Mode val=Continue />
+				<OnlineTestInterval val=15 />
+				<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread instance=3 >
+				<OpCode val=None />
+				<Name val=PriWanV6 />
+				<Type val=IPv6 />
+				<SN val=0 />
+				<Mode val=Continue />
+				<OnlineTestInterval val=15 />
+				<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread instance=4 >
+				<OpCode val=None />
+				<Name val=SecWanV6 />
+				<Type val=IPv6 />
+				<SN val=0 />
+				<Mode val=Continue />
+				<OnlineTestInterval val=15 />
+				<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread instance=5 >
+					<OpCode val=None />
+					<Name val=SysWanV4 />
+					<Type val=IPv4 />
+					<SN val=0 />
+					<Mode val=Continue />
+					<OnlineTestInterval val=15 />
+					<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread instance=6 >
+					<OpCode val=None />
+					<Name val=SysWanV6 />
+					<Type val=IPv6 />
+					<SN val=0 />
+					<Mode val=Continue />
+					<OnlineTestInterval val=15 />
+					<OfflineTestInterval val=5 />
+			</DetectionThread>
+			<DetectionThread nextInstance=7 />
+		</X_TP_OnlineDetection>
+		<SoftwareModules>
+			<X_TP_MAX_RAM val=102400 />
+			<X_TP_MIN_FLASH val=5456 />
+			<X_TP_MAX_FLASH val=204800 />
+			<X_TP_MAX_CPU_QUOTA val=100 />
+			<X_TP_CPU_CORE val=0 />
+			<X_TP_ALL_USB val=0 />
+			<X_TP_MAX_WAN_TX val=-1 />
+			<X_TP_MAX_WAN_RX val=-1 />
+			<X_TP_MAX_LAN_TX val=-1 />
+			<X_TP_MAX_LAN_RX val=-1 />
+		</SoftwareModules>
+	</Device>
+</DslCpeConfig>

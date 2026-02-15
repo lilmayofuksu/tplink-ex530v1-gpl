@@ -1,0 +1,291 @@
+\hypertarget{blapi__perform_8h}{}\section{blapi\+\_\+perform.\+h File Reference}
+\label{blapi__perform_8h}\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+
+
+This file is blapi perform header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvip__satus__s}{vip\+\_\+satus\+\_\+s}
+\item 
+struct \hyperlink{struct__speed__test__result}{\+\_\+speed\+\_\+test\+\_\+result}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__perform_8h_aba087112c8a78a30f08bda7ce85bc399}\label{blapi__perform_8h_aba087112c8a78a30f08bda7ce85bc399}} 
+typedef struct \hyperlink{structvip__satus__s}{vip\+\_\+satus\+\_\+s} {\bfseries vip\+\_\+satus\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__perform_8h_a23a9beb733cff9612b5fc291a8513bfb}\label{blapi__perform_8h_a23a9beb733cff9612b5fc291a8513bfb}} 
+typedef struct \hyperlink{structvip__satus__s}{vip\+\_\+satus\+\_\+s} $\ast$ {\bfseries vip\+\_\+satus\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__perform_8h_ad37160bfb5039e608e172b77b3975fe9}\label{blapi__perform_8h_ad37160bfb5039e608e172b77b3975fe9}} 
+typedef struct \hyperlink{struct__speed__test__result}{\+\_\+speed\+\_\+test\+\_\+result} {\bfseries speed\+\_\+test\+\_\+result\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__perform_8h_aa06f5c6b19d112965b9965494b3ea01d}\label{blapi__perform_8h_aa06f5c6b19d112965b9965494b3ea01d}} 
+typedef struct \hyperlink{struct__speed__test__result}{\+\_\+speed\+\_\+test\+\_\+result} $\ast$ {\bfseries spped\+\_\+test\+\_\+result\+\_\+p}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__perform_8h_a6fdfb76b012c9f373dd9ac0374e6779f}{blapi\+\_\+perform\+\_\+samba\+\_\+optimize} (int flag)
+\begin{DoxyCompactList}\small\item\em This function bind the cpuid of smbd process. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_afbaa39214a51cfe510230391d731ee81}{blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize} (int flag)
+\begin{DoxyCompactList}\small\item\em This function bind the cpuid of ntfs-\/3g process. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_ab5d9baf210b932f550d5cb6570538431}{blapi\+\_\+perform\+\_\+wget\+\_\+optimize} (int flag)
+\begin{DoxyCompactList}\small\item\em This function set the affinity of qdma\+\_\+wan0 in cpu. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_a8ea18bf310dd6f6a9ac88cbdbc0be280}{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time} (char $\ast$rst, int size)
+\begin{DoxyCompactList}\small\item\em This function is used to get result time. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_ac3d66f0f9d1598731061914310e223fc}{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result} (\hyperlink{struct__speed__test__result}{spped\+\_\+test\+\_\+result\+\_\+p} result)
+\begin{DoxyCompactList}\small\item\em This function is used to get speed test result . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_ad2f3ffa8aafe22798aea5c811fe89fe8}{blapi\+\_\+perform\+\_\+ava\+Test} (int flag, int xpon\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em This function execute avalanche test. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_a3de321d4ed19cd9994e0b86c569275dd}{blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate} (int voip\+Idle)
+\begin{DoxyCompactList}\small\item\em This function execute when voip state change. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_ae18f0c96e400012ee97dc3c21686212d}{blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test} (void)
+\begin{DoxyCompactList}\small\item\em This function check whether ixia test. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__perform_8h_a4d08fad682e2317a3b60c96653ab2672}{blapi\+\_\+perform\+\_\+ava\+Tcp\+Test} (void)
+\begin{DoxyCompactList}\small\item\em This function execute avalanche tcp test. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi perform header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Zhen.\+Xu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/01-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__perform_8h_ac3d66f0f9d1598731061914310e223fc}\label{blapi__perform_8h_ac3d66f0f9d1598731061914310e223fc}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result@{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result}}
+\index{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result@{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result()}{blapi\_perf\_get\_speedtest\_result()}}
+{\footnotesize\ttfamily int blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result (\begin{DoxyParamCaption}\item[{\hyperlink{struct__speed__test__result}{spped\+\_\+test\+\_\+result\+\_\+p}}]{result }\end{DoxyParamCaption})}
+
+
+
+This function is used to get speed test result . 
+
+his function is used to get speed test result .. submit by Jin\+Chao.\+Yao 2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__perform_8h_a8ea18bf310dd6f6a9ac88cbdbc0be280}\label{blapi__perform_8h_a8ea18bf310dd6f6a9ac88cbdbc0be280}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time@{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time}}
+\index{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time@{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time()}{blapi\_perf\_get\_speedtest\_result\_time()}}
+{\footnotesize\ttfamily int blapi\+\_\+perf\+\_\+get\+\_\+speedtest\+\_\+result\+\_\+time (\begin{DoxyParamCaption}\item[{char $\ast$}]{rst,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function is used to get result time. 
+
+This function is used to get result time. submit by Jin\+Chao.\+Yao 2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__perform_8h_a4d08fad682e2317a3b60c96653ab2672}\label{blapi__perform_8h_a4d08fad682e2317a3b60c96653ab2672}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+ava\+Tcp\+Test@{blapi\+\_\+perform\+\_\+ava\+Tcp\+Test}}
+\index{blapi\+\_\+perform\+\_\+ava\+Tcp\+Test@{blapi\+\_\+perform\+\_\+ava\+Tcp\+Test}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+ava\+Tcp\+Test()}{blapi\_perform\_avaTcpTest()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+ava\+Tcp\+Test (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function execute avalanche tcp test. 
+
+This function execute avalanche tcp test. 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function execute avalanche tcp test. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_ad2f3ffa8aafe22798aea5c811fe89fe8}\label{blapi__perform_8h_ad2f3ffa8aafe22798aea5c811fe89fe8}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+ava\+Test@{blapi\+\_\+perform\+\_\+ava\+Test}}
+\index{blapi\+\_\+perform\+\_\+ava\+Test@{blapi\+\_\+perform\+\_\+ava\+Test}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+ava\+Test()}{blapi\_perform\_avaTest()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+ava\+Test (\begin{DoxyParamCaption}\item[{int}]{flag,  }\item[{int}]{xpon\+\_\+flag }\end{DoxyParamCaption})}
+
+
+
+This function execute avalanche test. 
+
+This function execute avalanche test. submit by Zhen.\+Xu 20200107 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flag} & 1\+:start;0\+:stop. \\
+\hline
+\mbox{\tt in}  & {\em xpon\+\_\+flag} & xpon flag. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function execute avalanche test. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_ae18f0c96e400012ee97dc3c21686212d}\label{blapi__perform_8h_ae18f0c96e400012ee97dc3c21686212d}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test@{blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test}}
+\index{blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test@{blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test()}{blapi\_perform\_check\_wifi\_ixia\_test()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+check\+\_\+wifi\+\_\+ixia\+\_\+test (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function check whether ixia test. 
+
+This function check whether ixia test. submit by xiang.\+nie 20200418 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+check whether ixia test and then run script. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_afbaa39214a51cfe510230391d731ee81}\label{blapi__perform_8h_afbaa39214a51cfe510230391d731ee81}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize@{blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize}}
+\index{blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize@{blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize()}{blapi\_perform\_ntfs\_optimize()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+ntfs\+\_\+optimize (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function bind the cpuid of ntfs-\/3g process. 
+
+This function bind the cpuid of ntfs-\/3g process. submit by Shengqian.\+Wang 2020.\+04.\+23 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flag} & 0\+:enable; 1\+:disable. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Bind the cpuid of ntfs-\/3g process. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_a6fdfb76b012c9f373dd9ac0374e6779f}\label{blapi__perform_8h_a6fdfb76b012c9f373dd9ac0374e6779f}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+samba\+\_\+optimize@{blapi\+\_\+perform\+\_\+samba\+\_\+optimize}}
+\index{blapi\+\_\+perform\+\_\+samba\+\_\+optimize@{blapi\+\_\+perform\+\_\+samba\+\_\+optimize}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+samba\+\_\+optimize()}{blapi\_perform\_samba\_optimize()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+samba\+\_\+optimize (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function bind the cpuid of smbd process. 
+
+This function bind the cpuid of smbd process. submit by Zhen.\+Xu 2019.\+12.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flag} & 0\+:enable; 1\+:disable. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Bind the cpuid of smbd process. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_a3de321d4ed19cd9994e0b86c569275dd}\label{blapi__perform_8h_a3de321d4ed19cd9994e0b86c569275dd}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate@{blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate}}
+\index{blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate@{blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate()}{blapi\_perform\_update\_cpubind\_byvoipstate()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+update\+\_\+cpubind\+\_\+byvoipstate (\begin{DoxyParamCaption}\item[{int}]{voip\+Idle }\end{DoxyParamCaption})}
+
+
+
+This function execute when voip state change. 
+
+This function execute when voip state change. submit by Jinhua.\+Zhang 20200109 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em voip\+Idle} & 1\+:voip idle;0\+:voip busy. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function execute when voip state change. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__perform_8h_ab5d9baf210b932f550d5cb6570538431}\label{blapi__perform_8h_ab5d9baf210b932f550d5cb6570538431}} 
+\index{blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}!blapi\+\_\+perform\+\_\+wget\+\_\+optimize@{blapi\+\_\+perform\+\_\+wget\+\_\+optimize}}
+\index{blapi\+\_\+perform\+\_\+wget\+\_\+optimize@{blapi\+\_\+perform\+\_\+wget\+\_\+optimize}!blapi\+\_\+perform.\+h@{blapi\+\_\+perform.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+perform\+\_\+wget\+\_\+optimize()}{blapi\_perform\_wget\_optimize()}}
+{\footnotesize\ttfamily int blapi\+\_\+perform\+\_\+wget\+\_\+optimize (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function set the affinity of qdma\+\_\+wan0 in cpu. 
+
+This function set the affinity of qdma\+\_\+wan0 in cpu. submit by Zhen.\+Xu 2019.\+12.\+05 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}

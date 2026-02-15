@@ -1,0 +1,1702 @@
+####################################################
+#
+#Build public apps
+#
+####################################################
+export OS_LIB_PATH = $(PUBLIC_APPS_PATH)/os_libs
+CURL_VER=curl-7.62.0
+export CURL_DIR=$(PUBLIC_APPS_PATH)/$(CURL_VER)
+
+export PUB_APPS =
+ARCH_CFLAGS =
+ifeq ($(INCLUDE_ECONET), y)
+ARCH_CFLAGS += -DINCLUDE_ECONET
+endif
+ifeq ($(INCLUDE_QUALCOMM), y)
+ARCH_CFLAGS += -DINCLUDE_QUALCOMM
+endif
+ifeq ($(INCLUDE_BROADCOM), y)
+ARCH_CFLAGS += -DINCLUDE_BROADCOM
+endif
+ifeq ($(INCLUDE_MUSL_LIBC), y)
+ARCH_CFLAGS += -DINCLUDE_MUSL_LIBC
+endif
+
+PUB_APPS += oslibs
+ifneq ($(strip $(INCLUDE_DSL_BR2684CTL)),)
+PUB_APPS += br2684ctl
+endif
+PUB_APPS += busybox
+PUB_APPS += tc
+PUB_APPS += iptables
+
+ifeq ($(strip $(INCLUDE_PON_MTK)),)
+PUB_APPS += ebtables
+endif
+
+ifeq ($(strip $(INCLUDE_ECONET_MT7513)), y)
+PUB_APPS += ebtables
+endif
+
+PUB_APPS += pppd
+
+ifneq ($(strip $(INCLUDE_ECONET)),)
+ifneq ($(strip $(INCLUDE_ADSLWAN)),)
+PUB_APPS += arpd
+endif
+endif
+
+PUB_APPS += upnplib
+PUB_APPS += upnp
+
+ifneq ($(strip $(INCLUDE_DNS_PROXY)),)
+PUB_APPS += dnsmasq
+endif
+ifneq ($(strip $(INCLUDE_SSL))$(strip $(INCLUDE_LIFEMOTE))$(strip $(INCLUDE_QUANTWIFI)),)
+#openssl should before pjsip case pjsip need it
+PUB_APPS += openssl
+endif
+
+ifneq ($(strip $(INCLUDE_VOIP)),)
+PUB_APPS += pjsip
+endif
+
+ifneq ($(strip $(INCLUDE_RIP)),)
+PUB_APPS += rip
+endif
+
+ifneq ($(strip $(INCLUDE_IPV6)),)
+PUB_APPS += flex
+PUB_APPS += radvd
+PUB_APPS += dhcpv6
+PUB_APPS += map_util
+PUB_APPS += ividns
+ifneq ($(strip $(INCLUDE_LTEWAN)),)
+PUB_APPS += npd6
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_IPV6)$(INCLUDE_WAN_PORT_BINDING)),)
+PUB_APPS += ip
+endif
+
+ifneq ($(strip $(INCLUDE_USB_SAMBA_SERVER)),)
+#for samba and ntfs-3g, zjj, 20111129
+#modified by LY on 2015.01.28, as ntfs-3g is not needed when use tntfs.ko provided by Tuxera
+PUB_APPS += samba
+endif
+
+ifneq ($(strip $(INCLUDE_USB_STORAGE)),)
+ifneq ($(strip $(INCLUDE_USB_STORAGE_TUXERA_NTFS)),y)
+#modified by LY on 2015.01.28, as ntfs-3g is not needed when use tntfs.ko provided by Tuxera
+PUB_APPS += ntfs-3g
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_USB_OVER_IP_TPLINK)),)
+PUB_APPS += usbip
+endif
+
+ifneq ($(strip $(INCLUDE_USB_FTP_SERVER)),)
+PUB_APPS += vsftp
+endif
+
+ifneq ($(strip $(INCLUDE_USB_MEDIA_SERVER)),)
+#for mediaServer, modify by zengdongbiao, 21May15.
+export MEDIA_SERVER_PATH = $(PUBLIC_APPS_PATH)/media_server
+export MEDIA_SERVER_INSTALL=$(MEDIA_SERVER_PATH)/media_server_install
+PUB_APPS += dlna
+endif
+
+ifneq ($(strip $(INCLUDE_USB_SFTP_SERVER)),)
+PUB_APPS += openssh
+endif
+
+ifneq ($(strip $(INCLUDE_STORAGE_HTTP_SERVICE)),)
+PUB_APPS += nginx
+endif
+
+ifneq ($(strip $(INCLUDE_IPSEC)),)
+# added by CCy for vpn, 20150630
+PUB_APPS += ipsectools
+endif
+
+ifneq ($(strip $(INCLUDE_USB_3G_DONGLE))$(strip $(INCLUDE_LTEWAN)),)
+PUB_APPS += chat
+#libusb&libcompat should before handle_card&usb_modeswitch
+ifneq ($(strip $(filter y, $(INCLUDE_USB_3G_DONGLE) $(INCLUDE_USB_SYSFS))),)
+PUB_APPS += libusb
+PUB_APPS += libcompat
+PUB_APPS += usb_modeswitch
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_L2TP)),)
+PUB_APPS += xl2tpd
+endif
+
+ifneq ($(strip $(INCLUDE_PORTABLE_APP)),)
+PUB_APPS += dropbear
+else
+ifneq ($(strip $(INCLUDE_SSH_ACCESS)),)
+PUB_APPS += dropbear
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_TCPDUMP)),)
+PUB_APPS += tcpdump
+PUB_APPS += libpcap
+endif
+
+ifneq ($(strip $(INCLUDE_PACKET_CAPTURE)),)
+PUB_APPS += libpcap1.8
+endif
+
+ifneq ($(strip $(INCLUDE_OPENVPN_SERVER)),)
+PUB_APPS += lzo
+PUB_APPS += openvpn
+endif
+
+ifneq ($(strip $(INCLUDE_PPTPVPN_SERVER)),)
+PUB_APPS += pptpd
+endif
+
+ifneq ($(strip $(INCLUDE_STRACE)),)
+ifneq ($(strip $(INCLUDE_PON_GPON)$(INCLUDE_MTK)$(INCLUDE_ECONET_MT7513)),)
+PUB_APPS += strace4
+else
+PUB_APPS += strace
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_VALGRIND)),)
+PUB_APPS += valgrind
+endif
+
+ifneq ($(strip $(INCLUDE_PRLIMIT)),)
+PUB_APPS += prlimit
+endif
+
+ifneq ($(strip $(INCLUDE_ONEMESH)),)
+PUB_APPS += libssh
+endif
+
+ifneq ($(strip $(INCLUDE_LTEWAN)),)
+PUB_APPS += libsqlite
+PUB_APPS += libcjson
+PUB_APPS += zlib
+PUB_APPS += e2fsprogs
+PUB_APPS += ubitools
+PUB_APPS += mbedtls
+endif
+
+ifneq ($(strip $(INCLUDE_LTE_SUPPORT_ADB)),)
+PUB_APPS += adb
+PUB_APPS += zlib
+endif
+
+ifneq ($(strip $(INCLUDE_LTEWAN_TEST)),)
+PUB_APPS += libjsonc
+PUB_APPS += libubox
+PUB_APPS += uqmi
+endif
+
+ifneq ($(strip $(INCLUDE_CLOUD)$(INCLUDE_LIFEMOTE))$(INCLUDE_QUANTWIFI)), )
+PUB_APPS += curl
+endif
+
+ifneq ($(strip $(INCLUDE_EASYMESH)),)
+PUB_APPS += libjsonc
+PUB_APPS += libubox
+endif
+
+ifneq ($(strip $(INCLUDE_TR369)),)
+PUB_APPS += cJSON
+PUB_APPS += mosquitto
+PUB_APPS += zlib
+endif
+
+ifeq ($(INCLUDE_TR143_GRO),y)
+PUB_APPS += ethtool
+endif
+
+ifeq ($(INCLUDE_LIFEMOTE),y)
+PUB_APPS += lifemote
+endif
+
+ifneq ($(strip $(INCLUDE_UDPXY)),)
+PUB_APPS += udpxy
+endif
+
+ifeq ($(INCLUDE_CONTAINER),y)
+PUB_APPS += zlib
+PUB_APPS += e2fsprogs
+PUB_APPS += ubitools
+PUB_APPS += libiconv
+PUB_APPS += libffi
+PUB_APPS += gettext
+PUB_APPS += glib
+PUB_APPS += lxc
+PUB_APPS += opkg
+PUB_APPS += expat
+PUB_APPS += dbus
+endif
+
+ifeq ($(INCLUDE_SMART_HOME_V2),y)
+PUB_APPS += zlib
+PUB_APPS += e2fsprogs
+PUB_APPS += ubitools
+#PUB_APPS += libiconv
+#PUB_APPS += libffi
+#PUB_APPS += gettext
+#PUB_APPS += glib
+PUB_APPS += lxc
+PUB_APPS += opkg
+#PUB_APPS += expat
+#PUB_APPS += dbus
+endif
+
+ifeq ($(INCLUDE_QUANTWIFI),y)
+PUB_APPS += quantwifi
+endif
+
+ifeq ($(INCLUDE_USB),y)
+ifeq ($(INCLUDE_MTK_CHIP_MT7986),y)
+PUB_APPS += udevtrigger
+endif
+endif
+
+ifneq ($(strip $(INCLUDE_REALTEK)),)
+PUB_APPS += libjsonc
+PUB_APPS += libubox
+PUB_APPS += uci
+endif
+
+ifeq ($(INCLUDE_IPERF3),y)
+PUB_APPS += iperf3
+endif
+
+PUB_APPS_INSTALL = $(addsuffix _install,$(PUB_APPS))
+PUB_APPS_CLEAN = $(addsuffix _clean,$(PUB_APPS))
+PUB_APPS_VER = $(addsuffix _ver,$(PUB_APPS))
+
+
+###############################################################################
+# Target Label Hooking
+###############################################################################
+
+.PHONY: $(PUB_APPS) $(PUB_APPS_INSTALL) $(PUB_APPS_CLEAN) $(PUB_APPS_VER)
+
+public_apps_build: $(PUB_APPS)
+public_apps_install: $(PUB_APPS_INSTALL)
+public_apps_clean: $(PUB_APPS_CLEAN)
+public_apps_ver: $(PUB_APPS_VER)
+
+###############################################################################
+
+libpcap:
+	cd $(PUBLIC_APPS_PATH)/libpcap-1.1.1 && test -e Makefile || ./configure --with-pcap=linux \
+		--host=$(HOST) --enable-static CFLAGS="-Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/libpcap-1.1.1 && $(MAKE)
+libpcap_install:
+	
+libpcap_clean:
+	-cd $(PUBLIC_APPS_PATH)/libpcap-1.1.1 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+libpcap_ver:
+	echo "libpcap version : 1.1.1" >> $(BBA_PRODUCT_VER_FILE)
+
+libpcap1.8:
+	cd $(PUBLIC_APPS_PATH)/libpcap-1.8.1 && test -e Makefile || ./configure --with-pcap=linux \
+		--host=$(HOST) --enable-static CFLAGS="-Wall -Werror=implicit-function-declaration" \
+		--prefix=$(PUBLIC_APPS_PATH)/libpcap-1.8.1/install
+	cd $(PUBLIC_APPS_PATH)/libpcap-1.8.1 && $(MAKE) && $(MAKE) install
+libpcap1.8_install:
+	cd $(PUBLIC_APPS_PATH)/libpcap-1.8.1/install/lib && cp -p libpcap.so.1.8.1 $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libpcap.so.1.8.1 libpcap.so.1 && ln -s libpcap.so.1 libpcap.so
+libpcap1.8_clean:
+	-cd $(PUBLIC_APPS_PATH)/libpcap-1.8.1 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+libpcap1.8_ver:
+	echo "libpcap version : 1.8.1" >> $(BBA_PRODUCT_VER_FILE)
+
+
+tcpdump: libpcap
+	cd $(PUBLIC_APPS_PATH)/tcpdump-4.3.0 && test -e Makefile || ./configure --host=$(HOST) \
+		--without-crypto --disable-shared CFLAGS="-Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/tcpdump-4.3.0 && $(MAKE) && $(STRIP) $@ && ls -l $@
+tcpdump_install:
+	cp -p $(PUBLIC_APPS_PATH)/tcpdump-4.3.0/tcpdump $(FS_TG_PATH)/usr/sbin
+tcpdump_clean: libpcap_clean
+	-cd $(PUBLIC_APPS_PATH)/tcpdump-4.3.0 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+tcpdump_ver:
+	echo "tcpdump version : 4.3.0" >> $(BBA_PRODUCT_VER_FILE)
+
+				
+oslibs: model_init
+	cd $(PUBLIC_APPS_PATH)/os_libs && $(MAKE)
+oslibs_install:
+	cp -P $(OS_LIB_PATH)/libos.so $(FS_TG_PATH)/lib
+oslibs_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/os_libs clean
+oslibs_ver:
+	echo "oslibs version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE)
+
+
+busybox_menu_pre:
+	cp -pf $(MODEL_PATH)/config.busybox $(PUBLIC_APPS_PATH)/busybox-1.23.2/.config
+busybox_menuconfig: busybox_menu_pre
+	cd $(PUBLIC_APPS_PATH)/busybox-1.23.2 && $(MAKE) menuconfig
+	cp -pf $(PUBLIC_APPS_PATH)/busybox-1.23.2/.config $(MODEL_PATH)/config.busybox
+
+busybox:
+ifeq ($(strip $(INCLUDE_BCM_BUSYBOX_32BIT)), y)
+	# force build 32bit executable busybox on 64bit kernel system.
+	$(MAKE) busybox_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) busybox_inner
+endif
+busybox_install:
+ifeq ($(strip $(INCLUDE_BCM_BUSYBOX_32BIT)), y)
+	# force build 32bit executable busybox on 64bit kernel system.
+	$(MAKE) busybox_install_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) busybox_install_inner
+endif
+busybox_clean:
+ifeq ($(strip $(INCLUDE_BCM_BUSYBOX_32BIT)), y)
+	# force build 32bit executable busybox on 64bit kernel system.
+	$(MAKE) busybox_clean_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) busybox_clean_inner
+endif
+busybox_ver:
+	echo "busybox version : 1.23.2" >> $(BBA_PRODUCT_VER_FILE)
+	
+busybox_inner: busybox_menu_pre
+	cd $(PUBLIC_APPS_PATH)/busybox-1.23.2 && $(MAKE) CFLAGS="-Wall -Werror=implicit-function-declaration"
+busybox_install_inner:
+	cd $(PUBLIC_APPS_PATH)/busybox-1.23.2 && $(MAKE) install CONFIG_PREFIX=$(FS_TG_PATH)
+busybox_clean_inner:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/busybox-1.23.2 clean
+
+strace:
+	cd $(PUBLIC_APPS_PATH)/strace-5.12 && test -e configure || ./bootstrap
+	cd $(PUBLIC_APPS_PATH)/strace-5.12 && test -e Makefile || ./configure --host=$(HOST) --enable-mpers=no
+	cd $(PUBLIC_APPS_PATH)/strace-5.12 && $(MAKE)
+	cd $(PUBLIC_APPS_PATH)/strace-5.12/src && $(STRIP) strace
+strace_install:
+	cp -p $(PUBLIC_APPS_PATH)/strace-5.12/src/strace $(FS_TG_PATH)/usr/bin
+strace_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/strace-5.12 clean
+strace_ver:
+	echo "strace version : 5.12" >> $(BBA_PRODUCT_VER_FILE)
+
+strace4:
+	cd $(PUBLIC_APPS_PATH)/strace-4.8 && test -e Makefile || ./configure --host=$(HOST)
+	cd $(PUBLIC_APPS_PATH)/strace-4.8 && $(MAKE) && $(STRIP) strace
+
+strace4_install:
+	cp -p $(PUBLIC_APPS_PATH)/strace-4.8/strace $(FS_TG_PATH)/usr/bin
+strace4_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/strace-4.8 clean
+strace4_ver:
+	echo "strace version : 4.8" >> $(BBA_PRODUCT_VER_FILE)
+
+tc:
+ifeq ($(strip $(INCLUDE_BCM_TC_TOOL_32BIT)), y)
+	# force build 32bit executable tc tool on 64bit kernel system.
+	$(MAKE) tc_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) tc_inner
+endif
+	
+tc_inner:
+	# kernel version > 3.4
+	cd $(PUBLIC_APPS_PATH)/iproute2-2.6.39 && $(MAKE)
+
+tc_install:
+	cp -p $(PUBLIC_APPS_PATH)/iproute2-2.6.39/tc/tc $(FS_TG_PATH)/usr/bin
+tc_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/iproute2-2.6.39 clean
+tc_ver:
+	echo "tc version : 2.6.39" >> $(BBA_PRODUCT_VER_FILE)
+
+dnsmasq:
+	if [ ! -e $(PUBLIC_APPS_PATH)/dnsmasq-2.85/Makefile ]; then \
+		cd $(PUBLIC_APPS_PATH)/dnsmasq-2.85 && ./configure --host=$(HOST); \
+	fi; \
+	sed -i "s/COPTS\ \ \ \ \ \ \ \ \ \=.*/COPTS\ \ \ \ \ \ \ \ \ \=\ \-DNO_DHCP\ \-DNO_TFTP\ \-DNO_DBUS\ \-DNO_LOG\ \-DNO_SCRIPT\ \-DNO_IPSET\ \-DNO_INOTIFY/" $(PUBLIC_APPS_PATH)/dnsmasq-2.85/Makefile; \
+	cd $(PUBLIC_APPS_PATH)/dnsmasq-2.85 && $(MAKE)
+dnsmasq_install:
+	cp -p $(PUBLIC_APPS_PATH)/dnsmasq-2.85/src/dnsmasq $(FS_TG_PATH)/usr/sbin
+dnsmasq_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/dnsmasq-2.85 clean
+dnsmasq_ver:
+	echo "dnsmasq version : 2.85" >> $(BBA_PRODUCT_VER_FILE)
+
+ifneq ($(strip $(INCLUDE_BCM_IPTABLES)),)
+else	
+iptables:
+	cd $(PUBLIC_APPS_PATH)/iptables-1.4.17 && test -e Makefile || \
+		./configure --host=$(HOST) --enable-static --disable-shared \
+		CFLAGS="$(ARCH_CFLAGS) -Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/iptables-1.4.17 && $(MAKE) AR=$(TOOLPREFIX)ar
+	$(STRIP) $(PUBLIC_APPS_PATH)/iptables-1.4.17/iptables/xtables-multi
+iptables_install:
+	cp -p $(PUBLIC_APPS_PATH)/iptables-1.4.17/iptables/xtables-multi $(FS_TG_PATH)/usr/bin
+	cd $(FS_TG_PATH)/usr/bin && ln -sf xtables-multi iptables
+ifeq ($(INCLUDE_IPV6), y)
+	cd $(FS_TG_PATH)/usr/bin && ln -sf xtables-multi ip6tables
+endif
+iptables_clean:
+	-cd $(PUBLIC_APPS_PATH)/iptables-1.4.17 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+iptables_ver:
+	echo "dnsmasq version : 1.4.17" >> $(BBA_PRODUCT_VER_FILE)
+endif
+
+ebtables:
+ifeq ($(strip $(INCLUDE_BCM_EBTABLES_32BIT)), y)
+	# force build 32bit executable ebtables on 64bit kernel system.
+	$(MAKE) ebtables_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) ebtables_inner
+endif
+	
+ebtables_inner:
+	cd $(PUBLIC_APPS_PATH)/ebtables-v2.0.10-4 && $(MAKE) static
+ebtables_install:
+	cp -p $(PUBLIC_APPS_PATH)/ebtables-v2.0.10-4/ebtables $(FS_TG_PATH)/usr/bin
+	cp -p $(PUBLIC_APPS_PATH)/ebtables-v2.0.10-4/ethertypes $(FS_TG_PATH)/etc/
+ebtables_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ebtables-v2.0.10-4 clean
+ebtables_ver:
+	echo "ebtables version : 2.0.10-4" >> $(BBA_PRODUCT_VER_FILE)
+
+
+pppd: openssl
+ifeq ($(INCLUDE_PPTPVPN_SERVER), y)
+	cd $(PUBLIC_APPS_PATH)/ppp-2.4.5/pppd && export DF_FLAGS; $(MAKE) MPPE=y #INCLUDE_IPV6_PPPV6=$(INCLUDE_IPV6_PPPV6)
+else
+	cd $(PUBLIC_APPS_PATH)/ppp-2.4.5/pppd && export DF_FLAGS; $(MAKE) #INCLUDE_IPV6_PPPV6=$(INCLUDE_IPV6_PPPV6)
+endif
+pppd_install:
+	cp -p $(PUBLIC_APPS_PATH)/ppp-2.4.5/pppd/pppd $(FS_TG_PATH)/usr/sbin
+pppd_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ppp-2.4.5/pppd clean
+pppd_ver:
+	echo "ppp version : 2.4.5" >> $(BBA_PRODUCT_VER_FILE)
+
+
+arpd:
+	cd $(PUBLIC_APPS_PATH)/linux-atm && $(MAKE)
+arpd_install:
+	cp -p $(PUBLIC_APPS_PATH)/linux-atm/arpd/atmarp $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/linux-atm/arpd/atmarpd $(FS_TG_PATH)/usr/sbin
+arpd_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/linux-atm clean
+arpd_ver:
+	echo "linux-atm version : 0.78" >> $(BBA_PRODUCT_VER_FILE)
+
+
+ifeq ($(INCLUDE_MUSL_LIBC), y)
+LIBUPNP_CFLAGS += -DINCLUDE_MUSL_LIBC 
+endif
+ifneq ($(strip $(INCLUDE_REAL_NAME_DEFAULT_BRIDGE)),)
+LIBUPNP_CFLAGS += -DINCLUDE_REAL_NAME_DEFAULT_BRIDGE=$(INCLUDE_REAL_NAME_DEFAULT_BRIDGE)
+endif
+upnplib:
+	export CFLAGS+="$(LIBUPNP_CFLAGS)" ; \
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/upnp_libs
+upnplib_install:
+	cp -P $(PUBLIC_APPS_PATH)/upnp_libs/*.so $(FS_TG_PATH)/lib/
+upnplib_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/upnp_libs clean
+upnplib_ver:
+	echo "upnp_libs version : 1.6.18" >> $(BBA_PRODUCT_VER_FILE)
+
+
+upnp:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/IGD
+upnp_install:
+	cp -p $(PUBLIC_APPS_PATH)/IGD/upnpd $(FS_TG_PATH)/usr/bin
+upnp_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/IGD clean
+upnp_ver:
+	echo "IGD version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE)
+
+
+rip:
+	cd $(PUBLIC_APPS_PATH)/zebra-0.95a && test -e Makefile || \
+		./configure --host=$(HOST) --disable-bgpd --disable-ospfd --disable-ospf6d --no-recursion \
+		CFLAGS="-Wall -Werror=implicit-function-declaration"
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/zebra-0.95a
+rip_install:
+	cp -p $(PUBLIC_APPS_PATH)/zebra-0.95a/ripd/ripd $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/zebra-0.95a/ripngd/ripngd $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/zebra-0.95a/zebra/zebra $(FS_TG_PATH)/usr/sbin
+rip_clean:
+	-cd $(PUBLIC_APPS_PATH)/zebra-0.95a && test -e Makefile && $(MAKE) clean && rm -f Makefile
+rip_ver:
+	echo "zebra version : 0.95a" >> $(BBA_PRODUCT_VER_FILE)
+
+br2684ctl:
+	cd $(PUBLIC_APPS_PATH)/br2684ctl && $(MAKE)
+br2684ctl_install:
+	cp -p $(PUBLIC_APPS_PATH)/br2684ctl/br2684ctl $(FS_TG_PATH)/usr/bin 
+br2684ctl_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/br2684ctl clean
+br2684ctl_ver:
+	echo "br2684ctl version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE)
+
+pjsip:
+	cd $(PUBLIC_APPS_PATH)/pjsip_1.10 && test -e build.mak || \
+	( export CPPFLAGS+="-Wall -Werror=implicit-function-declaration "; \
+	  ./configure --cache-file=./config_cache_file --srcdir=./ \
+	  --prefix=$(TOOLROOTPATH) --exec-prefix=$(TOOLROOTPATH) --host=$(HOST) --disable-speex-aec \
+	  --disable-l16-codec --disable-gsm-codec --disable-speex-codec --disable-ilbc-codec --disable-g7221-codec \
+	  --disable-ssl --disable-oss --disable-sound; \
+	)
+	cd $(PUBLIC_APPS_PATH)/pjsip_1.10 && $(MAKE)
+
+pjsip_install:
+	cp $(APP_PJSIP_DIR)/pjsip-apps/bin/pjsua $(FS_TG_PATH)/usr/bin
+ifneq ($(strip $(INCLUDE_USB_VOICEMAIL)),)
+	cp $(APP_PJSIP_DIR)/usbvm/lib/libusbvmcommon.so $(FS_TG_PATH)/lib/
+endif
+pjsip_clean:
+	-cd $(PUBLIC_APPS_PATH)/pjsip_1.10 && test -e build.mak && $(MAKE) clean && rm -f build.mak
+pjsip_ver:
+	echo "pjsip version : 1.10" >> $(BBA_PRODUCT_VER_FILE)
+
+usbip:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/usbip-0.1.7 clean
+	cd $(PUBLIC_APPS_PATH)/usbip-0.1.7 && $(MAKE)
+usbip_install:
+	cp -p $(PUBLIC_APPS_PATH)/usbip-0.1.7/usbipd $(FS_TG_PATH)/usr/bin
+usbip_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/usbip-0.1.7 clean
+usbip_ver:
+	echo "usbip version : 0.1.7" >> $(BBA_PRODUCT_VER_FILE)
+
+
+vsftp:
+	cd $(PUBLIC_APPS_PATH)/vsftpd-2.3.2 && $(MAKE)
+vsftp_install:
+	cp -p $(PUBLIC_APPS_PATH)/vsftpd-2.3.2/vsftpd $(FS_TG_PATH)/usr/bin
+	cp -p $(PUBLIC_APPS_PATH)/vsftpd-2.3.2/vsftpd.conf $(FS_TG_PATH)/etc
+vsftp_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/vsftpd-2.3.2 clean
+vsftp_ver:
+	echo "vsftpd version : 2.3.2" >> $(BBA_PRODUCT_VER_FILE)
+
+ifneq ($(strip $(INCLUDE_ARM64)),)
+NGINX_CC_OPT='-DNGX_PTR_SIZE=8 -DNGX_SIG_ATOMIC_T_SIZE=4 -DNGX_MAX_SIZE_T_VALUE=9223372036854775807LL -DNGX_SIZE_T_LEN=20 -DNGX_MAX_OFF_T_VALUE=9223372036854775807LL -DNGX_OFF_T_LEN=20 -DNGX_TIME_T_SIZE=8 -DNGX_TIME_T_LEN=20 -DNGX_MAX_TIME_T_VALUE=9223372036854775807LL'
+else
+NGINX_CC_OPT='-DNGX_PTR_SIZE=4 -DNGX_SIG_ATOMIC_T_SIZE=4 -DNGX_MAX_SIZE_T_VALUE=2147483647 -DNGX_SIZE_T_LEN=11 -DNGX_MAX_OFF_T_VALUE=2147483647 -DNGX_OFF_T_LEN=11 -DNGX_TIME_T_SIZE=4 -DNGX_TIME_T_LEN=11 -DNGX_MAX_TIME_T_VALUE=2147483647'
+endif
+nginx: openssl
+	cd $(PUBLIC_APPS_PATH)/nginx-1.22.0 && test -e Makefile || \
+		./configure --with-cc=$(CC) \
+		--with-cc-opt=$(NGINX_CC_OPT) \
+		--with-openssl=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install \
+		--with-zlib=$(PUBLIC_APPS_PATH)/media_server/zlib-1.2.6 \
+		--prefix=/var/nginx \
+		--without-pcre \
+		--without-http_ssi_module \
+		--without-http_access_module \
+		--without-http_geo_module \
+		--without-http_map_module \
+		--without-http_rewrite_module \
+		--without-http_proxy_module \
+		--without-http_fastcgi_module \
+		--without-http_uwsgi_module \
+		--without-http_scgi_module \
+		--without-http_memcached_module \
+		--without-http_upstream_ip_hash_module \
+		--without-http_upstream_hash_module \
+		--without-http_upstream_least_conn_module \
+		--without-http_upstream_keepalive_module \
+		--without-mail_pop3_module \
+		--without-mail_imap_module \
+		--without-mail_smtp_module \
+		--without-http_split_clients_module \
+		--without-http_userid_module \
+		--without-http_limit_conn_module \
+		--without-http_limit_req_module \
+		--without-http_empty_gif_module \
+		--without-http_browser_module \
+		--with-http_ssl_module && $(MAKE)
+nginx_install:
+	cp -p $(PUBLIC_APPS_PATH)/nginx-1.22.0/objs/nginx $(FS_TG_PATH)/usr/bin
+	mkdir -p $(FS_TG_PATH)/etc/nginx/conf/
+	cp -p $(PUBLIC_APPS_PATH)/nginx-1.22.0/conf/mime.types $(FS_TG_PATH)/etc/nginx/conf/
+nginx_clean:
+	cd $(PUBLIC_APPS_PATH)/nginx-1.22.0 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+nginx_ver:
+	echo "nginx version : 1.22.0" >> $(BBA_PRODUCT_VER_FILE)
+
+openssh: openssl dropbear
+	cd $(PUBLIC_APPS_PATH)/openssh-9.0p1 && \
+		test -e Makefile || ./configure --host=$(HOST) \
+		--with-zlib=$(PUBLIC_APPS_PATH)/media_server/zlib-1.2.6 \
+		--with-ssl-dir=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install \
+	       	--disable-libutil --disable-etc-default-login
+	cd $(PUBLIC_APPS_PATH)/openssh-9.0p1 && $(MAKE) sftp-server
+
+openssh_install:
+	cp -p $(PUBLIC_APPS_PATH)/openssh-9.0p1/sftp-server $(FS_TG_PATH)/usr/lib
+
+openssh_clean:
+	cd $(PUBLIC_APPS_PATH)/openssh-9.0p1 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+
+openssh_ver:
+	echo "openssh version : 9.0" >> $(BBA_PRODUCT_VER_FILE)
+
+flex:
+	cd $(PUBLIC_APPS_PATH)/flex-2.5.35 && test -e Makefile || \
+		./configure --host=$(HOST) CFLAGS="-Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/flex-2.5.35 && $(MAKE)
+flex_install:
+	cp -p $(PUBLIC_APPS_PATH)/flex-2.5.35/libfl.a $(PUBLIC_APPS_PATH)/lib
+flex_clean:
+	-cd $(PUBLIC_APPS_PATH)/flex-2.5.35 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+flex_ver:
+	echo "flex version : 2.5.35" >> $(BBA_PRODUCT_VER_FILE)
+
+
+radvd:
+	cd $(PUBLIC_APPS_PATH)/radvd-1.8.3 && test -e Makefile || \
+		./configure --host=$(HOST) CFLAGS="$(DF_FLAGS) -Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/radvd-1.8.3 && $(MAKE)
+radvd_install:
+	cp -p $(PUBLIC_APPS_PATH)/radvd-1.8.3/radvd $(FS_TG_PATH)/usr/sbin
+radvd_clean:
+	-cd $(PUBLIC_APPS_PATH)/radvd-1.8.3 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+radvd_ver:
+	echo "radvd version : 1.8.3" >> $(BBA_PRODUCT_VER_FILE)
+
+
+ifneq ($(strip $(INCLUDE_MTK)),)
+DHCPV6_EXTRA_CONFIG= -ldl
+endif
+dhcpv6:
+	cd $(PUBLIC_APPS_PATH)/dibbler-1.0.1 && test -e Makefile || \
+	( export CPPFLAGS+="$(DF_FLAGS) "; \
+	  export CPPFLAGS+="-I$(OS_LIB_PATH)/include -D__LINUX_OS_FC__ -DCMM_MSG "; \
+	  export CPPFLAGS+="-Wall -Werror=implicit-function-declaration "; \
+	  export LDFLAGS+="-L$(OS_LIB_PATH)/ -los -lpthread -lrt $(DHCPV6_EXTRA_CONFIG)"; \
+	  ./configure --prefix=$(PUBLIC_APPS_PATH)/dibbler-1.0.1/install \
+	  --host=$(HOST)	--disable-dns-update --enable-auth --disable-debug\
+	)
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/dibbler-1.0.1/ server client	
+	$(STRIP) $(PUBLIC_APPS_PATH)/dibbler-1.0.1/dibbler-client	
+	$(STRIP) $(PUBLIC_APPS_PATH)/dibbler-1.0.1/dibbler-server	
+dhcpv6_install:
+	cp -p $(PUBLIC_APPS_PATH)/dibbler-1.0.1/dibbler-client $(FS_TG_PATH)/usr/sbin	
+	cp -p $(PUBLIC_APPS_PATH)/dibbler-1.0.1/dibbler-server $(FS_TG_PATH)/usr/sbin
+dhcpv6_clean:
+	-cd $(PUBLIC_APPS_PATH)/dibbler-1.0.1 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+dhcpv6_ver:
+	echo "dibbler version : 1.0.1" >> $(BBA_PRODUCT_VER_FILE)
+
+
+map_util:
+	#cd $(PUBLIC_APPS_PATH)/MAP/modules && $(MAKE) CROSS_COMPILE="$(TOOLPREFIX)"
+	cd $(PUBLIC_APPS_PATH)/MAP/utils && $(MAKE) CROSS_COMPILE="$(TOOLPREFIX)"
+map_util_install:
+	#cp -p $(PUBLIC_APPS_PATH)/MAP/modules/ivi.ko $(FS_TG_PATH)/lib/modules/ivi.ko
+	cp -p $(PUBLIC_APPS_PATH)/MAP/utils/ivictl $(FS_TG_PATH)/usr/sbin
+map_util_clean:
+	#$(MAKE) -C $(PUBLIC_APPS_PATH)/MAP/modules clean
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/MAP/utils clean
+map_util_ver:
+	echo "MAP version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE)
+
+
+ividns:
+	cd $(PUBLIC_APPS_PATH)/ividns0.2 && $(MAKE) CROSS_COMPILE="$(TOOLPREFIX)"	
+ividns_install:
+	cp -p $(PUBLIC_APPS_PATH)/ividns0.2/ividns $(FS_TG_PATH)/usr/sbin
+ividns_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ividns0.2 clean
+ividns_ver:
+	echo "ividns version : 0.2" >> $(BBA_PRODUCT_VER_FILE)
+
+npd6:
+	cd $(PUBLIC_APPS_PATH)/npd6-1.1.0 && $(MAKE) clean && $(MAKE)
+npd6_install:
+	cp -p $(PUBLIC_APPS_PATH)/npd6-1.1.0/npd6 $(FS_TG_PATH)/usr/sbin
+npd6_clean:
+	cd $(PUBLIC_APPS_PATH)/npd6-1.1.0 && $(MAKE) clean
+npd6_ver:
+	echo "npd6 version : 1.1.0" >> $(BBA_PRODUCT_VER_FILE)
+
+ip:
+ifeq ($(strip $(INCLUDE_BCM_IP_TOOL_32BIT)), y)
+	# force build 32bit executable ip on 64bit kernel system.
+	$(MAKE) ip_inner
+else
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) ip_inner
+endif
+	
+ip_inner: 
+	cd $(PUBLIC_APPS_PATH)/iproute2-2.6.39 && $(MAKE)
+ip_install:
+	cp -p $(PUBLIC_APPS_PATH)/iproute2-2.6.39/ip/ip $(FS_TG_PATH)/usr/bin
+ip_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/iproute2-2.6.39 clean
+ip_ver:
+	echo "iproute2 version : 2.6.39" >> $(BBA_PRODUCT_VER_FILE)
+
+
+samba:
+	cd $(PUBLIC_APPS_PATH)/samba-3.6.25 && $(MAKE) samba
+samba_install:
+	cp -p $(PUBLIC_APPS_PATH)/samba-3.6.25/source3/bin/samba_multicall $(FS_TG_PATH)/usr/bin
+	cd $(FS_TG_PATH)/usr/bin/ && ln -sf samba_multicall $(FS_TG_PATH)/usr/bin/smbd
+	cd $(FS_TG_PATH)/usr/bin/ && ln -sf samba_multicall $(FS_TG_PATH)/usr/bin/nmbd
+	cd $(FS_TG_PATH)/usr/bin/ && ln -sf samba_multicall $(FS_TG_PATH)/usr/bin/smbpasswd
+	cd $(FS_TG_PATH)/usr/bin/ && ln -sf samba_multicall $(FS_TG_PATH)/usr/bin/smbcontrol
+samba_clean:
+	cd $(PUBLIC_APPS_PATH)/samba-3.6.25 && $(MAKE) clean
+samba_ver:
+	echo "samba version : 3.6.25" >> $(BBA_PRODUCT_VER_FILE)
+
+
+ntfs-3g:
+	cd $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15 && test -e Makefile || \
+		./configure --host=$(HOST) --disable-nfconv CFLAGS="$(ARCH_CFLAGS) -Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15 && $(MAKE)
+	$(STRIP) $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15/libntfs-3g/.libs/libntfs-3g.so.83.0.0
+	$(STRIP) $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15/src/.libs/ntfs-3g
+	$(STRIP) $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15/src/.libs/lowntfs-3g
+ntfs-3g_install:
+	cp -p $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15/libntfs-3g/.libs/libntfs-3g.so.83.0.0 $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libntfs-3g.so.83.0.0 libntfs-3g.so.83
+	cd $(FS_TG_PATH)/lib/ && ln -sf libntfs-3g.so.83.0.0 libntfs-3g.so
+	cp -p $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15/src/.libs/ntfs-3g $(FS_TG_PATH)/usr/bin/
+ntfs-3g_clean:
+	-cd $(PUBLIC_APPS_PATH)/ntfs-3g_ntfsprogs-2012.1.15 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+ntfs-3g_ver:
+	echo "ntfs-3g_ntfsprogs version : 1.1.4" >> $(BBA_PRODUCT_VER_FILE)
+
+
+dlna: lzo
+ifeq ($(INCLUDE_USHARE), y)
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ffmpeg-0.6/
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/libdlna-0.2.3/
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ushare-1.1a/
+endif
+ifeq ($(INCLUDE_MINIDLNA), y)
+	cd $(PUBLIC_APPS_PATH)/media_server && $(MAKE) media_share 
+	find $(MEDIA_SERVER_INSTALL)/lib -name "*.so*" -type f | xargs $(STRIP) --strip-unneeded
+ifeq ($(INCLUDE_LITE_MINIDLNA), y)
+	cd $(PUBLIC_APPS_PATH)/media_server && $(MAKE) lite_media_share 
+endif
+endif
+dlna_install:
+###copy media server related libs
+	cp $(MEDIA_SERVER_INSTALL)/lib/libjpeg.so.9.0.0 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libid3tag.so.0.3.0 $(FS_TG_PATH)/lib
+#	cp $(MEDIA_SERVER_INSTALL)/lib/libsqlite3.so.0.8.6 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libavformat.so.56.15.102 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libavutil.so.54.15.100 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libavcodec.so.56.13.100 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libavdevice.so.56.3.100 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libexif.so.12.3.3 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libFLAC.so.8.2.0 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libogg.so.0.6.0 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libvorbis.so.0.4.3 $(FS_TG_PATH)/lib
+#	cp $(MEDIA_SERVER_INSTALL)/lib/libiconv.so.2.5.1 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libswscale.so.3.1.101 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libtiff.so.5.2.0 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libtiffxx.so.5.2.0 $(FS_TG_PATH)/lib
+	cp $(MEDIA_SERVER_INSTALL)/lib/libz.so.1.2.6 $(FS_TG_PATH)/lib
+###link media_server related libs
+	cd $(FS_TG_PATH)/lib/ && ln -sf libjpeg.so.9.0.0 libjpeg.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libjpeg.so.9.0.0 libjpeg.so.9
+	cd $(FS_TG_PATH)/lib/ && ln -sf libid3tag.so.0.3.0 libid3tag.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libid3tag.so.0.3.0 libid3tag.so.0
+#	cd $(FS_TG_PATH)/lib/ && ln -sf libsqlite3.so.0.8.6 libsqlite3.so
+#	cd $(FS_TG_PATH)/lib/ && ln -sf libsqlite3.so.0.8.6 libsqlite3.so.0
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavformat.so.56.15.102 libavformat.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavformat.so.56.15.102 libavformat.so.56
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavutil.so.54.15.100 libavutil.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavutil.so.54.15.100 libavutil.so.54
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavcodec.so.56.13.100 libavcodec.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavcodec.so.56.13.100 libavcodec.so.56
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavdevice.so.56.3.100 libavdevice.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libavdevice.so.56.3.100 libavdevice.so.56
+	cd $(FS_TG_PATH)/lib/ && ln -sf libexif.so.12.3.3 libexif.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libexif.so.12.3.3 libexif.so.12
+	cd $(FS_TG_PATH)/lib/ && ln -sf libFLAC.so.8.2.0 libFLAC.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libFLAC.so.8.2.0 libFLAC.so.8
+	cd $(FS_TG_PATH)/lib/ && ln -sf libogg.so.0.6.0 libogg.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libogg.so.0.6.0 libogg.so.0
+	cd $(FS_TG_PATH)/lib/ && ln -sf libvorbis.so.0.4.3 libvorbis.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libvorbis.so.0.4.3 libvorbis.so.0
+#	cd $(FS_TG_PATH)/lib/ && ln -sf libiconv.so.2.5.1 libiconv.so
+#	cd $(FS_TG_PATH)/lib/ && ln -sf libiconv.so.2.5.1 libiconv.so.2
+	cd $(FS_TG_PATH)/lib/ && ln -sf libswscale.so.3.1.101 libswscale.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libswscale.so.3.1.101 libswscale.so.3
+	cd $(FS_TG_PATH)/lib/ && ln -sf libz.so.1.2.6 libz.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libz.so.1.2.6 libz.so.1
+	cd $(FS_TG_PATH)/lib/ && ln -sf libtiff.so.5.2.0 libtiff.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libtiff.so.5.2.0 libtiff.so.5
+	cd $(FS_TG_PATH)/lib/ && ln -sf libtiffxx.so.5.2.0 libtiffxx.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf libtiffxx.so.5.2.0 libtiffxx.so.5
+ifeq ($(INCLUDE_USB_MEDIA_SERVER), y)
+ifeq ($(INCLUDE_USHARE), y)
+	cp -p $(PUBLIC_APPS_PATH)/ushare-1.1a/src/ushare $(FS_TG_PATH)/usr/bin
+	cp -p $(PUBLIC_APPS_PATH)/ushare-1.1a/scripts/ushare.conf $(FS_TG_PATH)/etc/ushare.conf
+else
+	cp -p $(MEDIA_SERVER_INSTALL)/sbin/minidlnad $(FS_TG_PATH)/usr/sbin
+	cp -p $(MEDIA_SERVER_PATH)/minidlna-1.1.4/minidlna.conf $(FS_TG_PATH)/etc
+endif #INCLUDE_USHARE
+endif #INCLUDE_USB_MEDIA_SERVER
+dlna_clean:
+ifeq ($(INCLUDE_USHARE), y)
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ffmpeg-0.6 clean
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/libdlna-0.2.3 clean
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ushare-1.1a clean
+endif
+ifeq ($(INCLUDE_MINIDLNA), y)
+	cd $(PUBLIC_APPS_PATH)/media_server && $(MAKE) clean
+endif
+ifeq ($(INCLUDE_LITE_MINIDLNA), y)
+	cd $(PUBLIC_APPS_PATH)/media_server && $(MAKE) lite_clean
+endif
+dlna_ver:
+ifeq ($(INCLUDE_USHARE), y)
+	echo "ffmpeg version : 0.6" >> $(BBA_PRODUCT_VER_FILE)
+	echo "libdlna version : 0.2.3" >> $(BBA_PRODUCT_VER_FILE)
+	echo "ushare version : 1.1a" >> $(BBA_PRODUCT_VER_FILE)
+endif
+ifeq ($(INCLUDE_MINIDLNA), y)
+	echo "ffmpeg version : 2.5.2" >> $(BBA_PRODUCT_VER_FILE)
+	echo "minidlna version : 1.1.4" >> $(BBA_PRODUCT_VER_FILE)
+endif
+	
+
+openssl:
+	cd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME) && test -e Makefile || ./Configure shared \
+		no-afalgeng no-aria no-asan no-asm no-async enable-bf no-blake2 no-camellia \
+		no-capieng enable-cast no-chacha no-cmac no-cms no-comp no-crypto-mdebug no-ct \
+		enable-des no-devcryptoeng enable-dsa no-dso enable-ec \
+		no-ec2m no-ecdh no-ecdsa no-egd enable-engine no-err no-external-tests no-gost \
+		no-hw no-idea no-md2 no-mdc2 no-msan no-multiblock no-nextprotoneg \
+		no-pinshared no-ocb no-poly1305 no-posix-io no-psk \
+		enable-rc4 no-rc5 no-rdrand no-rfc3779 no-rmd160 no-scrypt no-sctp \
+		no-seed no-siphash no-sm2 no-sm3 no-sm4 no-srp no-srtp no-sse2 \
+		no-tests no-ts no-ubsan no-unit-test no-whirlpool no-zlib \
+		enable-ssl3 enable-ssl3-method enable-ssl-trace enable-weak-ssl-ciphers \
+		linux-generic32 --prefix=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install
+
+	cd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME) \
+		&& $(MAKE) CROSS_COMPILE= CC=$(CC) LD=$(LD) SHARED_LDFLAGS="-s" depend install_sw
+
+openssl_install:
+	cp -pd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/bin/openssl $(FS_TG_PATH)/usr/sbin
+	cp -pd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/apps/openssl.cnf $(FS_TG_PATH)/etc/
+	cp -pd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/lib/libcrypto.so* $(FS_TG_PATH)/lib/
+	cp -pd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/lib/libssl.so* $(FS_TG_PATH)/lib/
+
+
+openssl_clean:
+	-cd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME) && test -e Makefile && $(MAKE) clean  && rm -f Makefile
+	-cd $(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME) && rm -rf ./install
+openssl_ver:
+	echo "openssl version : 1.1.1f" >> $(BBA_PRODUCT_VER_FILE)
+
+mbedtls:
+	cd $(PUBLIC_APPS_PATH)/mbedtls && CFLAGS="-I$(PUBLIC_APPS_PATH)/mbedtls/configs -DMBEDTLS_CONFIG_FILE='<config-mini-crypto.h>'" && \
+	$(MAKE) CC=$(CC) LD=$(LD) SHARED=1 install
+
+
+mbedtls_install:
+	cp --no-dereference $(PUBLIC_APPS_PATH)/mbedtls/install/lib/libmbedcrypto.so* $(FS_TG_PATH)/lib/
+	cp --no-dereference $(PUBLIC_APPS_PATH)/mbedtls/install/lib/libmbedtls.so* $(FS_TG_PATH)/lib/
+	cp --no-dereference $(PUBLIC_APPS_PATH)/mbedtls/install/lib/libmbedx509.so* $(FS_TG_PATH)/lib/
+	cp --no-dereference $(PUBLIC_APPS_PATH)/mbedtls/install/bin/mbedtls_aes-128-ecb $(FS_TG_PATH)/usr/sbin
+
+mbedtls_clean:
+	cd $(PUBLIC_APPS_PATH)/mbedtls && $(MAKE) clean
+	cd $(PUBLIC_APPS_PATH)/mbedtls && rm -rf ./install
+
+ifneq ($(strip $(INCLUDE_MTK)),)
+IPSECTOOLS_EXTRA_CONFIG= LDFLAGS="-lpthread -ldl"
+endif
+ifeq ($(strip $(BCM_SDK_VERSION_ALL)), 5.04L.02P1)
+IPSECTOOLS_EXTRA_CFLAGS= -Wno-error=format-truncation -Wno-error=stringop-truncation 
+endif
+ipsectools:
+	cd $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2 && test -e Makefile || ( chmod 755 bootstrap && ./bootstrap && \
+		./configure --host=$(HOST) --with-kernel-headers=$(KERNELHEADER) \
+		--with-openssl=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install --enable-security-context=no \
+		--enable-shared=yes --enable-adminport=yes --enable-dpd=yes \
+		--sharedstatedir=/var/ipsec --localstatedir=/var/ipsec \
+		CFLAGS="-Os -D_DEFAULT_SOURCE -Wall -Werror=implicit-function-declaration $(IPSECTOOLS_EXTRA_CFLAGS)" \
+		$(IPSECTOOLS_EXTRA_CONFIG))
+	cd $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2 && $(MAKE)
+
+ipsectools_install:
+	cp -pP $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2/src/racoon/.libs/lib*.so* $(FS_TG_PATH)/lib/
+	cp -pP $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2/src/libipsec/.libs/lib*.so* $(FS_TG_PATH)/lib/
+	cp -pP $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2/src/racoon/.libs/racoon* $(FS_TG_PATH)/usr/bin
+	cp -pP $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2/src/setkey/.libs/setkey $(FS_TG_PATH)/usr/bin
+ipsectools_clean:
+	-cd $(PUBLIC_APPS_PATH)/ipsec-tools-0.8.2 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+ipsectools_ver:
+	echo "ipsec-tools version : 0.8.2" >> $(BBA_PRODUCT_VER_FILE)
+
+lzo:
+	cd $(PUBLIC_APPS_PATH)/lzo-2.09 && test -e Makefile || \
+	./configure --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/lzo-2.09/install \
+	--enable-shared CFLAGS="-Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/lzo-2.09 && $(MAKE) install-strip
+lzo_install:
+	cp -P $(PUBLIC_APPS_PATH)/lzo-2.09/install/lib/*.so* $(FS_TG_PATH)/lib/
+lzo_clean:
+	-cd $(PUBLIC_APPS_PATH)/lzo-2.09 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+	-cd $(PUBLIC_APPS_PATH)/lzo-2.09 && rm -rf ./install
+lzo_ver:
+	echo "lzo version : 2.09" >> $(BBA_PRODUCT_VER_FILE)
+
+ifneq ($(strip $(INCLUDE_MTK)),)
+OPENVPN_EXTRA_CONFIG= -lpthread -ldl
+endif
+openvpn: lzo
+	cd $(PUBLIC_APPS_PATH)/openvpn-2.4.8 && test -e Makefile || ( aclocal && autoreconf -if && \
+		./configure --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/openvpn-2.4.8/install \
+		IFCONFIG=/sbin/ifconfig ROUTE=/sbin/route IPROUTE=/usr/bin/ip NETSTAT=/bin/netstat \
+		--enable-small --disable-selinux --disable-systemd --disable-plugins --disable-debug \
+		--disable-pkcs11 --enable-management \
+		--enable-lzo --disable-x509-alt-username --enable-fragment --disable-iproute2 \
+		--enable-pf --enable-crypto --with-crypto-library=openssl \
+		CFLAGS="-Wall -Werror=implicit-function-declaration" \
+		PKG_CONFIG_LIBDIR="$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/lib/pkgconfig" \
+		OPENSSL_CFLAGS="-I$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/include" \
+		OPENSSL_LIBS="-L$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/lib -lssl -lcrypto $(OPENVPN_EXTRA_CONFIG)" \
+		LZO_CFLAGS="-I$(PUBLIC_APPS_PATH)/lzo-2.09/install/include" \
+		LZO_LIBS="-L$(PUBLIC_APPS_PATH)/lzo-2.09/install/lib -llzo2" )
+	cd $(PUBLIC_APPS_PATH)/openvpn-2.4.8 && $(MAKE) install
+
+openvpn_install:
+	cp -pr $(PUBLIC_APPS_PATH)/openvpn-2.4.8/easy-rsa $(FS_TG_PATH)/etc
+	cp -p $(PUBLIC_APPS_PATH)/openvpn-2.4.8/install/sbin/openvpn $(FS_TG_PATH)/usr/sbin
+	cd $(FS_TG_PATH) && ln -sf /var/tmp/.rnd ./etc/.rnd
+openvpn_clean:
+	-cd $(PUBLIC_APPS_PATH)/openvpn-2.4.8 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+	-cd $(PUBLIC_APPS_PATH)/openvpn-2.4.8 && rm -rf ./install
+openvpn_ver:
+	echo "openvpn version : 2.09" >> $(BBA_PRODUCT_VER_FILE)
+
+##### added by CCy for vpn, 20150630  #####
+#because --sbindir is used for program when running, do not define --prefix and do not $(MAKE) install,
+# or else install will install in the wrong directory.
+pptpd:
+	cd $(PUBLIC_APPS_PATH)/accel-pptpd && test -e Makefile || ./configure --host=$(HOST) \
+		ac_cv_header_libintl_h=no --sbindir=/usr/sbin --enable-bcrelay \
+		CFLAGS="-Wall -Werror=implicit-function-declaration"
+	cd $(PUBLIC_APPS_PATH)/accel-pptpd && $(MAKE) PPPD_PPTP_INCLUDED=1 
+pptpd_install:
+	cp -p $(PUBLIC_APPS_PATH)/accel-pptpd/bcrelay $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/accel-pptpd/pptpctrl $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/accel-pptpd/pptpd $(FS_TG_PATH)/usr/sbin
+	cp -p $(PUBLIC_APPS_PATH)/accel-pptpd/config/options.pptpd $(FS_TG_PATH)/etc/ppp
+	cd $(FS_TG_PATH) && ln -sf /var/pptpd/chap-secrets ./etc/ppp/chap-secrets
+pptpd_clean:
+	-cd $(PUBLIC_APPS_PATH)/accel-pptpd && test -e Makefile && $(MAKE) clean && rm -f Makefile
+pptpd_ver:
+	echo "accel-pptpd version : 1.3.3" >> $(BBA_PRODUCT_VER_FILE)
+
+
+chat:
+	@echo building chat...
+	cd $(PUBLIC_APPS_PATH)/ppp-2.4.5/chat && $(MAKE)
+	$(STRIP) $(PUBLIC_APPS_PATH)/ppp-2.4.5/chat/chat
+chat_install:
+	cp $(PUBLIC_APPS_PATH)/ppp-2.4.5/chat/chat $(FS_TG_PATH)/usr/bin
+ifeq ($(INCLUDE_LTEWAN), y)
+ifneq ($(wildcard $(MODEL_PATH)/chat),)
+	cp -pRf $(MODEL_PATH)/chat $(FS_TG_PATH)/etc
+endif
+endif
+chat_clean:
+	cd $(PUBLIC_APPS_PATH)/ppp-2.4.5/chat && $(MAKE) clean
+chat_ver:
+	echo "ppp chat version : 2.4.5" >> $(BBA_PRODUCT_VER_FILE)
+
+
+ifeq ($(INCLUDE_USB_SYSFS), y)
+LIBUSB_CFLAGS = -DINCLUDE_USB_SYSFS -g -O2
+else
+LIBUSB_CFLAGS = -g -O2
+endif
+ifeq ($(INCLUDE_ECONET), y)
+LIBUSB_CFLAGS += -DINCLUDE_ECONET
+endif
+ifeq ($(INCLUDE_QUALCOMM), y)
+LIBUSB_CFLAGS += -DINCLUDE_QUALCOMM
+endif
+ifeq ($(INCLUDE_QUECTEL), y)
+LIBUSB_CFLAGS += -DINCLUDE_QUECTEL
+endif
+ifeq ($(INCLUDE_MUSL_LIBC), y)
+LIBUSB_CFLAGS += -DINCLUDE_MUSL_LIBC 
+endif
+libusb:
+	echo "Building usb library"
+	cd $(PUBLIC_APPS_PATH)/libusb-1.0.8 && test -e Makefile || \
+	(export CFLAGS+="$(LIBUSB_CFLAGS) $(ARCH_CFLAGS) -Wall -Werror=implicit-function-declaration"; \
+		./configure --build=i686-linux --host=$(HOST) \
+		--prefix=$(PUBLIC_APPS_PATH)/libusb-1.0.8/install --disable-timerfd \
+	)
+	cd $(PUBLIC_APPS_PATH)/libusb-1.0.8 && touch aclocal.m4 && $(MAKE) install
+libusb_install:
+	cp --no-dereference -p $(PUBLIC_APPS_PATH)/libusb-1.0.8/install/lib/libusb-1.0.so* $(FS_TG_PATH)/lib/
+libusb_clean:
+	-cd $(PUBLIC_APPS_PATH)/libusb-1.0.8 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+	-cd $(PUBLIC_APPS_PATH)/libusb-1.0.8 && rm -rf install/*
+libusb_ver:
+	echo "libusb version : 1.0.8" >> $(BBA_PRODUCT_VER_FILE)
+
+
+libcompat:
+	echo "Building usb compat"
+	cd $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3 && test -e Makefile || \
+	(export CFLAGS+="$(LIBUSB_CFLAGS) -Wall -Werror=implicit-function-declaration"; \
+		./configure --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/libusb-compat-0.1.3/install \
+		LIBUSB_1_0_CFLAGS=-I$(PUBLIC_APPS_PATH)/libusb-1.0.8/install/include/libusb-1.0 \
+		LIBUSB_1_0_LIBS=-L$(PUBLIC_APPS_PATH)/libusb-1.0.8/install/lib\ -lusb-1.0 \
+	)
+	cd $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3 && $(MAKE) install
+libcompat_install:
+	cp --no-dereference -p $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3/install/lib/libusb-0.1.so* $(FS_TG_PATH)/lib/
+	cp --no-dereference -p $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3/install/lib/libusb.so $(FS_TG_PATH)/lib/
+libcompat_clean:
+	-cd $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+	-cd $(PUBLIC_APPS_PATH)/libusb-compat-0.1.3 && rm -rf install/*
+libcompat_ver:
+	echo "libusb-compat version : 0.1.3" >> $(BBA_PRODUCT_VER_FILE)
+
+
+usb_modeswitch:
+	echo "Building usb_modeswitch"
+	cd $(PUBLIC_APPS_PATH)/usb-modeswitch-1.2.3 && $(MAKE)
+	$(STRIP) $(PUBLIC_APPS_PATH)/usb-modeswitch-1.2.3/usb_modeswitch
+usb_modeswitch_install:
+	cp $(PUBLIC_APPS_PATH)/usb-modeswitch-1.2.3/usb_modeswitch $(FS_TG_PATH)/usr/bin
+usb_modeswitch_clean:
+	cd $(PUBLIC_APPS_PATH)/usb-modeswitch-1.2.3 && $(MAKE) clean
+usb_modeswitch_ver:
+	echo "usb-modeswitch version : 1.2.3" >> $(BBA_PRODUCT_VER_FILE)
+
+
+xl2tpd:
+	cd $(PUBLIC_APPS_PATH)/xl2tpd-1.1.12 && $(MAKE)
+xl2tpd_install:
+	cp -p $(PUBLIC_APPS_PATH)/xl2tpd-1.1.12/xl2tpd $(FS_TG_PATH)/usr/sbin
+xl2tpd_clean:
+	cd $(PUBLIC_APPS_PATH)/xl2tpd-1.1.12 && $(MAKE) clean
+xl2tpd_ver:
+	echo "xl2tpd version : 1.1.12" >> $(BBA_PRODUCT_VER_FILE)
+
+
+DROPBEAR_CONFIG =	-disable-harden
+ifneq ($(strip $(INCLUDE_AGINET_APP_V2)),)
+DROPBEAR_CFLAGS += -D__LINUX_OS_FC__ -DINCLUDE_AGINET_APP_V2
+DROPBEAR_CFLAGS += -I$(OS_LIB_PATH)/include
+DROPBEAR_LIB += -L$(OS_LIB_PATH)/ -los
+DROPBEAR_LIB += -lpthread -lrt -ldl
+ifneq ($(strip $(INCLUDE_USER_RESTRICTION)),)
+DROPBEAR_CFLAGS += -DINCLUDE_USER_RESTRICTION
+endif
+ifneq ($(strip $(INCLUDE_CLOUD_V2)),)
+DROPBEAR_CFLAGS += -DINCLUDE_CLOUD -DINCLUDE_CLOUD_V2 
+endif
+endif
+ifneq ($(strip $(INCLUDE_SSH_ACCESS)),)
+DROPBEAR_CFLAGS += -DINCLUDE_SSH_ACCESS
+endif
+ifneq ($(strip $(INCLUDE_SAVE_KEY_AS_HASH)),)
+DROPBEAR_CFLAGS += -DINCLUDE_SAVE_KEY_AS_HASH
+endif
+ifneq ($(strip $(INCLUDE_CLS_L1_IMDA_TPAPP)),)
+DROPBEAR_CFLAGS += -DINCLUDE_CLS_L1_IMDA_TPAPP
+endif
+ifneq ($(strip $(INCLUDE_CHGINIT_PWD)),)
+DROPBEAR_CFLAGS += -DINCLUDE_CHGINIT_PWD
+endif
+ifneq ($(strip $(INCLUDE_USER_RESTRICTION)),)
+DROPBEAR_CFLAGS += -DINCLUDE_USER_RESTRICTION
+endif
+dropbear:
+	cd $(PUBLIC_APPS_PATH)/dropbear-2020.80 && test -e Makefile || \
+	(export CFLAGS+="-Wall -Werror=implicit-function-declaration"; \
+		export CFLAGS+=" $(DROPBEAR_CFLAGS)"; \
+		export LDFLAGS+="$(DROPBEAR_LIB)"; \
+		./configure --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/dropbear-2020.80/install \
+		--disable-zlib --disable-syslog $(DROPBEAR_CONFIG)\
+	)
+	cd $(PUBLIC_APPS_PATH)/dropbear-2020.80 && $(MAKE) MULTI=1 SCPPROGRESS=1 install
+dropbear_install:
+	cp -p $(PUBLIC_APPS_PATH)/dropbear-2020.80/install/bin/dropbearmulti $(FS_TG_PATH)/usr/bin
+	cd $(FS_TG_PATH)/usr/bin && ln -s dropbearmulti dropbear
+	cd $(FS_TG_PATH)/usr/bin && ln -s dropbearmulti dropbearkey
+	cd $(FS_TG_PATH)/usr/bin && ln -s dropbearmulti scp
+
+dropbear_clean:
+	cd $(PUBLIC_APPS_PATH)/dropbear-2020.80 && $(MAKE) clean
+dropbear_ver:
+	echo "dropbear version : 2020.80" >> $(BBA_PRODUCT_VER_FILE)
+
+libsqlite:
+	cd $(PUBLIC_APPS_PATH)/sqlite-autoconf-3160200 && touch * && ./configure --host=$(HOST) CFLAGS="-Os" \
+	--enable-dynamic-extensions=no --enable-readline=no
+	cd $(PUBLIC_APPS_PATH)/sqlite-autoconf-3160200 && $(MAKE)
+	$(STRIP) $(PUBLIC_APPS_PATH)/sqlite-autoconf-3160200/.libs/libsqlite3.so.0.8.6
+libsqlite_install:
+	cp -p $(PUBLIC_APPS_PATH)/sqlite-autoconf-3160200/.libs/libsqlite3.so.0.8.6 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf ./libsqlite3.so.0.8.6 libsqlite3.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf ./libsqlite3.so.0.8.6 libsqlite3.so.0
+libsqlite_clean:
+	cd $(PUBLIC_APPS_PATH)/sqlite-autoconf-3160200 && $(MAKE) clean
+libsqlite_ver:
+	echo "sqlite-autoconf version : 3160200" >> $(BBA_PRODUCT_VER_FILE)
+
+libcjson:
+	cd $(PUBLIC_APPS_PATH)/libcJSON && $(MAKE)
+libcjson_install:
+	cp $(PUBLIC_APPS_PATH)/libcJSON/libMPcJSON.so $(FS_TG_PATH)/lib/
+libcjson_clean:
+	cd $(PUBLIC_APPS_PATH)/libcJSON && $(MAKE) clean
+libcjson_ver:
+	echo "libcJSON version : 2009" >> $(BBA_PRODUCT_VER_FILE)
+
+e2fsprogs:
+	cd $(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0 && test -e Makefile || \
+		./configure --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/install \
+		--with-udev-rules-dir=$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/install/udev \
+		--with-crond-dir=$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/install/crond \
+		--with-systemd-unit-dir=$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/install/systemd
+	cd $(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0 && $(MAKE) && $(MAKE) install
+e2fsprogs_install:
+	#TODO: copy something
+e2fsprogs_clean:
+	cd $(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0 && $(MAKE) clean
+e2fsprogs_ver:
+	echo "e2fsprogs version : 1.47.0" >> $(BBA_PRODUCT_VER_FILE)
+
+ubitools:
+	cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1 && \
+        $(MAKE) CROSS=$(TOOLPREFIX) WITHOUT_LZO=1 WITHOUT_XATTR=1 WITHOUT_XZ=1 \
+		CFLAGS="-I$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/lib -I$(PUBLIC_APPS_PATH)/zlib-1.2.11/install/include" \
+		LDFLAGS="-L$(PUBLIC_APPS_PATH)/e2fsprogs-1.47.0/lib -luuid -L$(PUBLIC_APPS_PATH)/zlib-1.2.11/install/lib -lz" \
+		BUILDDIR=$(PUBLIC_APPS_PATH)/mtd-utils-1.5.1 \
+		TARGETS="flash_erase ubi-utils/ubiformat ubi-utils/ubiattach ubi-utils/ubidetach ubi-utils/ubimkvol ubi-utils/ubirmvol ubi-utils/ubinfo ubi-utils/ubirsvol mkfs.ubifs/mkfs.ubifs"
+ubitools_install:
+	cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1 && cp -p flash_erase $(FS_TG_PATH)/usr/sbin
+	# some model need ubiformat from sdk
+	$(if $(INCLUDE_UBIFORMAT_FROM_SDK), (echo "Do nothing"), (cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1/ubi-utils && cp -p ubiformat $(FS_TG_PATH)/usr/sbin))
+	cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1/ubi-utils && cp -p ubiattach ubidetach ubimkvol ubirmvol ubinfo ubirsvol $(FS_TG_PATH)/usr/sbin
+	cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1/mkfs.ubifs && cp -p mkfs.ubifs $(FS_TG_PATH)/usr/sbin
+ubitools_clean:
+	cd $(PUBLIC_APPS_PATH)/mtd-utils-1.5.1 && $(MAKE) clean
+ubitools_ver:
+	echo "mtd-utils version : 1.5.1" >> $(BBA_PRODUCT_VER_FILE)
+
+libjsonc:
+	cd $(PUBLIC_APPS_PATH)/json-c-0.12 && test -e Makefile ||  autoreconf -if && ./configure ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/json-c-0.12/install
+	cd $(PUBLIC_APPS_PATH)/json-c-0.12 && $(MAKE) && $(MAKE) install
+libjsonc_install:
+	cp -p $(PUBLIC_APPS_PATH)/json-c-0.12/.libs/libjson-c.so.2.0.2 $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf ./libjson-c.so.2.0.2 libjson-c.so
+	cd $(FS_TG_PATH)/lib/ && ln -sf ./libjson-c.so.2.0.2 libjson-c.so.2
+libjsonc_clean:
+	cd $(PUBLIC_APPS_PATH)/json-c-0.12 && $(MAKE) clean
+libjsonc_ver:
+	echo "json-c version : 0.12" >> $(BBA_PRODUCT_VER_FILE)
+
+ifeq ($(strip $(INCLUDE_LTEWAN)),)
+export libubox_ver:=libubox-2015-11-08
+else
+export libubox_ver:=libubox-2020-05-25-66195aee
+endif
+libubox:
+	cd $(PUBLIC_APPS_PATH)/$(libubox_ver) && test -e Makefile || cmake -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_C_COMPILER="$(CC)" -DCMAKE_PREFIX_PATH="$(PUBLIC_APPS_PATH)/json-c-0.12/install" -DCMAKE_C_FLAGS="-I$(PUBLIC_APPS_PATH)/json-c-0.12/install/include/json-c" -DCMAKE_INSTALL_PREFIX="$(PUBLIC_APPS_PATH)/$(libubox_ver)/install" -DCMAKE_EXE_LINKER_FLAGS:STRING="-lm"  -DBUILD_LUA=OFF -DBUILD_EXAMPLES=OFF
+	cd $(PUBLIC_APPS_PATH)/$(libubox_ver) && $(MAKE) && $(MAKE) install
+libubox_install:
+	cd $(PUBLIC_APPS_PATH)/$(libubox_ver) && cp -p libubox.so $(FS_TG_PATH)/lib/
+	cd $(PUBLIC_APPS_PATH)/$(libubox_ver) && cp -p libblobmsg_json.so $(FS_TG_PATH)/lib/
+libubox_clean:
+	cd $(PUBLIC_APPS_PATH)/$(libubox_ver) && $(MAKE) clean
+libubox_ver:
+ifeq ($(INCLUDE_LTEWAN), y)
+	echo "libubox version : 2020-05-25-66195aee" >> $(BBA_PRODUCT_VER_FILE)
+else
+	echo "libubox version : 2015-11-08" >> $(BBA_PRODUCT_VER_FILE)
+endif
+
+uci:
+	cd $(PUBLIC_APPS_PATH)/uci && test -e Makefile || cmake -DBUILD_LUA=off -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_C_COMPILER="$(CC)" -DCMAKE_PREFIX_PATH="$(PUBLIC_APPS_PATH)/$(libubox_ver)/install" -DCMAKE_C_FLAGS="-I$(PUBLIC_APPS_PATH)/$(libubox_ver)/install/include/libubox -Wno-clobbered" -DCMAKE_INSTALL_PREFIX="$(PUBLIC_APPS_PATH)/uci/install"
+	cd $(PUBLIC_APPS_PATH)/uci && $(MAKE) && $(MAKE) install
+uci_install:
+	cd $(PUBLIC_APPS_PATH)/uci && cp -p libuci.so $(FS_TG_PATH)/lib/
+	cd $(PUBLIC_APPS_PATH)/uci && cp -p uci $(FS_TG_PATH)/sbin
+uci_clean:
+	cd $(PUBLIC_APPS_PATH)/uci && $(MAKE) clean
+uci_ver:
+	echo "uci version : 2022-08-28" >> $(BBA_PRODUCT_VER_FILE)
+
+IPERF3_CFLAGS += -static
+IPERF3_LDFLAGS += -Wl,--rpath=/opt/toolchain-mipsel_24kc_gcc-5.4.0_uClibc-1.0.14/lib
+iperf3:
+	cd $(PUBLIC_APPS_PATH)/iperf3-3.16 && ./configure \
+		--host=$(HOST) --enable-static \
+		CFLAGS="$(IPERF_CFLAGS)" LDFLAGS="$(IPERF_LDFLAGS)" CXXFLAGS=-static \
+		--prefix=$(PUBLIC_APPS_PATH)/iperf3-3.16/install
+	cd $(PUBLIC_APPS_PATH)/iperf3-3.16 && $(MAKE) && $(MAKE) install
+iperf3_install:
+	#If want iperf3 to be installed in host file system, uncomment line below
+	#cp -p $(PUBLIC_APPS_PATH)/iperf3-3.16/src/iperf3 $(FS_TG_PATH)/usr/bin
+iperf3_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/iperf3-3.16 clean
+	cd $(PUBLIC_APPS_PATH)/iperf3-3.16 && rm -rf install
+
+uqmi:
+	cd $(PUBLIC_APPS_PATH)/uqmi-2014-12-03 && cmake -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_C_COMPILER="$(CC)" -DCMAKE_PREFIX_PATH="$(PUBLIC_APPS_PATH)/json-c-0.12/install" -DCMAKE_C_FLAGS="-I$(PUBLIC_APPS_PATH)/$(libubox_ver)/install/include" -DCMAKE_EXE_LINKER_FLAGS:STRING="-L$(PUBLIC_APPS_PATH)/$(libubox_ver)/install/lib -L$(PUBLIC_APPS_PATH)/json-c-0.12/install/lib" .
+	cd $(PUBLIC_APPS_PATH)/uqmi-2014-12-03 && $(MAKE) clean && $(MAKE) CC=$(CC)
+uqmi_install:
+	cd $(PUBLIC_APPS_PATH)/uqmi-2014-12-03 && cp -p uqmi $(FS_TG_PATH)/usr/sbin
+uqmi_clean:
+	cd $(PUBLIC_APPS_PATH)/uqmi-2014-12-03 && $(MAKE) clean
+uqmi_ver:
+	echo "uqmi version : 2014-12-03" >> $(BBA_PRODUCT_VER_FILE)
+
+libssh: 
+	@echo "build libssh"
+	cd $(PUBLIC_APPS_PATH)/libssh-0.9.4 && rm -rf build
+	cd $(PUBLIC_APPS_PATH)/libssh-0.9.4 && mkdir build
+	cd $(PUBLIC_APPS_PATH)/libssh-0.9.4/build && cmake -DCMAKE_INSTALL_PREFIX=$(PUBLIC_APPS_PATH)/libssh-0.9.4/install -DCMAKE_BUILD_TYPE:STRING=Release \
+		-DWITH_EXAMPLES=OFF -DWITH_GCRYPT=OFF -DCMAKE_C_FLAGS="-D_GNU_SOURCE" -DTHREADS_PTHREAD_ARG=OFF \
+		-DWITH_GSSAPI=OFF -DWITH_ZLIB=OFF -DWITH_NACL=OFF -DWITH_PCAP=OFF -DWITH_SERVER=OFF -DWITH_SFTP=OFF \
+		-DCMAKE_SYSTEM_NAME=Linux -DCMAKE_FIND_ROOT_PATH=$(TOOLCHAIN_PATH) -DCMAKE_C_COMPILER=$(HOST)-gcc \
+		-DOPENSSL_ROOT_DIR=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install ../
+	cd $(PUBLIC_APPS_PATH)/libssh-0.9.4/build && $(MAKE) install
+
+libssh_install:
+	@echo "install libssh"
+	cp -p $(PUBLIC_APPS_PATH)/libssh-0.9.4/install/lib/libssh.so.4.8.5 $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libssh.so.4.8.5 libssh.so.4
+	cd $(FS_TG_PATH)/lib/ && ln -sf libssh.so.4.8.5 libssh.so
+libssh_clean:
+	@echo "clean libssh"
+	-cd $(PUBLIC_APPS_PATH)/libssh-0.9.4 && rm -fr build install
+libssh_ver:
+	echo "libssh version : 0.9.4" >> $(BBA_PRODUCT_VER_FILE)
+
+ifneq ($(strip $(INCLUDE_MTK)),)
+CURL_EXTRA_CONFIG= -lpthread -ldl
+endif
+
+ifeq ($(INCLUDE_ECONET_TR143_SPEEDUP),y)
+	CURL_FTP_SUPPORT=--enable-ftp
+else
+	CURL_FTP_SUPPORT=--disable-ftp
+endif
+	
+curl:
+	@echo "build curl"
+	cd $(CURL_DIR) && test ! -e Makefile || if ! egrep "$(TOOLPREFIX)" Makefile > /dev/null; then \
+		rm Makefile; \
+	fi
+
+ifeq ($(INCLUDE_CLOUD_HTTPS), y)
+	-cd $(CURL_DIR) && test ! -e Makefile || if egrep "without-ssl" Makefile > /dev/null; then \
+		$(MAKE) clean && rm Makefile; \
+	fi
+	-cd $(CURL_DIR) && test -e Makefile || (export LDFLAGS="-Wl,-rpath=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install/lib $(CURL_EXTRA_CONFIG)" &&\
+	./configure --prefix=$(CURL_DIR)/install \
+				--build=i686-linux --host=$(HOST) \
+				--enable-static ${CURL_FTP_SUPPORT} --disable-ldap --disable-ldaps --disable-rtsp --disable-proxy --disable-dict \
+				--disable-telnet --disable-tftp --disable-pop3 --disable-imap --disable-smtp --disable-gopher \
+				--disable-ipv6 --disable-sspi --disable-ntlm-wb --disable-tls-srp \
+				--disable-cookies --disable-soname-bump --disable-threaded-resolver --disable-pthreads \
+				--with-ssl=$(PUBLIC_APPS_PATH)/$(INCLUDE_SSL_LIB_NAME)/install --without-zlib )
+else
+	-cd $(CURL_DIR) && test ! -e Makefile || if egrep "with-ssl" Makefile > /dev/null; then \
+		$(MAKE) clean && rm Makefile; \
+	fi
+	-cd $(CURL_DIR) && test -e Makefile ||\
+	./configure --prefix=$(CURL_DIR)/install \
+				--build=i686-linux --host=$(HOST) \
+				${CURL_FTP_SUPPORT} --disable-ldap --disable-ldaps --disable-rtsp --disable-proxy --disable-dict \
+				--disable-telnet --disable-tftp --disable-pop3 --disable-imap --disable-smtp --disable-gopher \
+				--disable-ipv6 --disable-sspi --disable-ntlm-wb --disable-tls-srp \
+				--disable-cookies --disable-soname-bump --without-zlib --disable-threaded-resolver --disable-pthreads \
+				--without-ssl
+endif
+	-cd $(CURL_DIR) && $(MAKE) install-strip
+
+curl_install:
+	@echo "install curl"
+	cp -P $(CURL_DIR)/install/lib/*.so* $(FS_TG_PATH)/lib/
+	cp -P $(CURL_DIR)/install/bin/curl $(FS_TG_PATH)/usr/sbin
+
+curl_clean:
+	cd $(CURL_DIR) && test ! -f Makefile || $(MAKE) clean && rm -rf ./install
+curl_ver:
+	echo "curl version : 7.62.0" >> $(BBA_PRODUCT_VER_FILE)
+
+udpxy:
+	cd $(PUBLIC_APPS_PATH)/udpxy-1.0 && $(MAKE)
+udpxy_install:
+	cp -P $(PUBLIC_APPS_PATH)/udpxy-1.0/udpxy $(FS_TG_PATH)/usr/bin
+udpxy_clean:
+	cd $(PUBLIC_APPS_PATH)/udpxy-1.0 && $(MAKE) clean
+udpxy_ver:
+	echo "udpxy version : 1.0" >> $(BBA_PRODUCT_VER_FILE)
+
+cJSON:
+	@echo "build cJSON"
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && rm -rf build
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && rm -rf install
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && mkdir build
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && mkdir install
+	cd $(PUBLIC_APPS_PATH)/cJSON/install && mkdir cjson
+	cd $(PUBLIC_APPS_PATH)/cJSON/build/ && cmake ..
+	cd $(PUBLIC_APPS_PATH)/cJSON/build/ && $(MAKE)
+	cp -p $(PUBLIC_APPS_PATH)/cJSON/build/libcjson.so.1.7.14 $(PUBLIC_APPS_PATH)/cJSON/install/cjson
+	cd $(PUBLIC_APPS_PATH)/cJSON/install/cjson && ln -sf libcjson.so.1.7.14 libcjson.so
+	cp -p $(PUBLIC_APPS_PATH)/cJSON/cJSON.h $(PUBLIC_APPS_PATH)/cJSON/install/cjson/
+cJSON_install:
+	@echo "install cJSON"	
+	cp -p $(PUBLIC_APPS_PATH)/cJSON/build/libcjson.so.1.7.14  $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libcjson.so.1.7.14 libcjson.so
+cJSON_clean:
+	@echo "clean cJSON"
+	cd $(PUBLIC_APPS_PATH)/cJSON/build && make clean
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && rm -rf build
+	cd $(PUBLIC_APPS_PATH)/cJSON/ && rm -rf install
+cJSON_ver:
+	echo "cJSON version : 1.7.14" >> $(BBA_PRODUCT_VER_FILE)
+	
+zlib:
+	@echo "build zlib"
+	cd $(PUBLIC_APPS_PATH)/zlib-1.2.11 && ./configure --prefix=$(PUBLIC_APPS_PATH)/zlib-1.2.11/install --shared 
+	cd $(PUBLIC_APPS_PATH)/zlib-1.2.11 && make
+	cd $(PUBLIC_APPS_PATH)/zlib-1.2.11 && make install
+zlib_clean:
+	cd $(PUBLIC_APPS_PATH)/zlib-1.2.11 && make clean 
+zlib_install:
+	cp -p $(PUBLIC_APPS_PATH)/zlib-1.2.11/libz.so.1.2.11  $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libz.so.1.2.11 libz.so.1
+	cd $(FS_TG_PATH)/lib/ && ln -sf libz.so.1 libz.so
+zlib_ver:
+	echo "zlib version : 1.2.11" >> $(BBA_PRODUCT_VER_FILE)
+
+mosquitto:
+	@echo "build mosquitto"
+	cd $(PUBLIC_APPS_PATH)/mosquitto-2.0.9 && make
+	cd $(PUBLIC_APPS_PATH)/mosquitto-2.0.9 && make install
+mosquitto_install:
+	@echo "mosquitto_install"
+	cp -p $(PUBLIC_APPS_PATH)/mosquitto-2.0.9/lib/libmosquitto.so.1  $(FS_TG_PATH)/lib/
+	cd $(FS_TG_PATH)/lib/ && ln -sf libmosquitto.so.1 libmosquitto.so
+
+mosquitto_clean:
+	@echo "mosquitto_clean"
+	cd $(PUBLIC_APPS_PATH)/mosquitto-2.0.9 && make clean
+mosquitto_ver:
+	echo "mosquitto version : 2.0.9" >> $(BBA_PRODUCT_VER_FILE)
+
+ethtool:
+	cd $(PUBLIC_APPS_PATH)/ethtool-4.13 && test -e Makefile || ./configure --host=$(HOST)
+	cd $(PUBLIC_APPS_PATH)/ethtool-4.13 && $(MAKE) && $(STRIP) ethtool
+
+ethtool_install:
+	cp -p $(PUBLIC_APPS_PATH)/ethtool-4.13/ethtool $(FS_TG_PATH)/usr/bin
+ethtool_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/ethtool-4.13 clean
+ethtool_ver:
+	echo "ethtool-4.13 version : 4.13" >> $(BBA_PRODUCT_VER_FILE)
+
+valgrind:
+	cd $(PUBLIC_APPS_PATH)/valgrind-3.18.1 && ./configure --build=x86_64-linux --host=$(HOST) --prefix=/ --bindir=/bin --libexecdir=/lib CFLAGS="-ldl"
+ifeq ($(findstring 4.3.6,$(TOOLROOTPATH)), 4.3.6)
+	-cd $(PUBLIC_APPS_PATH)/valgrind-3.18.1/drd/ && cat Makefile | sed 's/^  -O2/  -O1/' > .out.mak && mv -f .out.mak Makefile
+	-cd $(PUBLIC_APPS_PATH)/valgrind-3.18.1/VEX/priv/ && cat guest_mips_helpers.c | sed 's/(x) : :/(x) :/' > .guest_mips_helpers.c && mv .guest_mips_helpers.c guest_mips_helpers.c && rm -f .guest_mips_helpers.c
+endif
+	cd $(PUBLIC_APPS_PATH)/valgrind-3.18.1 && make
+	cd $(PUBLIC_APPS_PATH)/valgrind-3.18.1 && make install DESTDIR=$(PUBLIC_APPS_PATH)/valgrind-3.18.1/install
+#	$(STRIP) $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/bin/valgrind $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/memcheck-mips32-linux 
+valgrind_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/valgrind-3.18.1 clean
+valgrind_install:
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/bin/valgrind $(FS_TG_PATH)/usr/sbin
+	mkdir -p $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/default.supp $(FS_TG_PATH)/lib/valgrind
+ifneq ($(strip $(INCLUDE_MIPS)$(INCLUDE_MIPSEL)),)
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/memcheck-mips32-linux $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_core-mips32-linux.so $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_memcheck-mips32-linux.so $(FS_TG_PATH)/lib/valgrind
+endif
+ifneq ($(strip $(INCLUDE_ARM)),)
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/memcheck-arm-linux $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_core-arm-linux.so $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_memcheck-arm-linux.so $(FS_TG_PATH)/lib/valgrind
+else
+ifneq ($(strip $(INCLUDE_ARM64)),)
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/memcheck-arm64-linux $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_core-arm64-linux.so $(FS_TG_PATH)/lib/valgrind
+	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/vgpreload_memcheck-arm64-linux.so $(FS_TG_PATH)/lib/valgrind
+endif
+endif
+#	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/32bit* $(FS_TG_PATH)/lib/valgrind
+#	cp $(PUBLIC_APPS_PATH)/valgrind-3.18.1/install/lib/valgrind/mips-* $(FS_TG_PATH)/lib/valgrind
+valgrind_ver:
+	echo "valgrind version :3.18.1" >> $(BBA_PRODUCT_VER_FILE)
+
+prlimit:
+	cd $(PUBLIC_APPS_PATH)/util-linux-2.38 && test -e Makefile || (aclocal && autoreconf -if && ./configure --host=$(HOST) --enable-static --disable-shared)
+	cd $(PUBLIC_APPS_PATH)/util-linux-2.38 && $(MAKE) prlimit && $(STRIP) prlimit
+prlimit_install:
+	cp -p $(PUBLIC_APPS_PATH)/util-linux-2.38/prlimit $(FS_TG_PATH)/usr/bin
+prlimit_clean:
+	-cd $(PUBLIC_APPS_PATH)/util-linux-2.38 && test -e Makefile && $(MAKE) clean && rm -f Makefile
+prlimit_ver:
+	echo "prlimit version : 2.38" >> $(BBA_PRODUCT_VER_FILE)
+
+ADB_CFLAGS += -D_GNU_SOURCE
+ifneq ($(strip $(INCLUDE_BIG_ENDIAN)),)
+ADB_CFLAGS += -DHAVE_BIG_ENDIAN=1
+endif
+# zlib
+ADB_CFLAGS += -I$(PUBLIC_APPS_PATH)/zlib-1.2.11/install/include
+ADB_LDFLAGS += -L$(PUBLIC_APPS_PATH)/zlib-1.2.11/install/lib -lz
+# openssl
+ADB_CFLAGS += -I$(PUBLIC_APPS_PATH)/openssl-1.1.1f/install/include
+ADB_LDFLAGS += -L$(PUBLIC_APPS_PATH)/openssl-1.1.1f/install/lib -lcrypto
+
+adb: zlib openssl
+	@echo "build adb"
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/adb-1.0.32/adb CFLAGS="$(ADB_CFLAGS)" LDFLAGS="$(ADB_LDFLAGS)"
+adb_clean:
+	cd $(PUBLIC_APPS_PATH)/adb-1.0.32/adb && rm adb *.o
+adb_install:
+	cp -p $(PUBLIC_APPS_PATH)/adb-1.0.32/adb/adb  $(FS_TG_PATH)/usr/bin
+adb_ver:
+	echo "adb version : 1.0.32" >> $(BBA_PRODUCT_VER_FILE)
+
+
+lifemote: 
+	@echo "build lifemote(lifemote deployer is a bash code, no need to do make)"
+lifemote_install:
+	cp -p $(PUBLIC_APPS_PATH)/lifemote/phoenix.sh  $(FS_TG_PATH)/usr/bin
+lifemote_ver:
+	echo "lifemote version : 2019" >> $(BBA_PRODUCT_VER_FILE)
+
+quantwifi:
+	@echo "build quantwifi(quantwifi deployer is a bash code, no need to do make)"
+quantwifi_install:
+	cp -p $(PUBLIC_APPS_PATH)/quantwifi/quantWiFiLoader.sh  $(FS_TG_PATH)/etc/
+	mkdir -p $(FS_TG_PATH)/etc/qw/certs
+ifneq ($(strip $(INCLUDE_TTNET)),)
+	cp -r $(PUBLIC_APPS_PATH)/quantwifi/certs/TTNET/*  $(FS_TG_PATH)/etc/qw/certs
+endif
+quantwifi_ver:
+	echo "quantwifi version : 2022" >> $(BBA_PRODUCT_VER_FILE)
+
+
+
+libiconv:
+	cd $(PUBLIC_APPS_PATH)/libiconv-1.16 && ./configure  --host=$(HOST) CC=$(CC) --prefix=$(PUBLIC_APPS_PATH)/libiconv-1.16/install
+	cd $(PUBLIC_APPS_PATH)/libiconv-1.16 && $(MAKE) && $(MAKE) install
+libiconv_clean:
+	cd $(PUBLIC_APPS_PATH)/libiconv-1.16 && $(MAKE) clean
+	cd $(PUBLIC_APPS_PATH)/libiconv-1.16/install && rm -rf *
+libiconv_install:
+	cp $(PUBLIC_APPS_PATH)/libiconv-1.16/install/lib/libiconv.so.2.6.1 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libiconv.so.2.6.1 libiconv.so.2 && ln -sf libiconv.so.2.6.1 libiconv.so
+libffi:
+	cd $(PUBLIC_APPS_PATH)/libffi-3.4.2 && ./configure  --host=$(HOST) CC=$(CC) --prefix=$(PUBLIC_APPS_PATH)/libffi-3.4.2/install
+	cd $(PUBLIC_APPS_PATH)/libffi-3.4.2 && $(MAKE) && $(MAKE) install
+libffi_clean:
+	cd $(PUBLIC_APPS_PATH)/libffi-3.4.2 && $(MAKE) clean
+libffi_install:
+	cp $(PUBLIC_APPS_PATH)/libffi-3.4.2/install/lib/libffi.so.8.1.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libffi.so.8.1.0 libffi.so.8 && ln -sf libffi.so.8.1.0 libffi.so
+
+gettext:
+	cd $(PUBLIC_APPS_PATH)/gettext-0.21/ && \
+	export CFLAGS="-I$(PUBLIC_APPS_PATH)/libiconv-1.16/install/include"  && \
+	export LDFLAGS="-liconv -L$(PUBLIC_APPS_PATH)/libiconv-1.16/install/lib"  && \
+	./configure  --host=$(HOST) \
+	CC=$(CC) --prefix=$(PUBLIC_APPS_PATH)/gettext-0.21/install
+	cd $(PUBLIC_APPS_PATH)/gettext-0.21 && $(MAKE) && $(MAKE) install
+gettext_clean:
+	cd $(PUBLIC_APPS_PATH)/gettext-0.21 && $(MAKE) clean && $(MAKE) distclean
+gettext_install:
+	#cp $(PUBLIC_APPS_PATH)/gettext-0.21/install/lib/libgettextlib-0.21.so $(FS_TG_PATH)/lib
+	#cd $(FS_TG_PATH)/lib/ && ln -sf libgettextlib-0.21.so libgettextlib.so
+	
+	cp $(PUBLIC_APPS_PATH)/gettext-0.21/install/lib/libintl.so.8.2.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libintl.so.8.2.0 libintl.so.8 && ln -sf libintl.so.8.2.0 libintl.so 
+
+glib:
+	cd $(PUBLIC_APPS_PATH)/glib-2.59.0  && ./autogen.sh
+	rm -rf $(PUBLIC_APPS_PATH)/glib-2.59.0/glib.cache
+	echo "glib_cv_stack_grows=no"> $(PUBLIC_APPS_PATH)/glib-2.59.0/glib.cache
+	echo "glib_cv_uscore=no" >> $(PUBLIC_APPS_PATH)/glib-2.59.0/glib.cache
+	echo "ac_cv_func_posix_getpwuid_r=no" >> $(PUBLIC_APPS_PATH)/glib-2.59.0/glib.cache
+	echo "ac_cv_func_posix_getgrgid_r=no" >> $(PUBLIC_APPS_PATH)/glib-2.59.0/glib.cache
+
+	#cp libs 
+	-rm -rf $(PUBLIC_APPS_PATH)/container_libs
+	mkdir -p $(PUBLIC_APPS_PATH)/container_libs
+	cp -rf $(PUBLIC_APPS_PATH)/zlib-1.2.11/install/include $(PUBLIC_APPS_PATH)/container_libs
+	cp -rf $(PUBLIC_APPS_PATH)/zlib-1.2.11/install/lib $(PUBLIC_APPS_PATH)/container_libs
+
+	cp -rf $(PUBLIC_APPS_PATH)/libiconv-1.16/install/include $(PUBLIC_APPS_PATH)/container_libs
+	cp -rf $(PUBLIC_APPS_PATH)/libiconv-1.16/install/lib $(PUBLIC_APPS_PATH)/container_libs
+
+	cp -rf $(PUBLIC_APPS_PATH)/gettext-0.21/install/include $(PUBLIC_APPS_PATH)/container_libs
+	cp -rf $(PUBLIC_APPS_PATH)/gettext-0.21/install/lib $(PUBLIC_APPS_PATH)/container_libs
+	
+	cp -rf $(PUBLIC_APPS_PATH)/libffi-3.4.2/install/include $(PUBLIC_APPS_PATH)/container_libs
+	cp -rf $(PUBLIC_APPS_PATH)/libffi-3.4.2/install/lib $(PUBLIC_APPS_PATH)/container_libs
+
+	cd $(PUBLIC_APPS_PATH)/glib-2.59.0 && \
+	export LIBFFI_CFLAGS="-I$(PUBLIC_APPS_PATH)/libffi-3.4.2/install/include" && \
+	export LIBFFI_LIBS="-L$(PUBLIC_APPS_PATH)/libffi-3.4.2/install/lib -lffi"  && \
+	export CFLAGS="-I$(PUBLIC_APPS_PATH)/container_libs/include" && \
+	export LDFLAGS="-L$(PUBLIC_APPS_PATH)/container_libs/lib -liconv -lpthread -ldl -lffi -lz" && \
+	./configure  --host=$(HOST) \
+	CC=$(CC) --prefix=$(PUBLIC_APPS_PATH)/glib-2.59.0/install \
+	--with-pcre=internal --enable-libmount=no --with-libiconv=gnu \
+	--cache-file=glib.cache --disable-selinux  --disable-xattr --disable-libelf
+
+	cd $(PUBLIC_APPS_PATH)/glib-2.59.0	&& $(MAKE) V=99 && $(MAKE) install
+	
+glib_clean:
+	cd $(PUBLIC_APPS_PATH)/glib-2.59.0 && $(MAKE) clean
+glib_install:
+	cp $(PUBLIC_APPS_PATH)/glib-2.59.0/install/lib/libgio-2.0.so.0.5900.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libgio-2.0.so.0.5900.0 libgio-2.0.so.0
+	
+	cp $(PUBLIC_APPS_PATH)/glib-2.59.0/install/lib/libglib-2.0.so.0.5900.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libglib-2.0.so.0.5900.0 libglib-2.0.so.0
+	
+	cp $(PUBLIC_APPS_PATH)/glib-2.59.0/install/lib/libgmodule-2.0.so.0.5900.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libgmodule-2.0.so.0.5900.0 libgmodule-2.0.so.0
+	
+	cp $(PUBLIC_APPS_PATH)/glib-2.59.0/install/lib/libgobject-2.0.so.0.5900.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libgobject-2.0.so.0.5900.0 libgobject-2.0.so.0
+	
+	cp $(PUBLIC_APPS_PATH)/glib-2.59.0/install/lib/libgthread-2.0.so.0.5900.0 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libgthread-2.0.so.0.5900.0 libgthread-2.0.so.0
+lxc:
+	cd $(PUBLIC_APPS_PATH)/lxc-2.1.1 && ./autogen.sh && \
+	rm -rf config.cache && \
+	./configure  --host=$(HOST) --prefix=/usr \
+	CC=$(CC) \
+	LDFLAGS="-lpthread -ldl" \
+	--disable-werror \
+	--disable-apparmor \
+	--disable-doc \
+	--disable-api-docs \
+	--disable-gnutls \
+	--disable-selinux \
+	--disable-cgmanager \
+	--disable-examples \
+	--disable-python \
+	--disable-bash \
+	--disable-lua \
+	--disable-seccomp \
+	--with-runtime-path="/tmp/run" ;\
+	cd $(PUBLIC_APPS_PATH)/lxc-2.1.1 && make;
+
+lxc_install:
+	LXCDIR=$(PUBLIC_APPS_PATH)/lxc-2.1.1
+	mkdir -p $(FS_TG_PATH)/usr/etc/lxc/;
+	mkdir -p $(FS_TG_PATH)/etc/lxc/;
+	cp -f $(PUBLIC_APPS_PATH)/lxc-2.1.1/config/etc/default.conf  $(FS_TG_PATH)/usr/etc/lxc/;
+	cp -f $(PUBLIC_APPS_PATH)/lxc-2.1.1/config/etc/default.conf  $(FS_TG_PATH)/etc/lxc/;
+	echo "lxc.lxcpath = /opt/upt/apps/LXC" > $(FS_TG_PATH)/usr/etc/lxc/lxc.conf;
+	echo "lxc.lxcpath = /opt/upt/apps/LXC" > $(FS_TG_PATH)/etc/lxc/lxc.conf;
+	mkdir -p $(FS_TG_PATH)/usr/share/lxc/templates
+	mkdir -p $(FS_TG_PATH)/usr/lib;
+	cp -f  $(PUBLIC_APPS_PATH)/lxc-2.1.1/src/lxc/lxc.functions $(FS_TG_PATH)/usr/share/lxc/;
+	cp -av $(PUBLIC_APPS_PATH)/lxc-2.1.1/src/lxc/.libs/liblxc.so* $(FS_TG_PATH)/usr/lib/;
+	cp -av $(PUBLIC_APPS_PATH)/lxc-2.1.1/src/lxc/.libs/lxc-* $(FS_TG_PATH)/usr/bin/;
+	cp -av $(PUBLIC_APPS_PATH)/lxc-2.1.1/src/lxc/.libs/init.lxc $(FS_TG_PATH)/sbin/;
+	cp -f $(PUBLIC_APPS_PATH)/lxc-2.1.1/mipsel-buildroot-linux-uclibc/usr/share/lxc/templates/lxc* $(FS_TG_PATH)/usr/share/lxc/templates
+	chmod a+x $(FS_TG_PATH)/usr/share/lxc/templates/lxc*
+	mkdir -p $(FS_TG_PATH)/usr/lib/lxc/rootfs
+	
+lxc_clean:
+	- rm -rf $(FS_TG_PATH)/usr/etc/lxc
+	- rm -rf $(FS_TG_PATH)/usr/share/lxc
+	- rm -rf $(FS_TG_PATH)/usr/share/lib/liblxc.so*
+	- rm -rf $(FS_TG_PATH)/usr/bin/lxc-*
+	- rm -rf $(FS_TG_PATH)/sbin/init.lxc
+	make -C $(PUBLIC_APPS_PATH)/lxc-2.1.1 clean
+
+opkg:
+	cd $(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae && cmake -DCMAKE_INSTALL_PREFIX=$(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae/install
+	cd $(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae && $(MAKE) && $(MAKE) install
+
+opkg_clean:
+	cd $(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae && $(MAKE) clean
+	- rm -rf $(FS_TG_PATH)/usr/sbin/opkg
+	- rm -rf $(FS_TG_PATH)/usr/etc/opkg.conf
+
+opkg_install:
+	cp -av $(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae/install/bin/opkg-cl  $(FS_TG_PATH)/usr/sbin/opkg
+	cp -av $(PUBLIC_APPS_PATH)/opkg-2020-12-24-9bbc7eae/opkg.conf  $(FS_TG_PATH)/etc/
+
+expat:
+	cd $(PUBLIC_APPS_PATH)/expat-2.4.8 && ./configure  --host=$(HOST) --prefix=$(PUBLIC_APPS_PATH)/expat-2.4.8/install \
+	--without-tests --without-examples
+	cd $(PUBLIC_APPS_PATH)/expat-2.4.8 && $(MAKE) && $(MAKE) install
+expat_clean:
+	cd $(PUBLIC_APPS_PATH)/expat-2.4.8 && $(MAKE) clean
+expat_install:
+	cp -rf $(PUBLIC_APPS_PATH)/expat-2.4.8/install/lib/libexpat.so* $(FS_TG_PATH)/lib
+dbus:
+	cd $(PUBLIC_APPS_PATH)/dbus-dbus-1.8 && ./autogen.sh --host=$(HOST) CC=$(CC) --prefix="" \
+	CFLAGS=-I$(PUBLIC_APPS_PATH)/expat-2.4.8/install/include \
+	LDFLAGS=-L$(PUBLIC_APPS_PATH)/expat-2.4.8/install/lib \
+	LIBS=-lexpat
+	cd $(PUBLIC_APPS_PATH)/dbus-dbus-1.8 && $(MAKE)
+dbus_clean:
+	cd $(PUBLIC_APPS_PATH)/dbus-dbus-1.8 && $(MAKE) clean
+dbus_install:
+	# cp bins 
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/bus/dbus-daemon $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/dbus-launch $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/.libs/dbus-monitor $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/.libs/dbus-run-session $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/.libs/dbus-send $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/.libs/dbus-uuidgen $(FS_TG_PATH)/usr/sbin
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/tools/dbus-cleanup-sockets $(FS_TG_PATH)/usr/sbin
+
+	# cp lib
+	cp $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/dbus/.libs/libdbus-1.so.3.8.14 $(FS_TG_PATH)/lib
+	cd $(FS_TG_PATH)/lib/ && ln -sf libdbus-1.so.3.8.14 libdbus-1.so.3 && ln -sf libdbus-1.so.3.8.14 libdbus-1.so
+	
+	# cp config
+	cp -rf $(PUBLIC_APPS_PATH)/dbus-dbus-1.8/config_files/etc  $(FS_TG_PATH)/
+
+udevtrigger:
+	@echo "build udevtrigger"
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/udevtrigger
+
+udevtrigger_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/udevtrigger clean
+
+udevtrigger_install:
+	cp $(PUBLIC_APPS_PATH)/udevtrigger/udevtrigger $(FS_TG_PATH)/usr/sbin
+
+test_cmd:
+	cd  $(PUBLIC_APPS_PATH)/test_cmd && $(CC) test_cmd.c -o test_cmd

@@ -1,0 +1,378 @@
+
+
+menu 'DEBUG Options'
+config INCLUDE_CMM_OPTIMIZE_SIZE
+	bool "build private/user apps with -Os"
+	default n
+
+choice
+	prompt "CMM Debug Level"
+	default INCLUDE_CDBG_LEVEL1
+	help
+	  Choose CMM Debug Level
+
+config INCLUDE_CDBG_LEVEL1
+	bool "CDBG_LEVEL1: only print ERROR msg"
+
+config INCLUDE_CDBG_LEVEL2
+	bool "CDBG_LEVEL2: print ERROR & NOTICE msg"
+	
+config INCLUDE_CDBG_LEVEL3
+	bool "CDBG_LEVEL3: print all msg"
+
+config INCLUDE_CDBG_RUNTIME
+	bool "CDBG_RUNTIME: modify debug level runtime. Notice: only enabled in debug version"
+
+endchoice
+
+config INCLUDE_CORE_DUMP_SIZE
+	string "Set core dump size(number: blocks(0.5KB); 0: disabled; unlimited: unlimited)"
+	default "512"
+
+config INCLUDE_CORE_DUMP_MAPS
+	bool "Store /proc/pid/maps to /var when coredump"
+	default n
+
+config INCLUDE_CDBG_DUMPSTACK
+	bool "Use tdb to dump stack in CDBG_DUMPSTACK"
+	default n
+
+choice
+	prompt "CMM Symbol Strip Level"
+	default INCLUDE_CMM_STRIP_ALL
+	help
+		Choose CMM Strip Symbol Level
+
+config INCLUDE_CMM_STRIP_ALL
+	bool "Strip all unneeded symbols(default)"
+
+config INCLUDE_CMM_STRIP_DEBUG
+	bool "Strip only debug symbols(for tdb)"
+
+config INCLUDE_CMM_STRIP_NONE
+	bool "Do not strip any symbol(for gdb/valgrind)"
+	help
+		Works better with INCLUDE_CMM_OPTIMIZE_SIZE(build private/user apps with -Os) disabled.
+
+endchoice
+
+config INCLUDE_KEEP_LIB_SYMBOL
+	bool "Do not strip symbol of SDK libs(mainly for gdb/valgrind)"
+	default n
+
+config INCLUDE_BCM_DSLDIAGD
+	bool "for bcm dsldiagd "
+	default n
+
+config INCLUDE_HTTP_JSON_FMT
+	bool "httpd return json with readable format"
+	default n
+
+config INCLUDE_TCPDUMP
+	bool "build tcpdump tools"
+	default n
+
+config INCLUDE_STRACE
+	bool "build strace tools"
+	default n
+
+config INCLUDE_VALGRIND
+	bool "build valgrind tools"
+	default n
+
+config INCLUDE_MEM_DBG_SCRIPT
+	bool "add memory debug shell script to image"
+	default n
+
+config INCLUDE_PRLIMIT
+	bool "build prlimit tool"
+	default n
+
+config INCLUDE_TEST
+	bool "test config by yangxv(mainly not used)"
+	default n
+	
+config INCLUDE_DEBUG_LOCK
+	bool "get lock and unlock info from /var/run/debug_dmlock.txt or debug_lock_*.txt"
+	default n
+
+config INCLUDE_MSG_DEBUG
+	bool "get msg send info from /var/run/debug_msg.txt"
+	default n
+
+config INCLUDE_DEBUG_DETAIL_FORCED
+	bool "force to print debug detail"
+	default n
+
+config INCLUDE_DEBUG_CUTIL_CC_LEVEL
+	int "cutil compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CUTIL_RUN_LEVEL
+	int "cutil running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_SMHM_INF_CC_LEVEL
+	int "smarthome interface compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_SMHM_INF_RUN_LEVEL
+	int "smarthome interface running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_GDPR_CC_LEVEL
+	int "gdpr lib compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_GDPR_RUN_LEVEL
+	int "gdpr lib running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CJSON_CC_LEVEL
+	int "cjson lib compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CJSON_RUN_LEVEL
+	int "cjson lib running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CMM_CC_LEVEL
+	int "CMM compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CMM_RUN_LEVEL
+	int "CMM running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_HTTPD_CC_LEVEL
+	int "HTTPD compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_HTTPD_RUN_LEVEL
+	int "HTTPD running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_COS_CC_LEVEL
+	int "COS compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_COS_RUN_LEVEL
+	int "COS running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_DNSPX_CC_LEVEL
+	int "dns proxy compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_DNSPX_RUN_LEVEL
+	int "dns proxy running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CWMP_CC_LEVEL
+	int "CWMP compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CWMP_RUN_LEVEL
+	int "CWMP running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CWMP_TRANSACTION_COST
+	bool "print CWMP cost time for each trasaction"
+	default n
+
+config INCLUDE_DEBUG_CWMP_DMMAP_INSTANCE_COST
+	bool "print CWMP cost time for each dmmap instance"
+	default n
+
+config INCLUDE_DEBUG_CWMP_DMMAP_ENTRY_COST
+	bool "print CWMP cost time for each dmmap entry"
+	default n
+
+config INCLUDE_DEBUG_TPAPP_CC_LEVEL
+	int "TPAPP compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_TPAPP_RUN_LEVEL
+	int "TPAPP running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_MESH_CC_LEVEL
+	int "MESH compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_MESH_RUN_LEVEL
+	int "MESH running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_OAM_CC_LEVEL
+	int "OAM compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_OAM_RUN_LEVEL
+	int "OAM running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_DIAG_CC_LEVEL
+	int "diagTool compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_DIAG_RUN_LEVEL
+	int "diagTool running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_TR143_CC_LEVEL
+	int "tr143 compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_TR143_RUN_LEVEL
+	int "tr143 running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_RCSH_CC_LEVEL
+	int "rcsHook compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_RCSH_RUN_LEVEL
+	int "rcsHook running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_QOE_CC_LEVEL
+	int "qoeStatistics compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_QOE_RUN_LEVEL
+	int "qoeStatistics running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_IPSEC_CC_LEVEL
+	int "ipsecVpn compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_IPSEC_RUN_LEVEL
+	int "ipsecVpn running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_NTPC_CC_LEVEL
+	int "ntpclient compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_NTPC_RUN_LEVEL
+	int "ntpclient running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_WANCONN_CC_LEVEL
+	int "wanconn compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_WANCONN_RUN_LEVEL
+	int "wanconn running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CLOUD_CC_LEVEL
+	int "cloud compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CLOUD_RUN_LEVEL
+	int "cloud running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_MOBILE_CC_LEVEL
+	int "mobile compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_MOBILE_RUN_LEVEL
+	int "mobile running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_CMD_CC_LEVEL
+        int "Container manager compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+        range 0,3
+        default 1
+
+config INCLUDE_DEBUG_CMD_RUN_LEVEL
+        int "Container manager running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+        range 0,3
+        default 1
+
+config INCLUDE_DEBUG_CMGR_CC_LEVEL
+        int "Container manager compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+        range 0,3
+        default 1
+
+config INCLUDE_DEBUG_CMGR_RUN_LEVEL
+        int "Container manager running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+        range 0,3
+        default 1
+
+config INCLUDE_CMM_DEBUG_CALL_TRACE
+	bool "Print rdp/rsl call trace"
+	default n
+
+config INCLUDE_DEBUG_WEB_DATAMSG
+	bool "Enable WEB debug($.debug=true to print AJAX msg)"
+	default n
+	help
+		If enabled, input '$.debug=true' in WEB browser console to print all AJAX msgs.
+		Input '$.debug=false' to stop print AJAX msgs.
+
+config INCLUDE_DEBUG_WEB_TRANS
+	bool "Do WEB translate selftest when loading page and print errs to WEB console"
+	default n
+	help
+		If enabled, translate code erros will print to WEB browser console when loading new page.
+		Input '$.debugT=false' in WEB console to stop printing.
+		You can also input '$.debugT=true' to start this check even if this option is not selected.
+
+config INCLUDE_DEBUG_FWLOGD_CC_LEVEL
+	int "advanced firewall log compile debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+config INCLUDE_DEBUG_FWLOGD_RUN_LEVEL
+	int "advanced firewall log running debug level (0:error, 1:warning, 2:debug, 3:trace)"
+	range 0,3
+	default 1
+
+endmenu

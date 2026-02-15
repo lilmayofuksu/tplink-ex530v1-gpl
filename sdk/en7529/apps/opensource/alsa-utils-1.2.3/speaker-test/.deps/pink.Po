@@ -1,0 +1,82 @@
+pink.o: pink.c \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/math.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/math-vector.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/libm-simd-decl-stubs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_val.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_valf.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_vall.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/inf.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/nan.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathdef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathcalls.h \
+ pink.h
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/math.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/math-vector.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/libm-simd-decl-stubs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_val.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_valf.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_vall.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/inf.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/nan.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathdef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathcalls.h:
+
+pink.h:

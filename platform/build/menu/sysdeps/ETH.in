@@ -1,0 +1,180 @@
+
+
+menu 'Ethernet Options'
+
+choice
+	prompt "Ethernet Supplier"
+	default INCLUDE_ETH_FAKE
+
+config INCLUDE_ETH_ECN
+	bool "Build Econet ethernet"
+	
+config INCLUDE_ETH_MTK
+	bool "Build MTK ethernet"
+
+config INCLUDE_ETH_ATH
+	bool "Build Atheros ethernet"
+	
+config INCLUDE_ETH_QCA
+	bool "Build Qualcomm ethernet"
+
+config INCLUDE_ETH_BCM
+	bool "Build Broadcom ethernet"
+
+config INCLUDE_ETH_RTL
+	bool "Build Realtek ethernet"
+	
+config INCLUDE_ETH_FAKE
+	bool "Build Fake ethernet"
+
+endchoice
+
+config INCLUDE_ETH_QCA_808x
+	bool "Build Qualcomm ethernet 808x chipset"
+	default n
+	depends on INCLUDE_ETH_QCA
+
+menu "Ethernet interface Real/Alias Name Mapping"
+
+config INCLUDE_REAL_NAME_EWAN
+	string "EWAN  Real Name"
+	default "eth4" if INCLUDE_ETH_BCM
+	default "nas10" if INCLUDE_ETH_ECN
+
+config INCLUDE_REAL_NAME_EWAN_AS_LAN
+	string "EWAN Real Name as LAN"
+	default "eth4" if INCLUDE_ETH_BCM
+	default "eth0.1" if INCLUDE_ETH_ECN
+
+config INCLUDE_REAL_NAME_LAN_WAN_REUSE
+	string "reuse port  Real Name"
+	default "eth0.4" if INCLUDE_ETH_ECN
+	depends on INCLUDE_ETHERNET_LAN_WAN_REUSE
+
+config INCLUDE_REAL_NAME_SFP
+	string "SFP Real Name"
+	default "eth3" if INCLUDE_ETH_BCM
+    depends on INCLUDE_SFP_WAN
+
+config INCLUDE_REAL_NAME_LAN_NUM
+	int "LAN port number"
+	range 0,4
+	default 4
+
+config INCLUDE_REAL_NAME_LAN_ROOT
+	string "Root LAN Real Name"
+	default "eth0" if INCLUDE_ETH_BCM
+	default "eth0" if INCLUDE_ETH_ECN
+
+config INCLUDE_REAL_NAME_LAN_1
+	string "LAN1 Real Name"
+	default "eth0" if INCLUDE_ETH_BCM
+	default "eth0.5" if INCLUDE_ETH_ECN
+	depends on (INCLUDE_REAL_NAME_LAN_NUM = 1 || INCLUDE_REAL_NAME_LAN_NUM = 2 || INCLUDE_REAL_NAME_LAN_NUM = 3 || INCLUDE_REAL_NAME_LAN_NUM = 4)
+
+config INCLUDE_REAL_NAME_LAN_2
+	string "LAN2 Real Name"
+	default "eth1" if INCLUDE_ETH_BCM
+	default "eth0.4" if INCLUDE_ETH_ECN
+	depends on (INCLUDE_REAL_NAME_LAN_NUM = 2 || INCLUDE_REAL_NAME_LAN_NUM = 3 || INCLUDE_REAL_NAME_LAN_NUM = 4)
+
+config INCLUDE_REAL_NAME_LAN_3
+	string "LAN3 Real Name"
+	default "eth2" if INCLUDE_ETH_BCM
+	default "eth0.3" if INCLUDE_ETH_ECN
+	depends on (INCLUDE_REAL_NAME_LAN_NUM = 3 || INCLUDE_REAL_NAME_LAN_NUM = 4)
+
+config INCLUDE_REAL_NAME_LAN_4
+	string "LAN4 Real Name"
+	default "eth3" if INCLUDE_ETH_BCM
+	default "eth0.2" if INCLUDE_ETH_ECN
+	depends on (INCLUDE_REAL_NAME_LAN_NUM = 4)
+
+config INCLUDE_REAL_NAME_PREFIX_WAN
+	string "WAN Prefix Real Name"
+	default "eth" if INCLUDE_ETH_BCM
+	default "nas" if INCLUDE_ETH_ECN
+
+config INCLUDE_REAL_NAME_PREFIX_LAN
+	string "LAN Prefix Real Name"
+	default "eth"
+
+config INCLUDE_REAL_NAME_DEFAULT_BRIDGE
+	string "Default Bridge Name"
+	default "br0"
+
+config INCLUDE_DEFAULT_BRIDGE_IP_ADDRESS
+	string "Default Bridge IP ADDRESS"
+	default "192.168.0.1"
+
+config INCLUDE_DHCPV4_POOL_MIN_ADDRESS
+	string "DHCPV4 SERVER POOL MIN ADDRESS"
+	default "192.168.0.100"
+
+config INCLUDE_DHCPV4_POOL_MAX_ADDRESS
+	string "DHCPV4 SERVER POOL MAX ADDRESS"
+	default "192.168.0.199"
+
+endmenu
+
+config INCLUDE_ETHERNET_VIRTUAL_LAN_PORT
+	bool "Support virtual LAN port"
+	default n
+	
+config INCLUDE_ETHERNET_LAN_WAN_REUSE
+	bool "Support dynamically transform LAN WAN port"
+	default n
+	
+config INCLUDE_IFF_WAN_DEV
+	string "Indicate WAN device - if.h"
+	default "0x200000" if INCLUDE_ETH_BCM
+	default "0x4000" if INCLUDE_ETH_ECN
+	default "0x800000" if INCLUDE_ETH_LTQ
+
+config INCLUDE_VOIP_AND_IPTV_SUPPORT_EWAN_CONNECT
+	bool "support voip and iptv establish ewan connect"
+	default n
+
+config INCLUDE_TR143_GRO
+	bool "Ethtool support"
+	default n
+
+config INCLUDE_MULTI_EWAN_INTF
+	bool "multi ewan support"
+	default n
+	depends on INCLUDE_ETHERNET_WAN
+
+config INCLUDE_EWAN_INTF_NUM
+	int "EWAN Interface num"
+	range 1,5
+	default 2
+	depends on INCLUDE_MULTI_EWAN_INTF
+
+config INCLUDE_SFP_WAN
+    bool "Support SFP WAN"
+    default n
+	depends on INCLUDE_MULTI_EWAN_INTF
+
+config INCLUDE_ETH_WAN_LAN_CONFIG
+	bool "Config Eth WAN to WAN/LAN"
+	default n
+	depends on INCLUDE_ETHERNET_WAN && !INCLUDE_ETHERNET_LAN_WAN_REUSE
+
+config INCLUDE_TP_25G_WAN_8221_PHY
+	bool "Ethnet support 2.5G with RTL8221"
+	default n
+
+config INCLUDE_AQR_10G_PHY
+	bool "Ethnet support 10G with AQR113"
+	default n
+	
+config INCLUDE_GET_PHY_STAT_BY_ETHTOOL
+	bool "whether get phy stat via ethtool instead of proc interface"
+	default n
+	depends on INCLUDE_TR143_GRO
+
+config INCLUDE_LAN_VLAN
+	bool "Support LAN with VLAN ID"
+	default n
+endmenu
+	

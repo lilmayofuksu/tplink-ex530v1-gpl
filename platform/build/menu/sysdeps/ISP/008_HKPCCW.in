@@ -1,0 +1,16 @@
+config INCLUDE_HKPCCW_OPTIONS
+	bool "HKPCCW all options (B&C)"
+	depends on INCLUDE_HKPCCW
+
+	######## SELECT Type B ##########
+	select INCLUDE_CWMP_SSL_MIN_TLS1_2
+	select INCLUDE_HTTP_SSL_MIN_TLS1_2
+	
+	######## SELECT Type C ##########
+	select INCLUDE_BR_RT_BOND
+
+########## Define Type C ############
+config INCLUDE_BR_RT_BOND
+	bool "Bond Bridge to Route Interface"
+	default n
+	depends on INCLUDE_HKPCCW_OPTIONS

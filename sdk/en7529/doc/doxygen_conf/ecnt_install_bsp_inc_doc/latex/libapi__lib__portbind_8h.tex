@@ -1,0 +1,115 @@
+\hypertarget{libapi__lib__portbind_8h}{}\section{libapi\+\_\+lib\+\_\+portbind.\+h File Reference}
+\label{libapi__lib__portbind_8h}\index{libapi\+\_\+lib\+\_\+portbind.\+h@{libapi\+\_\+lib\+\_\+portbind.\+h}}
+
+
+This file is libapi lib portbind header file for portbind A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__portbind_8h_a5847134597425827c27a5fbfe7ee5bfe}\label{libapi__lib__portbind_8h_a5847134597425827c27a5fbfe7ee5bfe}} 
+\#define {\bfseries A\+P\+I\+\_\+\+L\+I\+B\+\_\+\+S\+U\+C\+C\+E\+SS}~(0)
+\item 
+\mbox{\Hypertarget{libapi__lib__portbind_8h_a772a2e8208dfa8787fa489d319cec301}\label{libapi__lib__portbind_8h_a772a2e8208dfa8787fa489d319cec301}} 
+\#define {\bfseries A\+P\+I\+\_\+\+L\+I\+B\+\_\+\+F\+A\+IL}~(-\/1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libapi__lib__portbind_8h_aee440cc779d9b58d555934d3baa2b3a3}{portbind\+\_\+lib\+\_\+del\+\_\+route} (char $\ast$ip\+\_\+ver, char $\ast$if\+\_\+name)
+\begin{DoxyCompactList}\small\item\em This function delete the route of interface. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__portbind_8h_ae8439e60bd5ea7e0e574032d97794c37}{portbind\+\_\+lib\+\_\+add\+\_\+route} (char $\ast$ip\+\_\+ver, char $\ast$if\+\_\+name, char $\ast$dev\+\_\+name, char $\ast$gateway, char $\ast$gateway6)
+\begin{DoxyCompactList}\small\item\em This function add the route of interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is libapi lib portbind header file for portbind A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Lei.\+Zhang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/23 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__portbind_8h_ae8439e60bd5ea7e0e574032d97794c37}\label{libapi__lib__portbind_8h_ae8439e60bd5ea7e0e574032d97794c37}} 
+\index{libapi\+\_\+lib\+\_\+portbind.\+h@{libapi\+\_\+lib\+\_\+portbind.\+h}!portbind\+\_\+lib\+\_\+add\+\_\+route@{portbind\+\_\+lib\+\_\+add\+\_\+route}}
+\index{portbind\+\_\+lib\+\_\+add\+\_\+route@{portbind\+\_\+lib\+\_\+add\+\_\+route}!libapi\+\_\+lib\+\_\+portbind.\+h@{libapi\+\_\+lib\+\_\+portbind.\+h}}
+\subsubsection{\texorpdfstring{portbind\+\_\+lib\+\_\+add\+\_\+route()}{portbind\_lib\_add\_route()}}
+{\footnotesize\ttfamily int portbind\+\_\+lib\+\_\+add\+\_\+route (\begin{DoxyParamCaption}\item[{char $\ast$}]{ip\+\_\+ver,  }\item[{char $\ast$}]{if\+\_\+name,  }\item[{char $\ast$}]{dev\+\_\+name,  }\item[{char $\ast$}]{gateway,  }\item[{char $\ast$}]{gateway6 }\end{DoxyParamCaption})}
+
+
+
+This function add the route of interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip\+\_\+ver} & ip version v4/v6/all \\
+\hline
+\mbox{\tt in}  & {\em if\+\_\+name} & interface name \\
+\hline
+\mbox{\tt in}  & {\em dev\+\_\+name} & device name \\
+\hline
+\mbox{\tt in}  & {\em gateway} & ipv4 gateway \\
+\hline
+\mbox{\tt in}  & {\em gateway6} & ipv6 gateway \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add the route of interface. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__portbind_8h_aee440cc779d9b58d555934d3baa2b3a3}\label{libapi__lib__portbind_8h_aee440cc779d9b58d555934d3baa2b3a3}} 
+\index{libapi\+\_\+lib\+\_\+portbind.\+h@{libapi\+\_\+lib\+\_\+portbind.\+h}!portbind\+\_\+lib\+\_\+del\+\_\+route@{portbind\+\_\+lib\+\_\+del\+\_\+route}}
+\index{portbind\+\_\+lib\+\_\+del\+\_\+route@{portbind\+\_\+lib\+\_\+del\+\_\+route}!libapi\+\_\+lib\+\_\+portbind.\+h@{libapi\+\_\+lib\+\_\+portbind.\+h}}
+\subsubsection{\texorpdfstring{portbind\+\_\+lib\+\_\+del\+\_\+route()}{portbind\_lib\_del\_route()}}
+{\footnotesize\ttfamily int portbind\+\_\+lib\+\_\+del\+\_\+route (\begin{DoxyParamCaption}\item[{char $\ast$}]{ip\+\_\+ver,  }\item[{char $\ast$}]{if\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+This function delete the route of interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip\+\_\+ver} & ip version v4/v6/all \\
+\hline
+\mbox{\tt in}  & {\em if\+\_\+name} & interface name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete the route of interface. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

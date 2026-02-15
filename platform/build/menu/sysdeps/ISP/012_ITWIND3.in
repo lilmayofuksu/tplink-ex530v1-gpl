@@ -1,0 +1,16 @@
+config INCLUDE_ITWIND3_OPTIONS
+	bool "Italy Wind3 all options (B&C)"
+	depends on INCLUDE_ITWIND3
+
+	######## SELECT Type B ##########
+	select INCLUDE_WRITE_USER_PWD
+	select INCLUDE_DDNS_TR181
+	
+	######## SELECT Type C ##########
+	select INCLUDE_ITWIND3_RESET_ADMINPWD
+
+########## Define Type C ############
+config INCLUDE_ITWIND3_RESET_ADMINPWD
+	bool "allow restore user password to default value in flash"
+	default n
+	depends on INCLUDE_ITWIND3_OPTIONS

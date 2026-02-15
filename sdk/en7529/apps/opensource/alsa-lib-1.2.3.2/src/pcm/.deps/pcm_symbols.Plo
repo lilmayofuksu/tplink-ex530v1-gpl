@@ -1,0 +1,4 @@
+pcm_symbols.lo: pcm_symbols.c \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h:

@@ -1,0 +1,81 @@
+#!/bin/sh
+
+echo 3 > /proc/sys/vm/drop_caches
+
+/bin/mkdir -m 0777 -p /var/Wireless/RT2860AP
+
+# USB Driver
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/mtk_xhci/xhci-hcd.ko
+
+#add by Zhao Mengqing, 2016-4-2
+insmod /lib/modules/module_sel.ko
+#insmod /lib/modules/tcsmux.ko
+#insmod /lib/modules/tcportbind.ko
+#insmod /lib/modules/tcvlantag.ko
+insmod /lib/modules/tcledctrl.ko
+insmod /lib/modules/tccicmd.ko
+#insmod /lib/modules/sif.ko
+#insmod /lib/modules/crypto_k.ko
+insmod /lib/modules/fe_core.ko
+insmod /lib/modules/qdma_lan.ko
+insmod /lib/modules/eth.ko
+insmod /lib/modules/eth_ephy.ko
+#insmod /lib/modules/igmpsnoop.ko
+insmod /lib/modules/dying_gasp.ko
+
+qdmamgr_lan set rxratelimit config Enable packet
+qdmamgr_lan set rxratelimit value 0 60000
+qdmamgr_lan set rxratelimit value 1 1000000
+
+insmod /lib/modules/qdma_wan.ko
+qdmamgr_wan set rxratelimit config Enable packet
+qdmamgr_wan set rxratelimit value 0 60000
+qdmamgr_wan set rxratelimit value 1 1000000
+
+echo "MTK DSP support"
+echo 3 > /proc/sys/vm/drop_caches
+ 
+insmod /lib/modules/sys_mod.ko
+insmod /lib/modules/DSPCore.ko
+insmod /lib/modules/pcm1.ko
+insmod /lib/modules/lec.ko
+insmod /lib/modules/spi.ko
+insmod /lib/modules/slic3.ko type=ZSI
+insmod /lib/modules/fxs3.ko slic1=le9642 slic2=le9642
+insmod /lib/modules/ksocket.ko
+insmod /lib/modules/ortp.ko
+insmod /lib/modules/acodec_x.ko
+insmod /lib/modules/foip.ko
+insmod /lib/modules/ovdsp.ko
+insmod /lib/modules/pcmDump.ko
+ 
+taskset -p 0x8 `pidof ORTP_TASK`
+taskset -p 0x8 `pidof fxs_task`
+taskset -p 0x8 `pidof DSPProc`
+taskset -p 0x8 `pidof DspDlTask`
+taskset -p 0x8 `pidof DspUlTask`
+taskset -p 0x8 `pidof cid_task`
+ 
+echo 8 > /proc/irq/12/smp_affinity
+#CPU3 is only for VOIP, wangyang 29Jun16
+echo 4 > /proc/irq/22/smp_affinity
+
+insmod /lib/modules/pwm.ko
+echo 1 > /proc/tc3162/pwm_start
+
+echo "active 19 1" > /proc/tc3162/gpio_output
+echo "active 20 1" > /proc/tc3162/gpio_output
+echo 1 > /proc/tc3162/vlan_tag_sw
+
+echo 5120 > /proc/sys/vm/min_free_kbytes
+echo 8192 > /proc/net/skbmgr_driver_max_skb
+echo 8192 > /proc/net/skbmgr_limit
+echo 4096 > /proc/net/skbmgr_4k_limit 
+
+echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+echo 4096 > /proc/sys/net/netfilter/nf_conntrack_expect_max
+echo 6000 > /proc/sys/net/ipv6/neigh/default/gc_stale_time
+echo 8 >/proc/irq/22/smp_affinity
+
+ifconfig eth0 up
+

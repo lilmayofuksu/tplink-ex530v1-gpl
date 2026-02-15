@@ -1,0 +1,616 @@
+####################################################
+# Supplier compiler variable        
+####################################################	
+SDK_MAKE_ARGS=
+
+# For toolchain path
+ifeq (arm,$(ARCH))
+export HOST=arm-linux
+ifeq (UNION_EN7523_GLIBC_7915D_MAP_demo, $(SDK_CONFIG))
+export CC_TARBALL=buildroot-gcc493_glibc222_arm32_32bServer.tar.gz
+export TOOLPREFIX=arm-buildroot-linux-gnueabi-
+export TOOLROOTPATH=/opt/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/
+export SLIB_PATH=$(SDK_PATH)/Project/lib/arm32-gcc493-glibc222-lib
+export AWK=/usr/bin/gawk
+CUSTOM=CT
+MPLATFORM=UNION_EN7523_GLIBC_7915_7915_ActiveEthWan_demo
+SDK_MAKE_ARGS:=$(SDK_MAKE_ARGS) -f $(SDK_PATH)/app_bsp/MakeFile_Main_BSP MPLATFORM=$(MPLATFORM)
+else ifeq (UNION_EN7523_GLIBC_7916D_7623_MAP_demo, $(SDK_CONFIG))
+export CC_TARBALL=buildroot-gcc493_glibc222_arm32_32bServer.tar.gz
+export TOOLPREFIX=arm-buildroot-linux-gnueabi-
+export TOOLROOTPATH=/opt/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/
+export SLIB_PATH=$(SDK_PATH)/Project/lib/arm32-gcc493-glibc222-lib
+export AWK=/usr/bin/gawk
+CUSTOM=CT
+MPLATFORM=UNION_EN7523_GLIBC_7916D_7623_MAP_demo
+SDK_MAKE_ARGS:=$(SDK_MAKE_ARGS) -f $(SDK_PATH)/app_bsp/MakeFile_Main_BSP MPLATFORM=$(MPLATFORM)
+else
+export CC_TARBALL=mips-linux-uclibc-4.3.6-v2.tgz
+export TOOLPREFIX=mips-unknown-linux-uclibc-
+export TOOLROOTPATH=/opt/trendchip/mips-linux-uclibc-4.3.6-v2/usr
+export SLIB_PATH=$(TOOLROOTPATH)/mips-unknown-linux-uclibc/sysroot
+endif
+else #(arm,$(ARCH))
+$(warning "mips crosscompiler")
+export HOST=mipsel-linux
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+export CC_TARBALL=mipsel-linux-glibc2.22-4.6.3.tgz
+export TOOLPREFIX=mipsel-buildroot-linux-gnu-
+export TOOLROOTPATH=/opt/trendchip/mipsel-linux-glibc2.22-4.6.3/usr/
+export SLIB_PATH=$(SDK_PATH)/Project/lib/mips-linux-glibc-v4.6-el
+export AWK=/usr/bin/gawk
+CUSTOM=CT
+MPLATFORM=UNION_EN7580_SFU_KERNEL_4_4_demo
+SDK_MAKE_ARGS:=$(SDK_MAKE_ARGS) -f $(SDK_PATH)/app_bsp/MakeFile_Main_BSP MPLATFORM=$(MPLATFORM)
+else # (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+$(warning "TODO: crosscompiler not enhance yet")
+endif # (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+endif #(arm,$(ARCH))
+
+# For SDK Profile
+export PROFILE=$(SDK_CONFIG)
+export SDK_CONFIG_FILE=$(SDK_PATH)/Project/profile/CT/$(PROFILE)/$(PROFILE).profile
+# For Kernl Path
+ifeq (UNION_EN7523_GLIBC_7915D_MAP_demo, $(SDK_CONFIG))
+export KERNELPATH=$(SDK_PATH)/linux-4.4.115
+export KERNELHEADER=$(KERNELPATH)/usr/include
+else ifeq (UNION_EN7523_GLIBC_7916D_7623_MAP_demo, $(SDK_CONFIG))
+export KERNELPATH=$(SDK_PATH)/linux-4.4.115
+export KERNELHEADER=$(KERNELPATH)/usr/include
+else ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+$(warning "UNION_EN7580_SFU_KERNEL_4_4_demo")
+export KERNELPATH=$(SDK_PATH)/linux-4.4.115
+export KERNELHEADER=$(KERNELPATH)/usr/include
+else
+export KERNELPATH=$(SDK_PATH)/linux-2.6.36
+# For some special application, such like ipsectool
+export KERNELHEADER=$(KERNELPATH)/include
+endif
+
+SDK_MAKE_ARGS:=$(SDK_MAKE_ARGS) CUSTOM=$(CUSTOM) MSDK=1 PROFILE=$(PROFILE)
+
+###############################################################################
+
+# For cross compiler
+export CC = $(TOOLPREFIX)gcc
+export LD = $(TOOLPREFIX)ld
+export AR = $(TOOLPREFIX)ar
+export STRIP = $(TOOLPREFIX)strip
+export RANLIB = $(TOOLPREFIX)ranlib
+export MAKEARCH = $(MAKE) ARCH=$(ARCH)
+export PATH:=$(TOOLROOTPATH)/bin:$(PATH)
+export LD_LIBRARY_PATH:=$(TOOLROOTPATH)/lib:$(LD_LIBRARY_PATH)
+
+export KERNELARCH=$(ARCH)
+export KERNELRELEASE=$(shell cat $(KERNELPATH)/include/config/kernel.release 2> /dev/null)
+export KERNELVERSION=$(shell cat $(KERNELPATH)/include/linux/version.h 2> /dev/null | grep -o [0-9]\\\{1,\\\}$$)
+
+###############################################################################
+
+SUPPILER_INCLUDE  =
+
+SUPPILER_LD  =
+
+SUPPLIER_FLAGS  =
+
+MODEL_LED_CONF = $(MODEL_PATH)/led_def.conf
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+BOOT_LED_CONF = $(BOOTROM_DIR)/bootram/init/tp_led_gpio_def.h
+else
+BOOT_LED_CONF = $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/include/tp_led_gpio_def.h
+$(warning "BOOT_LED_CONF" $(BOOT_LED_CONF))
+endif # UNION_EN7580_SFU_KERNEL_4_4_demo
+
+# Remove "_demo" to get chip number
+ifeq ($(SDK_CONFIG), UNION_EN7523_GLIBC_7915D_MAP_demo)
+export CPU_TYPE=en7523
+else ifeq ($(SDK_CONFIG), UNION_EN7523_GLIBC_7916D_7623_MAP_demo)
+export CPU_TYPE=en7523
+else ifeq ($(SDK_CONFIG), UNION_EN7580_SFU_KERNEL_4_4_demo)
+export CPU_TYPE=en7580
+else
+export CPU_TYPE=$(subst _demo,,$(SDK_CONFIG))
+endif
+SUPPLIER_FLAGS += -DTCSUPPORT_CPU_$(shell echo $(CPU_TYPE) | tr '[a-z]' '[A-Z]')
+
+
+# For SDK specific include, for apps/
+export SUPPILER_INCLUDE
+# For SDK specific library, for apps/
+ifneq ($(SDK_CONFIG), UNION_EN7580_SFU_KERNEL_4_4_demo)
+SUPPILER_LD += -L$(BSP_EXT_FS)/lib -liw
+endif # UNION_EN7580_SFU_KERNEL_4_4_demo
+export SUPPILER_LD
+# For SDK specific flag
+export SUPPLIER_FLAGS
+
+###############################################################################
+
+# For pure SDK used
+
+export CROSS_COMPILE=$(TOOLPREFIX)
+export SDK_PATH
+
+SDK_PATH2=$(subst /,\/,$(SDK_PATH))
+$(shell sed -i 's/TRUNK_DIR=.*/TRUNK_DIR=$(SDK_PATH2)/g' $(SDK_PATH)/Project/dir.mak)
+$(shell sed -i 's/^export BSP_CFLAGS.*/export BSP_CFLAGS += $$(SDK_FLAGS)/g' $(SDK_PATH)/Project/rule.mak)
+$(shell sed -i 's/^export TC_CFLAGS.*/export TC_CFLAGS += $$(SDK_FLAGS)/g' $(SDK_PATH)/apps/private/apps_rule.mak)
+$(shell sed -i 's/TRUNK_DIR=.*/TRUNK_DIR=$(SDK_PATH2)/g' $(SDK_PATH)/apps/private/apps_dir.mak)
+
+
+-include $(SDK_PATH)/Project/rule.mak
+-include $(SDK_PATH)/Project/dir.mak
+#-include $(SDK_PATH)/apps/private/apps_rule.mak
+#-include $(SDK_PATH)/apps/private/apps_dir.mak
+
+
+###############################################################################
+# SDK build label
+###############################################################################
+sdk/%::
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) $(patsubst sdk/%, %, $@)
+
+sdkapp/%::
+	cd $(SDK_PATH) && $(MAKE) -f $(SDK_PATH)/apps/private/MakeFile_Main_APP MPLATFORM=$(MPLATFORM) CUSTOM=$(CUSTOM) MSDK=1 PROFILE=$(PROFILE) $(patsubst sdkapp/%, %, $@)
+
+sdk_test:
+	cd /mine/test && $(CC) -o zero zero.c
+
+supplier_env_build:
+ifeq ($(TCSUPPORT_3_18_21_KERNEL),)
+#	cp -f $(SDK_PATH)/tools/atm.h $(TOOLROOTPATH)/mips-unknown-linux-uclibc/sysroot/usr/include/linux/atm.h
+endif
+	echo $(TOOLROOTPATH)
+	if [ ! -e $(TOOLROOTPATH) ]; then \
+		echo "Install toolchain..."; \
+		tar -xvf $(SDK_PATH)/$(CC_TARBALL) -C /; \
+	fi
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) bsp_prepare
+	cat $(MODEL_PATH)/config.sdk | sed -r -e 's/#/\/\//g' -e 's/^([^=]*)=(.*)$$/#define \1=\2/g' -e 's/=y$$/=1/g' > $(MODEL_PATH)/config.sdk.h
+
+supplier_tools:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) tools
+	
+supplier_tools_clean:
+
+###############################################################################
+.PHONY: supplier_menuconfig
+supplier_menuconfig:
+	cp -pfT $(MODEL_PATH)/config.sdk $(SDK_CONFIG_FILE)
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) menuconfig
+	cp -pfT $(SDK_CONFIG_FILE) $(MODEL_PATH)/config.sdk
+	cat $(MODEL_PATH)/config.sdk | sed -r -e 's/#/\/\//g' -e 's/^([^=]*)=(.*)$$/#define \1=\2/g' -e 's/=y$$/=1/g' > $(MODEL_PATH)/config.sdk.h
+
+###############################################################################	
+supplier_boot_build: gen_$(BOOT_LED_CONF)
+	@echo "Make Boot Build"
+	cp -pfT $(MODEL_PATH)/mi.conf $(PROFILE_DIR)/mi.conf
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) bootbase_clean
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) bootbase
+	cp $(IMAGE_DIR)/tcboot.bin $(BOOT_TG_PATH)/boot.bin
+	cp $(IMAGE_DIR)/bootext.ram $(BOOT_TG_PATH)/bootext.ram
+ifneq ($(SDK_CONFIG), UNION_EN7580_SFU_KERNEL_4_4_demo)
+	cp $(TOOLS_UBOOT_DIR)/mkimage $(KERNEL_TG_PATH)
+endif # UNION_EN7580_SFU_KERNEL_4_4_demo
+	
+supplier_boot_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) bootbase_clean
+
+gen_$(BOOT_LED_CONF):
+	@echo "Generating $(BOOT_LED_CONF)"
+	@echo -ne 'typedef struct _TP_BOOT_LED_DEF\n{\n\tunsigned int id;\n\tunsigned char gpio;\n\tunsigned char reverse;\n} TP_BOOT_LED_DEF;\n' > $(BOOT_LED_CONF)
+	@echo -ne '\n#define CHAR2ID(a,b,c,d) (((a) << 24) | ((b) << 16) | ((c) << 8) | (d))\n' >> $(BOOT_LED_CONF)
+	@echo -ne 'static struct _TP_BOOT_LED_DEF tp_boot_led_def[] = \n{\n' >> $(BOOT_LED_CONF)
+	@grep -v "^#" $(MODEL_LED_CONF) | grep -v "^loops_per_sec=" | sed 's/\r//g' | grep -v "^$$" | awk '{x=length($$1);y=4-x;printf "\t{CHAR2ID(";for(i=1;i<=x;i++) printf "'\''"substr($$1,i,1)"'\''"; for(i=1;i<=y;i++) printf "'\'\''"; printf "), "$$2", "$$5"},\n"}' | sed -e "s/''/','/g" -e "s/''/0/g" >> $(BOOT_LED_CONF)
+	@echo -ne '};\n' >> $(BOOT_LED_CONF)
+	
+###############################################################################
+supplier_kernel_menuconfig:
+	cp -pfT $(MODEL_PATH)/config.kernel $(PROFILE_DIR)/$(KERNEL_CONF)
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) kernel_menuconfig
+	cp -pfT $(PROFILE_DIR)/$(KERNEL_CONF) $(MODEL_PATH)/config.kernel
+
+supplier_kernel_build:
+	@echo "ARCH = "$(ARCH)
+	cp -pfT $(MODEL_PATH)/config.kernel $(PROFILE_DIR)/$(KERNEL_CONF)
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) kernel
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+	cp -pf $(KERNELPATH)/linux.7z $(KERNEL_TG_PATH)/linux.7z
+	cp -pf $(KERNELPATH)/vmlinux $(KERNEL_TG_PATH)	
+else #(UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+	cp -pf $(KERNELPATH)/linux.7z $(KERNEL_TG_PATH)/linux.7z.origin
+	cp -pf $(KERNELPATH)/vmlinux $(KERNEL_TG_PATH)
+	cp -pf $(MODEL_PATH)/uImage.its $(KERNEL_TG_PATH)
+	cp -af $(KERNEL_DIR)/arch/arm/boot/dts/en7523.dtb $(KERNEL_TG_PATH)/ecnt.dtb
+	cd $(KERNEL_TG_PATH) && ./mkimage -f uImage.its linux.7z
+endif #(UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+
+supplier_kernel_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) kernel_clean
+
+###############################################################################
+
+supplier_modules_build:
+	@echo "Making supplier modules"
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) modules
+
+supplier_modules_install:
+	cp -pfR $(BSP_EXT_FS)/lib/modules/$(KERNELRELEASE)/kernel $(FS_TG_PATH)/lib/modules/kmdir/
+	cp -pf $(BSP_EXT_FS)/lib/modules/*.ko $(FS_TG_PATH)/lib/modules/
+
+supplier_modules_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) modules_clean
+
+###############################################################################
+SUPPLIER_APP += app_bsp
+#SUPPLIER_APP += apps_prepare
+#SUPPLIER_APP += apps_unopen
+#SUPPLIER_APP += cfg_ng
+#SUPPLIER_APP += tcci
+#SUPPLIER_APP += xpon_app
+#SUPPLIER_APP += sdk_apps 
+#SUPPLIER_APP = supplier_apps_pre
+#SUPPLIER_APP += ated
+#SUPPLIER_APP += wscd
+#SUPPLIER_APP += 8021X
+#SUPPLIER_APP += compileoption_lib
+#SUPPLIER_APP += libbsp_fe
+#SUPPLIER_APP += ecnt_lib_utl
+#SUPPLIER_APP += ecnt_lib_dbg
+#SUPPLIER_APP += wifi_lib
+#SUPPLIER_APP += wifi_cmd
+#SUPPLIER_APP += ecntevent_lib
+#SUPPLIER_APP += cpu_interrupt_lib
+#SUPPLIER_APP += cpu_interrupt_cmd
+#SUPPLIER_APP += api_lib
+#SUPPLIER_APP += api_cmd
+#SUPPLIER_APP += hw_nat
+#SUPPLIER_APP += ethcmd
+SUPPLIER_APP += brctl
+#SUPPLIER_APP += wl_tools_v28
+#SUPPLIER_APP += wl_tools_v29
+ifeq ($(INCLUDE_USB_PRINTER_SERVER), y)
+#SUPPLIER_APP += p910nd
+endif
+SUPPLIER_APP += supplier_ebtables
+
+SUPPLIER_APP_BUILD = $(addsuffix _build,$(SUPPLIER_APP))
+SUPPLIER_APP_CLEAN = $(addsuffix _clean,$(SUPPLIER_APP))
+
+.PHONY: $(SUPPLIER_APP_BUILD) $(SUPPLIER_APP_CLEAN)
+
+supplier_apps_build: $(SUPPLIER_APP_BUILD)
+supplier_apps_clean: $(SUPPLIER_APP_CLEAN)
+
+app_bsp_build:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) app_bsp bspcopy
+	cd $(BSP_EXT_FS)/lib && ln -sf libiw.so.28 libiw.so
+app_bsp_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) app_bsp_clean copy_project_tools_for_app_clean
+
+apps_prepare_build:
+	$(MAKE) sdkapp/apps_prepare
+apps_prepare_clean:
+	$(MAKE) sdkapp/apps_prefs_clean
+
+apps_unopen_build:
+	$(MAKE) sdkapp/apps_unopen
+apps_unopen_clean:
+	$(MAKE) sdkapp/apps_unopen_clean
+
+cfg_ng_build:
+	$(MAKE) sdkapp/cfg_ng
+cfg_ng_clean:
+	$(MAKE) sdkapp/cfg_ng_clean
+	
+tcci_build:
+	$(MAKE) sdkapp/tcci
+tcci_clean:
+	$(MAKE) sdkapp/tcci_clean	
+
+sdk_apps_build:
+	$(MAKE) sdkapp/apps	
+sdk_apps_clean:
+	$(MAKE) sdkapp/apps_clean
+
+supplier_apps_pre_build:
+	mkdir -p $(SDK_PATH)/filesystem/userfs/bin
+	mkdir -p $(SDK_PATH)/filesystem/usr/bin
+	mkdir -p $(SDK_PATH)/lib_install
+
+ated_build: ated_clean
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) ated
+ated_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) ated_clean
+
+wscd_build:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) wscd
+wscd_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) wscd_clean
+
+8021X_build: 8021X_clean
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) 8021X
+8021X_clean:
+	cd $(SDK_PATH) && $(MAKE) $(SDK_MAKE_ARGS) 8021X_clean
+	
+#################################### add the follow lib for building api_lib#############################
+compileoption_lib_build:compileoption_lib_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) compileoption_lib
+compileoption_lib_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) compileoption_lib_clean
+
+libbsp_fe_build: libbsp_fe_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) fe_lib
+libbsp_fe_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) fe_lib_clean
+	
+ecnt_lib_utl_build: ecnt_lib_utl_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecnt_lib_utl
+ecnt_lib_utl_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecnt_lib_utl_clean
+
+ecnt_lib_dbg_build: ecnt_lib_dbg_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecnt_lib_dbg
+ecnt_lib_dbg_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecnt_lib_dbg_clean	
+	
+wifi_lib_build: wifi_lib_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wifi_lib
+wifi_lib_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wifi_lib_clean	
+	
+wifi_cmd_build: wifi_cmd_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wifi_cmd
+wifi_cmd_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wifi_cmd_clean
+
+ecntevent_lib_build: ecntevent_lib_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecntevent_lib
+ecntevent_lib_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ecntevent_lib_clean	
+	
+cpu_interrupt_lib_build: cpu_interrupt_lib_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) cpu_interrupt_lib
+cpu_interrupt_lib_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) cpu_interrupt_lib_clean
+	
+cpu_interrupt_cmd_build: cpu_interrupt_cmd_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) cpu_interrupt_cmd
+cpu_interrupt_cmd_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) cpu_interrupt_cmd_clean	
+##############################################add end####################################################
+
+api_lib_build: api_lib_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) api_lib
+api_lib_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) api_lib_clean
+	
+supplier_ebtables_build: supplier_ebtables_clean
+	$(MAKE) sdkapp/ebtables
+supplier_ebtables_clean:
+	$(MAKE) sdkapp/ebtables_clean
+
+ethcmd_build: ethcmd_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ethcmd
+ethcmd_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) ethcmd_clean
+
+api_cmd_build: api_cmd_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) api_cmd
+api_cmd_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) api_cmd_clean
+
+hw_nat_build: hw_nat_clean
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) hw_nat
+hw_nat_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) hw_nat_clean
+
+brctl_build: brctl_clean
+	$(MAKE) sdkapp/brctl
+brctl_clean:
+	$(MAKE) sdkapp/brctl_clean
+# For v28 iwpriv
+wl_tools_v28_build:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wirelesstool
+	cd $(SDK_PATH)/apps/public/wireless_tools.28 && rm -f libiw.so && ln -s libiw.so.28 libiw.so && cd -
+wl_tools_v28_clean:
+	cd $(SDK_PATH) && make CUSTOM=CT MSDK=1 PROFILE=$(PROFILE) wirelesstool_clean
+
+# For v29 wlNetlinkTool, ated_tp, iwconfig
+wl_tools_v29_build: wl_tools_v29_clean oslibs
+	cd $(SDK_PATH)/apps/public/wireless_tools.29 &&  make all
+wl_tools_v29_clean:
+	cd $(SDK_PATH)/apps/public/wireless_tools.29 &&  make realclean
+
+p910nd_build:
+	cd $(SDK_PATH)/apps/public/p910nd-0.93 && $(MAKE)
+p910nd_clean:
+	cd $(SDK_PATH)/apps/public/p910nd-0.93 && $(MAKE) clean	
+
+###############################################################################	
+supplier_fs_bin:
+	mkdir -p $(FS_TG_PATH)/userfs
+	cp -af $(BSP_EXT_FS)/userfs/* $(FS_TG_PATH)/userfs
+	-cp -f $(MODEL_PATH)/7529_62led.conf $(FS_TG_PATH)/userfs
+	-cp -f $(MODEL_PATH)/led.conf $(FS_TG_PATH)/userfs
+	#Temp change to add a script for drop caches
+	-cp -f $(MODEL_PATH)/chkAndDropPer90.sh $(FS_TG_PATH)/userfs
+	#end Temp
+	mkdir -p $(FS_TG_PATH)/etc_conf
+	cp -af $(BSP_EXT_FS)/usr/etc/*  $(FS_TG_PATH)/etc_conf
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+	-rm -rf $(BSP_EXT_FS)/lib/libiw.so
+endif #(UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+	cp -f $(BSP_EXT_FS)/lib/*.so $(FS_TG_PATH)/lib
+	cp -f $(BSP_EXT_FS)/lib/*.so.* $(FS_TG_PATH)/lib
+	mkdir -p $(FS_TG_PATH)/usr/etc
+	cp -f $(SDK_PATH)/apps/public/bridge-utils-1.0.6/brctl/brctl $(FS_TG_PATH)/usr/sbin/
+	cp -f $(SDK_PATH)/apps/public/ebtables-v2.0.8-2/ebtables $(FS_TG_PATH)/usr/sbin/
+
+	#add by HSW for XPON APP 
+	cp -af $(BSP_EXT_FS)/usr/* $(FS_TG_PATH)/usr
+	
+	#add for libapi
+#	cp -af $(SDK_PATH)/apps/fs/lib/*.so*  $(FS_TG_PATH)/lib
+#	cp -af $(SDK_PATH)/apps/fs/userfs/bin/*  $(FS_TG_PATH)/userfs/bin
+	cp -af $(SDK_PATH)/app_bsp/install_bspapp_exclusive/fs/usr/bin/*  $(FS_TG_PATH)/usr/bin
+#	cp -af $(SDK_PATH)/apps/fs/usr/bin/prolinecmd  $(FS_TG_PATH)/usr/bin
+#	cp -af $(SDK_PATH)/apps/fs/usr/bin/*  $(FS_TG_PATH)/usr/bin
+#	cp -f $(SDK_PATH)/apps/private/cfg_ng/install/bin/*  $(FS_TG_PATH)/userfs/bin
+#	cp -f $(SDK_PATH)/apps/private/cfg_ng/install/lib/*  $(FS_TG_PATH)/lib
+	cp -f $(SDK_PATH)/Project/profile/CT/$(PROFILE)/romfile_f.cfg $(FS_TG_PATH)/userfs/romfile_f.cfg
+	cp -f $(SDK_PATH)/Project/profile/CT/$(PROFILE)/romfile.cfg $(FS_TG_PATH)/userfs/romfile.cfg
+#	cp -f $(SDK_PATH)/apps/fs/usr/bin/sifm $(FS_TG_PATH)/usr/bin
+#	cp -f $(SDK_PATH)/apps/public/ebtables-v2.0.8-2/libebtc.so $(FS_TG_PATH)/usr/lib/
+#	cp -f $(SDK_PATH)/apps/public/ebtables-v2.0.8-2/extensions/*.so $(FS_TG_PATH)/usr/lib/
+#	cp -f $(SDK_PATH)/apps/public/ebtables-v2.0.8-2/ethertypes $(FS_TG_PATH)/usr/etc/
+#	mkdir -p $(FS_TG_PATH)/usr/script
+#	cp -f $(SDK_PATH)/filesystem/usr/script/br_conf.sh $(FS_TG_PATH)/usr/script/br_conf.sh
+
+#	cp -P $(SDK_PATH)/apps/binary/$(SDK_CONFIG)/hw_nat $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/binary/$(SDK_CONFIG)/qoscmd $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/binary/$(SDK_CONFIG)/tcwdog $(FS_TG_PATH)/usr/bin
+
+#	cp -P $(SDK_PATH)/apps/binary/$(SDK_CONFIG)/smuxctl $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/private/API/cmd/qdma/qdmamgr_lan $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/private/API/cmd/qdma/qdmamgr_wan $(FS_TG_PATH)/usr/bin
+ifeq ($(INCLUDE_EX530v), y)
+	ln -sf qosrule $(FS_TG_PATH)/userfs/bin/qoscmd
+endif
+	
+ifeq ($(INCLUDE_WIFI), y)
+#	cp -P $(SDK_PATH)/apps/private/WSC_UPNP/wscd $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/public/wireless_tools.29/wlNetlinkTool $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/public/wireless_tools.29/ated_tp $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/public/wireless_tools.28/iwconfig $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/public/wireless_tools.28/iwpriv $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/public/wireless_tools.28/ated_iwpriv $(FS_TG_PATH)/usr/bin/ated_tp
+#	cp -P $(SDK_PATH)/apps/public/8021X/rtdot1xd $(FS_TG_PATH)/usr/bin/rt2860apd
+	# need new driver from econet
+#	cp -P $(SDK_PATH)/modules/private/ko/modules/$(SDK_CONFIG)/tcsmux.ko $(FS_TG_PATH)/lib/modules
+#	cp -P $(SDK_PATH)/filesystem/userfs/bin/ethphxcmd $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/filesystem/usr/etc/RT30xxEEPROM.bin $(FS_TG_PATH)/etc
+#	cp -P $(SDK_PATH)/filesystem/userfs/bin/iwpriv $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/filesystem/lib/libiw.so.28 $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/filesystem/userfs/bin/ated $(FS_TG_PATH)/usr/bin
+ifeq ($(INCLUDE_WIFI_5G), y)
+#	cd $(FS_TG_PATH)/usr/bin && rm -f wscd_5G && ln -s wscd wscd_5G && cd -
+endif
+
+endif
+
+#	cd $(FS_TG_PATH)/usr/bin && rm -f rtinicapd && ln -s rt2860apd rtinicapd && cd -
+ifeq ($(INCLUDE_VOIP),y)
+#	cp -P $(SDK_PATH)/apps/private/voip/$(SDK_CONFIG)/eva/bin/libadam.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/apps/private/voip/$(SDK_CONFIG)/eva/bin/libgdi_mtk.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/apps/private/voip/$(SDK_CONFIG)/eva/bin/voip_loader $(FS_TG_PATH)/usr/bin
+#	cp -P $(SDK_PATH)/apps/private/voip/MTK_SIP/install/lib/libbase.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/apps/private/voip/MTK_SIP/install/lib/libvdsp_user.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/apps/private/voip/MTK_SIP/install/lib/libslic_user.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/apps/private/voip/MTK_SIP/install/lib/libsyss.so $(FS_TG_PATH)/lib
+#	cp -P $(SDK_PATH)/modules/private/voip_3.18.21/$(SDK_CONFIG)/ko/*.ko $(FS_TG_PATH)/lib/modules
+endif
+ifeq ($(INCLUDE_USB_PRINTER_SERVER), y)
+#	cp -P $(SDK_PATH)/apps/public/p910nd-0.93/p910nd $(FS_TG_PATH)/usr/bin
+endif
+ifeq ($(INCLUDE_L2TP), y)
+ifeq ($(KERNELVERSION), 2.6.36)
+#	cp -p $(KERNELPATH)/net/l2tp/l2tp_core.ko $(FS_TG_PATH)/lib/modules/pppol2tp.ko
+endif
+endif
+#	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net
+#	cp -p $(KERNELPATH)/drivers/net/tun.ko $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net
+ifeq ($(SDK_CONFIG), UNION_EN7516_7915D_demo)
+#	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net/ppp
+#	cp -p $(KERNELPATH)/drivers/net/ppp/ppp_mppe.ko $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net/ppp
+else
+#	cp -p $(KERNELPATH)/drivers/net/ppp_mppe.ko $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net
+endif
+
+ifeq ($(INCLUDE_WIFI_MESH_SUPPORT), y)
+#	-cp -pfR $(MODEL_PATH)/external_files/etc/*	$(FS_TG_PATH)/etc/
+endif
+
+ifeq (UNION_EN7523_GLIBC_7915D_MAP_demo, $(SDK_CONFIG))
+	@echo "~~~~~~~~copy zic~~~~~~~~~~~"
+	cp -p $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/sysroot/usr/sbin/zic $(FS_TG_PATH)/usr/sbin; 
+endif
+
+ifeq (UNION_EN7523_GLIBC_7916D_7623_MAP_demo, $(SDK_CONFIG))
+	@echo "~~~~~~~~copy zic~~~~~~~~~~~"
+	cp -p $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/sysroot/usr/sbin/zic $(FS_TG_PATH)/usr/sbin; 
+endif
+
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+	@echo "~~~~~~~~copy zic~~~~~~~~~~~"
+	cp -p $(TOOLROOTPATH)/mipsel-buildroot-linux-gnu/sysroot/usr/sbin/zic $(FS_TG_PATH)/usr/sbin;
+endif
+
+ifneq ($(INCLUDE_TRTC),)
+	@echo "rm useless vpn config file vpn_racoon.conf for security"
+	find $(FS_TG_PATH)/ -name vpn_racoon*.conf |xargs -i rm -f {}
+endif
+###############################################################################
+
+# For specific SDK device node
+CONFIG_DEVTMPFS_MOUNT=$(shell grep -E CONFIG_DEVTMPFS_MOUNT $(MODEL_PATH)/config.kernel)
+supplier_fs_dev: fakeroot
+	@echo "Start supplier_fs_dev, CONFIG_DEVTMPFS_MOUNT is $(CONFIG_DEVTMPFS_MOUNT)"
+ifneq ($(CONFIG_DEVTMPFS_MOUNT),)	##do dev create in rcS
+	@echo "Copy build devs to rootfs, should run in rcS procedure"
+	cp $(MODEL_PATH)/buildDevs $(FS_TG_PATH)/etc/
+	chmod +x $(FS_TG_PATH)/etc/buildDevs
+else
+	@echo "Create devs node file by buildDevs"
+	-test -e $(MODEL_PATH)/buildDevs \
+		&& $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(MODEL_PATH)/buildDevs $(FS_TG_PATH)
+endif
+	@echo "Done"
+
+###############################################################################
+dummy_debug_build:
+# back up config file and gif file
+	@echo "prepare dummy debug image"
+	cp $(MODEL_PATH)/reduced_data_model.xml $(MODEL_PATH)/reduced_data_model.xml.dummy;
+	cp $(MODEL_PATH)/config.bba $(MODEL_PATH)/config.bba.dummy;
+	cp $(MODEL_PATH)/../../../makes/shell/dummy.sh $(MODEL_PATH)/dummy.sh;
+	cp -pR $(BBA_PATH)/web/en/common_mark_img/mark_white.gif $(BBA_PATH)/web/en/common_mark_img/mark_white.gif.bak
+	cp -pR $(BBA_PATH)/web/en/common_mark_img/mark_beta.gif $(BBA_PATH)/web/en/common_mark_img/mark_white.gif
+	mkdir -p $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/imageBak
+	mv $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/image/* $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/imageBak/
+
+# rebuild dummy-beta image
+	@echo "start dummy.sh"
+	chmod 777 $(MODEL_PATH)/dummy.sh;
+	cd $(MODEL_PATH); \
+	./dummy.sh reduced_data_model.xml;
+
+	@echo "start make dummy image"
+	make MODEL=$(MODEL) -C $(MAKES_PATH)/../ BETA=y cmm -B
+	$(MAKE) BETA=y fs_build
+	$(MAKE) BETA=y image_build
+
+	mkdir -p $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/dummyImage
+	mv $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/image/*0.64.0*.bin $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/dummyImage
+
+# Restore modified files
+	@echo "finish make dummy image"
+	cp $(MODEL_PATH)/reduced_data_model.xml.dummy $(MODEL_PATH)/reduced_data_model.xml;
+	cp $(MODEL_PATH)/config.bba.dummy $(MODEL_PATH)/config.bba;
+	cp -pR $(BBA_PATH)/web/en/common_mark_img/mark_white.gif.bak $(BBA_PATH)/web/en/common_mark_img/mark_white.gif
+	mv $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/imageBak/* $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/image/
+	mv $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/dummyImage/* $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/image/
+	rm $(MODEL_PATH)/dummy.sh $(BBA_PATH)/web/en/common_mark_img/mark_white.gif.bak  $(MODEL_PATH)/config.bba.dummy $(MODEL_PATH)/reduced_data_model.xml.dummy
+	rm -rf $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/imageBak $(BBA_PATH)/targets/$(MODEL)/$(SPEC)/dummyImage
+
+###############################################################################
+# For specific SDK image build
+
+supplier_mkkernel_build:
+
+supplier_image_pre:
+
+supplier_image_build: 

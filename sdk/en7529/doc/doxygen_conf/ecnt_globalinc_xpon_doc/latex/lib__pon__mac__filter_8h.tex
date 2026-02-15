@@ -1,0 +1,323 @@
+\hypertarget{lib__pon__mac__filter_8h}{}\section{public/lib\+\_\+pon\+\_\+mac\+\_\+filter.h File Reference}
+\label{lib__pon__mac__filter_8h}\index{public/lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{public/lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+
+
+This file is lib pon mac filter header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+mac\+\_\+filter\+\_\+public.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpon__mac__action__info__s}{pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_a140edf1ff61318512842048f2d4f199e}\label{lib__pon__mac__filter_8h_a140edf1ff61318512842048f2d4f199e}} 
+typedef struct \hyperlink{structpon__mac__action__info__s}{pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+s} {\bfseries pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lib__pon__mac__filter_8h_a477a77cb1866a41a7c3050d2bfdeadcb}{pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule} (uint8\+\_\+t ifindex, uint8\+\_\+t type, pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$rule)
+\begin{DoxyCompactList}\small\item\em This function is used to add pon mac filter rule. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_aa79875bfa370f9859ed3d854bb4fab4a}{pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule} (uint8\+\_\+t ifindex, uint8\+\_\+t type, pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$rule)
+\begin{DoxyCompactList}\small\item\em This function is used to get pon mac filter rule. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_ab52eaa35f56476b673f925f1d3cf7690}{pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule} (uint8\+\_\+t ifindex, uint8\+\_\+t type, uint8\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em This function is used to delete pon mac filter rule. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_a95c50a5045d6e49e7f86907449cee2c1}{pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule} (uint8\+\_\+t ifindex, uint8\+\_\+t type)
+\begin{DoxyCompactList}\small\item\em This function is used to clean pon mac filter rule. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_a4ab0f7da886b06d2ab5504c633afc5ff}{pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to clean all pon mac filter rule. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_ad1f462a55770a1ce643faf928934f561}{pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level} (int level)
+\begin{DoxyCompactList}\small\item\em This function is used to set pon mac filter debug level. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_a8ba0099ae5cc144fb7f64a2b2af1592c}{pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch} (int switch\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set pon mac filter switch flag. \end{DoxyCompactList}\item 
+int \hyperlink{lib__pon__mac__filter_8h_aaa4c1fa815702f137b69a93d3b088190}{pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func} (\hyperlink{structpon__mac__action__info__s}{pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+t} action\+Info, pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$rule)
+\begin{DoxyCompactList}\small\item\em This function is pon mac filter genenal action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib pon mac filter header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_aaa4c1fa815702f137b69a93d3b088190}\label{lib__pon__mac__filter_8h_aaa4c1fa815702f137b69a93d3b088190}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func@{pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func}}
+\index{pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func@{pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func()}{pon\_action\_mac\_filter\_genenal\_func()}}
+{\footnotesize\ttfamily int pon\+\_\+action\+\_\+mac\+\_\+filter\+\_\+genenal\+\_\+func (\begin{DoxyParamCaption}\item[{\hyperlink{structpon__mac__action__info__s}{pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+t}}]{action\+Info,  }\item[{pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$}]{rule }\end{DoxyParamCaption})}
+
+
+
+This function is pon mac filter genenal action. 
+
+This function is pon mac filter genenal action. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em action\+Info} & the struct type of pon\+\_\+mac\+\_\+action\+\_\+info\+\_\+t \\
+\hline
+\mbox{\tt in}  & {\em rule} & pointer to the struct type of pon\+\_\+mac\+\_\+filter\+\_\+rule \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Pon mac filter genenal action. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_a477a77cb1866a41a7c3050d2bfdeadcb}\label{lib__pon__mac__filter_8h_a477a77cb1866a41a7c3050d2bfdeadcb}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule}}
+\index{pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule()}{pon\_add\_mac\_filter\_rule()}}
+{\footnotesize\ttfamily int pon\+\_\+add\+\_\+mac\+\_\+filter\+\_\+rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ifindex,  }\item[{uint8\+\_\+t}]{type,  }\item[{pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$}]{rule }\end{DoxyParamCaption})}
+
+
+
+This function is used to add pon mac filter rule. 
+
+This function is used to add pon mac filter rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifindex} & port id \\
+\hline
+\mbox{\tt in}  & {\em type} & 0-\/$>$9.\+3.\+6 1-\/$>$9.\+3.\+7 \\
+\hline
+\mbox{\tt in}  & {\em rule} & pointer to the struct type of pon\+\_\+mac\+\_\+filter\+\_\+rule \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add pon mac filter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_a4ab0f7da886b06d2ab5504c633afc5ff}\label{lib__pon__mac__filter_8h_a4ab0f7da886b06d2ab5504c633afc5ff}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule}}
+\index{pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule()}{pon\_clean\_all\_mac\_filter\_rule()}}
+{\footnotesize\ttfamily int pon\+\_\+clean\+\_\+all\+\_\+mac\+\_\+filter\+\_\+rule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to clean all pon mac filter rule. 
+
+This function is used to clean all pon mac filter rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clean all pon mac filter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_a95c50a5045d6e49e7f86907449cee2c1}\label{lib__pon__mac__filter_8h_a95c50a5045d6e49e7f86907449cee2c1}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule}}
+\index{pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule()}{pon\_clean\_mac\_filter\_rule()}}
+{\footnotesize\ttfamily int pon\+\_\+clean\+\_\+mac\+\_\+filter\+\_\+rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ifindex,  }\item[{uint8\+\_\+t}]{type }\end{DoxyParamCaption})}
+
+
+
+This function is used to clean pon mac filter rule. 
+
+This function is used to clean pon mac filter rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifindex} & port id \\
+\hline
+\mbox{\tt in}  & {\em type} & 0-\/$>$9.\+3.\+6 1-\/$>$9.\+3.\+7 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clean pon mac filter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_ab52eaa35f56476b673f925f1d3cf7690}\label{lib__pon__mac__filter_8h_ab52eaa35f56476b673f925f1d3cf7690}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule}}
+\index{pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule()}{pon\_del\_mac\_filter\_rule()}}
+{\footnotesize\ttfamily int pon\+\_\+del\+\_\+mac\+\_\+filter\+\_\+rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ifindex,  }\item[{uint8\+\_\+t}]{type,  }\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+This function is used to delete pon mac filter rule. 
+
+This function is used to delete pon mac filter rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifindex} & port id \\
+\hline
+\mbox{\tt in}  & {\em type} & 0-\/$>$9.\+3.\+6 1-\/$>$9.\+3.\+7 \\
+\hline
+\mbox{\tt in}  & {\em index} & index id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete pon mac filter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_aa79875bfa370f9859ed3d854bb4fab4a}\label{lib__pon__mac__filter_8h_aa79875bfa370f9859ed3d854bb4fab4a}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule}}
+\index{pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule@{pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule()}{pon\_get\_mac\_filter\_rule()}}
+{\footnotesize\ttfamily int pon\+\_\+get\+\_\+mac\+\_\+filter\+\_\+rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ifindex,  }\item[{uint8\+\_\+t}]{type,  }\item[{pon\+\_\+mac\+\_\+filter\+\_\+rule $\ast$}]{rule }\end{DoxyParamCaption})}
+
+
+
+This function is used to get pon mac filter rule. 
+
+This function is used to get pon mac filter rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifindex} & port id \\
+\hline
+\mbox{\tt in}  & {\em type} & 0-\/$>$9.\+3.\+6 1-\/$>$9.\+3.\+7 \\
+\hline
+\mbox{\tt out}  & {\em rule} & pointer to the struct type of pon\+\_\+mac\+\_\+filter\+\_\+rule \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em rule} & counter. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get pon mac filter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_ad1f462a55770a1ce643faf928934f561}\label{lib__pon__mac__filter_8h_ad1f462a55770a1ce643faf928934f561}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level@{pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level}}
+\index{pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level@{pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level()}{pon\_mac\_filter\_set\_debug\_level()}}
+{\footnotesize\ttfamily int pon\+\_\+mac\+\_\+filter\+\_\+set\+\_\+debug\+\_\+level (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+This function is used to set pon mac filter debug level. 
+
+This function is used to set pon mac filter debug level. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em level} & debug level \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set pon mac filter debug level. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{lib__pon__mac__filter_8h_a8ba0099ae5cc144fb7f64a2b2af1592c}\label{lib__pon__mac__filter_8h_a8ba0099ae5cc144fb7f64a2b2af1592c}} 
+\index{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}!pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch@{pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch}}
+\index{pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch@{pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch}!lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h@{lib\+\_\+pon\+\_\+mac\+\_\+filter.\+h}}
+\subsubsection{\texorpdfstring{pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch()}{pon\_set\_mac\_filter\_switch()}}
+{\footnotesize\ttfamily int pon\+\_\+set\+\_\+mac\+\_\+filter\+\_\+switch (\begin{DoxyParamCaption}\item[{int}]{switch\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set pon mac filter switch flag. 
+
+This function is used to set pon mac filter switch flag. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em switch\+Flag} & Pon mac filter switch flag. 0\+:disable 1\+:enable \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set pon mac filter switch flag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

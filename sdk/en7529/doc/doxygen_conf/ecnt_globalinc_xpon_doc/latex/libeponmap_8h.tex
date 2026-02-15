@@ -1,0 +1,556 @@
+\hypertarget{libeponmap_8h}{}\section{public/libeponmap.h File Reference}
+\label{libeponmap_8h}\index{public/libeponmap.\+h@{public/libeponmap.\+h}}
+
+
+This file is lib epon map header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+map\+\_\+public.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libeponmap_8h_ae6679444b235622b8160d276ddc2518e}{eponmap\+Set\+Dbg\+Level} (uint8\+\_\+t lvl)
+\begin{DoxyCompactList}\small\item\em This function is used to set debug level. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a41a96be5e5623809d0700d5d0c050f6f}{eponmap\+Set\+Clsfy\+Enable} (uint8\+\_\+t port, int enable)
+\begin{DoxyCompactList}\small\item\em This function is used to set classify enable. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_af32624c81d8995fa70172298cd1a18b3}{eponmap\+Delete\+Clsfy\+Rule} (uint8\+\_\+t port\+Id, Qos\+Result\+\_\+\+Ptr p\+Result, uint8\+\_\+t match\+Num, Qos\+Match\+Rule\+\_\+\+Ptr p\+Rules)
+\begin{DoxyCompactList}\small\item\em This function is used to delete epon map classify rule. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a5ea3c1b8fdc72170e6ba1f137c3918f5}{eponmap\+Insert\+Clsfy\+Rule} (uint8\+\_\+t port\+Id, Qos\+Result\+\_\+\+Ptr p\+Result, uint8\+\_\+t match\+Num, Qos\+Match\+Rule\+\_\+\+Ptr p\+Rules)
+\begin{DoxyCompactList}\small\item\em This function is used to insert epon map classify rule. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_ac2478ebb4280be274f585d9e26ab1a7d}{eponmap\+Get\+Clsfy\+Rule} (uint8\+\_\+t port\+Id, uint8\+\_\+t index, Qos\+Result\+\_\+\+Ptr p\+Result, uint8\+\_\+t $\ast$pmatch\+Num, Qos\+Match\+Rule\+\_\+\+Ptr p\+Rules)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon map classify rule. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a8fbd37d6f778df3ad8817301ecf27eb3}{eponmap\+Get\+Clsfy\+Rules\+Num} (uint8\+\_\+t port\+Id)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon map classify rules num. \end{DoxyCompactList}\item 
+void \hyperlink{libeponmap_8h_a69db36bb18c78d66d7854f248b4155b0}{eponmap\+Show\+Clsfy\+Rules} (uint8\+\_\+t port\+Id)
+\begin{DoxyCompactList}\small\item\em This function is used to show epon map classify rules. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a743f7a95c85cba0aeab3fa34601b6ffe}{eponmap\+Clear\+Clsfy\+Rules} (uint8\+\_\+t port\+Id)
+\begin{DoxyCompactList}\small\item\em This function is used to clear epon map classify rules. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_ae8354bec5ba536502cf04e9081d8fcfb}{eponmap\+Add\+Map\+Rule} (Qos\+I\+O\+Ctl\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function is used to add epon map rules. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a20d597f0f8f67578df91d81b8893a806}{eponmap\+Del\+Map\+Rule} (Qos\+I\+O\+Ctl\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function is used to detele epon map rules. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_ab34ecb43e139253cdef7cbf1402a2970}{eponmap\+Reset} ()
+\begin{DoxyCompactList}\small\item\em This function is used to reset epon map. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_aa4171a4abc68e5affe5bfd48b9febf3a}{eponmap\+Get\+Llid\+Queue\+Mapping} (uint8\+\_\+t llid, uint8\+\_\+t $\ast$queue\+Num, Queue\+Weight\+\_\+\+Ptr p\+Q\+Weights)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon map llid queue mapping. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a14f9d98f57293fd9b0249940d28eb222}{eponmap\+Set\+Llid\+Queue\+Mapping} (uint8\+\_\+t llid, uint8\+\_\+t queue\+Num, Queue\+Weight\+\_\+\+Ptr p\+Q\+Weights)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon map llid queue mapping. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_a83877111fb6b8f50fc3e20c1f0ffc719}{eponmap\+Clear\+Llid\+Queue\+Mapping} (uint8\+\_\+t llid)
+\begin{DoxyCompactList}\small\item\em This function is used to clear epon map llid queue mapping. \end{DoxyCompactList}\item 
+int \hyperlink{libeponmap_8h_ad19f98c6e7d23fd4c17a2d68bf14074f}{eponmap\+Show\+Llid\+Queue\+Mapping} (uint8\+\_\+t llid)
+\begin{DoxyCompactList}\small\item\em This function is used to show epon map llid queue mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib epon map header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libeponmap_8h_ae8354bec5ba536502cf04e9081d8fcfb}\label{libeponmap_8h_ae8354bec5ba536502cf04e9081d8fcfb}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Add\+Map\+Rule@{eponmap\+Add\+Map\+Rule}}
+\index{eponmap\+Add\+Map\+Rule@{eponmap\+Add\+Map\+Rule}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Add\+Map\+Rule()}{eponmapAddMapRule()}}
+{\footnotesize\ttfamily int eponmap\+Add\+Map\+Rule (\begin{DoxyParamCaption}\item[{Qos\+I\+O\+Ctl\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to add epon map rules. 
+
+This function is used to add epon map rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & pointer to the struct type of Qos\+I\+O\+Ctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add epon map rules. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a743f7a95c85cba0aeab3fa34601b6ffe}\label{libeponmap_8h_a743f7a95c85cba0aeab3fa34601b6ffe}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Clear\+Clsfy\+Rules@{eponmap\+Clear\+Clsfy\+Rules}}
+\index{eponmap\+Clear\+Clsfy\+Rules@{eponmap\+Clear\+Clsfy\+Rules}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Clear\+Clsfy\+Rules()}{eponmapClearClsfyRules()}}
+{\footnotesize\ttfamily int eponmap\+Clear\+Clsfy\+Rules (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id }\end{DoxyParamCaption})}
+
+
+
+This function is used to clear epon map classify rules. 
+
+This function is used to clear epon map classify rules. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clear epon map classify rules. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a83877111fb6b8f50fc3e20c1f0ffc719}\label{libeponmap_8h_a83877111fb6b8f50fc3e20c1f0ffc719}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Clear\+Llid\+Queue\+Mapping@{eponmap\+Clear\+Llid\+Queue\+Mapping}}
+\index{eponmap\+Clear\+Llid\+Queue\+Mapping@{eponmap\+Clear\+Llid\+Queue\+Mapping}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Clear\+Llid\+Queue\+Mapping()}{eponmapClearLlidQueueMapping()}}
+{\footnotesize\ttfamily int eponmap\+Clear\+Llid\+Queue\+Mapping (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid }\end{DoxyParamCaption})}
+
+
+
+This function is used to clear epon map llid queue mapping. 
+
+This function is used to clear epon map llid queue mapping. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clear epon map llid queue mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_af32624c81d8995fa70172298cd1a18b3}\label{libeponmap_8h_af32624c81d8995fa70172298cd1a18b3}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Delete\+Clsfy\+Rule@{eponmap\+Delete\+Clsfy\+Rule}}
+\index{eponmap\+Delete\+Clsfy\+Rule@{eponmap\+Delete\+Clsfy\+Rule}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Delete\+Clsfy\+Rule()}{eponmapDeleteClsfyRule()}}
+{\footnotesize\ttfamily int eponmap\+Delete\+Clsfy\+Rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{Qos\+Result\+\_\+\+Ptr}]{p\+Result,  }\item[{uint8\+\_\+t}]{match\+Num,  }\item[{Qos\+Match\+Rule\+\_\+\+Ptr}]{p\+Rules }\end{DoxyParamCaption})}
+
+
+
+This function is used to delete epon map classify rule. 
+
+This function is used to delete epon map classify rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em p\+Result} & pointer to the struct type of qos\+Result\+\_\+s \\
+\hline
+\mbox{\tt in}  & {\em match\+Num} & match num \\
+\hline
+\mbox{\tt in}  & {\em p\+Rules} & pointer to the struct type of qos\+Match\+Rule\+\_\+s \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete epon map classify rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a20d597f0f8f67578df91d81b8893a806}\label{libeponmap_8h_a20d597f0f8f67578df91d81b8893a806}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Del\+Map\+Rule@{eponmap\+Del\+Map\+Rule}}
+\index{eponmap\+Del\+Map\+Rule@{eponmap\+Del\+Map\+Rule}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Del\+Map\+Rule()}{eponmapDelMapRule()}}
+{\footnotesize\ttfamily int eponmap\+Del\+Map\+Rule (\begin{DoxyParamCaption}\item[{Qos\+I\+O\+Ctl\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to detele epon map rules. 
+
+This function is used to detele epon map rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & pointer to the struct type of Qos\+I\+O\+Ctl\+\_\+t \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Detele epon map rules. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_ac2478ebb4280be274f585d9e26ab1a7d}\label{libeponmap_8h_ac2478ebb4280be274f585d9e26ab1a7d}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Get\+Clsfy\+Rule@{eponmap\+Get\+Clsfy\+Rule}}
+\index{eponmap\+Get\+Clsfy\+Rule@{eponmap\+Get\+Clsfy\+Rule}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Get\+Clsfy\+Rule()}{eponmapGetClsfyRule()}}
+{\footnotesize\ttfamily int eponmap\+Get\+Clsfy\+Rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{uint8\+\_\+t}]{index,  }\item[{Qos\+Result\+\_\+\+Ptr}]{p\+Result,  }\item[{uint8\+\_\+t $\ast$}]{pmatch\+Num,  }\item[{Qos\+Match\+Rule\+\_\+\+Ptr}]{p\+Rules }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon map classify rule. 
+
+This function is used to get epon map classify rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em index} & index id \\
+\hline
+\mbox{\tt out}  & {\em p\+Result} & pointer to the struct type of qos\+Result\+\_\+s \\
+\hline
+\mbox{\tt out}  & {\em pmatch\+Num} & pointer to the uint8\+\_\+t type \\
+\hline
+\mbox{\tt out}  & {\em p\+Rules} & pointer to the struct type of qos\+Match\+Rule\+\_\+s \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon map classify rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a8fbd37d6f778df3ad8817301ecf27eb3}\label{libeponmap_8h_a8fbd37d6f778df3ad8817301ecf27eb3}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Get\+Clsfy\+Rules\+Num@{eponmap\+Get\+Clsfy\+Rules\+Num}}
+\index{eponmap\+Get\+Clsfy\+Rules\+Num@{eponmap\+Get\+Clsfy\+Rules\+Num}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Get\+Clsfy\+Rules\+Num()}{eponmapGetClsfyRulesNum()}}
+{\footnotesize\ttfamily int eponmap\+Get\+Clsfy\+Rules\+Num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon map classify rules num. 
+
+This function is used to get epon map classify rules num. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em the} & port\textquotesingle{}s classify rules num. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon map classify rules num. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_aa4171a4abc68e5affe5bfd48b9febf3a}\label{libeponmap_8h_aa4171a4abc68e5affe5bfd48b9febf3a}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Get\+Llid\+Queue\+Mapping@{eponmap\+Get\+Llid\+Queue\+Mapping}}
+\index{eponmap\+Get\+Llid\+Queue\+Mapping@{eponmap\+Get\+Llid\+Queue\+Mapping}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Get\+Llid\+Queue\+Mapping()}{eponmapGetLlidQueueMapping()}}
+{\footnotesize\ttfamily int eponmap\+Get\+Llid\+Queue\+Mapping (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid,  }\item[{uint8\+\_\+t $\ast$}]{queue\+Num,  }\item[{Queue\+Weight\+\_\+\+Ptr}]{p\+Q\+Weights }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon map llid queue mapping. 
+
+This function is used to get epon map llid queue mapping. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\mbox{\tt out}  & {\em queue\+Num} & pointer to the uint8\+\_\+t type \\
+\hline
+\mbox{\tt out}  & {\em p\+Rules} & pointer to the struct type of queue\+Weight\+\_\+s \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon map llid queue mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a5ea3c1b8fdc72170e6ba1f137c3918f5}\label{libeponmap_8h_a5ea3c1b8fdc72170e6ba1f137c3918f5}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Insert\+Clsfy\+Rule@{eponmap\+Insert\+Clsfy\+Rule}}
+\index{eponmap\+Insert\+Clsfy\+Rule@{eponmap\+Insert\+Clsfy\+Rule}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Insert\+Clsfy\+Rule()}{eponmapInsertClsfyRule()}}
+{\footnotesize\ttfamily int eponmap\+Insert\+Clsfy\+Rule (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id,  }\item[{Qos\+Result\+\_\+\+Ptr}]{p\+Result,  }\item[{uint8\+\_\+t}]{match\+Num,  }\item[{Qos\+Match\+Rule\+\_\+\+Ptr}]{p\+Rules }\end{DoxyParamCaption})}
+
+
+
+This function is used to insert epon map classify rule. 
+
+This function is used to insert epon map classify rule. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\mbox{\tt in}  & {\em p\+Result} & pointer to the struct type of qos\+Result\+\_\+s \\
+\hline
+\mbox{\tt in}  & {\em match\+Num} & match num \\
+\hline
+\mbox{\tt in}  & {\em p\+Rules} & pointer to the struct type of qos\+Match\+Rule\+\_\+s \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Insert epon map classify rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_ab34ecb43e139253cdef7cbf1402a2970}\label{libeponmap_8h_ab34ecb43e139253cdef7cbf1402a2970}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Reset@{eponmap\+Reset}}
+\index{eponmap\+Reset@{eponmap\+Reset}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Reset()}{eponmapReset()}}
+{\footnotesize\ttfamily int eponmap\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to reset epon map. 
+
+This function is used to reset epon map. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Reset epon map. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a41a96be5e5623809d0700d5d0c050f6f}\label{libeponmap_8h_a41a96be5e5623809d0700d5d0c050f6f}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Set\+Clsfy\+Enable@{eponmap\+Set\+Clsfy\+Enable}}
+\index{eponmap\+Set\+Clsfy\+Enable@{eponmap\+Set\+Clsfy\+Enable}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Set\+Clsfy\+Enable()}{eponmapSetClsfyEnable()}}
+{\footnotesize\ttfamily int eponmap\+Set\+Clsfy\+Enable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{int}]{enable }\end{DoxyParamCaption})}
+
+
+
+This function is used to set classify enable. 
+
+This function is used to set classify enable. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & port \\
+\hline
+\mbox{\tt in}  & {\em enable} & enable \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set classify enable. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_ae6679444b235622b8160d276ddc2518e}\label{libeponmap_8h_ae6679444b235622b8160d276ddc2518e}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Set\+Dbg\+Level@{eponmap\+Set\+Dbg\+Level}}
+\index{eponmap\+Set\+Dbg\+Level@{eponmap\+Set\+Dbg\+Level}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Set\+Dbg\+Level()}{eponmapSetDbgLevel()}}
+{\footnotesize\ttfamily int eponmap\+Set\+Dbg\+Level (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lvl }\end{DoxyParamCaption})}
+
+
+
+This function is used to set debug level. 
+
+This function is used to set debug level. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lvl} & level \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set debug level. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a14f9d98f57293fd9b0249940d28eb222}\label{libeponmap_8h_a14f9d98f57293fd9b0249940d28eb222}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Set\+Llid\+Queue\+Mapping@{eponmap\+Set\+Llid\+Queue\+Mapping}}
+\index{eponmap\+Set\+Llid\+Queue\+Mapping@{eponmap\+Set\+Llid\+Queue\+Mapping}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Set\+Llid\+Queue\+Mapping()}{eponmapSetLlidQueueMapping()}}
+{\footnotesize\ttfamily int eponmap\+Set\+Llid\+Queue\+Mapping (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid,  }\item[{uint8\+\_\+t}]{queue\+Num,  }\item[{Queue\+Weight\+\_\+\+Ptr}]{p\+Q\+Weights }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon map llid queue mapping. 
+
+This function is used to set epon map llid queue mapping. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\mbox{\tt in}  & {\em queue\+Num} & queue num \\
+\hline
+\mbox{\tt out}  & {\em p\+Q\+Weights} & pointer to the struct type of queue\+Weight\+\_\+s \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon map llid queue mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_a69db36bb18c78d66d7854f248b4155b0}\label{libeponmap_8h_a69db36bb18c78d66d7854f248b4155b0}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Show\+Clsfy\+Rules@{eponmap\+Show\+Clsfy\+Rules}}
+\index{eponmap\+Show\+Clsfy\+Rules@{eponmap\+Show\+Clsfy\+Rules}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Show\+Clsfy\+Rules()}{eponmapShowClsfyRules()}}
+{\footnotesize\ttfamily void eponmap\+Show\+Clsfy\+Rules (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+Id }\end{DoxyParamCaption})}
+
+
+
+This function is used to show epon map classify rules. 
+
+This function is used to show epon map classify rules. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Id} & port id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void.} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Show epon map classify rules. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libeponmap_8h_ad19f98c6e7d23fd4c17a2d68bf14074f}\label{libeponmap_8h_ad19f98c6e7d23fd4c17a2d68bf14074f}} 
+\index{libeponmap.\+h@{libeponmap.\+h}!eponmap\+Show\+Llid\+Queue\+Mapping@{eponmap\+Show\+Llid\+Queue\+Mapping}}
+\index{eponmap\+Show\+Llid\+Queue\+Mapping@{eponmap\+Show\+Llid\+Queue\+Mapping}!libeponmap.\+h@{libeponmap.\+h}}
+\subsubsection{\texorpdfstring{eponmap\+Show\+Llid\+Queue\+Mapping()}{eponmapShowLlidQueueMapping()}}
+{\footnotesize\ttfamily int eponmap\+Show\+Llid\+Queue\+Mapping (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid }\end{DoxyParamCaption})}
+
+
+
+This function is used to show epon map llid queue mapping. 
+
+This function is used to show epon map llid queue mapping. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid} & llid \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Show epon map llid queue mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

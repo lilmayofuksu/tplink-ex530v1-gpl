@@ -1,0 +1,183 @@
+
+menu 'LTE Options'
+
+config INCLUDE_LTEWAN
+	bool "Build LTE"
+	default n
+
+config INCLUDE_SINGLE_LTEIMAGE
+	bool "LTE MODEM UPGRADE"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_QUECTEL
+	bool "Quectel LTE Modem Support"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_USSD
+	bool "Build USSD functions"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_DATALIMIT_SMS_ALERT
+	bool "Build DATALIMIT_SMS_ALERT"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_NET_STATISTICS
+	bool "Build LTE_NET_STATISTICS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTEWAN_TEST
+	bool "Build LTEWAN test utils"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_VOLTE
+	bool "Build VoLTE"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_VOLTE_ON_MODEM
+	bool "Build VOLTE functions on modem"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_IMS_SWITCH_DEFAULT_OFF
+	bool "Build VOLTE Default Value"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_VOLTE_IMS_SWITCH_ON_MODEM
+	bool "Build IMS functions on modem"
+	depends on INCLUDE_VOLTE_ON_MODEM
+	default n
+
+config INCLUDE_LTE_ANTENNA_TYPE
+	bool "Choose Internel or External Antenna"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_ANTENNA_SINGLE_GPIO
+	bool "Single GPIO for ANTENNA"
+	depends on INCLUDE_LTE_ANTENNA_TYPE
+	default n
+
+config INCLUDE_LTE_QMI
+	bool "Build QMI FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_RIL
+	bool "Build RIL FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_RIL_QUECTEL
+	bool "Build QUECTEL RIL FUNCTIONS"
+	depends on INCLUDE_LTEWAN && INCLUDE_LTE_RIL
+	default n
+
+config INCLUDE_QUECTEL_EG06
+	bool "Build QUECTEL EG06 MODEM"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_QUECTEL_EG120K
+	bool "Build QUECTEL EG120K MODEM"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_QUECTEL_RG500L
+	bool "Build QUECTEL RG500L MODEM"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_QUECTEL_RG520N
+	bool "Build QUECTEL RG520N MODEM"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_QUECTEL_RG520F
+	bool "Build QUECTEL RG520F MODEM"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTEWAN_TECH_NR5G
+	bool "Build NR5G Feature"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SEARCH_NET
+	bool "Build SEARCH_NET FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SEARCH_BAND
+	bool "Build SEARCH_BAND FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SUPPORT_QLOG
+	bool "Build QLOG FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SUPPORT_QFIREHOSE
+	bool "Build QFIREHOSE FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SUPPORT_QCM
+	bool "Build QCM FUNCTIONS"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_SUPPORT_ADB
+	bool "Build ADB FUNCTIONS"
+	depends on INCLUDE_LTEWAN && INCLUDE_SSL
+	default n
+
+config INCLUDE_LTE_PCIE_MHI
+	bool "Build PCIE_MHI KO"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_BACKUP_EFS_FACTORY
+	bool "Build backup modem efs when reset device"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_RESTORE_EFS_FACTORY
+	bool "Build restore modem efs when reset device"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_UPGRADE_EDL
+	bool "Upgrade 4G/5G module in emergency download mode"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_QLOG_ENABLE_BY_TELNET
+	bool "Run the qlog process in CPE via telnet"
+	depends on INCLUDE_LTE_SUPPORT_QLOG
+	default n
+
+config INCLUDE_LTE_WIFI_COEX
+	bool "Build INCLUDE_LTE_WIFI_COEX"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_CHECK_USB_VER
+	bool "Build INCLUDE_LTE_CHECK_USB_VER"
+	depends on INCLUDE_LTEWAN
+	default n
+
+config INCLUDE_LTE_BRIDGE_MODE
+	bool "Build INCLUDE_LTE_BRIDGE_MODE"
+	depends on INCLUDE_LTEWAN
+	default n
+
+endmenu #menu 'LTE Options

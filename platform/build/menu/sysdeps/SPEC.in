@@ -1,0 +1,440 @@
+menu 'Data Model Specific Options'
+
+config INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	bool "data model specific options support"
+	default n
+
+config DEV2_WIFI_RADIO_MAX_INST
+	int "max instance of Device.WiFi.Radio.{i}."
+	default 2
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config WIFI_RADIO_STATS_MAX_INST
+	int
+	default DEV2_WIFI_RADIO_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_RADIO_MAX_INST must be the same!
+
+config DEV2_WIFI_DIAGNOSTICRESULT_MAX_INST
+	int "max instance of Device.WiFi.NeighboringWiFiDiagnostic.Result.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_SSID_MAX_INST
+	int "max instance of Device.WiFi.SSID.{i}."
+	default 14
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config WIFI_SSID_STATS_MAX_INST
+	int
+	default DEV2_WIFI_SSID_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_SSID_MAX_INST must be the same!
+
+config DEV2_WIFI_AP_MAX_INST
+	int "max instance of Device.WiFi.AccessPoint.{i}."
+	default 14
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_SECURITY_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_WIFI_WPS_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_WIFI_ASSOC_DEV_MAX_INST
+	int "max instance of Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_ASSOC_DEV_STAT_MAX_INST
+	int
+	default DEV2_WIFI_ASSOC_DEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_ASSOC_DEV_MAX_INST must be the same!
+
+config DEV2_WIFI_AC_MAX_INST
+	int "max instance of Device.WiFi.AccessPoint.{i}.AC.{i}."
+	default 56
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_SCHEDULE_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_WIFI_ACL_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_WIFI_MACTABLE_MAX_INST
+	int "max instance of Device.WiFi.AccessPoint.{i}.X_TP_MACAddressControl.MACTable.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_CONTROLFUNCTION_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_X_PCCWCPE_CONTROL_MAX_INST
+	int
+	default DEV2_WIFI_AP_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_AP_MAX_INST must be the same!
+
+config DEV2_WIFI_WDSBRIDGE_MAX_INST
+	int "max instance of Device.WiFi.X_TP_WDSBridge.{i}."
+	default 2
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_ENDPOINT_WPS_MAX_INST
+	int
+	default DEV2_WIFI_WDSBRIDGE_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_WDSBRIDGE_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}."
+	default 16
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_RADIO_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.Radio.{i}."
+	default 32
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_AP_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.Radio.{i}.AP.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_ASSOCDEV_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.Radio.{i}.AP.{i}.AssociatedDevice.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_STATS_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_ASSOCDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_ASSOCDEV_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_STESTATS_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_ASSOCDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_ASSOCDEV_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_STEHISTORY_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.Radio.{i}.AP.{i}.AssociatedDevice.{i}.SteeringHistory.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_ETHERNET_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_ETHASSOCDEV_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.X_TP_Ethernet.AssociatedDevice.{i}."
+	default 64
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_MEMSTATUS_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_QOE_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_MAX_INST must be the same!
+
+config DEV2_WIFI_APDEV_INTERFACE_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.X_TP_InterfaceInfo.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_COMPONENT_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.APDevice.{i}.X_TP_Component.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_APDEV_WPS_MAX_INST
+	int
+	default DEV2_WIFI_APDEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_APDEV_MAX_INST must be the same!
+
+config DEV2_TS_POLICY_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.X_TrafficSeparation.TrafficSeparationPolicy.{i}."
+	default 8
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_TS_ETH_POLICY_MAX_INST
+	int "max instance of Device.WiFi.MultiAP.X_TrafficSeparation.X_TP_TrafficSeparationEthPolicy.{i}."
+	default 8
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_DEV_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}."
+	default 16
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_RADIO_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}."
+	default 32
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_CUROPCLASSPROF_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.CurrentOperatingClassProfile.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_BSS_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_STA_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_STA_X_TP_QOE_MAX_INST
+	int
+	default DEV2_WIFI_DE_STA_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_STA_MAX_INST must be the same!
+
+config DEV2_STA_X_TP_QOE_FACTOR_MAX_INST
+	int
+	default DEV2_WIFI_DE_STA_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_STA_MAX_INST must be the same!
+
+config DEV2_WIFI_DE_BACKHAUL_STA_MAX_INST
+	int
+	default DEV2_WIFI_DE_RADIO_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_RADIO_MAX_INST must be the same!
+
+config DEV2_WIFI_DE_CAP_MAX_INST
+	int
+	default DEV2_WIFI_DE_RADIO_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_RADIO_MAX_INST must be the same!
+
+config DEV2_WIFI_DE_CAP_PROF_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.CapableOperatingClassProfile.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_SCAN_RESULT_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_OPCLASS_SCAN_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.{i}.OpClassScan.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_CHANNEL_SCAN_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.{i}.OpClassScan.{i}.ChannelScan.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_NEIGHBORBSS_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.{i}.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_UNASSOCSTA_MAX_INST
+	int "max instance of Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.UnassociatedSTA.{i}."
+	default 256
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_DEVICE_X_TP_QOE_MAX_INST
+	int
+	default DEV2_WIFI_DE_DEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_DEV_MAX_INST must be the same!
+
+config DEV2_DEVICE_X_TP_QOE_FACTOR_MAX_INST
+	int
+	default DEV2_WIFI_DE_DEV_MAX_INST
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  The max instance for this MACRO and DEV2_WIFI_DE_DEV_MAX_INST must be the same!
+
+config DEV2_WIFI_DE_ASSOC_DATA_MAX_INST
+	int "max instance of Device.WiFi.DataElements.AssociationEvent.AssociationEventData.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_WIFI_DE_DISASSOC_DATA_MAX_INST
+	int "max instance of Device.WiFi.DataElements.DisassociationEvent.DisassociationEventData.{i}."
+	default 128
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_MULTIMODE_AP_MAX_INST
+	int "max instance of Device.X_TP_MultiMode.AP_WLANConfig.{i}."
+	default 2
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_MULTIMODE_RE_MAX_INST
+	int "max instance of Device.X_TP_MultiMode.RE_WLANConfig.{i}."
+	default 2
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_MULTIMODE_ROUTER_MAX_INST
+	int "max instance of Device.X_TP_MultiMode.Router_WLANConfig.{i}."
+	default 2
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+
+config DEV2_BRIDGE_MAX_INST
+	int "max instance of Device.Bridging.Bridge.{i}."
+	default 8
+	depends on INCLUDE_DATA_MODEL_SPEC_OPTIONS
+	help
+	  You have to modify reduced_data_model.xml in directory of model if this config is enabled.
+	  And the max instance for this MACRO and value in reduced_data_model.xml must be the same!
+endmenu

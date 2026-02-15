@@ -1,0 +1,13 @@
+sdk_fw: apps_cp_before_cleanfs apps app_buildimage
+sdk_fw_clean: apps_clean
+
+include $(APP_PRIVATE_DIR)/make_apps
+include $(APP_PRIVATE_DIR)/make_build_sdk_fw
+
+ifneq ($(strip $(TCSUPPORT_VOIP)),)
+ifeq ("$(IS_VOIP_APP_DIR_EXIST)", "Y")
+include $(VOIP_APP_DIR)/make_voip_app
+endif
+endif
+
+app_buildimage:packer pack devgen build_fw

@@ -1,0 +1,13 @@
+
+prefix=/proj/mtk13196/Perforce/mbjspf01_3035/ws_chrispp.chen_rel_shct/BBN_Linux/DEV/main/tclinux_phoenix/app_bsp/bsp_exclusive/public/iptables-1.6.1/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+xtlibdir=${exec_prefix}/lib/xtables
+includedir=${prefix}/include
+
+Name:		xtables
+Description:	Shared Xtables code for extensions and iproute2
+Version:	1.6.1
+Cflags:		-I${includedir}
+Libs:		-L${libdir} -lxtables
+Libs.private:	-ldl

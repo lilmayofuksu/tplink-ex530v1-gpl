@@ -1,0 +1,232 @@
+\hypertarget{libapi__lib__utility_8h}{}\section{libapi\+\_\+lib\+\_\+utility.\+h File Reference}
+\label{libapi__lib__utility_8h}\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+
+
+This file is libapi lib utility header file for utility A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcmds__t}{cmds\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__utility_8h_a5847134597425827c27a5fbfe7ee5bfe}\label{libapi__lib__utility_8h_a5847134597425827c27a5fbfe7ee5bfe}} 
+\#define {\bfseries A\+P\+I\+\_\+\+L\+I\+B\+\_\+\+S\+U\+C\+C\+E\+SS}~(0)
+\item 
+\mbox{\Hypertarget{libapi__lib__utility_8h_a772a2e8208dfa8787fa489d319cec301}\label{libapi__lib__utility_8h_a772a2e8208dfa8787fa489d319cec301}} 
+\#define {\bfseries A\+P\+I\+\_\+\+L\+I\+B\+\_\+\+F\+A\+IL}~(-\/1)
+\item 
+\mbox{\Hypertarget{libapi__lib__utility_8h_aa83c5b02e72dc396c35c5acedf66a484}\label{libapi__lib__utility_8h_aa83c5b02e72dc396c35c5acedf66a484}} 
+\#define {\bfseries P\+A\+T\+H\+\_\+\+M\+A\+X\+\_\+\+D\+N\+S\+M\+A\+SQ}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libapi__lib__utility_8h_a3440ec075896a088ca87e0af1f53f589}{api\+\_\+lib\+\_\+help} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, void $\ast$p)
+\begin{DoxyCompactList}\small\item\em This function show the usage of cmd. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__utility_8h_abbb9ef0ae27664bcc9e025981307696c}{subcmd} (const \hyperlink{structcmds__t}{cmds\+\_\+t} tab\mbox{[}$\,$\mbox{]}, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, void $\ast$p)
+\begin{DoxyCompactList}\small\item\em This function call the subcmd. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__utility_8h_a5dbd221ad3009bf9f382bce289b6b7fa}{api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name} (char $\ast$Proc\+Name, int $\ast$foundpid, int pid\+Num, int $\ast$foundnum)
+\begin{DoxyCompactList}\small\item\em This function find the pid by proc name. \end{DoxyCompactList}\item 
+void \hyperlink{libapi__lib__utility_8h_a520bb423daa7fe6330518232b6b6007f}{file\+Read} (char $\ast$path, char $\ast$buf, int size)
+\begin{DoxyCompactList}\small\item\em This function read the file data to buf. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__utility_8h_ab8774fbc2bd969598ba2e89b94da48c5}{mtd\+\_\+open} (const char $\ast$mtd, int flags)
+\begin{DoxyCompactList}\small\item\em This function get the fd of mtd file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is libapi lib utility header file for utility A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Lei.\+Zhang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/23 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__utility_8h_a5dbd221ad3009bf9f382bce289b6b7fa}\label{libapi__lib__utility_8h_a5dbd221ad3009bf9f382bce289b6b7fa}} 
+\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}!api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name@{api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name}}
+\index{api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name@{api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name}!libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+\subsubsection{\texorpdfstring{api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name()}{api\_lib\_find\_pid\_by\_name()}}
+{\footnotesize\ttfamily int api\+\_\+lib\+\_\+find\+\_\+pid\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{char $\ast$}]{Proc\+Name,  }\item[{int $\ast$}]{foundpid,  }\item[{int}]{pid\+Num,  }\item[{int $\ast$}]{foundnum }\end{DoxyParamCaption})}
+
+
+
+This function find the pid by proc name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Proc\+Name} & proc file name. \\
+\hline
+\mbox{\tt in}  & {\em pid\+Num} & Pid number. \\
+\hline
+\mbox{\tt out}  & {\em foundpid} & pid of found. \\
+\hline
+\mbox{\tt out}  & {\em foundnum} & pid num of found. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Find the pid by proc name. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__utility_8h_a3440ec075896a088ca87e0af1f53f589}\label{libapi__lib__utility_8h_a3440ec075896a088ca87e0af1f53f589}} 
+\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}!api\+\_\+lib\+\_\+help@{api\+\_\+lib\+\_\+help}}
+\index{api\+\_\+lib\+\_\+help@{api\+\_\+lib\+\_\+help}!libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+\subsubsection{\texorpdfstring{api\+\_\+lib\+\_\+help()}{api\_lib\_help()}}
+{\footnotesize\ttfamily int api\+\_\+lib\+\_\+help (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+This function show the usage of cmd. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em argc} & Parameter number. \\
+\hline
+\mbox{\tt in}  & {\em argv} & Variable parameter list. \\
+\hline
+\mbox{\tt in}  & {\em p} & void pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Show the usage of cmd. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__utility_8h_a520bb423daa7fe6330518232b6b6007f}\label{libapi__lib__utility_8h_a520bb423daa7fe6330518232b6b6007f}} 
+\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}!file\+Read@{file\+Read}}
+\index{file\+Read@{file\+Read}!libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+\subsubsection{\texorpdfstring{file\+Read()}{fileRead()}}
+{\footnotesize\ttfamily void file\+Read (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{char $\ast$}]{buf,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function read the file data to buf. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & file name. \\
+\hline
+\mbox{\tt in}  & {\em size} & buf size \\
+\hline
+\mbox{\tt out}  & {\em buf} & buf of storing the info read from file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Read the file data to buf. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__utility_8h_ab8774fbc2bd969598ba2e89b94da48c5}\label{libapi__lib__utility_8h_ab8774fbc2bd969598ba2e89b94da48c5}} 
+\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}!mtd\+\_\+open@{mtd\+\_\+open}}
+\index{mtd\+\_\+open@{mtd\+\_\+open}!libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+\subsubsection{\texorpdfstring{mtd\+\_\+open()}{mtd\_open()}}
+{\footnotesize\ttfamily int mtd\+\_\+open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{mtd,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+
+
+
+This function get the fd of mtd file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mtd} & mtd file name. \\
+\hline
+\mbox{\tt in}  & {\em flags} & flag of open file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em fd} & \+: fd of open file \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the fd of mtd file. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__utility_8h_abbb9ef0ae27664bcc9e025981307696c}\label{libapi__lib__utility_8h_abbb9ef0ae27664bcc9e025981307696c}} 
+\index{libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}!subcmd@{subcmd}}
+\index{subcmd@{subcmd}!libapi\+\_\+lib\+\_\+utility.\+h@{libapi\+\_\+lib\+\_\+utility.\+h}}
+\subsubsection{\texorpdfstring{subcmd()}{subcmd()}}
+{\footnotesize\ttfamily int subcmd (\begin{DoxyParamCaption}\item[{const \hyperlink{structcmds__t}{cmds\+\_\+t}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+This function call the subcmd. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tab} & Sub cmd table. \\
+\hline
+\mbox{\tt in}  & {\em argc} & Parameter number. \\
+\hline
+\mbox{\tt in}  & {\em argv} & Variable parameter list. \\
+\hline
+\mbox{\tt in}  & {\em p} & void pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Call the subcmd. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

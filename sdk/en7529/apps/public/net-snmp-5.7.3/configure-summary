@@ -1,0 +1,14 @@
+  SNMP Versions Supported:    1 2c 3
+  Building for:               linux
+  Net-SNMP Version:           5.7.3
+  Network transport support:  Alias UDP UDPIPv6 UDPIPv4Base UDPBase IPv4Base SocketBase IPv6Base
+  SNMPv3 Security Modules:     usm
+  Agent MIB code:            default_modules examples/notification ip-mib mibII/at mibII/icmp mibII/ifTable mibII/ip mibII/tcp mibII/udp mibII/vacm_context mibII/vacm_vars notification notification-log-mib notification/snmpNotifyTable target =>  snmpv3mibs mibII/snmp_mib mibII/system_mib mibII/sysORTable mibII/vacm_vars mibII/vacm_conf ip-mib/ipAddressTable ip-mib/ipAddressPrefixTable ip-mib/ipDefaultRouterTable ip-mib/inetNetToMediaTable ip-mib/ipSystemStatsTable ip-mib/ip_scalars ip-mib/ipv6InterfaceTable ip-mib/ipv6ScopeZoneIndexTable ip-mib/ipIfStatsTable ip-mib/ipv6RouterAdvertTable mibII/kernel_linux if-mib/ifTable mibII/kernel_linux mibII/ifTable mibII/ipAddr mibII/at mibII/var_route mibII/route_write mibII/ip mibII/ip mibII/kernel_linux mibII/tcpTable mibII/kernel_linux mibII/udpTable util_funcs/header_generic mibII/vacm_context mibII/vacm_conf notification/snmpNotifyTable snmp-notification-mib/snmpNotifyFilterTable notification/snmpNotifyFilterProfileTable notification-log-mib/notification_log notification/snmpNotifyTable header_complex target target/target_counters_5_5 target/snmpTargetAddrEntry target/snmpTargetParamsEntry target/target
+  MYSQL Trap Logging:         unavailable
+  Embedded Perl support:      disabled
+  SNMP Perl modules:          disabled
+  SNMP Python modules:        disabled
+  Crypto support from:        crypto
+  Authentication support:     MD5 SHA1
+  Encryption support:         DES AES
+  Local DNSSEC validation:    disabled

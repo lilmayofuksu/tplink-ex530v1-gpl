@@ -1,0 +1,5 @@
+Project/dir.mak
+Project/release.chk
+Project/release_bsp.mak
+Project/rule.mak
+filesystem/usr/etc/init.d/rcS

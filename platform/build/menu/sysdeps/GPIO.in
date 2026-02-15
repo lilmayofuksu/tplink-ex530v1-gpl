@@ -1,0 +1,228 @@
+
+menu 'TP GPIO Option'
+
+config INCLUDE_TP_GPIO_SUPPORT
+	bool "Use tp_gpio to control GPIO"
+	default n
+
+config INCLUDE_DEVICE_TREE
+	bool "Using Device Tree to setting the Button and LED config and using the led class to control LED"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BCM_DTS
+	bool "Using DTS-related GPIO API to configure led gpio"
+	depends on INCLUDE_BROADCOM
+	default n
+
+menu 'Button Support'
+
+config INCLUDE_TP_GPIO_BTN_RESETDEF
+	bool "Let BBA can recieve Reset button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_WIFI
+	bool "Let BBA can recieve Wifi button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_WIFI_RESET
+	bool "Let BBA can recieve Wifi/reset button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_WPS
+	bool "Let BBA can recieve WPS button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_WIFI_WPS
+	bool "Let BBA can recieve Wifi/wps button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_LED
+	bool "Let BBA can recieve LED button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_ECO
+	bool "Let BBA can recieve ECOnomy button event via tp_gpio, and disable original button flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_SLIDE_SWITCH
+	bool "Use slide switch for system mode"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_BTN_FUNC_CTRL
+	bool "The parameter that disables and restores the hardware button"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+endmenu # menu 'Button Support'
+
+menu 'LED Support'
+
+config INCLUDE_TP_GPIO_LED_POWR
+	bool "Let BBA can control POWR LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_DUAL_POWR
+        bool "Let BBA can control dial POWR LED, and disable original lights flow"
+        depends on INCLUDE_TP_GPIO_SUPPORT
+        default n
+
+config INCLUDE_TP_GPIO_LED_XDSL
+	bool "Let BBA can control XDSL LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_DUAL_XDSL
+        bool "Let BBA can control dial XDSL LED, and disable original light flow"
+        depends on INCLUDE_TP_GPIO_SUPPORT
+        default n
+
+config INCLUDE_TP_GPIO_LED_INET
+	bool "Let BBA can control INET LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_DUAL_INET
+        bool "Let BBA can control dial INET LED, and disable original light flow"
+        depends on INCLUDE_TP_GPIO_SUPPORT
+        default n
+
+config INCLUDE_TP_GPIO_INET_COOPERATIVE_CTL
+        bool "Let BBA can control dual INET LED with dual gpio"
+        depends on INCLUDE_TP_GPIO_LED_DUAL_INET
+        default n
+
+config INCLUDE_TP_GPIO_LED_WL_SINGLE
+	bool "Let BBA can control SINGLE WIFI LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_WL_LED_NAME
+	depends on INCLUDE_TP_GPIO_LED_WL_SINGLE
+	string "Wifi LED Name"
+	default "WL2G" 
+
+config INCLUDE_TP_GPIO_LED_WL_DOUBLE
+	bool "Let BBA can control DOUBLE WIFI LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_WL_LED_NAME_2G
+	depends on INCLUDE_TP_GPIO_LED_WL_DOUBLE
+	string "Wifi 2.4G LED Name"
+	default "WL2G"
+
+config INCLUDE_WL_LED_NAME_5G
+	depends on INCLUDE_TP_GPIO_LED_WL_DOUBLE
+	string "Wifi 5G LED Name"
+	default "WL5G"
+
+config INCLUDE_WL_LED_NAME_6G
+	depends on INCLUDE_TP_GPIO_LED_WL_DOUBLE
+	depends on INCLUDE_WIFI_6G
+	string "Wifi 6G LED Name"
+	default "WL6G"
+	
+config INCLUDE_TP_GPIO_LED_WL_WPS_DOUBLE_COLOR
+	bool "Set Wifi LED as Bicolor, orange is used by WPS function, green used for Wifi function"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+	
+config INCLUDE_TP_GPIO_LED_WPS_SINGLE
+	bool "Let BBA can control Single WPS LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_WPS_LED_NAME
+	depends on INCLUDE_TP_GPIO_LED_WPS_SINGLE
+	string "Wifi 2.4G&5G Common WPS LED Name"
+	default "WL2R" 
+
+config INCLUDE_TP_GPIO_LED_WPS_DOUBLE
+	bool "Let BBA can control Double WPS LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_WPS_LED_NAME_2G
+	depends on INCLUDE_TP_GPIO_LED_WPS_DOUBLE
+	string "Wifi 2.4G WPS LED Name"
+	default "WL2R" 
+
+config INCLUDE_WPS_LED_NAME_5G
+	depends on INCLUDE_TP_GPIO_LED_WPS_DOUBLE
+	string "Wifi 5G WPS LED Name"
+	default "WL5R" 
+
+config INCLUDE_TP_GPIO_LED_WAN
+	bool "Let BBA can control WAN LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_EWAN
+	bool "Let BBA can control EWAN LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_LAN
+	bool "Let BBA can control LAN LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_MULTI_LED_LAN
+	bool "Let BBA can control MULTI LAN LEDs, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_FXS
+	bool "Let BBA can control FXS LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_DUAL_VOIP
+        bool "There are two voip led"
+        depends on INCLUDE_TP_GPIO_SUPPORT
+        default n
+
+config INCLUDE_TP_GPIO_LED_USB
+	bool "Let BBA can control USB LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+	
+config INCLUDE_TP_GPIO_LED_USB_TRANSMIT_FLASHING
+	bool "Let BBA can control USB LED Flashing when transmit data, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n	
+	
+
+config INCLUDE_TP_GPIO_LED_SINGLE_RGB
+	bool "Let BBA can control RGB LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_NET_SINGLE
+	bool "Multi net port use single led"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+config INCLUDE_TP_GPIO_LED_NET_BLINK
+	bool "VX800v Led blink"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+	
+config INCLUDE_TP_GPIO_LED_SFP
+	bool "Let BBA can control SFP LED, and disable original light flow"
+	depends on INCLUDE_TP_GPIO_SUPPORT
+	default n
+
+endmenu # menu 'LED Support'
+
+endmenu # menu 'TP GPIO Option'

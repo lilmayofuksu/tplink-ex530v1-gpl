@@ -1,0 +1,174 @@
+
+
+menu 'WEB Options'
+
+config INCLUDE_REBOOT_WAIT_TIME
+	string "DUT reboot time (unit:s)"
+	default "130" if INCLUDE_MTK
+	default "200" if INCLUDE_QUALCOMM
+	default "130"
+
+config INCLUDE_FWUPGRADE_WAIT_TIME
+	string "DUT fw upgrade time (unit:s)"
+	default "150" if INCLUDE_MTK
+	default "220" if INCLUDE_QUALCOMM
+	default "150"
+	
+config INCLUDE_FWUPLOAD_STEP
+	string "DUT fw upload step"
+	default "10"
+
+config INCLUDE_FORBID_LOGIN_TIME
+	int "DUT forbid login time (unit:s)"
+	range 0,600
+	default 600
+
+config INCLUDE_WEB_SHOW_DEFAULT_LEASE_TIME
+	int "Web show DHCP default lease time (unit:min)"
+	range 1,2800
+	default 60 if INCLUDE_TTNET
+	default 120
+
+config WEB_INCLUDE_MULTI_EWAN
+	bool "WEB multi Ethernet WAN"
+	default n
+
+config INCLUDE_CWMP_AND_VOIP_AUTO_CHOOSE_INTF
+	bool "Support cwmp and voip auto choose corresponding interface"
+	default n
+
+config INCLUDE_REMOTE_ACCESS_UPGRADE
+	bool "Remote access show Firmware Upgrade UI"
+	default n
+
+config INCLUDE_REMOTE_ACCESS_BNR
+	bool "Remote access show Backup & Restore UI"
+	default n
+
+config WEB_INCLUDE_DST
+bool "WEB Daylight Savings Time"
+	default n
+
+config WEB_INCLUDE_HELP
+bool "WEB Help page"
+	default n
+
+config WEB_INCLUDE_MOBILE_UI
+	bool "WEB Mobile UI"
+	default n
+
+config INCLUDE_DAY_MONTH_YEAR
+       bool "Time format is DAY/MONTH/YRAR (Germany)"
+       default n
+
+config INCLUDE_EWAN_ISP_WEB
+	bool "WEB Page support EWAN ISP List"
+	default n
+	depends on INCLUDE_VOIP_AND_IPTV_SUPPORT_EWAN_CONNECT
+
+config INCLUDE_MULTI_LANGUAGE
+	bool "WEB Page support multi language"
+	default n
+	
+config INCLUDE_LANGUAGE_EN_US
+	bool "English United"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_DE_DE
+	bool "German"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_IT_IT
+	bool "Italian"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_RU_RU
+	bool "Russian"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_TR_TR
+	bool "Turkish"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_PL_PL
+	bool "Polish"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_FR_FR
+	bool "French"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_ES_ES
+	bool "Spanish"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_ES_LA
+	bool "Latin American Spanish"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_PT_PT
+	bool "Portuguese"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_PT_BR
+	bool "Brazilian Portuguese"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_EL_GR
+	bool "Greek"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_TH_TH
+	bool "Thai"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_RO_RO
+	bool "Romanian"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_AR_AR
+	bool "Arabic"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_MA_HU
+	bool "Hungary"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_LANGUAGE_UK_UA
+	bool "Ukrainian"
+	default n
+	depends on INCLUDE_MULTI_LANGUAGE
+
+config INCLUDE_RU_PREINSTALLED_ISP
+	bool "RU WEB pre-installed ISP configuration"
+	default n
+
+config INCLUDE_QS_REGION_SETUP
+	bool "WEB qsRegion in quick setup"
+	default n
+
+config INCLUDE_WEB_SECTION
+	bool "Web section permission setup"
+	default n	
+	
+config INCLUDE_WEB_COMPRESS
+	bool "WEB file compress"
+	default n
+
+endmenu

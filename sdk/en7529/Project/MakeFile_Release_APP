@@ -1,0 +1,254 @@
+ifneq ($(strip $(CUSTOM)),)
+ifneq ($(strip $(PROFILE)),)
+include install_bsp/Project/profile/$(CUSTOM)/$(PROFILE)/$(PROFILE).profile
+endif
+endif
+
+include apps/private/apps_dir.mak
+include apps/private/apps_rule.mak
+include $(TRUNK_DIR)/.profile_summary
+
+ifneq ($(strip $(RELEASEBSP)),)	
+ifeq ($(strip $(CUSTOMERRELEASE)),)
+ifneq ($(strip $(OPENWRT_RELEASE)),)
+release_sdk_sdk: confirm_infor
+else
+release_sdk_sdk: confirm_infor release_backup_app release_profile_app release_makefile_app release_webpage release_swept_app release_tar
+endif
+endif
+endif
+
+PROFILE_SET=UNION_EN7580_7592_7615_MAP_KERNEL_4_4_demo CMCC_7526F_4P7592_7612_CFG2_demo UNION_EN7523_GLIBC_7592_7615_demo UNION_EN7523_GLIBC_7592_7615_KERNEL_5_4_demo UNION_EN7580_7592_7615_MAP_KERNEL_5_4_demo UNION_EN7562_7915D_KERNEL_5_4_demo UNION_EN7523_GLIBC_7915D_ActiveEthWan_KERNEL_5_4_demo UNION_EN7562_7915D_ActiveEthWan_KERNEL_5_4_demo
+
+
+
+INFOR0="Attention!!!!"
+INFOR3="This command will release Multi-chip SDK, which will remove the un-open files and can't be recovered!!!!!"
+INFOR4="Please select the release profile desired. Example: 1 2 3"
+INFOR5="Please input your selection:"
+INFOR6="Profile you selected is as following:"
+INFOR7="if you agree, please input "y",else if you wanna break please input "N". [y/N] ?"
+EXIT_INFOR="Your input is not y! The make process will be breaked!"
+CONTINUE_INFOR="Entering make process......"
+INFOR_CUSTOM="If you wanan release a customer version from SDK, please make sure your command is: "make -f MultiChip.make CUSTOM_RELASE=y""
+SEPARATOR="....................................................................................................."
+
+
+
+ifneq ($(strip $(PROFILE)),)
+PROFILE_SELECT = $(PROFILE)
+confirm_infor:
+	@echo "release with $(PROFILE) profile now..."
+	@sleep 1
+else
+#if RD wanna release with some dedicated profiles, the select and confirm will be triggerd
+confirm_infor:
+	@echo "****************************************************************************************************"
+	@echo $(INFOR0)
+	@echo "....................................................................................................."
+	@echo $(INFOR3)
+	@echo $(INFOR4)
+	@id=0;\
+	for profile in $(PROFILE_SET);\
+	do \
+		echo [$$id] $$profile;\
+		id=`expr $$id + 1`; \
+	done;
+	@echo "****************************************************************************************************"
+	@echo $(INFOR5);
+	@rm -rf "./.profile_select.tmp";
+	@profile_set=(${PROFILE_SET}); \
+	PROFILE_SET_NUM=$${profile_set[@]}; \
+	read select;\
+	echo $(SEPARATOR);\
+	while [ "$$select"x == ""x ] ;\
+	do \
+		echo $(INFOR5);read select;\
+	done; \
+	while [ "$$select"x == ""x ] ;\
+	do \
+		fail=0;\
+		for index in $$select; \
+		do \
+			if [[ ( $$index -lt 0 ) || ( $$index -ge $${PROFILE_SET_NUM} ) ]]; \
+			then\
+				echo "******Wrong input! Please check again!*****"; \
+				fail=1; \
+				echo $(INFOR5);read select;\
+				while [ "$$select"x == ""x ]];\
+				do \
+					echo $(INFOR5);read select;\
+				done; \
+				break; \
+			fi; \
+		done ;\
+		if [ $$fail -eq 1 ];\
+		then \
+			continue; \
+		else \
+			break; \
+		fi; \
+	done;\
+	echo $(INFOR6);\
+	for index in $$select; \
+	do \
+		echo "******$${profile_set[$$index]}*****"; \
+		echo $${profile_set[$$index]}>>"./.profile_select.tmp"; \
+	done
+	@echo $(INFOR7);
+	@read var ;\
+	if [[ $$var == y ]]; \
+	then \
+		echo $(CONTINUE_INFOR); \
+	else \
+		echo "" >"./.profile_select.tmp";\
+		echo $(EXIT_INFOR);\
+		exit 1;\
+	fi
+	@echo $(SEPARATOR)
+	@sleep 1;
+
+PROFILE_SELECT=`cat ./.profile_select.tmp`
+
+#rm -rf ./.profile_summary
+	
+#for release in ${PROFILE_SELECT} ; \
+#do \
+#	cat install_bsp/Project/profile/$(CUSTOM)/$${release}/$${release}.profile >>./.profile_summary ;\
+#done
+	
+endif	
+
+release_backup_app:
+	for release in ${PROFILE_SELECT} ; \
+	do \
+		echo "*************************************************"; \
+		echo "*************************************************"; \
+		echo "*****$$release making and backup in progress********"; \
+		echo "*************************************************"; \
+		sleep 3;\
+		echo "*************************************************"; \
+		${MAKE} -f "$(APP_PRIVATE_DIR)/MakeFile_Main_APP" PROFILE=$${release} CUSTOM=${CUSTOM} sdk_fw_clean ; if [ $$? != 0 ];then exit 1;fi; \
+		echo "**********************making***************************"; \
+		${MAKE} -f "$(APP_PRIVATE_DIR)/MakeFile_Main_APP"  PROFILE=$${release} CUSTOM=${CUSTOM} RELEASEBSP=y apps_prepare apps_unopen; if [ $$? != 0 ];then exit 1;fi; \
+		echo "**************************************************"; \
+		${MAKE} -f "$(APP_PRIVATE_DIR)/MakeFile_Main_APP" PROFILE=$${release} CUSTOM=${CUSTOM} sdk_fw_clean ; if [ $$? != 0 ];then exit 1;fi; \
+		echo "**************************************************"; \
+	done
+	
+release_profile_app:
+	find install_bsp/Project/profile/* -maxdepth 0 -type d -not -name "$(CUSTOM)" | xargs rm -rf
+	find install_bsp/Project/profile/$(CUSTOM)/* -maxdepth 0 -not -name '*_demo' | xargs rm -rf
+
+release_swept_app:
+	echo "********************release_app_swept begin:*****************************"; \
+	${MAKE} -f "$(APP_PRIVATE_DIR)/release_app_swept" ALL ; if [ $$? != 0 ];then exit 1;fi;\
+	echo "*********************release_app_swept finish:****************************"; \
+	rm -rf $(TRUNK_DIR)/.profile_summary
+	
+release_tar:
+ifneq ($(strip $(CUSTOM)),)
+	tt=0 ;\
+	date=`date +%Y%m%d`; \
+	tar -czvf ../releasesdk_$(CUSTOM)_$$date.tgz ./ ; \
+	while [ $$? -ne 0 ]; \
+	do\
+		echo "tar failed,will retry" ; \
+		let "tt=tt+1" ; \
+		echo $$tt ;\
+		chmod 777 -R $(TRUNK_DIR)/ ; \
+		rm ../releasesdk_$(CUSTOM)_$$date.tgz ; \
+		tar -czvf ../releasesdk_$(CUSTOM)_$$date.tgz ./ ; \
+	done
+else
+	tt=0 ;\
+	date=`date +%Y%m%d`; \
+	tar -czvf ../releasesdk_$$date.tgz ./ ; \
+	while [ $$? -ne 0 ]; \
+	do\
+		echo "tar failed,will retry" ; \
+		let "tt=tt+1" ; \
+		echo $$tt ;\
+		chmod 777 -R $(TRUNK_DIR)/ ; \
+		rm ../releasesdk_$$date.tgz ; \
+		tar -czvf ../releasesdk_$$date.tgz ./ ; \
+	done
+endif
+release_makefile_app:
+#copy makefiles
+	cp $(APP_TCAPI_CWMP_LIB_DIR)/Makefile.release $(APP_TCAPI_CWMP_LIB_DIR)/Makefile
+
+	cp $(APP_CFG_NG_DIR)/service/cfg/Makefile.release $(APP_CFG_NG_DIR)/service/cfg/Makefile
+
+	-cp -rf $(APP_DMS_DIR)/src/dms/avt/Makefile.am.release $(APP_DMS_DIR)/src/dms/avt/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/cds/cdsMgr/Makefile.am.release $(APP_DMS_DIR)/src/dms/cds/cdsMgr/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/cds/clm/Makefile.am.release $(APP_DMS_DIR)/src/dms/cds/clm/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/cds/fsm/Makefile.am.release $(APP_DMS_DIR)/src/dms/cds/fsm/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/cms/Makefile.am.release $(APP_DMS_DIR)/src/dms/cms/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/eventMgr/Makefile.am.release $(APP_DMS_DIR)/src/dms/eventMgr/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/ms_mrs/Makefile.am.release $(APP_DMS_DIR)/src/dms/ms_mrs/Makefile.am
+	-cp -rf $(APP_DMS_DIR)/src/dms/UnitTest/Makefile.am.release $(APP_DMS_DIR)/src/dms/UnitTest/Makefile.am
+	
+
+release_webpage:
+	echo "release webpage...."
+#dsl
+ifneq ($(strip $(TCSUPPORT_CT_WAN_PTM) $(TCSUPPORT_CT_E8B_ADSL)),)
+ifneq ($(strip $(TCSUPPORT_GENERAL_MULTILANGUAGE)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_ml
+	cp -rf $(APP_WEBPAGE_DIR)/Router/e8c_ml/boaroot $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_ml
+else
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8b_vd/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8b_vd/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8b_vd/
+endif	
+endif
+
+ifneq ($(strip $(TCSUPPORT_GENERAL_MULTILANGUAGE)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_ml
+	cp -rf $(APP_WEBPAGE_DIR)/Router/e8c_ml/boaroot $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_ml
+else
+ifneq ($(strip $(TCSUPPORT_CT_GUI_ENGLISH)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_en/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8c_en/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_en/
+else
+ifneq ($(strip $(TCSUPPORT_CT_JOYME4)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_joyme4/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8c_joyme4/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_joyme4/
+ifneq ($(strip $(TCSUPPORT_CT_JOYME4_UI2)),)
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8c_joyme4/style2  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_joyme4/
+endif
+ifneq ($(strip $(TCSUPPORT_CT_JOYME4_UI3)),)
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8c_joyme4/style3  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c_joyme4/
+endif
+else
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/e8c/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/e8c/
+endif
+endif
+endif
+
+ifneq ($(strip $(TCSUPPORT_CMCC)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cmcc/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/cmcc/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cmcc/
+endif
+ifneq ($(strip $(TCSUPPORT_CMCCV2) $(TCSUPPORT_NP_CMCC)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cmccv2/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/cmccv2/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cmccv2/
+endif
+ifneq ($(strip $(JOYME_MULTI_SDK)),)
+	mkdir -p $(JOYME_ISNTALL_CODE_TMP)/$(APP_WEBPAGE_DIR)/Router/
+	cp -rf $(APP_WEBPAGE_DIR)/Router/cmccv2 $(JOYME_ISNTALL_CODE_TMP)/$(APP_WEBPAGE_DIR)/Router/
+endif
+
+ifneq ($(strip $(TCSUPPORT_CUC_GUI)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cucv2/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/cucv2/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/cucv2/
+endif
+
+ifneq ($(strip $(TCSUPPORT_CUC_SFU)),)
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/sfu/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/sfu/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/sfu/
+endif
+
+	mkdir -p $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/ct/
+	cp -rf  $(APP_WEBPAGE_DIR)/Router/ct/boaroot  $(BIN_BAK_PATH)/apps/private/webPage.reserved/Router/ct/

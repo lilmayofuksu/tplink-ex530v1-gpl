@@ -1,0 +1,1315 @@
+
+
+menu "General Configuration"
+	
+config INCLUDE_CUSTOMIZED_SP
+	string "Input the proper ISP name, like AT&T."
+	default ""
+	help
+	  customized sp name, the default value is "" when in standard model.
+
+config INCLUDE_BETA_UPGRATE
+	bool "build beta upgrate file"
+	default n
+	help
+	  build beta upgrate file.
+
+config INCLUDE_TRANS_UPGRATE
+	bool "build trans upgrate file"
+	default n
+	help
+	  build trans upgrate file.
+
+
+config INCLUDE_DATECODE_UPGRATE
+	bool "build datecode upgrate file"
+	default n
+	help
+	  build datacode upgrate file.
+
+menu "Board SPEC"
+
+config INCLUDE_SPEC_VOICE_BOARD
+	bool "Just for EB810 voice board"
+	default n
+	help
+		To mark the code only used by EB810 voice board.
+	
+config INCLUDE_SPEC_EX220
+	bool "Segment For Platform Integration(EX220)"
+	default n
+	help
+	  To mark the code only used by EX220.
+
+config INCLUDE_SPEC_EX440
+	bool "Segment For Platform Integration(EX440)"
+	default n
+	help
+	  To mark the code only used by EX440.
+
+config INCLUDE_SPEC_VX220
+	bool "Segment For Platform Integration(VX220)"
+	default n
+	help
+	  To mark the code only used by VX220.
+
+config INCLUDE_SPEC_VX230v
+	bool "Segment For Platform Integration(VX230v)"
+	default n
+	help
+	 To mark the code only used by VX230v.
+
+config INCLUDE_SPEC_VX1810v
+	bool "Segment For Platform Integration(VX1810v)"
+	default n
+	help
+	 To mark the code only used by VX1810v.
+
+config INCLUDE_SPEC_EX420
+	bool "Segment For Platform Integration(EX420)"
+	default n
+	help
+	  To mark the code only used by EX420.
+
+config INCLUDE_SPEC_EX510
+	bool "Segment For Platform Integration(EX510)"
+	default n
+	help
+	  To mark the code only used by EX510.
+
+config INCLUDE_SPEC_EX511
+	bool "Segment For Platform Integration(EX511)"
+	default n
+	help
+	  To mark the code only used by EX511.
+
+config INCLUDE_SPEC_EX511V2
+	bool "Segment For Platform Integration(EX511V2)"
+	default n
+	help
+	  To mark the code only used by EX511V2.
+
+config INCLUDE_SPEC_HX223
+	bool "Segment For Platform Integration(HX223)"
+	default n
+	help
+	  To mark the code only used by HX223.
+
+config INCLUDE_SPEC_VX420
+        bool "Segment For Platform Integration(VX420)"
+        default n
+        help
+          To mark the code only used by VX420
+
+config INCLUDE_SPEC_HC220
+        bool "Segment For Platform Integration(HC220)"
+        default n
+        help
+          To mark the code only used by HC220
+
+config INCLUDE_SPEC_HX220
+        bool "Segment For Platform Integration(HX220)"
+        default n
+        help
+          To mark the code only used by HX220
+
+config INCLUDE_SPEC_EX221
+        bool "Segment For Platform Integration(EX221-G5V1)"
+        default n
+        help
+          To mark the code only used by EX221-G5V1
+
+config INCLUDE_SPEC_EC223
+        bool "Segment For Platform Integration(EC223)"
+        default n
+        help
+          To mark the code only used by EC223
+
+config INCLUDE_SPEC_XX230v
+        bool "Segment For Platform Integration(XX230v)"
+        default n
+        help
+          To mark the code only used by XX230v
+
+config INCLUDE_SPEC_XX530v
+        bool "Segment For Platform Integration(XX530v)"
+        default n
+        help
+          To mark the code only used by XX530v
+
+config INCLUDE_SPEC_EX530v
+        bool "Segment For Platform Integration(EX530v)"
+        default n
+        help
+          To mark the code only used by EX530v
+
+config INCLUDE_SPEC_SZ030
+        bool "Segment For Platform Integration(SZ030)"
+        default n
+        help
+          To mark the code only used by SZ030
+
+config INCLUDE_SPEC_HX510
+        bool "Segment For Platform Integration(HX510)"
+        default n
+        help
+          To mark the code only used by HX510
+
+config INCLUDE_SPEC_HX716_PRO
+	bool "Segment For Platform Integration(HX716 Pro)"
+	default n
+	help
+	  To mark the code only used by HX716 Pro.
+
+config INCLUDE_SPEC_EX1110V1
+	bool "Segment For Platform Integration(EX1110V1)"
+	default n
+	help
+	  To mark the code only used by EX1110V1.
+
+config INCLUDE_SPEC_EX141V1
+	bool "Segment For Platform Integration(EX141V1)"
+	default n
+	help
+	  To mark the code only used by EX141V1.
+
+config INCLUDE_SPEC_EX820v
+        bool "Segment For Platform Integration(EX820v)"
+        default n
+        help
+          To mark the code only used by EX820v
+
+config INCLUDE_SPEC_EX821v
+        bool "Segment For Platform Integration(EX821v)"
+        default n
+        help
+          To mark the code only used by EX821v
+	
+config INCLUDE_SPEC_EX820V1
+        bool "Segment For Platform Integration(EX820V1)"
+        default n
+        help
+          To mark the code only used by EX820V1
+
+config INCLUDE_SPEC_EX920V1
+        bool "Segment For Platform Integration(EX920V1)"
+        default n
+        help
+          To mark the code only used by EX920V1
+
+config INCLUDE_SPEC_HX820V1
+        bool "Segment For Platform Integration(HX820V1)"
+        default n
+        help
+          To mark the code only used by HX820V1
+
+config INCLUDE_SPEC_MX50V
+		bool "Segment For Platform Integration(MX50V/MX223/MX510v/MX515v)"
+		default n
+		help
+		  To mark the code only used by MX50V/MX223/MX510v/MX515v.
+
+config INCLUDE_SPEC_NX510V
+		bool "Segment For Platform Integration(NX510v)"
+		default n
+		help
+		  To mark the code only used by NX510v.
+
+config INCLUDE_SPEC_NX440
+	bool "Segment For Platform Integration(NX440)"
+	default n
+	help
+	  To mark the code only used by NX440.
+
+config INCLUDE_SPEC_HX710
+	bool "Segment For Platform Integration(HX710)"
+	default n
+	help
+	  To mark the code only used by HX710.
+
+config INCLUDE_SPEC_EX710
+	bool "Segment For Platform Integration(EX710)"
+	default n
+	help
+	  To mark the code only used by EX710.
+
+config INCLUDE_SPEC_EX230
+	bool "Segment For Platform Integration(EX230)"
+	default n
+	help
+	  To mark the code only used by EX230.
+
+config INCLUDE_SPEC_EX230v
+       bool "Segment For Platform Integration(EX230v)"
+       default n
+       help
+         To mark the code only used by EX230v.
+	  
+config INCLUDE_SPEC_HX230
+	bool "Segment For Platform Integration(HX230)"
+	default n
+	help
+	  To mark the code only used by HX230.
+
+config INCLUDE_SPEC_VX700v
+	bool "Segment For Platform Integration(VX700v)"
+	default n
+	help
+	  To mark the code only used by VX700v.
+
+config INCLUDE_SPEC_HX706
+	bool "Segment For Platform Integration(HX706)"
+	default n
+	help
+	  To mark the code only used by HX706.
+
+config INCLUDE_SPEC_VX800v
+	bool "Segment For Platform Integration(VX800v)"
+	default n
+	help
+	  To mark the code only used by VX800v.
+
+config INCLUDE_SPEC_XX800v
+	bool "Segment For Platform Integration(XX800v)"
+	default n
+	help
+	  To mark the code only used by XX800v.
+
+config INCLUDE_SPEC_VR1210v 
+	bool "Segment For Platform Integration(VR1210v)"
+	default n
+	help
+	  To mark the code only used by VR1210v.
+	  
+config INCLUDE_SPEC_VX231v
+	bool "Segment For Platform Integration(VX231v)"
+	default n
+	help
+	 To mark the code only used by VX231v.
+
+config INCLUDE_SPEC_VX231
+	bool "Segment For Platform Integration(VX231)"
+	default n
+	help
+	 To mark the code only used by VX231.
+
+config INCLUDE_SPEC_VC223G3v
+	bool "Segment For Platform Integration(VC223G3v)"
+	default n
+	help
+	  To mark the code only used by VC223G3v.
+
+config INCLUDE_SPEC_VC220G3u
+	bool "Segment For Platform Integration(VC220-G3u)"
+	default n
+	help
+	  To mark the code only used by VC220-G3u.
+
+config INCLUDE_SPEC_EB810
+	bool "Segment For Platform Integration(EB810(US2)1.0)"
+	default n
+	help
+	  To mark the code only used by EB810(US2)1.0
+
+endmenu  # menu "Board SPEC"
+
+config CONFIG_TP_IMAGE
+	bool "Build TP image"
+	default y
+
+config CONFIG_MIC
+	bool "Support MIC"
+	default n
+
+config INCLUDE_SPEC_OPTUS
+	bool "Segment For Platform Integration(optus)"
+	default n
+	help
+	  To mark the code only used by optus.
+	  
+config INCLUDE_HTTPS_RSA_BITS_2048
+	bool "Chang Https Rsa Bits Lenth"
+	default n
+	help
+	  To change https rsa bits default lenth.
+  
+config INCLUDE_MUSL_LIBC
+	bool "Segment For Platform Integration(musl clibs)"
+	default n
+	help
+	  To mark the code only used by musl clibs.
+	  
+config INCLUDE_CUSTOM_DM_SHM_SIZE
+	bool "Segment For Custom Data Model share memory buffer size"
+	default n
+	help
+	  To mark using Custom Data Model share memory buffer size.
+
+config DM_SHM_BASE_SIZE
+	string "Data Model share memory buffer size"
+	depends on INCLUDE_CUSTOM_DM_SHM_SIZE
+	default "0x400000"
+	help
+	  To define Data Model share memory buffer size.
+	
+menu "Suppiler Setting"
+
+choice
+	prompt "Chipset Suppiler"
+	default INCLUDE_BROADCOM
+	help
+	  Choose Main Chipset Suppiler
+
+config INCLUDE_BROADCOM
+	bool "Broadom SDK 4.xL.x"
+
+config INCLUDE_BCM_CHIP_BCM68360
+	bool "Broadcom Chipset BCM68360"
+	depends on INCLUDE_BROADCOM
+	default n
+
+config INCLUDE_BCM_CHIP_BCM63146
+	bool "Broadcom Chipset BCM63146"
+	depends on INCLUDE_BROADCOM
+	default n
+
+config INCLUDE_QUALCOMM
+	bool "Qualcomm SDK SPF"
+
+config INCLUDE_QCA_MEM_256
+	bool "Segment For QCA 256M DDR"
+	default n
+	depends on INCLUDE_QUALCOMM
+	help
+		Build 256M QCA DDR image.
+
+config INCLUDE_QCA_12_1
+	bool "Segment For QCA SDK 12.1"
+	default n
+	depends on INCLUDE_QUALCOMM
+	help
+		Build For QCA SDK 12.1
+
+config INCLUDE_ECONET
+	bool "Econet SDK 7.x"
+
+config INCLUDE_MTK
+	bool "MTK SDK LEDE-4.2"
+	
+config INCLUDE_QUECTEL
+	bool "Quectel T750 SDK"
+
+config INCLUDE_REALTEK
+	bool "Realtek SDK"
+
+endchoice
+config INCLUDE_MTK_CHIP_MT7986
+	bool "MTK Chipset MT7986"
+	depends on INCLUDE_MTK
+	default n
+	help
+		MT7986 SoC
+
+config INCLUDE_ECONET_MT7513
+	bool "ECONET Chipset MT7513"
+	depends on INCLUDE_ECONET
+	default n
+	help 
+		MT7513 SoC, for tp_gpio modules
+
+config SDK_REPO_URL
+	string "Supplier SDK URL"
+	default "https://spcodes.rd.tp-link.net/common/Broadcom_4_16L_05.git" if INCLUDE_BROADCOM
+	default "https://spcodes.rd.tp-link.net/common/Qualcomm_SPF_5_0.git" if INCLUDE_QUALCOMM
+	default "https://spcodes.rd.tp-link.net/common/Econet_7_3_207_4.git" if INCLUDE_ECONET
+	default "https://spcodes.rd.tp-link.net/common/mt7621_sdk.git" if INCLUDE_MTK
+
+config SDK_DIR
+	string "SDK directory"
+	default "unknown"
+
+config SUPPLIER
+	string "Chipset Suppiler for Makefile.sdk.*"
+	default "broadcom" if INCLUDE_BROADCOM
+	default "qualcomm" if INCLUDE_QUALCOMM
+	default "econet" if INCLUDE_ECONET
+	default "quectel" if INCLUDE_QUECTEL
+	default "realtek" if INCLUDE_REALTEK
+
+config SDK_CONFIG
+	string "SDK Config, such as PROFILE, PLATFORM.."
+	default "963268GWV" if INCLUDE_BROADCOM
+	default "en7512_demo" if INCLUDE_ECONET
+
+endmenu
+
+menu "CPU Architeture Setting"
+
+choice
+	prompt "Userspace CPU Architeture Type"
+	help
+	  Choose Usersapce CPU Architeture Type
+
+config INCLUDE_MIPS
+	bool "MIPS"
+
+config INCLUDE_MIPSEL
+	bool "MIPSEL"
+
+config INCLUDE_ARM
+	bool "ARM"
+
+config INCLUDE_ARM64
+	bool "ARM64"
+
+endchoice
+
+config INCLUDE_ARCH
+	string
+	default "mips" if INCLUDE_MIPS
+	default "mipsel" if INCLUDE_MIPSEL
+	default "arm" if INCLUDE_ARM
+	default "arm64" if INCLUDE_ARM64
+
+choice
+	prompt "Kernel CPU Architeture Type"
+	help
+	  Choose Kernel CPU Architeture Type
+
+config INCLUDE_KERNEL_MIPS
+	bool "MIPS"
+
+config INCLUDE_KERNEL_MIPSEL
+	bool "MIPSEL"
+
+config INCLUDE_KERNEL_ARM
+	bool "ARM"
+
+config INCLUDE_KERNEL_ARM64
+	bool "ARM64"
+
+endchoice
+
+config INCLUDE_KARCH
+	string
+	default "mips" if INCLUDE_KERNEL_MIPS
+	default "mipsel" if INCLUDE_KERNEL_MIPSEL
+	default "arm" if INCLUDE_KERNEL_ARM
+	default "arm64" if INCLUDE_KERNEL_ARM64
+
+choice
+	prompt "Endian Type"
+	default INCLUDE_BIG_ENDIAN
+	help
+	  Choose CPU Endian Type
+
+config INCLUDE_BIG_ENDIAN
+	bool "Big endian"
+
+config INCLUDE_LITTLE_ENDIAN
+	bool "Little endian"
+
+endchoice
+
+config INCLUDE_ENDIAN_FLAG_IMAGE
+	int
+	default 0 if INCLUDE_BIG_ENDIAN
+	default 1 if INCLUDE_LITTLE_ENDIAN
+
+config INCLUDE_ENDIAN_FLAG_ROOTFS
+	string
+	default "-b"  if  INCLUDE_MTD_TYPE_FS && INCLUDE_BIG_ENDIAN
+	default "-l"  if  INCLUDE_MTD_TYPE_FS && INCLUDE_LITTLE_ENDIAN
+	default "-be" if !INCLUDE_MTD_TYPE_FS && INCLUDE_BIG_ENDIAN
+	default "-le" if !INCLUDE_MTD_TYPE_FS && INCLUDE_LITTLE_ENDIAN
+
+endmenu
+
+choice
+	prompt "Compress Type"
+	default INCLUDE_COMPRESS_XZ
+	help
+	  Choose CPU Endian Type
+
+config INCLUDE_COMPRESS_LZMA
+	bool "LZMA"
+
+config INCLUDE_COMPRESS_XZ
+	bool "XZ"
+endchoice
+
+config INCLUDE_COMPRESS_TYPE
+	string
+	default "lzma" if INCLUDE_COMPRESS_LZMA
+	default "xz"  if INCLUDE_COMPRESS_XZ
+
+config INCLUDE_LINUX_DTS_SUPPORT
+	bool "Linux DTS support: only for patch-dtb"
+	default n
+
+config INCLUDE_LINUX_DTS_NAME
+	string "DTS filename"
+	depends on INCLUDE_LINUX_DTS_SUPPORT
+
+menu "Flash Setting"
+
+choice
+	prompt "Flash Type"
+	default INCLUDE_FLASH_SPINOR
+	help
+	  Choose Flash Type
+
+config INCLUDE_FLASH_SPINOR
+	bool "NOR Flash with SPI interface"
+
+config INCLUDE_FLASH_NAND
+	bool "NAND Flash with direct access"
+	
+config INCLUDE_FLASH_SPINAND
+	bool "NAND Flash with SPI interface"
+
+endchoice
+
+config INCLUDE_DUAL_IMAGE
+	bool "Dual Image support"
+	default n
+
+config INCLUDE_DUAL_CONFIG
+	bool "Dual Config support"
+	default n
+
+choice
+	prompt "MTD partition type"
+	default INCLUDE_MTD_TYPE_RAW2
+	help
+	  Choose whether kernel in filesystem
+
+config INCLUDE_MTD_TYPE_RAW1
+	bool "RAW1: MTD with RAW data, Misc at tail"
+
+config INCLUDE_MTD_TYPE_RAW2
+	bool "RAW2: MTD with RAW data, Misc after Boot"
+
+config INCLUDE_MTD_TYPE_FS
+	bool "FS: MTD with filesystem"
+
+endchoice
+
+config INCLUDE_UBI_SYSTEM
+	bool "UBI System Support - Sync with ubinize.cfg"
+	depends on INCLUDE_MTD_TYPE_FS
+
+config INCLUDE_UBI_DEVNODE
+	string "UBI DevNode"
+	default "/dev/ubi0"
+	depends on INCLUDE_UBI_SYSTEM
+
+config INCLUDE_UBI_KERNEL_VOL_ID
+	string "Kernel Volume ID"
+	default "0"
+	depends on INCLUDE_UBI_SYSTEM
+config INCLUDE_UBI_KERNEL_VOL_SIZE
+	string "Kernel Volume Size(MiB)"
+	default "4"
+	depends on INCLUDE_UBI_SYSTEM
+config INCLUDE_UBI_KERNEL_VOL_NAME
+	string "Kernel Volume Name"
+	default "kernelA"
+	depends on INCLUDE_UBI_SYSTEM
+
+config INCLUDE_UBI_ROOTFS_VOL_ID
+	string "RootFS Volume ID"
+	default "1"
+	depends on INCLUDE_UBI_SYSTEM
+config INCLUDE_UBI_ROOTFS_VOL_SIZE
+	string "RootFS Volume Size(MiB)"
+	default "50"
+	depends on INCLUDE_UBI_SYSTEM
+config INCLUDE_UBI_ROOTFS_VOL_NAME
+	string "RootFS Volume Name"
+	default "rootfsA"
+	depends on INCLUDE_UBI_SYSTEM
+
+config INCLUDE_UBI_KERNEL2_VOL_ID
+	string "Kernel2 Volume ID"
+	default "3"
+	depends on INCLUDE_UBI_SYSTEM && INCLUDE_DUAL_IMAGE
+config INCLUDE_UBI_KERNEL2_VOL_NAME
+	string "Kernel2 Volume Name"
+	default "kernelB"
+	depends on INCLUDE_UBI_SYSTEM
+
+config INCLUDE_UBI_ROOTFS2_VOL_ID
+	string "RootFS2 Volume ID"
+	default "4"
+	depends on INCLUDE_UBI_SYSTEM && INCLUDE_DUAL_IMAGE
+config INCLUDE_UBI_ROOTFS2_VOL_NAME
+	string "RootFS2 Volume Name"
+	default "rootfsB"
+	depends on INCLUDE_UBI_SYSTEM
+
+config INCLUDE_UBI_ROOTFS_TYPE_SQUASH
+	bool "Using SquashFS for rootfs image"
+	default n
+	depends on INCLUDE_UBI_SYSTEM
+
+choice
+	prompt "Hardware Flash size, just record only"
+	default INCLUDE_FLASH_16M
+	help
+	  Choose Flash size
+
+config INCLUDE_FLASH_8M
+	bool "8M"
+
+config INCLUDE_FLASH_16M
+	bool "16M"
+
+config INCLUDE_FLASH_32M
+	bool "32M"
+
+config INCLUDE_FLASH_64M
+	bool "64M"
+
+config INCLUDE_FLASH_128M
+	bool "128M"
+
+config INCLUDE_FLASH_256M
+	bool "256M"
+
+config INCLUDE_FLASH_512M
+	bool "512M"
+
+config INCLUDE_FLASH_1024M
+	bool "1024M"
+
+endchoice
+
+#  64k 0x   10000
+# 128k 0x   20000
+# 256k 0x   40000
+# 512k 0x   80000
+#   1M 0x  100000
+#   2M 0x  200000
+#   4M 0x  400000
+#   8M 0x  800000
+#  16M 0x 1000000
+#  32M 0x 2000000
+#  48M 0x 3000000
+#  64M 0x 4000000
+# 128M 0x 8000000
+# 256M 0x10000000
+# 512M 0x20000000
+#1024M 0x40000000
+
+config INCLUDE_FLASH_BIN_SIZE
+		string "Size of image for flash writer(boot + kernel + rootfs and misc)"
+		default "0x2000000"
+
+config INCLUDE_LTE_IMAGE_SIZE
+		string "LTE image size limit"
+		depends on INCLUDE_SINGLE_LTEIMAGE
+		default n
+
+config MTD_IMAGE_SIZE
+		string "MTD Image partition Size, for oal_partition.h to calculate"
+		# 16M
+		default "0x1000000" if INCLUDE_FLASH_SPINOR
+		# 48M
+		default "0x3000000" if !INCLUDE_FLASH_SPINOR
+
+config MTD_BOOT_SIZE 
+		string "MTD Boot partition size"
+		# 128k
+		default "0x20000" if INCLUDE_FLASH_SPINOR
+		# 512k
+		default "0x80000" if !INCLUDE_FLASH_SPINOR
+
+config MTD_KERNEL_SIZE 
+		string "MTD Kernel partition size"
+		# 2M
+		default "0x200000"
+		
+config MTD_MISC_SIZE 
+		string "MTD Misc partition size(Romfile, Config)"
+		# 512k
+		default  "0x80000" if INCLUDE_FLASH_SPINOR
+		# 1M
+		default "0x100000" if !INCLUDE_FLASH_SPINOR
+
+config MTD_BLOCK_SIZE
+		string "MTD block size"
+		#  64K
+		default "0x10000" if INCLUDE_FLASH_SPINOR
+		# 128K
+		default "0x20000" if !INCLUDE_FLASH_SPINOR
+
+config INCLUDE_RUNTIME_DATA_SECTION
+		bool "add runtime_data section"
+		default n
+		depends on INCLUDE_MTD_TYPE_RAW2 || INCLUDE_MTD_TYPE_RAW1
+		help
+			runtime_data section saves runtime data, such as parental_ctrl v2 history, reboot info;
+			runtime_data section is after Image1 or Image2 section.
+
+config RUNTIME_DATA_SECTION_SIZE
+		string "runtime_data section size"
+		# 1M
+		default "0x100000" if INCLUDE_RUNTIME_DATA_SECTION
+		# 0K
+		default "0x0" if !INCLUDE_RUNTIME_DATA_SECTION
+
+config INCLUDE_SPEC_SQUASH_BLOCK_SIZE
+		bool "Special Squash filesystems compressed block size"
+		default n
+		depends on INCLUDE_MTD_TYPE_RAW2 || INCLUDE_MTD_TYPE_RAW1 
+
+config INCLUDE_SQUASH_BLOCK_SIZE
+		string "Squash compress block size"
+		default "0x40000" if INCLUDE_FLASH_SPINOR
+		default "0x20000" if !INCLUDE_FLASH_SPINOR
+		depends on INCLUDE_SPEC_SQUASH_BLOCK_SIZE
+
+config INCLUDE_IMPORTANT_CONFIG
+	bool "Enable extra config block that will not cleared by factory restore"
+	default n
+
+endmenu
+	
+menu 'Firmware Upgrade'
+
+menu 'Firmware Check'
+config INCLUDE_FWUPGRADE_CHECK
+	bool "Check firmware when upgrade in GUI"
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_MD5
+	bool "Check firmware MD5 key"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_MD5_KERNEL_KEY
+	bool "Support kernel key"
+	depends on INCLUDE_FWUPGRADE_CHECK_MD5
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_RSA
+	bool "Check firmware RSA key"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_PRODUCT_ID
+	bool "Check firmware Product ID"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_ADDHWVER
+	bool "Check firmware Additional Hardware Version"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+	
+config INCLUDE_FWUPGRADE_CHECK_SPECIAL_VER
+	bool "Check firmware special Version"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default y
+
+config INCLUDE_FWUPGRADE_CHECK_SWVER
+	bool "Check firmware SoftwareRevision for Downgrade"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+
+config INCLUDE_FWUPGRADE_CHECK_OEM_ID
+	bool "Check firmware OEM ID"
+	depends on INCLUDE_FWUPGRADE_CHECK
+	default n
+endmenu
+
+config INCLUDE_FWUPGRADE_BOOT_UPDATE
+	bool "Support to upgrade bootloader"
+	default n
+	
+config INCLUDE_RECORD_UPGRADE_INFO
+	bool "Record upgrade info, like upgrade status and upgrade time"
+	default n
+
+config INCLUDE_ENCRYPT_ROOTFS
+	bool "Encrypt the upgrade firmware file's rootfs and decrypt rootfs part before write into flash."
+	default n
+endmenu
+
+choice
+	prompt "Product Region"
+	default INCLUDE_REGION_US
+	help
+	  Choose region type
+
+config INCLUDE_REGION_US
+	bool "Product Region (US)"
+
+config INCLUDE_REGION_EU
+	bool "Product Region (EU)"
+	
+config INCLUDE_REGION_AU
+	bool "Product Region (AU)"
+
+endchoice
+		
+
+config INCLUDE_DIGITAL_SIGNATURE
+	bool "Digital signature"
+	default n
+	
+config INCLUDE_MIC
+	bool "Build MIC Support"
+	default n
+	
+config INCLUDE_SOCKET_LOCK
+	bool "Use socket mechanism for the data model lock"
+	default n
+	help
+		semop can not lock the data model well in some platform
+
+config INCLUDE_CLI_FULL_FEATURE 
+	bool "Include all cli cmd"
+	default n
+	
+config INCLUDE_CLI_CMD_SH
+	bool "Include cli sh cmd"
+	depends on INCLUDE_CLI_FULL_FEATURE
+	default n
+
+config INCLUDE_CLI_CMD_DUMP_OID
+	bool "Include cli dump oid cmd. Notice: only enabled in debug version"
+	depends on INCLUDE_CLI_FULL_FEATURE
+	default n
+
+config INCLUDE_CLI_ENC_CMD_DEBUG
+	bool "run encrypt cmd without auth. Notice: only enabled in debug version"
+	depends on INCLUDE_CLI_FULL_FEATURE
+	default n
+
+config INCLUDE_USER_ACCOUNT
+	bool "Enable user account,default no need set"
+	default n
+
+config INCLUDE_USER_DEFAULT_PWD_WARN
+	bool "remind user to change default pwd when login with default username and pwd"
+	depends on INCLUDE_USER_ACCOUNT
+	default n
+
+config INCLUDE_CHGINIT_PWD
+	bool "Enable change password when init"
+	default n
+
+config INCLUDE_CHGINIT_PWD_CN
+	bool "Enable change password for domestic market"
+	depends on INCLUDE_CHGINIT_PWD
+	default n
+
+config INCLUDE_DHCP_OPTION133
+        bool "Support DHCPC option 133(Send to WAN side). This option assigns the priority within an Ethernet frame header when using VLAN tag, it specifies a priority value between 0 and 7 to differentiate the traffic priority"
+        default n
+
+config INCLUDE_DHCP_OPTION60
+	bool "Enalbe DHCP Option 60 for ISP Config"
+	default n
+
+config INCLUDE_OPTION66
+	bool "Enable DHCP Option 66 for ISP Config"
+	default n
+
+config INCLUDE_OPTION66_NEED_TAG
+	bool "Enable DHCP Option 66 Tag to control updating"
+	depends on INCLUDE_OPTION66
+	default n
+
+config INCLUDE_OPTION66_LAN
+	bool "Enable DHCP Option 66 LAN support. If the switch can not work before cos init, this function will fail."
+	depends on INCLUDE_OPTION66
+	default n
+
+config INCLUDE_OPTION58
+	bool "Enable DHCP Option 58 (T1)"
+	default n
+
+config INCLUDE_OPTION59
+	bool "Enable DHCP Option 59 (T2)"
+	default n
+
+config INCLUDE_DHCP_UNICAST_RENEW
+        bool "send unicast renew request"
+        default n
+
+config INCLUDE_DHCP_ADDRESS_RESERVE_CONFLICT
+	bool "Send DHCP Offer contains another IP if the reserved Static IP is used by other Client"
+
+config INCLUDE_USER_RESTRICTION
+	bool "Enable user account permission management"
+	depends on INCLUDE_USER_ACCOUNT
+	default n
+	
+config INCLUDE_WEB_AGILECONFIG
+	bool "Enable web agile config operation"
+	depends on INCLUDE_OPTION66
+	default n
+
+config INCLUDE_BOOT_AGINETCONFIG
+	bool "Enable Aginet Config 3.0"
+	depends on INCLUDE_OPTION66
+	default n
+
+config INCLUDE_BOOT_AGINETCONFIG_PLATFORM
+	string "Aginet Config 3.0 platform mark, must begin with agc3"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+	default "agc3000"
+
+config INCLUDE_BOOT_AGINETCONFIG_CONFIGKEY
+	string "Aginet Config 3.0 config decrypt key, edian + productID"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_MODEL
+	string "Aginet Config 3.0 model name, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_DEVMODELVER
+	string "Aginet Config 3.0 dev model version, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_SPECVER
+	int "Aginet Config 3.0 special version, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_ADDHWVER
+	int "Aginet Config 3.0 addHw version, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_ACTIME
+	int "Aginet Config 3.0 CPE aginet config time, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_FULLRESTTIME
+	int "Aginet Config 3.0 fullreset time, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_UPGRADETIME
+	int "Aginet Config 3.0 upgrade time, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_BOOT_AGINETCONFIG_FILECHECKTIME
+	int "Aginet Config 3.0 file check time, used in boot"
+	depends on INCLUDE_BOOT_AGINETCONFIG
+
+config INCLUDE_OPTION66_URL_RESET
+       bool "Enable reset agile config from URL operation"
+       depends on INCLUDE_OPTION66
+       default n
+
+config INCLUDE_AUTH_PASSWORD
+	bool "Only auth password"
+	depends on INCLUDE_CHGINIT_PWD
+	default n
+	
+config INCLUDE_PORTABLE_APP
+	bool "build portable app"
+	default n
+
+config INCLUDE_AGINET_APP_V2
+	bool "support aginet app v2"
+	default n
+	depends on INCLUDE_PORTABLE_APP
+	depends on INCLUDE_DEFAULT_GATEWAY
+	depends on INCLUDE_CUSTOM_CONNNAME
+	depends on INCLUDE_SAME_DEFAULT_GATEWAY_FOR_V4V6
+	depends on INCLUDE_INTERNET_ONLINE_FOR_DEFAULT_GATEWAY
+
+config INCLUDE_AGINET_APP_REBOOT_TIME
+	int "The time it takes for the DUT to reboot"
+	depends on INCLUDE_AGINET_APP_V2
+	default 120
+
+config INCLUDE_AGINET_APP_WIRELESS_TIME
+	int "The time it takes for the wireless settings to take effect"
+	depends on INCLUDE_AGINET_APP_V2
+	default 20
+
+config INCLUDE_AGINET_APP_ISP_INFO
+	bool "whether show ISP info(ISP logo & contact) on Aginet APP"
+	depends on INCLUDE_AGINET_APP_V2
+	default n
+
+config INCLUDE_AGINET_APP_ISP_NAME
+	string "ISP name"
+	depends on INCLUDE_AGINET_APP_ISP_INFO
+	default ""
+
+config INCLUDE_AGINET_APP_ISP_LOGO
+	bool "whether show ISP logo on Aginet APP"
+	depends on INCLUDE_AGINET_APP_ISP_INFO
+	default n
+
+config INCLUDE_DEV_TYPE
+	bool "Use device type"
+	default n
+
+config INCLUDE_SUPPORT_LINKRATE_APP_V2
+	bool "Support linkrate display in Aginet App v2"
+	default n
+
+config INCLUDE_MESH_TETHER_WEBVIEW
+	bool "Portable app support mesh webview"
+	depends on INCLUDE_PORTABLE_APP
+	depends on INCLUDE_EASYMESH
+	default n
+
+config INCLUDE_MESH_TETHER_WEBVIEW_NUM_LIMIT
+	int "Limit number of mesh webview"
+	depends on INCLUDE_MESH_TETHER_WEBVIEW
+	range 0 10
+	default 10
+
+config INCLUDE_MULTICAST_VLAN
+	bool "Enable IPTV Multicast VLAN feature support"
+	default n
+
+config INCLUDE_WEB_TELNET
+	bool "Telnet can control on GUI"
+	default n
+
+config INCLUDE_WEB_TELNET_FOR_USER
+	bool "Telnet can control on GUI for user account"
+	depends on INCLUDE_WEB_TELNET
+	default n
+	
+config INCLUDE_REMOTE_TELNET
+	bool "build remote telnet"
+	default n
+
+config INCLUDE_SSH_ACCESS
+	bool "enable SSH access method"
+	default n
+	
+config INCLUDE_WEB_SSH
+	bool "SSH can control on GUI"
+	depends on INCLUDE_SSH_ACCESS
+	default y
+
+config INCLUDE_SSH_ACCESS_LIFETIME
+	bool "enable SSH access lifetime config"
+	depends on INCLUDE_SSH_ACCESS
+	default n
+	
+config INCLUDE_CLI_ACL
+	bool "enable ACL by cli"
+	default n
+
+
+config INCLUDE_UBIFORMAT_FROM_SDK
+        bool "ubiformat from sdk"
+        default n
+        help
+          ubiformat from sdk will support option '-o'
+
+config INCLUDE_SMART_HOME_V2
+	bool "Smart Home 2.0 support"
+	default n
+	help
+	 support smart home flash layout would be different.
+
+config MTD_SMART_HOME_CONTAINER_SIZE
+	string "mtd smart home container partition size"
+	# 128M
+	default "0x08000000"
+	depends on INCLUDE_SMART_HOME_V2
+
+config MTD_SMART_HOME_CONTAINER_OFFSET
+	string "mtd smart home container partition offset"
+	default "0x06000000"
+	depends on INCLUDE_SMART_HOME_V2
+
+config INCLUDE_DU_INSTALL_IN_DIFERENT_EE
+        bool "install same DU in diferent EE support"
+	depends on INCLUDE_SMART_HOME_V2
+        default n
+
+config INCLUDE_SMART_HOME_MTD_NAME
+	string "mtd device name for smart home containers"
+	default "mtd11"
+	depends on INCLUDE_SMART_HOME_V2
+	help
+	 separate mtd device for smart home containers
+
+config INCLUDE_SMART_HOME_UBI_INDEX
+	int "ubi device index for smart home containers"
+	depends on INCLUDE_SMART_HOME_V2
+	default 1
+	help
+		separate ubi device for smart home containers
+
+config INCLUDE_SMART_HOME_APP_FLASH_SIZE
+        int "default flash size (KB) for app files"
+        depends on INCLUDE_SMART_HOME_V2
+        default 51200
+        help
+          default flash size for app files
+
+choice
+	prompt "Choose store type of config file"
+
+config INCLUDE_SMART_HOME_CFG_FLASH
+	bool "store config file to flash"
+        default n
+	depends on INCLUDE_SMART_HOME_V2
+        help
+          support store config file to flash
+
+config INCLUDE_SMART_HOME_CFG_RAM
+	 bool "store config file to RAM"
+        default n
+        depends on INCLUDE_SMART_HOME_V2
+        help
+          support store config file to RAM
+endchoice	
+
+
+choice
+        prompt "Choose store type of log file"
+
+config INCLUDE_SMART_HOME_LOG_RAM
+        bool "store log file to RAM"
+        default n
+        depends on INCLUDE_SMART_HOME_V2
+        help
+          support store log file to RAM
+
+config INCLUDE_SMART_HOME_LOG_FLASH
+        bool "Be Careful!!! store log file to flash"
+        default n
+        depends on INCLUDE_SMART_HOME_V2
+        help
+          support store log file to flash
+endchoice
+
+
+config INCLUDE_SMART_HOME_CGF_FLASH_SIZE
+        int "default flash size(KB) for cgf files"
+        depends on INCLUDE_SMART_HOME_CFG_FLASH
+        default 4096
+        help
+          default flash size for app files
+
+
+config INCLUDE_SMART_HOME_CFG_RAMFS_SIZE
+	int "default ramfs size(KB) for cfg files"
+	depends on INCLUDE_SMART_HOME_CFG_RAM
+	default 4096
+	help
+	  default ramfs size for cfg files
+
+
+config INCLUDE_SMART_HOME_LOG_FLASH_SIZE
+        int "default flash size (KB) for log files"
+        depends on INCLUDE_SMART_HOME_LOG_FLASH
+        default 4096
+        help
+          default flash size for log files
+
+config INCLUDE_SMART_HOME_LOG_RAMFS_SIZE
+	int "default ramfs size (KB)for log files"
+	depends on INCLUDE_SMART_HOME_LOG_RAM
+	default 4096
+	help
+	  default ramfs size for log files
+
+config INCLUDE_SMART_HOME_MEMORY_SIZE
+        int "default memory size(KB) for single container"
+        depends on INCLUDE_SMART_HOME_V2
+        default 51200
+        help
+          default memory size for single container
+
+config INCLUDE_SMART_HOME_EE_QUERY_TIMEOUT
+        int "define timeout (seconds) for query ee"
+        depends on INCLUDE_SMART_HOME_V2
+        default 10
+        help
+          timeout for query ee
+
+
+config INCLUDE_SMART_HOME_CPU_QUOTA
+        int "default CPU usage quota for single container"
+        depends on INCLUDE_SMART_HOME_V2
+        default 10
+        help
+          default cpu usage for single container
+
+config INCLUDE_SMART_HOME_UBI_LEB_SIZE
+        int "ubi logic erase block size"
+        depends on INCLUDE_SMART_HOME_V2
+        default 248
+        help
+          you can get this value by ubinfo tool, eg: ubinfo -a /dev/ubi0
+
+config INCLUDE_SMART_HOME_UBIFS_MIN_LEB_COUNT
+        int "The least LEBs for making ubifs"
+        depends on INCLUDE_SMART_HOME_V2
+        default 22
+        help
+          you can get this value by mkfs.ubifs tool, eg: mkfs.ubifs /dev/ubi10_0
+
+config INCLUDE_TPLINK_LOGIN_DOMAIN
+	string "TP-link login domain"
+	default "tplinkwifi.net" if !INCLUDE_ADSLWAN && !INCLUDE_PON_GPON
+	default "tplinkmodem.net" if INCLUDE_ADSLWAN || INCLUDE_PON_GPON
+	help
+	  To define TP-link login domain.
+
+config INCLUDE_BCM_BUSYBOX_32BIT
+	bool "build 32bit executalbe busybox on 64bit kernel system"
+	depends on INCLUDE_BROADCOM && INCLUDE_KERNEL_ARM64
+	default n
+
+config INCLUDE_BCM_IP_TOOL_32BIT
+	bool "build 32bit executalbe ip tool on 64bit kernel system"
+	depends on INCLUDE_BROADCOM && INCLUDE_KERNEL_ARM64
+	default n
+
+config INCLUDE_BCM_TC_TOOL_32BIT
+	bool "build 32bit executalbe tc tool on 64bit kernel system"
+	depends on INCLUDE_BROADCOM && INCLUDE_KERNEL_ARM64
+	default n
+
+config INCLUDE_BCM_EBTABLES_32BIT
+	bool "build 32bit executalbe ebtables tool on 64bit kernel system"
+	depends on INCLUDE_BROADCOM && INCLUDE_KERNEL_ARM64
+	default n
+
+config INCLUDE_DISABLE_ROOT_ACCOUNT_AFTER_UPGRADE
+	bool "Disable root account after firmware upgrade"
+	depends on INCLUDE_USER_RESTRICTION
+	default n
+
+config INCLUDE_AVOID_USE_CWMP_PORT
+	bool "Avoid Nat Forwarding To Use CWMP Port In WebUI"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_AVOID_UPNP_USE_CWMP_PORT
+	bool "Avoid UPNP device To Use CWMP Port"
+	default n
+	depends on INCLUDE_AVOID_USE_CWMP_PORT
+
+config INCLUDE_CWMP_DEVICE_INFO_MAC_SN
+	bool "Show Mac Adress and Serial Number in Parameter List in CWMP Inform"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_DM_CONFIG_BUFFER
+	int "Buffer size of datamodel config(unit:KB)"
+	range 0,1024
+	default 640
+    
+config INCLUDE_LABEL_MAC
+    bool "Enable label mac. Label mac is used as the identifier of device by TAUC, Cloud, EasyMesh, etc."
+    default n
+
+endmenu

@@ -1,0 +1,671 @@
+\hypertarget{libapi__lib__qosrule_8h}{}\section{libapi\+\_\+lib\+\_\+qosrule.\+h File Reference}
+\label{libapi__lib__qosrule_8h}\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+
+
+This file is qosrule header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$linux/version.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structappParam__s}{app\+Param\+\_\+s}
+\item 
+struct \hyperlink{structparam__s}{param\+\_\+s}
+\item 
+struct \hyperlink{structtypeParam__s}{type\+Param\+\_\+s}
+\item 
+struct \hyperlink{structtsarm__ioctl}{tsarm\+\_\+ioctl}
+\item 
+struct \hyperlink{structatmif__sioc}{atmif\+\_\+sioc}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a00c28a67092fae9c54f2b3a1d5e12e68}\label{libapi__lib__qosrule_8h_a00c28a67092fae9c54f2b3a1d5e12e68}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+F\+O\+R\+\_\+\+I\+P\+V6\+\_\+\+O\+U\+T\+\_\+\+P\+A\+C\+K\+ET}~0
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a1e04018b31dcf8173c342b5cdd930cc2}\label{libapi__lib__qosrule_8h_a1e04018b31dcf8173c342b5cdd930cc2}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+A\+R\+A\+M\+\_\+\+N\+UM}~16
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a39c5df84416251a9469c10c31c0fdae0}\label{libapi__lib__qosrule_8h_a39c5df84416251a9469c10c31c0fdae0}} 
+\#define {\bfseries S\+E\+T\+\_\+\+A\+T\+M\+\_\+\+V\+L\+AN}~0x1111
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a8384e790e2c4b5d2cdbdd7d1a0a0b894}\label{libapi__lib__qosrule_8h_a8384e790e2c4b5d2cdbdd7d1a0a0b894}} 
+\#define {\bfseries L\+E\+N\+T\+H\+\_\+\+P\+A\+R\+A\+M\+\_\+\+V\+A\+L\+UE}~64
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ac933a2b08d3fb8f82dc3d3ac5074bb4a}\label{libapi__lib__qosrule_8h_ac933a2b08d3fb8f82dc3d3ac5074bb4a}} 
+\#define {\bfseries M\+A\+X\+\_\+\+Uplink\+\_\+\+B\+A\+N\+D\+\_\+\+W\+I\+D\+TH}~1024
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ace49248078b9d0dc5d34637f07bee4dd}\label{libapi__lib__qosrule_8h_ace49248078b9d0dc5d34637f07bee4dd}} 
+\#define {\bfseries M\+A\+X\+\_\+\+Q\+O\+S\+\_\+\+P\+A\+R\+A\+M\+\_\+\+L\+E\+N\+G\+TH}~(128)
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a4b061703f43415ef8b2fcf0c3e81c35d}\label{libapi__lib__qosrule_8h_a4b061703f43415ef8b2fcf0c3e81c35d}} 
+\#define {\bfseries H\+W\+N\+A\+T\+\_\+\+M\+E\+T\+E\+R\+\_\+\+P\+A\+TH}~\char`\"{}/proc/tc3162/hwnat\+\_\+meter\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aafeaaa71734c7bbafcd38059e9122f81}\label{libapi__lib__qosrule_8h_aafeaaa71734c7bbafcd38059e9122f81}} 
+\#define {\bfseries P\+P\+E\+\_\+\+M\+E\+T\+E\+R\+\_\+\+D\+E\+L\+\_\+\+A\+L\+L\+\_\+\+C\+MD}~\char`\"{}/userfs/bin/ppe meter del group all\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aac2b696f837dc9add0c7efef14c0ff3c}\label{libapi__lib__qosrule_8h_aac2b696f837dc9add0c7efef14c0ff3c}} 
+\#define {\bfseries P\+P\+E\+\_\+\+M\+E\+T\+E\+R\+\_\+\+A\+D\+D\+\_\+\+C\+MD}~\char`\"{}/userfs/bin/ppe meter add group \%d mode byte scale K rate \%d vlan 0 queue \%d dir up\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a19d9e3aced311179a2914e0c9b13d0f9}\label{libapi__lib__qosrule_8h_a19d9e3aced311179a2914e0c9b13d0f9}} 
+\#define {\bfseries S\+W\+\_\+\+ON}~1
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_acd8900c9ec0efde1da3253b718574067}\label{libapi__lib__qosrule_8h_acd8900c9ec0efde1da3253b718574067}} 
+\#define {\bfseries S\+W\+\_\+\+O\+FF}~0
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a0b2beefd46bbc8a81037fe9bc0662ca7}\label{libapi__lib__qosrule_8h_a0b2beefd46bbc8a81037fe9bc0662ca7}} 
+\#define {\bfseries T\+Y\+P\+E\+\_\+\+A\+DD}~1
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a97e6e7f4335597902812281fa7c107ab}\label{libapi__lib__qosrule_8h_a97e6e7f4335597902812281fa7c107ab}} 
+\#define {\bfseries T\+Y\+P\+E\+\_\+\+D\+EL}~0
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_af00c13bc8d688a2cb35ff191cbb332c2}\label{libapi__lib__qosrule_8h_af00c13bc8d688a2cb35ff191cbb332c2}} 
+\#define {\bfseries Q\+O\+S\+C\+M\+D\+\_\+\+L\+O\+C\+K\+\_\+\+F\+I\+LE}~\char`\"{}/tmp/qoslockfd\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a10ed51ea3cd0e59ad499292aba9d3110}\label{libapi__lib__qosrule_8h_a10ed51ea3cd0e59ad499292aba9d3110}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+B\+R\+O\+U\+TE}~\char`\"{}ebtables -\/t broute\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a073bb95d80157db6c0ba326daabbbd90}\label{libapi__lib__qosrule_8h_a073bb95d80157db6c0ba326daabbbd90}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+M\+A\+N\+G\+LE}~\char`\"{}iptables -\/t mangle\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_acfc37cc57891db625e610cb83f673b2f}\label{libapi__lib__qosrule_8h_acfc37cc57891db625e610cb83f673b2f}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+M\+A\+N\+G\+L\+E\+\_\+\+I\+P\+V6}~\char`\"{}ip6tables -\/t mangle\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a2b2d1b8288abf80b6781151bdde6101f}\label{libapi__lib__qosrule_8h_a2b2d1b8288abf80b6781151bdde6101f}} 
+\#define {\bfseries M\+A\+X\+\_\+\+R\+U\+L\+E\+\_\+\+L\+E\+N\+G\+TH}~128
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a68fc6385441887c210150033f31e6ded}\label{libapi__lib__qosrule_8h_a68fc6385441887c210150033f31e6ded}} 
+\#define {\bfseries M\+A\+X\+\_\+\+A\+P\+P\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~4
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a5ec0bdb7eb4a08f45b6bdd77ade4ce97}\label{libapi__lib__qosrule_8h_a5ec0bdb7eb4a08f45b6bdd77ade4ce97}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+E\+M\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~8
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aa227cd8aa2d5793bed31985eef705865}\label{libapi__lib__qosrule_8h_aa227cd8aa2d5793bed31985eef705865}} 
+\#define {\bfseries P\+Q\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+N\+UM}~4
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a1fac34f6fd2172a45e36bd8c67c4997f}\label{libapi__lib__qosrule_8h_a1fac34f6fd2172a45e36bd8c67c4997f}} 
+\#define {\bfseries W\+R\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+N\+UM}~4
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a9dc06886abd682741e68f21fb6c04239}\label{libapi__lib__qosrule_8h_a9dc06886abd682741e68f21fb6c04239}} 
+\#define {\bfseries C\+A\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+N\+UM}~6
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_abb3ed85d2393aeb9c1ce48a4beee2ff7}\label{libapi__lib__qosrule_8h_abb3ed85d2393aeb9c1ce48a4beee2ff7}} 
+\#define {\bfseries H\+W\+N\+A\+T\+\_\+\+Q\+O\+S\+\_\+\+WR}~\char`\"{}hwnat qos wr\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ade4d9e76144a2240980eed56d65583ac}\label{libapi__lib__qosrule_8h_ade4d9e76144a2240980eed56d65583ac}} 
+\#define {\bfseries M\+A\+C\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+A\+SK}~\char`\"{}ff\+:ff\+:ff\+:ff\+:ff\+:ff\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aaccf16bc2fc3e3fc0a1e4a0a55219295}\label{libapi__lib__qosrule_8h_aaccf16bc2fc3e3fc0a1e4a0a55219295}} 
+\#define {\bfseries M\+A\+X\+\_\+\+B\+U\+F\+\_\+\+L\+EN}~64
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ac97be8a1f2c7607ff9c4978741d8e25c}\label{libapi__lib__qosrule_8h_ac97be8a1f2c7607ff9c4978741d8e25c}} 
+\#define {\bfseries L\+A\+N\+IF}~0
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a10261e1451fbb84db0e02a4cdd9756ea}\label{libapi__lib__qosrule_8h_a10261e1451fbb84db0e02a4cdd9756ea}} 
+\#define {\bfseries W\+A\+N\+IF}~1
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a88c066294c2f92cdc78ba236e5843d44}\label{libapi__lib__qosrule_8h_a88c066294c2f92cdc78ba236e5843d44}} 
+\#define {\bfseries I\+N\+S\+M\+O\+DE}~1
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a9b2c9a43e69a206509e2bc095911c663}\label{libapi__lib__qosrule_8h_a9b2c9a43e69a206509e2bc095911c663}} 
+\#define {\bfseries R\+M\+M\+O\+DE}~0
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a5d9e896517f5d921bbaa292b1aa1fa34}\label{libapi__lib__qosrule_8h_a5d9e896517f5d921bbaa292b1aa1fa34}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+V\+E\+C\+T\+OR}~(1$<$$<$7)
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a0f90b6ffa56544dcc4ed58b5f86782fe}\label{libapi__lib__qosrule_8h_a0f90b6ffa56544dcc4ed58b5f86782fe}} 
+\#define {\bfseries M\+A\+X\+\_\+\+V\+L\+A\+N\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~8
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a3f5c6999817ceffcba980160e8085b95}\label{libapi__lib__qosrule_8h_a3f5c6999817ceffcba980160e8085b95}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~10
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aeb54b7fb23ab9c3147b8f1f3004208ef}\label{libapi__lib__qosrule_8h_aeb54b7fb23ab9c3147b8f1f3004208ef}} 
+\#define {\bfseries M\+A\+X\+\_\+\+A\+P\+P\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+UM}~15
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a2e69b1ee7e19bfbe378c886f88e60fac}\label{libapi__lib__qosrule_8h_a2e69b1ee7e19bfbe378c886f88e60fac}} 
+\#define {\bfseries M\+A\+X\+\_\+\+C\+M\+D\+\_\+\+L\+E\+N\+G\+TH}~256
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a58b28d69a266fba7884c52d71e868156}\label{libapi__lib__qosrule_8h_a58b28d69a266fba7884c52d71e868156}} 
+\#define {\bfseries C\+M\+D\+\_\+\+B\+U\+F\+\_\+\+L\+E\+N\+G\+TH}~64
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a96dbe53f3972a936dc6b4e19cbe0a035}\label{libapi__lib__qosrule_8h_a96dbe53f3972a936dc6b4e19cbe0a035}} 
+\#define {\bfseries M\+A\+X\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+UM}~10
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_af2118cce41db1171e3c76c1c1268641b}\label{libapi__lib__qosrule_8h_af2118cce41db1171e3c76c1c1268641b}} 
+\#define {\bfseries M\+A\+X\+\_\+\+A\+R\+G\+\_\+\+N\+UM}~3
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a761f935be7a15cd2c02540590502a62a}\label{libapi__lib__qosrule_8h_a761f935be7a15cd2c02540590502a62a}} 
+\#define {\bfseries M\+A\+X\+\_\+\+N\+O\+D\+E\+\_\+\+N\+A\+ME}~32
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a4a91bccd273fc37ccbd6142e89cbe011}\label{libapi__lib__qosrule_8h_a4a91bccd273fc37ccbd6142e89cbe011}} 
+\#define {\bfseries R\+T\+P\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+P\+A\+TH}~\char`\"{}/proc/tc3162/Rtp\+Priority\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a1e5759eb3f87b00bf4acf6579f9034d5}\label{libapi__lib__qosrule_8h_a1e5759eb3f87b00bf4acf6579f9034d5}} 
+\#define {\bfseries Q\+OS}~\char`\"{}QoS\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a19d255f15247e316b1ebd9c43dd83be7}\label{libapi__lib__qosrule_8h_a19d255f15247e316b1ebd9c43dd83be7}} 
+\#define {\bfseries Q\+O\+S\+\_\+\+C\+O\+M\+M\+ON}~\char`\"{}Common\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a9bf75531425334586f5fdd049a63fd37}\label{libapi__lib__qosrule_8h_a9bf75531425334586f5fdd049a63fd37}} 
+\#define {\bfseries T\+R069}~1
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a71dca199552ffe1f36cac1c3a494dec6}\label{libapi__lib__qosrule_8h_a71dca199552ffe1f36cac1c3a494dec6}} 
+\#define {\bfseries V\+O\+IP}~2
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a46dbd936d0a73b5bac5fb8ad64577e0f}\label{libapi__lib__qosrule_8h_a46dbd936d0a73b5bac5fb8ad64577e0f}} 
+\#define {\bfseries I\+P\+TV}~3
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ab89de7b83ba75869268210d8ce07733b}\label{libapi__lib__qosrule_8h_ab89de7b83ba75869268210d8ce07733b}} 
+\#define {\bfseries I\+N\+T\+E\+R\+N\+ET}~4
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a21879e335fafc4aa50ee94a50a5742c5}\label{libapi__lib__qosrule_8h_a21879e335fafc4aa50ee94a50a5742c5}} 
+\#define {\bfseries T\+C\+A\+P\+I\+\_\+\+P\+R\+O\+C\+E\+S\+S\+\_\+\+OK}~0
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a4b435a49c74bb91f284f075e63416cb6}\label{libapi__lib__qosrule_8h_a4b435a49c74bb91f284f075e63416cb6}} 
+typedef unsigned long {\bfseries uint32}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a8c5676a08952a9ec8438d6cb4bc7598c}\label{libapi__lib__qosrule_8h_a8c5676a08952a9ec8438d6cb4bc7598c}} 
+typedef struct \hyperlink{structappParam__s}{app\+Param\+\_\+s} {\bfseries app\+Param\+\_\+t}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a930aede2f920b85a8a0feb60cf296db3}\label{libapi__lib__qosrule_8h_a930aede2f920b85a8a0feb60cf296db3}} 
+typedef struct \hyperlink{structparam__s}{param\+\_\+s} {\bfseries param\+\_\+t}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a54317d27cf146df9b8456894dadc3e3f}\label{libapi__lib__qosrule_8h_a54317d27cf146df9b8456894dadc3e3f}} 
+typedef struct \hyperlink{structtypeParam__s}{type\+Param\+\_\+s} {\bfseries type\+Param\+\_\+t}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ad25fe51d5b497be6ed922f08b9625b79}\label{libapi__lib__qosrule_8h_ad25fe51d5b497be6ed922f08b9625b79}} 
+typedef struct \hyperlink{structtsarm__ioctl}{tsarm\+\_\+ioctl} {\bfseries tsarm\+\_\+ioctl\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a6d528c11803c52a8d68d2e058bb5a600}\label{libapi__lib__qosrule_8h_a6d528c11803c52a8d68d2e058bb5a600}} 
+enum {\bfseries I\+P\+Version} \{ {\bfseries I\+P\+N\+U\+L\+L\+\_\+\+F\+L\+AG}, 
+{\bfseries I\+P\+V4\+\_\+\+F\+L\+AG}, 
+{\bfseries I\+P\+V6\+\_\+\+F\+L\+AG}, 
+{\bfseries I\+P\+A\+L\+L\+\_\+\+F\+L\+AG}
+ \}
+\item 
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a0786b7c38992d7a0faa09df8fe644fe6}\label{libapi__lib__qosrule_8h_a0786b7c38992d7a0faa09df8fe644fe6}} 
+enum {\bfseries Ether\+Type} \{ {\bfseries N\+U\+L\+L\+\_\+\+E\+T\+H\+ER}, 
+{\bfseries I\+P\+V4\+\_\+\+E\+T\+H\+ER}, 
+{\bfseries I\+P\+V6\+\_\+\+E\+T\+H\+ER}, 
+{\bfseries A\+R\+P\+\_\+\+E\+T\+H\+ER}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libapi__lib__qosrule_8h_acbdf512d83a2a8892542c8a1e486f4d9}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch} (int Qo\+Ssw, int I\+Pversion)
+\begin{DoxyCompactList}\small\item\em This function set qos rule on/off. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_aa3b0577caf458e38cdb231120780c751}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid} (int sw, int vpi, int vci, int vlanid)
+\begin{DoxyCompactList}\small\item\em This function set qos vlanid of A\+TM. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_a58321ce943b4ee98e7d37595fa7d4977}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type} (int type, int rule\+Idx, int I\+Pversion, int param\+Num, \hyperlink{structtypeParam__s}{type\+Param\+\_\+t} param\+Arr\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set qos type. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_a390614148d4be90b75d6c050264b36fc}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark} (int type, int rule\+Idx, int I\+Pversion, int param\+Num, \hyperlink{structtypeParam__s}{type\+Param\+\_\+t} param\+Arr\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set qos remark. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_ab671757f4f523e93ea0062fb967d071e}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app} (int type, int rule\+Idx, int I\+Pversion, \hyperlink{structappParam__s}{app\+Param\+\_\+t} $\ast$param)
+\begin{DoxyCompactList}\small\item\em This function set qos app. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_ac0457db51f8dacf60703e4588c7b5c21}{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ} (uint32 uplink\+Bandwidth, int qm)
+\begin{DoxyCompactList}\small\item\em This function set qos PQ. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_af439c6b902f6e1a90ef40f45b8363c51}{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR} (uint32 uplink\+Bandwidth, int qm, int $\ast$weight, int w\+Total, int forcebw)
+\begin{DoxyCompactList}\small\item\em This function set qos W\+RR. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_ad65bb8d242b96f7f1e5646263114b075}{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR} (uint32 uplink\+Bandwidth, int qm, uint32 $\ast$ratelimit, int meter\+\_\+support)
+\begin{DoxyCompactList}\small\item\em This function set qos C\+AR. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_a905f73623e4cb20c7ec89fca1cb37127}{qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR} (uint32 uplink\+Bandwidth, int qm, uint32 $\ast$ratelimit)
+\begin{DoxyCompactList}\small\item\em This function set 7580 qos C\+AR. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_a7bc15af79e0d95c0193b72d748d0f244}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ} (char up\+Band\+With\mbox{[}$\,$\mbox{]}, char queue\+Mask\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set qos PQ. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_ace6e686550b48c91251d1a78218e021b}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR} (char wrr\+Pri\mbox{[}$\,$\mbox{]}\mbox{[}32\mbox{]}, char up\+Band\+With\mbox{[}$\,$\mbox{]}, char queue\+Mask\mbox{[}$\,$\mbox{]}, char force\+BW\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set qos W\+RR. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_aa6985230527239c2b674b1e475aa945e}{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR} (char car\+Pri\mbox{[}$\,$\mbox{]}\mbox{[}32\mbox{]}, char up\+Band\+With\mbox{[}$\,$\mbox{]}, char queue\+Mask\mbox{[}$\,$\mbox{]}, char hw\+Car\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set qos C\+AR. \end{DoxyCompactList}\item 
+int \hyperlink{libapi__lib__qosrule_8h_af82685625e9334ad09f095d63bf6d9d3}{qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark} (int enable, char $\ast$wan\+\_\+if, int dscp)
+\begin{DoxyCompactList}\small\item\em This function set dscp remark. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is qosrule header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+shengli.\+lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/10-\/16 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_af82685625e9334ad09f095d63bf6d9d3}\label{libapi__lib__qosrule_8h_af82685625e9334ad09f095d63bf6d9d3}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark@{qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark@{qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark()}{qoscmd\_lib\_do\_downlinkqos\_dscpremark()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+downlinkqos\+\_\+dscpremark (\begin{DoxyParamCaption}\item[{int}]{enable,  }\item[{char $\ast$}]{wan\+\_\+if,  }\item[{int}]{dscp }\end{DoxyParamCaption})}
+
+
+
+This function set dscp remark. 
+
+This function set dscp remark.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable/disable} & \\
+\hline
+\mbox{\tt in}  & {\em wan} & interface \\
+\hline
+\mbox{\tt in}  & {\em dscp} & value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+dscp remark. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a905f73623e4cb20c7ec89fca1cb37127}\label{libapi__lib__qosrule_8h_a905f73623e4cb20c7ec89fca1cb37127}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+A\+R()}{qoscmd\_lib\_do\_en7580QoSDiscCAR()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+en7580\+Qo\+S\+Disc\+C\+AR (\begin{DoxyParamCaption}\item[{uint32}]{uplink\+Bandwidth,  }\item[{int}]{qm,  }\item[{uint32 $\ast$}]{ratelimit }\end{DoxyParamCaption})}
+
+
+
+This function set 7580 qos C\+AR. 
+
+This function set 7580 qos C\+A\+R.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink\+Bandwidth\+:uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em qm\+:queue} & mask \\
+\hline
+\mbox{\tt in}  & {\em ratelimit\+:ratelimit} & of queue \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+7580 qos C\+AR. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ad65bb8d242b96f7f1e5646263114b075}\label{libapi__lib__qosrule_8h_ad65bb8d242b96f7f1e5646263114b075}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+A\+R()}{qoscmd\_lib\_do\_en75xxQoSDiscCAR()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+C\+AR (\begin{DoxyParamCaption}\item[{uint32}]{uplink\+Bandwidth,  }\item[{int}]{qm,  }\item[{uint32 $\ast$}]{ratelimit,  }\item[{int}]{meter\+\_\+support }\end{DoxyParamCaption})}
+
+
+
+This function set qos C\+AR. 
+
+This function set qos C\+A\+R.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink\+Bandwidth\+:uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em qm\+:queue} & mask \\
+\hline
+\mbox{\tt in}  & {\em ratelimit\+:ratelimit} & of queue \\
+\hline
+\mbox{\tt in}  & {\em meter\+\_\+support} & meter support \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos C\+AR. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ac0457db51f8dacf60703e4588c7b5c21}\label{libapi__lib__qosrule_8h_ac0457db51f8dacf60703e4588c7b5c21}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+P\+Q()}{qoscmd\_lib\_do\_en75xxQoSDiscPQ()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+PQ (\begin{DoxyParamCaption}\item[{uint32}]{uplink\+Bandwidth,  }\item[{int}]{qm }\end{DoxyParamCaption})}
+
+
+
+This function set qos PQ. 
+
+This function set qos P\+Q.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink\+Bandwidth\+:uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em qm\+:queue} & mask \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos PQ. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_af439c6b902f6e1a90ef40f45b8363c51}\label{libapi__lib__qosrule_8h_af439c6b902f6e1a90ef40f45b8363c51}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR@{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+R\+R()}{qoscmd\_lib\_do\_en75xxQoSDiscWRR()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+en75xx\+Qo\+S\+Disc\+W\+RR (\begin{DoxyParamCaption}\item[{uint32}]{uplink\+Bandwidth,  }\item[{int}]{qm,  }\item[{int $\ast$}]{weight,  }\item[{int}]{w\+Total,  }\item[{int}]{forcebw }\end{DoxyParamCaption})}
+
+
+
+This function set qos W\+RR. 
+
+This function set qos W\+R\+R.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink\+Bandwidth\+:uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em qm\+:queue} & mask \\
+\hline
+\mbox{\tt in}  & {\em weight\+:qos} & wrr weight \\
+\hline
+\mbox{\tt in}  & {\em w\+Total\+:weight} & total \\
+\hline
+\mbox{\tt in}  & {\em forcebw\+:force} & band wrr \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos W\+RR. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ab671757f4f523e93ea0062fb967d071e}\label{libapi__lib__qosrule_8h_ab671757f4f523e93ea0062fb967d071e}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app()}{qoscmd\_lib\_do\_qos\_app()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+app (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{int}]{rule\+Idx,  }\item[{int}]{I\+Pversion,  }\item[{\hyperlink{structappParam__s}{app\+Param\+\_\+t} $\ast$}]{param }\end{DoxyParamCaption})}
+
+
+
+This function set qos app. 
+
+This function set qos app.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type\+:1=add,0=delete} & \\
+\hline
+\mbox{\tt in}  & {\em rule\+Idx\+:rule} & index \\
+\hline
+\mbox{\tt in}  & {\em I\+P\+Version\+:1=ipv4,2=ipv6,3=all} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos app. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aa6985230527239c2b674b1e475aa945e}\label{libapi__lib__qosrule_8h_aa6985230527239c2b674b1e475aa945e}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+A\+R()}{qoscmd\_lib\_do\_qos\_discCAR()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+C\+AR (\begin{DoxyParamCaption}\item[{char}]{car\+Pri\mbox{[}$\,$\mbox{]}\mbox{[}32\mbox{]},  }\item[{char}]{up\+Band\+With\mbox{[}$\,$\mbox{]},  }\item[{char}]{queue\+Mask\mbox{[}$\,$\mbox{]},  }\item[{char}]{hw\+Car\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set qos C\+AR. 
+
+This function set qos C\+A\+R.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em queue} & mask \\
+\hline
+\mbox{\tt in}  & {\em ratelimit} & of queue \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos C\+AR. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a7bc15af79e0d95c0193b72d748d0f244}\label{libapi__lib__qosrule_8h_a7bc15af79e0d95c0193b72d748d0f244}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+P\+Q()}{qoscmd\_lib\_do\_qos\_discPQ()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+PQ (\begin{DoxyParamCaption}\item[{char}]{up\+Band\+With\mbox{[}$\,$\mbox{]},  }\item[{char}]{queue\+Mask\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set qos PQ. 
+
+This function set qos P\+Q.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em queue} & mask \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos PQ. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_ace6e686550b48c91251d1a78218e021b}\label{libapi__lib__qosrule_8h_ace6e686550b48c91251d1a78218e021b}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+R\+R()}{qoscmd\_lib\_do\_qos\_discWRR()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+disc\+W\+RR (\begin{DoxyParamCaption}\item[{char}]{wrr\+Pri\mbox{[}$\,$\mbox{]}\mbox{[}32\mbox{]},  }\item[{char}]{up\+Band\+With\mbox{[}$\,$\mbox{]},  }\item[{char}]{queue\+Mask\mbox{[}$\,$\mbox{]},  }\item[{char}]{force\+BW\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set qos W\+RR. 
+
+This function set qos W\+R\+R.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uplink} & bandwidth \\
+\hline
+\mbox{\tt in}  & {\em queue} & mask \\
+\hline
+\mbox{\tt in}  & {\em qos} & wrr weight \\
+\hline
+\mbox{\tt in}  & {\em force} & band wrr \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos W\+RR. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a390614148d4be90b75d6c050264b36fc}\label{libapi__lib__qosrule_8h_a390614148d4be90b75d6c050264b36fc}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark()}{qoscmd\_lib\_do\_qos\_remark()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+remark (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{int}]{rule\+Idx,  }\item[{int}]{I\+Pversion,  }\item[{int}]{param\+Num,  }\item[{\hyperlink{structtypeParam__s}{type\+Param\+\_\+t}}]{param\+Arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set qos remark. 
+
+This function set qos remark.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type\+:1=add,0=delete} & \\
+\hline
+\mbox{\tt in}  & {\em rule\+Idx\+:rule} & index \\
+\hline
+\mbox{\tt in}  & {\em I\+P\+Version\+:1=ipv4,2=ipv6,3=all} & \\
+\hline
+\mbox{\tt in}  & {\em param\+Num\+:param} & Number \\
+\hline
+\mbox{\tt in}  & {\em param\+Arr\mbox{[}} & \mbox{]}\+:param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos remark. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_acbdf512d83a2a8892542c8a1e486f4d9}\label{libapi__lib__qosrule_8h_acbdf512d83a2a8892542c8a1e486f4d9}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch()}{qoscmd\_lib\_do\_qos\_switch()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+switch (\begin{DoxyParamCaption}\item[{int}]{Qo\+Ssw,  }\item[{int}]{I\+Pversion }\end{DoxyParamCaption})}
+
+
+
+This function set qos rule on/off. 
+
+This function set qos rule on/off.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Qo\+Ssw\+:1} & means qos on, 0 means off \\
+\hline
+\mbox{\tt in}  & {\em I\+P\+Version} & 1=ipv4, 2=ipv6, 3=all \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos rule on/off. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_a58321ce943b4ee98e7d37595fa7d4977}\label{libapi__lib__qosrule_8h_a58321ce943b4ee98e7d37595fa7d4977}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type()}{qoscmd\_lib\_do\_qos\_type()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+type (\begin{DoxyParamCaption}\item[{int}]{type,  }\item[{int}]{rule\+Idx,  }\item[{int}]{I\+Pversion,  }\item[{int}]{param\+Num,  }\item[{\hyperlink{structtypeParam__s}{type\+Param\+\_\+t}}]{param\+Arr\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set qos type. 
+
+This function set qos type.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type\+:1=add,0=delete} & \\
+\hline
+\mbox{\tt in}  & {\em rule\+Idx\+:rule} & index \\
+\hline
+\mbox{\tt in}  & {\em I\+P\+Version\+:1=ipv4,2=ipv6,3=all} & \\
+\hline
+\mbox{\tt in}  & {\em param\+Num\+:param} & Number \\
+\hline
+\mbox{\tt in}  & {\em param\+Arr\mbox{[}} & \mbox{]}\+:param \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__qosrule_8h_aa3b0577caf458e38cdb231120780c751}\label{libapi__lib__qosrule_8h_aa3b0577caf458e38cdb231120780c751}} 
+\index{libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}!qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid}}
+\index{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid@{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid}!libapi\+\_\+lib\+\_\+qosrule.\+h@{libapi\+\_\+lib\+\_\+qosrule.\+h}}
+\subsubsection{\texorpdfstring{qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid()}{qoscmd\_lib\_do\_qos\_vlanid()}}
+{\footnotesize\ttfamily int qoscmd\+\_\+lib\+\_\+do\+\_\+qos\+\_\+vlanid (\begin{DoxyParamCaption}\item[{int}]{sw,  }\item[{int}]{vpi,  }\item[{int}]{vci,  }\item[{int}]{vlanid }\end{DoxyParamCaption})}
+
+
+
+This function set qos vlanid of A\+TM. 
+
+This function set qos vlanid of A\+T\+M.\+submit by Shengli.\+Lee 2020.\+10.\+15 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sw\+:1} & means on, 0 means off \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+qos vlanid of A\+TM. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}

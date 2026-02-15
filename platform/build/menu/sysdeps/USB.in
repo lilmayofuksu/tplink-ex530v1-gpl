@@ -1,0 +1,98 @@
+
+menu 'USB Options'
+
+config INCLUDE_USB
+	bool "Build USB"
+	default n
+	
+config INCLUDE_USB_3G_DONGLE
+	bool "Build USB 3G dongle"
+	default n
+	depends on INCLUDE_USB
+	
+config INCLUDE_USB_OVER_IP
+	bool "Build USB over IP"
+	default n
+	depends on INCLUDE_USB
+
+choice
+	prompt "USB over IP Type"
+	default INCLUDE_USB_OVER_IP_TPLINK
+	depends on INCLUDE_USB_OVER_IP
+
+config INCLUDE_USB_OVER_IP_TPLINK
+	bool "Build USB over IP of TP-Link"
+	
+config INCLUDE_USB_OVER_IP_KCODES
+	bool "Build USB over IP of KCodes"
+	
+endchoice
+
+config INCLUDE_USB_STORAGE
+	bool "Build USB storage"
+	default n
+	depends on INCLUDE_USB
+
+config INCLUDE_USB_SYSFS
+	bool "Build USB procfs adapter(generate procfs from sysfs when procfs is missing)"
+	default n
+	depends on INCLUDE_USB
+	
+# added by LY for tuxera supported usb data transfer, in 2015.01.28
+config INCLUDE_USB_STORAGE_TUXERA_FAT
+	bool "Build USB Tuxera FAT"
+	default n
+	depends on INCLUDE_USB_STORAGE
+	
+config INCLUDE_USB_STORAGE_TUXERA_NTFS
+	bool "Build USB Tuxera NTFS"
+	default n
+	depends on INCLUDE_USB_STORAGE
+# end added by LY
+
+menu 'DLNA Options'
+
+config INCLUDE_USB_MEDIA_SERVER
+	bool "Build USB DLNA"
+	default n
+	depends on INCLUDE_USB_STORAGE
+	
+choice
+	prompt "DLNA type"
+	default INCLUDE_USHARE
+	depends on INCLUDE_USB_MEDIA_SERVER
+	
+config INCLUDE_USHARE
+	bool "Build USHARE"
+
+config INCLUDE_MINIDLNA
+	bool "Build MINIDLNA"
+	
+config INCLUDE_LITE_MINIDLNA
+	bool "Build LITE MINIDLNA"
+	
+endchoice
+
+endmenu
+	
+config INCLUDE_USB_SAMBA_SERVER
+	bool "Build USB Samba Server"
+	default n
+	depends on INCLUDE_USB_STORAGE
+
+config INCLUDE_USB_FTP_SERVER
+	bool "Build USB Ftp server"
+	default n
+	depends on INCLUDE_USB_STORAGE
+
+config INCLUDE_STORAGE_HTTP_SERVICE
+        bool "Build USB http storage server"
+        default n
+        depends on INCLUDE_USB_STORAGE && INCLUDE_SSL
+	
+config INCLUDE_USB_SFTP_SERVER
+        bool "Build USB SFTP server"
+        default n
+        depends on INCLUDE_USB_FTP_SERVER
+	
+endmenu

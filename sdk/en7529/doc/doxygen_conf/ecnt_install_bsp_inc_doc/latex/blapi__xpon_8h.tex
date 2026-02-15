@@ -1,0 +1,649 @@
+\hypertarget{blapi__xpon_8h}{}\section{blapi\+\_\+xpon.\+h File Reference}
+\label{blapi__xpon_8h}\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+
+
+This file is blapi xpon header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+public\+\_\+const.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structponLinkUpInfo__s}{pon\+Link\+Up\+Info\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__xpon_8h_a40557aa2166f6b3226187e8f920decce}\label{blapi__xpon_8h_a40557aa2166f6b3226187e8f920decce}} 
+\#define {\bfseries B\+L\+A\+P\+I\+\_\+\+G\+E\+T\+\_\+\+M\+A\+X\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM}~\hyperlink{blapi__xpon_8h_a7559940e54ceff9b56af8df647357a72}{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM}()
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__xpon_8h_ae0d8d480fb8f6db527245f01631b01cc}\label{blapi__xpon_8h_ae0d8d480fb8f6db527245f01631b01cc}} 
+typedef struct \hyperlink{structponLinkUpInfo__s}{pon\+Link\+Up\+Info\+\_\+s} {\bfseries pon\+Link\+Up\+Info\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__xpon_8h_aae67e2d84ba415c084eabe5c9a15012b}{blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to send O\+AM Update config. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_aec65125cbfb7d7cb65cf66f1a63dd25b}{blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to send O\+AM Traffic Down. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a110ec07a04464189511416fb13c7fd44}{blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to send O\+AM P\+M\+M\+GR R\+E\+I\+N\+IT. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a944367ef5df82ae592b0c0206a993a59}{blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to send O\+AM M\+P\+CP W\+AN R\+E\+S\+ET. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a00279cc8be5f5617c878e3a09e31503e}{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start} (int $\ast$onu\+Mode)
+\begin{DoxyCompactList}\small\item\em This function is used to get the onu mode from M\+AC driver. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_af47acffab6961e8fc7f5c68b9e9dd287}{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash} (int $\ast$onu\+Mode)
+\begin{DoxyCompactList}\small\item\em This function is used to get the onu mode from flash. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a18f0843323a5121f12a3263f9f918042}{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state} (int state, int onu\+Mode)
+\begin{DoxyCompactList}\small\item\em This function is used to set X\+P\+ON link state. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a9739c8b22cd898c611dc466e653bd90f}{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up} (int onu\+Mode, \hyperlink{structponLinkUpInfo__s}{pon\+Link\+Up\+Info\+\_\+t} reg\+Info)
+\begin{DoxyCompactList}\small\item\em This function is used to set pon link up. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a87182a6012c47a4443f5cca2fb7fc0a7}{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature} (int $\ast$Phy\+Trans\+Temp)
+\begin{DoxyCompactList}\small\item\em This function is used to get the temperature of transceiver. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a4ccf94c071793ee5f253ecadd8815efb}{blapi\+\_\+pon\+\_\+secure\+\_\+boot} (char $\ast$image\+\_\+path)
+\begin{DoxyCompactList}\small\item\em This function is used to pon secure boot. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a7f551ddf1b784bd758ad5b43dcd90020}{blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value} (const char $\ast$info1, const char $\ast$info2, const int type)
+\begin{DoxyCompactList}\small\item\em This function is used to get oam ping value. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_adc7b3dbd005a445725d30ba4f67ea961}{blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag} (uint8\+\_\+t $\ast$bootflag)
+\begin{DoxyCompactList}\small\item\em This function is used to get bootflag. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a3dc165e45f48b2b0990e353ba2d1ae50}{blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash} (int boot\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set bootflag to flash. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a7559940e54ceff9b56af8df647357a72}{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to get E\+P\+ON llid max num. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_ad097044c2e681bd2718f6619bcd62734}{blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type} (uint type)
+\begin{DoxyCompactList}\small\item\em This function is used to set O\+LT type. \end{DoxyCompactList}\item 
+void \hyperlink{blapi__xpon_8h_a1ecf66fd9d3967b59925a1fb70137c49}{blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to start oam process. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_aac74b76629a02736111851e289a08df8}{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status} (char $\ast$buffer, int buff\+Length)
+\begin{DoxyCompactList}\small\item\em This function is used to get the link status of phy. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xpon_8h_a426a68b4bdb70feed51f2929f6a37195}{blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status} (char $\ast$led\+Status)
+\begin{DoxyCompactList}\small\item\em This function is used to set the status of P\+ON L\+ED. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi xpon header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__xpon_8h_adc7b3dbd005a445725d30ba4f67ea961}\label{blapi__xpon_8h_adc7b3dbd005a445725d30ba4f67ea961}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag@{blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag@{blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag()}{blapi\_pon\_get\_boot\_flag()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+boot\+\_\+flag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bootflag }\end{DoxyParamCaption})}
+
+
+
+This function is used to get bootflag. 
+
+This function is used to get bootflag. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em bootflag} & The addr of bootflag. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get bootflag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a7f551ddf1b784bd758ad5b43dcd90020}\label{blapi__xpon_8h_a7f551ddf1b784bd758ad5b43dcd90020}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value@{blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value@{blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value()}{blapi\_pon\_get\_oam\_ping\_value()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+oam\+\_\+ping\+\_\+value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{info1,  }\item[{const char $\ast$}]{info2,  }\item[{const int}]{type }\end{DoxyParamCaption})}
+
+
+
+This function is used to get oam ping value. 
+
+This function is used to get oam ping value. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em info1.} & \\
+\hline
+\mbox{\tt in}  & {\em info2.} & \\
+\hline
+\mbox{\tt in}  & {\em type.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get oam ping value. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a00279cc8be5f5617c878e3a09e31503e}\label{blapi__xpon_8h_a00279cc8be5f5617c878e3a09e31503e}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start@{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start@{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start()}{blapi\_pon\_get\_onuMode\_after\_PON\_Start()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+after\+\_\+\+P\+O\+N\+\_\+\+Start (\begin{DoxyParamCaption}\item[{int $\ast$}]{onu\+Mode }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the onu mode from M\+AC driver. 
+
+This function is used to get the onu mode from M\+AC driver. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em O\+NU} & mode\+: For E\+N752x series products, 0\+:Auto Mode, 1\+:G\+P\+ON Mode and 2\+:E\+P\+ON Mode. For E\+N758x series products, the O\+NU mode maybe 1\+:G\+P\+ON Mode, 3\+:X\+E\+P\+O\+N-\/\+A\+SY Mode, 4\+:X\+E\+P\+O\+N-\/\+S\+YM Mode, 5\+:X\+E\+P\+O\+N-\/1G Mode, 6\+:X\+G\+P\+ON Mode, 7\+:X\+G\+S\+P\+ON Mode, 8\+:N\+G\+P\+O\+N2-\/10\+G-\/\+S\+YM Mode, 9\+:N\+G\+P\+O\+N2-\/10\+G-\/\+A\+SY Mode and 10\+:N\+G\+P\+O\+N2-\/2\+G-\/\+S\+YM Mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the onu mode from M\+AC driver. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_af47acffab6961e8fc7f5c68b9e9dd287}\label{blapi__xpon_8h_af47acffab6961e8fc7f5c68b9e9dd287}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash@{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash@{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash()}{blapi\_pon\_get\_onuMode\_from\_flash()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+onu\+Mode\+\_\+from\+\_\+flash (\begin{DoxyParamCaption}\item[{int $\ast$}]{onu\+Mode }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the onu mode from flash. 
+
+This function is used to get the onu mode from flash. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em O\+NU} & mode\+: 1\+:G\+P\+ON Mode, 3\+:X\+E\+P\+O\+N-\/\+A\+SY Mode, 4\+:X\+E\+P\+O\+N-\/\+S\+YM Mode, 5\+:X\+E\+P\+O\+N-\/1G Mode, 6\+:X\+G\+P\+ON Mode, 7\+:X\+G\+S\+P\+ON Mode, 8\+:N\+G\+P\+O\+N2-\/10\+G-\/\+S\+YM Mode, 9\+:N\+G\+P\+O\+N2-\/10\+G-\/\+A\+SY Mode and 10\+:N\+G\+P\+O\+N2-\/2\+G-\/\+S\+YM Mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the onu mode from flash. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_aac74b76629a02736111851e289a08df8}\label{blapi__xpon_8h_aac74b76629a02736111851e289a08df8}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status@{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status@{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status()}{blapi\_pon\_get\_phy\_link\_status()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+link\+\_\+status (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{int}]{buff\+Length }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the link status of phy. 
+
+This function is used to get the link status of phy. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em buffer} & used to store the link status of phy \\
+\hline
+\mbox{\tt in}  & {\em buff\+Length} & used to indicate the buffer size, it cannot be less than 5 bytes \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the link status of phy. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a87182a6012c47a4443f5cca2fb7fc0a7}\label{blapi__xpon_8h_a87182a6012c47a4443f5cca2fb7fc0a7}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature@{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature}}
+\index{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature@{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature()}{blapi\_pon\_get\_phy\_trans\_temperature()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+get\+\_\+phy\+\_\+trans\+\_\+temperature (\begin{DoxyParamCaption}\item[{int $\ast$}]{Phy\+Trans\+Temp }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the temperature of transceiver. 
+
+This function is used to get the temperature of transceiver. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em Phy\+Trans\+Temp} & The addr of temperature of transceiver. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the temperature of transceiver. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a7559940e54ceff9b56af8df647357a72}\label{blapi__xpon_8h_a7559940e54ceff9b56af8df647357a72}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM@{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM}}
+\index{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM@{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+U\+M()}{blapi\_pon\_MAX\_EPON\_LLID\_NUM()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+\+M\+A\+X\+\_\+\+E\+P\+O\+N\+\_\+\+L\+L\+I\+D\+\_\+\+N\+UM (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to get E\+P\+ON llid max num. 
+
+This function is used to get E\+P\+ON llid max num. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em E\+P\+ON} & L\+L\+ID M\+AX N\+UM \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get E\+P\+ON llid max num. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a4ccf94c071793ee5f253ecadd8815efb}\label{blapi__xpon_8h_a4ccf94c071793ee5f253ecadd8815efb}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+secure\+\_\+boot@{blapi\+\_\+pon\+\_\+secure\+\_\+boot}}
+\index{blapi\+\_\+pon\+\_\+secure\+\_\+boot@{blapi\+\_\+pon\+\_\+secure\+\_\+boot}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+secure\+\_\+boot()}{blapi\_pon\_secure\_boot()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+secure\+\_\+boot (\begin{DoxyParamCaption}\item[{char $\ast$}]{image\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+This function is used to pon secure boot. 
+
+This function is used to pon secure boot. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image\+\_\+path} & The path of fw. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Pon secure boot. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a944367ef5df82ae592b0c0206a993a59}\label{blapi__xpon_8h_a944367ef5df82ae592b0c0206a993a59}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset@{blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset}}
+\index{blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset@{blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset()}{blapi\_pon\_sendMpcpWanReset()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+send\+Mpcp\+Wan\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to send O\+AM M\+P\+CP W\+AN R\+E\+S\+ET. 
+
+This function is used to send O\+AM M\+P\+CP W\+AN R\+E\+S\+ET. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send O\+AM M\+P\+CP W\+AN R\+E\+S\+ET. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_aec65125cbfb7d7cb65cf66f1a63dd25b}\label{blapi__xpon_8h_aec65125cbfb7d7cb65cf66f1a63dd25b}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down@{blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down}}
+\index{blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down@{blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down()}{blapi\_pon\_sendOamTrafficDown()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+send\+Oam\+Traffic\+Down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to send O\+AM Traffic Down. 
+
+This function is used to send O\+AM Traffic Down. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send O\+AM Traffic Down. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_aae67e2d84ba415c084eabe5c9a15012b}\label{blapi__xpon_8h_aae67e2d84ba415c084eabe5c9a15012b}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf@{blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf}}
+\index{blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf@{blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf()}{blapi\_pon\_sendOamUpdateConf()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+send\+Oam\+Update\+Conf (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to send O\+AM Update config. 
+
+This function is used to send O\+AM Update config. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send O\+AM Update config. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a110ec07a04464189511416fb13c7fd44}\label{blapi__xpon_8h_a110ec07a04464189511416fb13c7fd44}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init@{blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init}}
+\index{blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init@{blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init()}{blapi\_pon\_sendPmmgrReInit()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+send\+Pmmgr\+Re\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to send O\+AM P\+M\+M\+GR R\+E\+I\+N\+IT. 
+
+This function is used to send O\+AM P\+M\+M\+GR R\+E\+I\+N\+IT. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send O\+AM P\+M\+M\+GR R\+E\+I\+N\+IT. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a3dc165e45f48b2b0990e353ba2d1ae50}\label{blapi__xpon_8h_a3dc165e45f48b2b0990e353ba2d1ae50}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash@{blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash}}
+\index{blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash@{blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash()}{blapi\_pon\_set\_bootFlag\_to\_flash()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+set\+\_\+boot\+Flag\+\_\+to\+\_\+flash (\begin{DoxyParamCaption}\item[{int}]{boot\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set bootflag to flash. 
+
+This function is used to set bootflag to flash. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bootflag} & 0 or 1 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set bootflag to flash. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a18f0843323a5121f12a3263f9f918042}\label{blapi__xpon_8h_a18f0843323a5121f12a3263f9f918042}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state@{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state}}
+\index{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state@{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state()}{blapi\_pon\_set\_link\_state()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+state (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{int}]{onu\+Mode }\end{DoxyParamCaption})}
+
+
+
+This function is used to set X\+P\+ON link state. 
+
+This function is used to set X\+P\+ON link state. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em state} & 0\+:X\+P\+O\+N\+\_\+\+D\+I\+S\+A\+B\+LE, 1\+:X\+P\+O\+N\+\_\+\+E\+N\+A\+B\+LE, 2\+:X\+P\+O\+N\+\_\+\+P\+O\+W\+E\+R\+\_\+\+D\+O\+WN \\
+\hline
+\mbox{\tt in}  & {\em onu\+Mode} & 0$\sim$2 for E\+N752x series products, 1,3$\sim$10 for E\+N758x series products \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set X\+P\+ON link state. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a9739c8b22cd898c611dc466e653bd90f}\label{blapi__xpon_8h_a9739c8b22cd898c611dc466e653bd90f}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up@{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up}}
+\index{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up@{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up()}{blapi\_pon\_set\_link\_up()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+set\+\_\+link\+\_\+up (\begin{DoxyParamCaption}\item[{int}]{onu\+Mode,  }\item[{\hyperlink{structponLinkUpInfo__s}{pon\+Link\+Up\+Info\+\_\+t}}]{reg\+Info }\end{DoxyParamCaption})}
+
+
+
+This function is used to set pon link up. 
+
+This function is used to set pon link up. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em onu\+Mode} & 0$\sim$2 for E\+N752x series products, 1,3$\sim$10 for E\+N758x series products \\
+\hline
+\mbox{\tt in}  & {\em reg\+Info} & The struct include sn, password, reg\+\_\+id. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set pon link up. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_ad097044c2e681bd2718f6619bcd62734}\label{blapi__xpon_8h_ad097044c2e681bd2718f6619bcd62734}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type@{blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type}}
+\index{blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type@{blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type()}{blapi\_pon\_set\_olt\_type()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+set\+\_\+olt\+\_\+type (\begin{DoxyParamCaption}\item[{uint}]{type }\end{DoxyParamCaption})}
+
+
+
+This function is used to set O\+LT type. 
+
+This function is used to set O\+LT type. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & 0\+:Geneal O\+LT type, 1\+:F\+I\+B\+E\+R\+H\+O\+ME 551601, 2\+:D\+A\+S\+AN \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set O\+LT type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a426a68b4bdb70feed51f2929f6a37195}\label{blapi__xpon_8h_a426a68b4bdb70feed51f2929f6a37195}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status@{blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status}}
+\index{blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status@{blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status()}{blapi\_pon\_set\_pon\_led\_status()}}
+{\footnotesize\ttfamily int blapi\+\_\+pon\+\_\+set\+\_\+pon\+\_\+led\+\_\+status (\begin{DoxyParamCaption}\item[{char $\ast$}]{led\+Status }\end{DoxyParamCaption})}
+
+
+
+This function is used to set the status of P\+ON L\+ED. 
+
+This function is used to set the status of P\+ON L\+ED. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em led\+Status} & led\+Status=\char`\"{}0\char`\"{} \+: P\+ON L\+ED off led\+Status=\char`\"{}1\char`\"{} \+: P\+ON L\+ED flashing. Note that phy must be up at this time led\+Status=\char`\"{}2\char`\"{} \+: P\+ON L\+ED on. Note that phy must be up at this time led\+Status=\char`\"{}3\char`\"{} \+: Software upgrading. Note that phy must be up at this time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the status of P\+ON L\+ED. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xpon_8h_a1ecf66fd9d3967b59925a1fb70137c49}\label{blapi__xpon_8h_a1ecf66fd9d3967b59925a1fb70137c49}} 
+\index{blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}!blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process@{blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process}}
+\index{blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process@{blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process}!blapi\+\_\+xpon.\+h@{blapi\+\_\+xpon.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process()}{blapi\_pon\_start\_oam\_process()}}
+{\footnotesize\ttfamily void blapi\+\_\+pon\+\_\+start\+\_\+oam\+\_\+process (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to start oam process. 
+
+This function is used to start oam process. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void.} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Start oam process. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

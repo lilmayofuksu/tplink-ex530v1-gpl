@@ -1,0 +1,37 @@
+config INCLUDE_WE_OPTIONS
+	bool "WE all options (B&C)"
+	depends on INCLUDE_WE
+
+	######## SELECT Type B ##########
+	select INCLUDE_FIREWALL_LEVEL
+	select INCLUDE_SYSLOG_SECURITY_SPEC
+	select INCLUDE_DSL_G_INP
+	select INCLUDE_UPNP_DYNAMIC_INIT
+	select INCLUDE_REDIRECT_HTTP_TO_HTTPS
+	select INCLUDE_REDIRECT_REMOTE_HTTP_TO_HTTPS
+	select INCLUDE_SAVE_KEY_AS_HASH
+	select INCLUDE_MULTIPLE_NAT
+	select INCLUDE_LANGUAGE_AR_AR
+	select INCLUDE_WIFI_MACFILTER
+	select INCLUDE_MACFILTER_SPLIT_2_4G_5G
+
+	######## SELECT Type C ##########
+	select INCLUDE_WE_REMOVE_VITUALSERVER_FTP_SMTP
+	select INCLUDE_WE_REMOVE_LOG_CONTROL
+	select INCLUDE_WE_SECURITY_SPEC
+
+########## Define Type C ############
+config INCLUDE_WE_REMOVE_VITUALSERVER_FTP_SMTP
+	bool "remove FTP&SMTP from virtual server"
+	depends on INCLUDE_WE_OPTIONS
+	default n
+
+config INCLUDE_WE_REMOVE_LOG_CONTROL
+	bool "remove delete-all and save-locally in LOG."
+	default n
+	depends on INCLUDE_WE_OPTIONS
+	
+config INCLUDE_WE_SECURITY_SPEC
+	bool "Build Support of Security System Log"
+	default n
+	depends on INCLUDE_WE_OPTIONS

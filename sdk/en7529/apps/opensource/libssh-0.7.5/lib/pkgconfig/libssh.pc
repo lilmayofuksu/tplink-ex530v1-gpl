@@ -1,0 +1,6 @@
+Name: libssh
+Description: The SSH Library
+Version: 0.7.5
+Libs: -L/proj/mtk69551/tony/ws_tony.du_AP31/BBN_Linux/DEV/main/tclinux_phoenix/apps/public/libssh-0.7.5/lib -lssh
+Cflags: -I/proj/mtk69551/tony/ws_tony.du_AP31/BBN_Linux/DEV/main/tclinux_phoenix/apps/public/libssh-0.7.5/include
+

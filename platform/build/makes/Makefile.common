@@ -1,0 +1,69 @@
+
+
+Color_B="\\033[1;36m"
+Color_R="\\033[1;31m"
+Color_W="\\033[0;39m"
+
+# $(1): Log Level
+# $(2): String
+define tp_print
+	$(call tp_print/$(1),$(2))
+endef
+
+define tp_print/warning
+	echo $(Color_B)$(1)$(Color_W)
+endef
+
+define tp_print/error
+	echo $(Color_R)$(1)$(Color_W)
+endef
+
+# Check Folder
+define checkFolder
+ifeq ("$$(wildcard $(1))","")
+    $$(error "$(1) folder doesn't exist!")
+else
+    $$(warning "$(1) Checked")
+endif
+endef
+
+# Check File
+define checkFile
+ifeq ("$$(wildcard $(1))","")
+    $$(error "$(1) file doesn't exist!")
+else
+    $$(warning "$(1) Checked")
+endif
+endef
+
+# Check Define
+define checkDefine
+ifeq ("$$($(1))","")
+    $$(error "$(1) macro doesn't define!")
+else
+    $$(warning "$(1) Defined")
+endif
+endef
+
+#
+# Import flag from file
+#
+# Step 1. Cat file
+# Step 2. Delete '#' and space line
+# Step 3. Prefix '-D' to each line
+#
+# $(1): Flag Name
+# $(2): Source File
+#
+define compileFlagsFromFile
+$(1)=$(shell cat $(2)|sed -e '/#/d' -e '/^$$/d' -e '/SDK_REPO_URL/d' -e 's/^/-D/g' )
+endef
+
+define webFlagsFromFile
+$(1)=$(shell cat $(2)|sed -e '/#/d' -e '/^$$/d' -e '/SDK_REPO_URL/d' -e 's/=y/=1/g') $(shell cat $(2)|grep "is not set"|awk -F " " '{print $$2}'|sed -e 's/$$/=0/g')
+endef
+
+define exportFlagsFromFile
+$(shell sed -e '/#/d' -e '/^$$/d' -e 's/\"//g' -e 's/^/export /g' $(1) > $(1).bk)
+include $(1).bk
+endef

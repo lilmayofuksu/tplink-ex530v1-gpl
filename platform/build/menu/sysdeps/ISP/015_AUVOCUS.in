@@ -1,0 +1,9 @@
+config INCLUDE_AUVOCUS_OPTIONS
+	bool "AU Vocus all options (B&C)"
+	depends on INCLUDE_AUVOCUS
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

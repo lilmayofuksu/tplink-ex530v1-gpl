@@ -1,0 +1,379 @@
+include Project/dir.mak
+include $(TRUNK_DIR)/.profile_summary
+
+include $(XPON_BSP_DIR)/xpon_bsp_swept
+ifeq ("$(IS_XPON_APP_BSP_DIR_EXIST)", "Y")
+include $(XPON_APP_BSP_DIR)/xpon_app_swept
+xpon_swept=xpon_bsp_swept xpon_app_swept 
+else
+xpon_swept=xpon_bsp_swept 
+endif
+
+
+#UNOPEN_FILE_DELETE means unopen files needed to be deleted
+UNOPEN_FILE_DELETE=$(MODULES_PRIV_SRC_DIR)/auto_bench \
+$(MODULES_PRIV_SRC_DIR)/en7512_pcie_verify \
+$(MODULES_PRIV_SRC_DIR)/en7512_pcie_verify_3.18.21 \
+$(MODULES_PRIV_SRC_DIR)/en7512_pcie_verify_arm \
+$(MODULES_PRIV_SRC_DIR)/sif \
+$(MODULES_PRIV_SRC_DIR)/NPU/md32rv-sdk \
+$(MODULES_PRIV_SRC_DIR)/hwnat \
+$(MODULES_PRIV_SRC_DIR)/HWNAT_Emulation  \
+$(MODULES_PRIV_SRC_DIR)/HWNAT_Emulation_Accelerated  \
+$(MODULES_PRIV_SRC_DIR)/mapfilter	\
+$(MODULES_PRIV_SRC_DIR)/net  \
+$(MODULES_EIP93_DRIVERS) \
+$(FILESYSTEM_DIR)/userfs/SLAD_TestTool \
+$(FILESYSTEM_DIR)/userfs/Regression \
+$(FILESYSTEM_DIR)/lib/modules/vdriver_93_k.ko \
+$(MODULES_HWNAT_DIR) \
+$(MODULES_RA_HWNAT_DIR) \
+$(MODULES_RA_HWNAT_V3_DIR) \
+$(MODULES_KPROFILE_DIR) \
+$(KERNEL_DIR)/drivers/usb/host/mtk_test \
+$(TRUNK_DIR)/buildfs_vs_fw_table.xls \
+$(TRUNK_DIR)/rootfs \
+$(TRUNK_DIR)/README \
+$(TRUNK_DIR)/bootrom_int \
+$(TRUNK_DIR)/modules_tmp/ko/modules/2.6.22.15 \
+$(MODULES_ETHER_DIR)/soft_qdma/soft_qdma.c \
+$(MODULES_RAETH_DIR)/soft_qdma/soft_qdma.c \
+$(MODULES_PRIV_SRC_DIR)/speedtest/speed_test_unopen.c \
+$(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/SAR_VERIFY \
+$(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/*_verify.c \
+$(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/tc3162_udc20.c \
+$(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/tc3162_udc.c \
+$(MODULES_PRIV_SRC_DIR)/tcci/version.c \
+$(MODULES_PRIV_SRC_DIR)/fe_ppe_test \
+$(MODULES_PRIV_SRC_DIR)/slm_verify \
+$(MODULES_QDMA_7516_DIR)/qdma_forward_left_to_right.c \
+$(MODULES_DIAG_TOOL) \
+$(TRUNK_DIR)/bootrom_ft \
+$(VOIP_BSP_DIR) \
+$(MODULES_IFC_DIR)/ifc_api.c \
+$(MODULES_IFC_DIR)/ifc_dev.c \
+$(MODULES_IFC_DIR)/ifc_util.c
+ifeq ($(strip $(TCSUPPORT_HW_CRYPTO)),)
+UNOPEN_FILE_DELETE += $(MODULES_CRYPTO_DRIVER)
+else
+ifneq ($(strip $(TCSUPPORT_2_6_36_KERNEL)),)
+UNOPEN_FILE_DELETE += $(MODULES_CRYPTO_DRIVER)
+else
+UNOPEN_FILE_DELETE += $(MODULES_CRYPTO_DRIVER)/source/utils/*.c \
+$(MODULES_CRYPTO_DRIVER)/source/ecnt_cryptoLoopbackTest.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_eip93Init.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_init.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_interruptHelper.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_pecInit.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_pktProcess.c \
+$(MODULES_CRYPTO_DRIVER)/source/mtk_pktProcess_k318.c \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_addrTrans.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_armL0.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_cEip93.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_crypto_api.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_csEip93.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_hwInterface.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_internal.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_L0.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_prngL0.h \
+$(MODULES_CRYPTO_DRIVER)/include/mtk_ring.h
+endif
+endif
+ifeq ($(strip $(TCSUPPORT_CPU_RT63365) $(TCSUPPORT_CPU_RT63368) $(TCSUPPORT_CPU_MT7520) $(TCSUPPORT_CPU_MT7505) $(TCSUPPORT_CPU_MT7510)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/raeth \
+$(MODULES_QDMA_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_BONDING)),)	
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/bonding_pcie
+endif
+
+ifeq ($(strip $(TCSUPPORT_XPON_HAL_API_MCST)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/mtk_multicast/CFH
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/mtk_multicast/CJ
+endif
+
+ifeq ($(strip $(TCSUPPORT_CSC_EEUROPE)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/mtk_multicast/CSC
+endif
+
+UNOPEN_FILE_DELETE += $(FILESYSTEM_DIR)/boaroot/cgi-bin/WizardOi \
+$(FILESYSTEM_DIR)/boaroot/html/include	\
+$(BOOTROM_DIR)/ddr_cal/*.c \
+$(BOOTROM_DIR)/ddr_cal_mt7505/*.c \
+$(BOOTROM_DIR)/ddr_cal_en7512/*.c \
+$(BOOTROM_DIR)/ram_init/*.c \
+$(BOOTROM_DIR)/ram_init/ddr_cal_en7580/*.c \
+$(BOOTROM_DIR)/spram_ext/system.c \
+$(BOOTROM_DIR)/bootram/lib/efuse.c \
+$(BOOTROM_DIR)/bootram/include/efuse.h \
+$(BOOTROM_DIR)/bootram/lib/crypto/rsa_public_key.c \
+$(BOOTROM_DIR)/bootram/include/crypto/rsa_public_key.h
+
+ifneq ($(strip $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527) $(TCSUPPORT_CPU_EN7528) $(TCSUPPORT_CPU_EN7580)),)
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/en7516_boot/start.S_7512_final
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/en7516_boot/boot2/init/boot2.S
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/en7516_boot/move_data/init/move_data.S
+endif
+
+ifeq ($(strip $(TCSUPPORT_XPON_HAL_API)),)
+ifeq ($(strip $(RELEASEHWNAT)),)
+UNOPEN_FILE_DELETE += $(MODULES_RA_HWNAT_7510_DIR)
+endif
+endif
+
+#delete adsl or vdsl code for mt7520
+ifeq ($(strip $(TCSUPPORT_CPU_RT63365) $(TCSUPPORT_CPU_RT63368) $(TCSUPPORT_CPU_MT7505) $(TCSUPPORT_CPU_MT7510) $(TCSUPPORT_CPU_EN7512) $(TCSUPPORT_CPU_EN7516)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/dmt \
+$(MODULES_PRIV_SRC_DIR)/mt7510_ptm \
+$(MODULES_PRIV_SRC_DIR)/mtk_sar \
+$(MODULES_PRIV_SRC_DIR)/tc3262
+endif
+
+#delete mt75xx sim 
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/mtk_sim 
+ifeq ($(strip $(TCSUPPORT_CT_SIMCARD_SEPARATION)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/simcard_separation 
+endif
+ifeq ($(strip $(TCSUPPORT_SIMCARD_GENERAL)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/simcard_separation_general
+endif
+
+#voip xpon for MT7505
+ifneq ($(strip $(TCSUPPORT_CPU_MT7505)),)
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/windows_rndis_driver
+endif
+
+ifeq ($(strip $(TCSUPPORT_CPU_EN7580)),)
+UNOPEN_FILE_DELETE += $(MODULES_PHY_10G_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_XSI_ENABLE)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/xsi/xsi_mac
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/xsi/xsi_phy
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/xsi/xsi_wan_mac
+endif
+
+ifeq ($(strip $(TCSUPPORT_ACTIVE_ETHERNET_WAN)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/xsi/ae_wan_mac
+endif
+
+ifeq ($(strip $(TCSUPPORT_HSGMII_LAN)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/xsi/hsgmii_lan_mac
+endif
+
+#delete linux kernel dir for this release don't support the other kernel to compile
+ifneq ($(strip $(TCSUPPORT_2_6_36_KERNEL) $(TCSUPPORT_3_18_21_KERNEL)),)
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux
+ifneq ($(strip $(TCSUPPORT_2_6_36_KERNEL)),)
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux-3.18.21
+else
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux-2.6.36
+endif
+else
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux-2.6.36 \
+$(TRUNK_DIR)/linux-3.18.21
+endif
+
+ifeq ($(strip $(TCSUPPORT_4_4_KERNEL)),)
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux-4.4.115
+endif
+
+ifeq ($(strip $(TCSUPPORT_5_4_KERNEL)),)
+UNOPEN_FILE_DELETE += $(TRUNK_DIR)/linux-5.4.55
+endif
+
+ifeq ($(strip $(TCSUPPORT_CPU_MT7505)),)
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/ddr_cal_mt7505 \
+$(BOOTROM_DIR)/start.S_7505_final
+endif
+
+ifneq ($(strip $(TCSUPPORT_CPU_EN7512) $(TCSUPPORT_CPU_EN7521) $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527) $(TCSUPPORT_CPU_EN7528) $(TCSUPPORT_CPU_EN7580)),)
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/ddr_cal
+endif
+
+ifeq ($(strip $(TCSUPPORT_CPU_EN7512) $(TCSUPPORT_CPU_EN7521) $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527) $(TCSUPPORT_CPU_EN7528) $(TCSUPPORT_CPU_EN7580) $(TCSUPPORT_CPU_EN7523)),) 
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/ld_spram_en7512.script \
+$(BOOTROM_DIR)/start.S_7512_final \
+$(MODULES_ETHER_DIR) \
+$(MODULES_FE_7512_DIR) \
+$(MODULES_QDMA_7512_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_BONDING)),)
+UNOPEN_FILE_DELETE += $(MODULES_BONDING_PCIE_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_SLM_VERIFY)),)
+UNOPEN_FILE_DELETE += $(MODULES_SLM_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_FWC_MCST)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/ecnt_igmp/ecnt_igmp.c \
+$(MODULES_PRIV_SRC_DIR)/ecnt_igmp/Makefile
+endif
+ifeq ($(strip $(TCSUPPORT_FWC_ENV)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/personality_parm
+endif
+ifeq ($(strip $(TCSUPPORT_FH_ENV)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/fh_vlan
+endif
+ifeq ($(strip $(TCSUPPORT_WLAN_BNDSTRG)),)
+UNOPEN_FILE_DELETE += $(APP_BNDSTRG_DIR)
+endif
+ifeq ($(strip $(TCSUPPORT_TSO_VERIFY)),)
+UNOPEN_FILE_DELETE += $(MODULES_TSO_VERIFY_DIR)
+endif
+ifeq ($(strip $(TCSUPPORT_LRO_VERIFY)),)
+UNOPEN_FILE_DELETE += $(MODULES_LRO_VERIFY_DIR)
+endif
+ifeq ($(strip $(TCSUPPORT_LRO_ENABLE)),)
+UNOPEN_FILE_DELETE += $(MODULES_LRO_DIR)
+endif
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/traffic_classify
+UNOPEN_FILE_DELETE += $(APP_PRIVATE_DIR)/speed_try
+
+ifneq ($(strip $(TCSUPPORT_CMCCV2)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/mtk_multicast \
+$(MODULES_MTK_SLIC3_DIR)/src/silab
+endif
+
+#delete thermal
+UNOPEN_FILE_DELETE += $(MODULES_THERMAL_DIR)
+
+#FTTDP
+UNOPEN_FILE_DELETE += $(MODULES_FTTDP_INIC_DIR)
+
+ifneq ($(strip $(TCSUPPORT_CPU_EN7580) $(TCSUPPORT_CPU_EN7523)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/IFC/test
+else
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/IFC
+endif
+
+#delete Boot I2C
+UNOPEN_FILE_DELETE += $(BOOTROM_DIR)/bootram/lib/sif.c \
+$(BOOTROM_DIR)/bootram/lib/sif.h \
+
+UNOPEN_FILE_DELETE += $(APP_BSP_EXCLUSIVE_PRIVATE_DIR)/map_test
+UNOPEN_FILE_DELETE += $(MODULE_MAP_FILTER_DIR)
+
+#delete MAP code
+UNOPEN_FILE_DELETE += $(APP_BSP_PRIVATEDIR)/API/wappd
+
+#delete cputemp
+UNOPEN_FILE_DELETE += $(APP_BSP_PRIVATEDIR)/cpu_temp
+
+#delete pwctlcmd
+UNOPEN_FILE_DELETE += $(APP_BSP_PRIVATEDIR)/pwctlcmd
+
+#delete hw_nat
+UNOPEN_FILE_DELETE += $(APP_BSP_PRIVATEDIR)/hw_nat_7510
+
+#delete smuxctl
+UNOPEN_FILE_DELETE += $(APP_BSP_PRIVATEDIR)/smuxctl
+
+#delete secure_upgrade.c
+ifneq ($(strip $(TCSUPPORT_SECURE_BOOT)),)
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/secure_upgrade/secure_upgrade.c
+else
+UNOPEN_FILE_DELETE += $(MODULES_PRIV_SRC_DIR)/secure_upgrade
+endif
+ 
+UNOPEN_FILE_DELETE += $(GLOBAL_INC_DIR)/common/ecnt_global_chip_init.h
+
+OTHER_FILE_DELETE= \
+$(PROJECT_DIR)/images/tcboot.bin \
+$(PROJECT_DIR)/images/tclinux.bin \
+$(PROJECT_DIR)/images/tclinux_allinone \
+$(PROJECT_DIR)/images/tclinux_allinone.swap \
+$(FILESYSTEM_DIR)/dev/* \
+$(TRUNK_DIR)/backup \
+$(MODULES_PRIV_SRC_DIR)/wifi/ATHR-GEMINI-AP9.0.0.33.tgz \
+$(MODULES_PRIV_SRC_DIR)/wifi/2008_0506_RT61_Linux_SoftAP_Drv1.1.3.0 \
+$(MODULES_PRIV_SRC_DIR)/wifi/2009_0209_RT3090_LinuxAP_V2.1.3.0 \
+$(MODULES_PRIV_SRC_DIR)/wifi/2009_0904_RT3090_LinuxAP_v2.3.0.0_TC_for_3092 \
+
+
+
+ifneq ($(strip $(TCSUPPORT_UBOOT)),)
+ATF_DIR=$(TRUNK_DIR)/bootloader/ATF
+ifneq ($(strip $(TCSUPPORT_UBOOT_2014)),)
+export TCSUPPORT_UBOOT_VERSION=u-boot-2014.04-rc1
+endif
+ifneq ($(strip $(TCSUPPORT_ATF_2_1)),)
+ifneq ($(strip $(TCSUPPORT_ARM_SECURE_BOOT)),)
+export TCSUPPORT_ATF_VERSION=arm-trusted-firmware-2.3
+else
+export TCSUPPORT_ATF_VERSION=arm-trusted-firmware-2.1
+endif
+endif
+
+UNOPEN_ATF_FILE_DELETE = $(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/bl1 \
+$(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/bl2 \
+$(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/bl31 \
+$(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/drivers \
+$(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/common \
+$(ATF_DIR)/$(TCSUPPORT_ATF_VERSION)/plat/ecnt \
+$(ATF_DIR)/arm-trusted-firmware-2.3/bl1 \
+$(ATF_DIR)/arm-trusted-firmware-2.3/bl2 \
+$(ATF_DIR)/arm-trusted-firmware-2.3/bl31 \
+$(ATF_DIR)/arm-trusted-firmware-2.3/drivers \
+$(ATF_DIR)/arm-trusted-firmware-2.3/common \
+$(ATF_DIR)/arm-trusted-firmware-2.3/plat/ecnt
+
+KEEP_ATF_FILE += $(ATF_DIR)/arm-trusted-firmware-2.3/plat/ecnt/en7523/include/asm/types.h
+KEEP_ATF_FILE += $(ATF_DIR)/arm-trusted-firmware-2.3/plat/ecnt/en7523/include/linux/version.h
+endif
+
+
+ALL:$(xpon_swept) bootloader_swept
+	for FILE in $(UNOPEN_FILE_DELETE) $(OTHER_FILE_DELETE); \
+	do\
+		echo "******rm -rf $$FILE***********************************";\
+		rm -rf $$FILE; \
+		echo "******************************************************";\
+	done \
+	
+	if [ $$(ls -A $(BOOTROM_DIR)/ddr_cal/reserved|wc -w) -gt 0 ]; then\
+		cp -Rf $(BOOTROM_DIR)/ddr_cal/reserved/* $(BOOTROM_DIR)/ddr_cal/output/.;\
+		cp -Rf $(BOOTROM_DIR)/ddr_cal/reserved/spram.c $(BOOTROM_DIR)/ddr_cal/.;\
+		rm -rf $(BOOTROM_DIR)/ddr_cal/output/*.c;\
+		rm -rf $(BOOTROM_DIR)/ddr_cal/reserved;\
+	fi
+	if [ $$(ls -A $(BOOTROM_DIR)/ddr_cal_mt7505/reserved|wc -w) -gt 0 ]; then\
+		cp -Rf $(BOOTROM_DIR)/ddr_cal_mt7505/reserved/* $(BOOTROM_DIR)/ddr_cal_mt7505/output/.;\
+		cp -Rf $(BOOTROM_DIR)/ddr_cal_mt7505/reserved/spram.c $(BOOTROM_DIR)/ddr_cal_mt7505/.;\
+		rm -rf $(BOOTROM_DIR)/ddr_cal_mt7505/output/*.c;\
+		rm -rf $(BOOTROM_DIR)/ddr_cal_mt7505/reserved;\
+	fi
+	
+	find $(PROJECT_DIR)/config/menuconfig/ -name "*.config" -not -name "VOIP*" -not -name "$(CUSTOM)*" | xargs rm -rf		
+
+	find $(TRUNK_DIR) -name "CVS" | xargs rm -rf
+	find $(TRUNK_DIR) -name ".git" | xargs rm -rf
+#echo special keys to avoid duplicated release process.	
+	echo "TC_BUILD_RELEASECODE=y" > Project/release.chk
+	echo "export TC_BUILD_RELEASECODE" >>Project/release.chk
+ifneq ($(strip $(JOYME_MULTI_SDK)),)
+	echo "TC_BUILD_JOYME_V4=y" >> Project/release.chk
+	echo "export TC_BUILD_JOYME_V4" >> Project/release.chk
+
+	cp -a $(JOYME_ISNTALL_CODE_TMP)/$(TRUNK_DIR)/* $(JOYME_ISNTALL_CODE)/
+	rm -rf $(JOYME_ISNTALL_CODE_TMP)
+endif
+
+
+bootloader_swept:
+ifeq ("$(IS_BOOTROM_DIR_EXIST)", "Y")
+	for i in $(KEEP_ATF_FILE); do \
+		mv "$$i" "$${i%h}bak"; \
+	done
+	for i in $(UNOPEN_ATF_FILE_DELETE); do	\
+		(cd $$i && rm -f `find ./ | grep "\.h"`);	\
+		(cd $$i && rm -f `find ./ | grep "\.c"`);	\
+		(cd $$i && rm -f `find ./ | grep "\.S"`);	\
+	done
+	for i in $(KEEP_ATF_FILE); do \
+		mv "$${i%h}bak" "$$i"; \
+	done
+endif

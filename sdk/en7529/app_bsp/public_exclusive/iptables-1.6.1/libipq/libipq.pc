@@ -1,0 +1,11 @@
+
+prefix=/proj/mtk13196/Perforce/mbjspf01_3035/ws_chrispp.chen_rel_shct/BBN_Linux/DEV/main/tclinux_phoenix/app_bsp/bsp_exclusive/public/iptables-1.6.1/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name:		libipq
+Description:	Interface to the (old) ip_queue mechanism
+Version:	1.6.1
+Libs:		-L${libdir} -lipq
+Cflags:		-I${includedir}

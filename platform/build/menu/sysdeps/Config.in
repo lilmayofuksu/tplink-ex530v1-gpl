@@ -1,0 +1,54 @@
+#
+# For a description of the syntax of this configuration file,
+# see scripts/kbuild/config-language.txt.
+#
+
+mainmenu "Platform Configuration"
+
+config HAVE_DOT_CONFIG
+	bool
+	default y
+
+source menu/sysdeps/General.in
+
+#source archival/Config.in
+
+source menu/sysdeps/WAN.in
+
+source menu/sysdeps/ETH.in
+
+source menu/sysdeps/WLAN.in
+
+source menu/sysdeps/LTE.in
+
+source menu/sysdeps/DSL.in
+
+source menu/sysdeps/PON.in
+
+source menu/sysdeps/GPIO.in
+
+source menu/sysdeps/IPv6.in
+
+source menu/sysdeps/USB.in
+
+source menu/sysdeps/VoIP.in
+
+source menu/sysdeps/Functions.in
+
+source menu/sysdeps/Mesh.in
+
+source menu/sysdeps/Web.in
+
+source menu/sysdeps/Debug.in
+
+source menu/sysdeps/OEM.in
+
+source menu/sysdeps/Schedule.in
+
+source menu/sysdeps/TEST.in
+
+source menu/sysdeps/ISP.in
+
+source menu/sysdeps/SPEC.in
+
+source menu/sysdeps/Account.in

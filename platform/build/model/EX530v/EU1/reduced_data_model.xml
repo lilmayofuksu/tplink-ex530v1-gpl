@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Device t=o r=P s=DEV2_OBJ >
+	<DeviceInfo t=o r=P s=DEV2_DEV_INFO_OBJ >
+		<Manufacturer t=s r=R l=32 d=TP-Link />
+		<ModelName t=s r=R l=64 d="EX530v" />
+		<ManufacturerOUI t=s r=R l=7 d="30DE4B" />
+		<Description t=s r=R l=256 d="AX3000 Dual Band Wi-Fi 6 VoIP Router" />
+		<ProductClass t=s r=R l=64 d="EX530v" />
+		<AdditionalHardwareVersion t=s r=R l=64 d=00000002 />
+		<X_TP_DMVersion t=u r=R d=0x5a000003 nw=1 h=1 />
+		<X_TP_HardwareID t=s r=R l=33 d=E8881A5AB89B03DCFE54992619AF3147 nw=1 h=1 />
+		<X_TP_OemID t=s r=R l=33 d=F682F7753D80C58F8042C3597A713A72 nw=1 h=1 />
+		<X_TP_ProtoVersion t=s r=R l=64 d=TAUC_1.1 nw=1 />
+		<X_TP_DevManufacturerURL t=s r=R l=64 d=http://www.tp-link.com nw=1 h=1 />
+		<X_TP_DevModelVersion t=s r=R d=1.0 nw=1 h=1 />
+		<X_TP_SpecialVersion t=u r=R d=0x00000001 nw=1 h=1 />
+		<X_TP_PlatformVersion t=u r=R d=0xa5030107 nw=1 h=1 />
+		<X_TP_BuildDate t=s r=R l=8 d=110929 nw=1 h=1 />
+		<X_TP_BuildTime t=u r=R d=57600 nw=1 h=1 />
+		<X_TP_DevType d=ISP.WIRELESSROUTER />
+	</DeviceInfo>
+	<WiFi>
+		<Radio.{i}>
+			<BeaconPeriod t=u r=W i=40 a=1000 />
+		</Radio.{i}>
+		<AccessPoint.{i}>
+			<MaxAssociatedDevices t=u r=W d=30 />
+			<AssociatedDevice.{i} s=DEV2_WIFI_ASSOC_DEV_OBJ m=256 />
+		</AccessPoint.{i}>
+	</WiFi>
+	<X_TP_EasyMesh >
+		<AutoToController d=3 />
+		<MeshVersion t=u r=W d=2 h=1 />
+	</X_TP_EasyMesh>
+	<ManagementServer >
+		<EnableCWMP d=1 />
+		<URL d=https://tauc-cwmp-server.tplinkcloud.com />
+		<PeriodicInformEnable d=1 />
+	</ManagementServer>
+</Device>

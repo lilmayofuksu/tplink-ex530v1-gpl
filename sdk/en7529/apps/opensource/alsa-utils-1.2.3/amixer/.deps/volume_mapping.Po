@@ -1,0 +1,271 @@
+volume_mapping.o: ../alsamixer/volume_mapping.c \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h \
+ ../include/aconfig.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/math.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/math-vector.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/libm-simd-decl-stubs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_val.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_valf.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_vall.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/inf.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/nan.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathdef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathcalls.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdbool.h \
+ ../alsamixer/volume_mapping.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/asoundlib.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/unistd.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/posix_opt.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/environments.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/confname.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/getopt.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdlib.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/waitflags.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/waitstatus.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/endian.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/endian.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/byteswap.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/byteswap-16.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/xlocale.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/types.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/time.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/select.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/select.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sigset.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/time.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/sysmacros.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/pthreadtypes.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/alloca.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdlib-float.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/string.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/fcntl.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/fcntl.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/fcntl-linux.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/uio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stat.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/assert.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/linux/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno-base.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/asoundef.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/version.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/global.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/timex.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/input.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/output.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/error.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/conf.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/pcm.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdint.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdint.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wchar.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/rawmidi.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/timer.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/hwdep.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/control.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/mixer.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq_event.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seqmid.h \
+ /proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq_midi_event.h
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h:
+
+../include/aconfig.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/math.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/math-vector.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/libm-simd-decl-stubs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_val.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_valf.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/huge_vall.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/inf.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/nan.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathdef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mathcalls.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdbool.h:
+
+../alsamixer/volume_mapping.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/asoundlib.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/unistd.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/posix_opt.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/environments.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/confname.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/getopt.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdlib.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/waitflags.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/waitstatus.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/endian.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/endian.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/byteswap.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/byteswap-16.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/xlocale.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/types.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/time.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/select.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/select.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sigset.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/time.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/sysmacros.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/pthreadtypes.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/alloca.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdlib-float.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/string.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/fcntl.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/fcntl.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/fcntl-linux.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/uio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stat.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/assert.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/linux/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno-base.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/asoundef.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/version.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/global.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/timex.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/input.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/output.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/error.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/conf.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/pcm.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdint.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdint.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wchar.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/rawmidi.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/timer.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/hwdep.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/control.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/mixer.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq_event.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seqmid.h:
+
+/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/include/alsa/seq_midi_event.h:

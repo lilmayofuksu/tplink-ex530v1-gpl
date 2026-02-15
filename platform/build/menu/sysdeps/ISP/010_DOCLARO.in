@@ -1,0 +1,9 @@
+config INCLUDE_DOCLARO_OPTIONS
+	bool "DOCLARO all options (B&C)"
+	depends on INCLUDE_DOCLARO
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

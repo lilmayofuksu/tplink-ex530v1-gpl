@@ -1,0 +1,3036 @@
+\hypertarget{blapi__traffic_8h}{}\section{blapi\+\_\+traffic.\+h File Reference}
+\label{blapi__traffic_8h}\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+
+
+This file is blapi traffic header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structECNT__TRAFFIC__WAN__RX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+R\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS}
+\item 
+struct \hyperlink{structECNT__TRAFFIC__PPPOE__INFO__DATA}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+P\+P\+P\+O\+E\+\_\+\+I\+N\+F\+O\+\_\+\+D\+A\+TA}
+\item 
+struct \hyperlink{structECNT__TRAFFIC__WAN__TX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+T\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS}
+\item 
+struct \hyperlink{structdev__bandwidth__tmp__entry__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+entry\+\_\+s}
+\item 
+struct \hyperlink{structdev__bandwidth__tmp__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+s}
+\item 
+struct \hyperlink{structwan__acnt}{wan\+\_\+acnt}
+\item 
+struct \hyperlink{structlanport__info__s}{lanport\+\_\+info\+\_\+s}
+\item 
+struct \hyperlink{structqos__wanIf__value__s}{qos\+\_\+wan\+If\+\_\+value\+\_\+s}
+\item 
+struct \hyperlink{structMaxBandWidth__node__info__s}{Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+s}
+\item 
+struct \hyperlink{structSockInfo}{Sock\+Info}
+\item 
+struct \hyperlink{structDevBandWidth__t}{Dev\+Band\+Width\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a3930ec373da9905ced88fe17677c6011}\label{blapi__traffic_8h_a3930ec373da9905ced88fe17677c6011}} 
+\#define {\bfseries E\+C\+N\+T\+\_\+\+S\+W\+I\+T\+C\+H\+M\+G\+R\+\_\+\+T\+R\+T\+C\+M\+\_\+\+M\+A\+T\+C\+H\+\_\+\+M\+A\+C\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~10
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_ab0ba037bbc3f07761010948e4aacdbae}\label{blapi__traffic_8h_ab0ba037bbc3f07761010948e4aacdbae}} 
+\#define {\bfseries T\+R\+T\+C\+M\+\_\+\+M\+A\+T\+C\+H\+\_\+\+M\+A\+C\+\_\+\+R\+U\+L\+E\+\_\+\+N\+UM}~10
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_afd4aeb0f2416c3f942113eac01e4708e}\label{blapi__traffic_8h_afd4aeb0f2416c3f942113eac01e4708e}} 
+typedef struct \hyperlink{structdev__bandwidth__tmp__entry__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+entry\+\_\+s} {\bfseries dev\+\_\+bandwidth\+\_\+tmp\+\_\+entry\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a967acb81952feaea6191ad4f66e76ee4}\label{blapi__traffic_8h_a967acb81952feaea6191ad4f66e76ee4}} 
+typedef struct \hyperlink{structdev__bandwidth__tmp__entry__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+entry\+\_\+s} $\ast$ {\bfseries dev\+\_\+bandwidth\+\_\+tmp\+\_\+entry\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a825578c3ef74fce31a50261772bc05aa}\label{blapi__traffic_8h_a825578c3ef74fce31a50261772bc05aa}} 
+typedef struct \hyperlink{structdev__bandwidth__tmp__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+s} {\bfseries dev\+\_\+bandwidth\+\_\+tmp\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a0d6d70443968564b4549771334f7a5ca}\label{blapi__traffic_8h_a0d6d70443968564b4549771334f7a5ca}} 
+typedef struct \hyperlink{structdev__bandwidth__tmp__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+s} $\ast$ {\bfseries dev\+\_\+bandwidth\+\_\+tmp\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a976dce6679de2b4047261c3b9fd5ef90}\label{blapi__traffic_8h_a976dce6679de2b4047261c3b9fd5ef90}} 
+typedef struct \hyperlink{structwan__acnt}{wan\+\_\+acnt} {\bfseries wan\+\_\+acnt\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a5f828c57950a4bdf73a09b213cee7751}\label{blapi__traffic_8h_a5f828c57950a4bdf73a09b213cee7751}} 
+typedef struct \hyperlink{structwan__acnt}{wan\+\_\+acnt} $\ast$ {\bfseries wan\+\_\+acnt\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a68aa220f84d9881ad0fe09f953df72ad}\label{blapi__traffic_8h_a68aa220f84d9881ad0fe09f953df72ad}} 
+typedef struct \hyperlink{structlanport__info__s}{lanport\+\_\+info\+\_\+s} {\bfseries lanport\+\_\+info\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a6a27e70560ec00bbf612454155f23d43}\label{blapi__traffic_8h_a6a27e70560ec00bbf612454155f23d43}} 
+typedef struct \hyperlink{structlanport__info__s}{lanport\+\_\+info\+\_\+s} $\ast$ {\bfseries lanport\+\_\+info\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a8a0522d67fdf4ff98f5054d330380143}\label{blapi__traffic_8h_a8a0522d67fdf4ff98f5054d330380143}} 
+typedef struct \hyperlink{structqos__wanIf__value__s}{qos\+\_\+wan\+If\+\_\+value\+\_\+s} {\bfseries qos\+\_\+wan\+If\+\_\+value\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a2feb8b63ce98b8c37147774432305192}\label{blapi__traffic_8h_a2feb8b63ce98b8c37147774432305192}} 
+typedef struct \hyperlink{structqos__wanIf__value__s}{qos\+\_\+wan\+If\+\_\+value\+\_\+s} $\ast$ {\bfseries qos\+\_\+wan\+If\+\_\+value\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_aaf202656a017a08de0046de059fe869c}\label{blapi__traffic_8h_aaf202656a017a08de0046de059fe869c}} 
+typedef struct \hyperlink{structMaxBandWidth__node__info__s}{Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+s} {\bfseries Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+t}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_ab3596138fc04de88d8b1b81b5569d0ca}\label{blapi__traffic_8h_ab3596138fc04de88d8b1b81b5569d0ca}} 
+typedef struct \hyperlink{structMaxBandWidth__node__info__s}{Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+s} $\ast$ {\bfseries Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+p}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_aee5ff4f1a1f0a443a76f088610297948}\label{blapi__traffic_8h_aee5ff4f1a1f0a443a76f088610297948}} 
+typedef struct \hyperlink{structDevBandWidth__t}{Dev\+Band\+Width\+\_\+t} {\bfseries Dev\+Band\+Width\+\_\+\+Info\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a8cb002c393c497f9cb5b88ec8fce4d5a}\label{blapi__traffic_8h_a8cb002c393c497f9cb5b88ec8fce4d5a}} 
+enum {\bfseries Stream\+\_\+\+Dir\+\_\+t} \{ {\bfseries D\+O\+W\+N\+\_\+\+D\+IR} = 0, 
+{\bfseries U\+P\+\_\+\+D\+IR}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_adf582e1cfda7867762bc8c92de10bd9c}\label{blapi__traffic_8h_adf582e1cfda7867762bc8c92de10bd9c}} 
+enum {\bfseries Traffic\+\_\+\+Flag\+\_\+t} \{ {\bfseries D\+E\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+SS} =0, 
+{\bfseries A\+D\+D\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+SS}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_ac5f3fedf5e1b7e2368ac5711106205fa}\label{blapi__traffic_8h_ac5f3fedf5e1b7e2368ac5711106205fa}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE} \{ {\bfseries R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+D\+E\+\_\+\+D\+E\+V\+\_\+\+M\+AC} = 0, 
+{\bfseries R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+D\+E\+\_\+\+W\+AN}, 
+{\bfseries R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+D\+E\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+Q\+OS}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a2535bf9746a64cc242722c54174a14ca}\label{blapi__traffic_8h_a2535bf9746a64cc242722c54174a14ca}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+C\+S\+T\+\_\+\+A\+C\+N\+T\+\_\+\+M\+O\+DE} \{ {\bfseries M\+C\+S\+T\+\_\+\+A\+C\+N\+T\+\_\+\+M\+O\+D\+E\+\_\+\+B\+Y\+T\+ES} = 0, 
+{\bfseries M\+C\+S\+T\+\_\+\+A\+C\+N\+T\+\_\+\+M\+O\+D\+E\+\_\+\+P\+A\+C\+K\+ET}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_aa7ec9510f6c242896fd203d044f92b30}\label{blapi__traffic_8h_aa7ec9510f6c242896fd203d044f92b30}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+F\+L\+O\+W\+I\+D\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+D\+IR} \{ {\bfseries F\+L\+O\+W\+I\+D\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+D\+I\+R\+\_\+\+UP} = 0, 
+{\bfseries F\+L\+O\+W\+I\+D\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+D\+I\+R\+\_\+\+D\+O\+WN}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_ad29bac69be146330ef671b6d45321be3}\label{blapi__traffic_8h_ad29bac69be146330ef671b6d45321be3}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+E\+\_\+\+P\+O\+N\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE} \{ {\bfseries E\+P\+O\+N\+\_\+\+S\+LA} = 0, 
+{\bfseries G\+E\+M\+P\+O\+R\+T\+\_\+\+UP}, 
+{\bfseries G\+E\+M\+P\+O\+R\+T\+\_\+\+D\+O\+WN}
+ \}
+\item 
+\mbox{\Hypertarget{blapi__traffic_8h_a98aee96bafc6b26b0b0a1e2d02c969e5}\label{blapi__traffic_8h_a98aee96bafc6b26b0b0a1e2d02c969e5}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+V\+I\+P\+\_\+\+P\+R\+O\+T\+O\+C\+OL} \{ {\bfseries V\+I\+P\+\_\+\+P\+\_\+\+T\+CP} = 0, 
+{\bfseries V\+I\+P\+\_\+\+P\+\_\+\+U\+DP}, 
+{\bfseries V\+I\+P\+\_\+\+P\+\_\+\+A\+LL}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__traffic_8h_adf56224cdd00d9077b6650e87e1b5923}{blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol} (unsigned int ip, unsigned int port, unsigned int protocol)
+\begin{DoxyCompactList}\small\item\em This function add the black ip to hwnat. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa0c1f5b23c71a663984729f50c1afa1f}{blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol} (unsigned int ip, unsigned int port, unsigned int protocol)
+\begin{DoxyCompactList}\small\item\em This function delete the black ip from hwnat. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a63fd9b66272e8bb96bde3b9b2d2a7fc0}{blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol} (void)
+\begin{DoxyCompactList}\small\item\em This function delete all the black ip from hwnat. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a5f5ab96f4735a56fcf64569b57414edc}{blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol} (void)
+\begin{DoxyCompactList}\small\item\em This function show black ip port protocol from hwnat. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa029e578bda2f48cecbcccdb9b61c668}{blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val} (\hyperlink{structECNT__TRAFFIC__PPPOE__INFO__DATA}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+P\+P\+P\+O\+E\+\_\+\+I\+N\+F\+O\+\_\+\+D\+A\+TA} $\ast$pppoe\+\_\+info\+\_\+val)
+\begin{DoxyCompactList}\small\item\em This function gets the pppoe information of P\+Cs. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_abf2a67e1e5ddae7b449b66f672aa8d77}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit} (char $\ast$wanname, unsigned int wanid, unsigned int up\+\_\+rate, unsigned int dn\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em This function will set wan ratalimit(U\+P/\+D\+O\+WN). \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa55bd1512af197070e09f8f5537bcab2}{blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt} (E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+C\+S\+T\+\_\+\+A\+C\+N\+T\+\_\+\+M\+O\+DE mode, unsigned long long $\ast$cnt)
+\begin{DoxyCompactList}\small\item\em This function get the bytes according to type. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a63e1d01a757a972a7190140700fdde71}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt} (int i, \hyperlink{structwan__acnt}{wan\+\_\+acnt\+\_\+t} $\ast$cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan acct according to wan port index. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a1acc3ae2f241206d22d6061d91d0976b}{blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt} (unsigned int dir, unsigned int flowid, unsigned long long $\ast$cnt, int $\ast$flag)
+\begin{DoxyCompactList}\small\item\em This function get flow bytes according to the direction and flow id. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ae98de2d7f96dc051a930c16196b06c76}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold} (unsigned int threshold)
+\begin{DoxyCompactList}\small\item\em This function set wan rate use pps mode threshold. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a887ac07d08f0dc403118b92141f876bf}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val} (unsigned char wan\+\_\+type, unsigned int wan\+\_\+mtu)
+\begin{DoxyCompactList}\small\item\em This function set wan type \& M\+TU value. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a9655d4f3838df97b39061f54eadf10eb}{blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode} (E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE mode)
+\begin{DoxyCompactList}\small\item\em This function will enable the rate limit of wan/lan based on meter\+\_\+mode. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a0de227815294a7153ab5a7ba93b6ce03}{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable} (int enable)
+\begin{DoxyCompactList}\small\item\em This function will enable the flow rate statistics. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_afac79b27dc8c5574f90c0179d2d04bb4}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable} (int enable)
+\begin{DoxyCompactList}\small\item\em This function will enable the wanif rate statistics. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a2640f8baff52a43ca2847d71aba0fd52}{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable} (unsigned char sw\+\_\+acnt\+\_\+en, unsigned char hw\+\_\+acnt\+\_\+en)
+\begin{DoxyCompactList}\small\item\em This function will enable the rate statistics based on device mode. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a96474c26dc27173b9cdf6913ecb8ad68}{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable} (int enable)
+\begin{DoxyCompactList}\small\item\em This function set the bandwidth of lan device. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa3768c6091b462e9ceeafc961b915655}{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac} (\hyperlink{structdev__bandwidth__tmp__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+t} $\ast$p\+\_\+dev\+\_\+mac\+\_\+acl, int bandwidth\+\_\+cnt)
+\begin{DoxyCompactList}\small\item\em This function set the ratelimit rule of device. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a049af2ac795cac7a4ef8619e6b88fd66}{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth} (\hyperlink{structDevBandWidth__t}{Dev\+Band\+Width\+\_\+\+Info\+\_\+t} $\ast$Dev\+Band\+Width\+\_\+\+Info)
+\begin{DoxyCompactList}\small\item\em This function get the tx/rx bytes and mac info. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_abd11adcf081edb39643b8973277cc6fe}{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac} (int Enable\+Stats, char $\ast$mac, unsigned long long $\ast$rxbytes, unsigned long long $\ast$txbytes)
+\begin{DoxyCompactList}\small\item\em This function get the tx/rx bytes by device mac. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_af94a2d0b26d863b284b8ff9bd7924db7}{blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class} (char $\ast$type, int min\+Val, int max\+Val, int flag)
+\begin{DoxyCompactList}\small\item\em This function set the traffic class by type \& flag. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a1b167c21b39f46ee3225fc005ed255d2}{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit} (unsigned int dir, unsigned char wifi\+Idx, unsigned int rate)
+\begin{DoxyCompactList}\small\item\em This function set wlan rate limit by wlan index \& stream direction. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a8b8c8bfe8326644882693ceadbbb6021}{blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect} (char $\ast$ifname, char $\ast$Status, char $\ast$detection\+Status)
+\begin{DoxyCompactList}\small\item\em This function check the status of loop detece. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a19f245ce29558210c6864add09e18684}{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode} (char $\ast$enable, int switchpara\+\_\+id, char $\ast$maxbitrate, char $\ast$duplexmode)
+\begin{DoxyCompactList}\small\item\em This function set the switch parameter of lan port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_abe46755d23592fba19412496e8fba192}{blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit} (int bsr\+\_\+lan, int rate)
+\begin{DoxyCompactList}\small\item\em This function set the broadcast ratelimit. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a468128b3e533fa14494a58d6d1c52d97}{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap} (void)
+\begin{DoxyCompactList}\small\item\em This function set switch port mapping. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a2cc46e87a4f9ef2b8420c324fa9b4fdd}{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap} (char $\ast$portmap, char $\ast$portvlan)
+\begin{DoxyCompactList}\small\item\em This function set switch port mapping. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_acf59a4c91ea6e872671e67d435c02191}{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num} (int $\ast$port\+Num)
+\begin{DoxyCompactList}\small\item\em This function set the number of lan port . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a6d8bd87321bd103f7dffc0076046369c}{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit} (unsigned char direction, unsigned char flowid, unsigned int ratelimit)
+\begin{DoxyCompactList}\small\item\em This function set the ratelimit of qos flow . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ac99d926ec87e2f298e773fb82cd3c2de}{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add} (unsigned int ip, unsigned int mask, unsigned int type, unsigned int sign)
+\begin{DoxyCompactList}\small\item\em This function set the black ip of hwnat . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a29ba3601005813b98d9a8943ad5fb045}{blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add} (unsigned char $\ast$u6\+\_\+addr8, unsigned int mask, unsigned int type, unsigned int sign)
+\begin{DoxyCompactList}\small\item\em This function set the black ipv6 addr of hwnat . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a8e4286608cfa6a1f2b44f23aa45206d4}{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete} (unsigned int sign)
+\begin{DoxyCompactList}\small\item\em This function delete black ip addr for hwnat . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a411b2963d01f1b8962162d1bf709d5f9}{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt} (unsigned char port, unsigned long long $\ast$outptr\+\_\+\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get the rx cnt of port . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a832afcaf18ee835bde2920412e364fd2}{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt} (unsigned char port, unsigned long long $\ast$outptr\+\_\+\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get the tx cnt of port . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a737746bf5dac3d3ec7302367e6d26788}{blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port} (const char $\ast$Rtsp\+Port)
+\begin{DoxyCompactList}\small\item\em This function is used to write context to rtsp\+\_\+alg\+\_\+port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_abafc906a8a1bfac8c5feb4b7fc6dfbe7}{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface} (const char $\ast$wanname)
+\begin{DoxyCompactList}\small\item\em This function is used to write wanname to proc file. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ad070a03c60dcbd1b3293bae96e57be5a}{blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic} (void)
+\begin{DoxyCompactList}\small\item\em This function uninstall mirror traffic. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a99185d9be6a30711459de8071b8a3c83}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype} (\hyperlink{structqos__wanIf__value__s}{qos\+\_\+wan\+If\+\_\+value\+\_\+t} $\ast$wan\+If\+Value)
+\begin{DoxyCompactList}\small\item\em This function set wan Interface qos type. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_acd8ea019cda0b2dc57e5f0a4acc65c70}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template} (unsigned char $\ast$wan\+If\+Idx)
+\begin{DoxyCompactList}\small\item\em This function set wan Interface qos template. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a9c61468b2835788a90f402e06ed96335}{blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit} (void)
+\begin{DoxyCompactList}\small\item\em This function set the value of general\+\_\+rx\+\_\+ratelimit . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a067d9b2e077ddae69902e355a0b2ffe6}{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status} (int $\ast$flag)
+\begin{DoxyCompactList}\small\item\em This function get the link status of ether port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a65984f521f0deb68e42d8e5e5e7c92ad}{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status} (char $\ast$buf, int port\+Status\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function get the port status of ether port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a6048ff5dcbe28fc43d9a95cf3678778b}{blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info} (char $\ast$buf, int size)
+\begin{DoxyCompactList}\small\item\em This function get portrate information . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a0c33f1ff6fee844d526c553bd12622d1}{blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info} (\hyperlink{structlanport__info__s}{lanport\+\_\+info\+\_\+t} $\ast$lanport\+\_\+info)
+\begin{DoxyCompactList}\small\item\em This function get lanport information . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a6ce4a5cb8308f45ffeb8aa15fcba8826}{blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info} (char lan\+\_\+ip\mbox{[}$\,$\mbox{]}, char lan\+\_\+mask\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function set lan information to lan\+\_\+ip\+\_\+mask. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a544cf33f4ebed6c7327f8261dc9f6fa6}{blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data} (int dslflag, struct \hyperlink{structMaxBandWidth__node__info__s}{Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+s} Max\+Band\+Width\+Node\+Info\mbox{[}$\,$\mbox{]}, int $\ast$is\+Rule\+Exist)
+\begin{DoxyCompactList}\small\item\em This function set the max bandwidth data . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a35e7f754e0199990d37914903aa59f7b}{blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock} (int sock, struct \hyperlink{structSockInfo}{Sock\+Info} $\ast$sockinfo)
+\begin{DoxyCompactList}\small\item\em This function get the foe info from sock. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a8abf09202066bcb95d666443d263e13b}{blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock} (int sock, struct \hyperlink{structSockInfo}{Sock\+Info} $\ast$sockinfo)
+\begin{DoxyCompactList}\small\item\em This function st the foe into sock. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a7f04cf0dafd4872c200100afbeb498fd}{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state} (int $\ast$ether\+Status)
+\begin{DoxyCompactList}\small\item\em This function gets ether wan state. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ab7aa483b85402bb853ca0faa5d08aa0e}{blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode} (Stream\+\_\+\+Dir\+\_\+t dir, E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE $\ast$mode)
+\begin{DoxyCompactList}\small\item\em This function gets the ratelimit mode. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aaaefe48aab029daef3592a4836b49ff5}{blapi\+\_\+traffic\+\_\+set\+\_\+mtu} (unsigned int mtu)
+\begin{DoxyCompactList}\small\item\em This function set the mtu for H\+W\+\_\+\+N\+A\+T\+\_\+\+S\+E\+T\+\_\+\+M\+TU. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a6c53c418e5f87269aeaa201d8e67e163}{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port} (int enable, unsigned char lan\+\_\+port)
+\begin{DoxyCompactList}\small\item\em This function set tls port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a22aad6cd799f09ced23fcf583c94d2a4}{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan} (int enable, unsigned short vlan)
+\begin{DoxyCompactList}\small\item\em This function set tls port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a01990fd634655e609bf9c4335e4f9673}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic} (int lan\+\_\+port, unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get lan tx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa0dde4d0d606b01a0e435c6b032a1185}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic} (int lan\+\_\+port, unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get lan rx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ac22c3ea79df305c40fcf12e65fff1c1d}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate} (int lan\+\_\+port, unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get lan tx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a371e215896f0cc56f5bc03b3164daabf}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate} (int lan\+\_\+port, unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get lan rx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aeb65aad5b0babaaa8fc6192f8f0344fa}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets} (int lan\+\_\+port, unsigned int $\ast$frame\+Byte\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan tx frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_acff6253cf00727ed28e558729c13cdbd}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets} (int lan\+\_\+port, unsigned int $\ast$frame\+Byte\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan rx frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_afad434af48c37d8dbd21105cbc01528e}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter} (int lan\+\_\+port, unsigned int $\ast$discard\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan tx discard frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ae702d30da2034bb787c0132e6b0eb7e3}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter} (int lan\+\_\+port, unsigned int $\ast$discard\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan rx discard frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a30595b15c776386a5688dd5ed771f173}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter} (int lan\+\_\+port, unsigned int $\ast$error\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan tx error frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ae6830eec962dad46307ddc8fa486826e}{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter} (int lan\+\_\+port, unsigned int $\ast$error\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get lan rx error frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aef062815f96a0faa9ac8253fccc57dab}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic} (unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get wan tx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a18bd9b3941188c661c3609a025a9cc0b}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic} (unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get wan rx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ad8b1646e23070819f66f658f381cff54}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate} (unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get wan tx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a5ed8744cbecce9f61d4067b17285e18b}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate} (unsigned int $\ast$rate)
+\begin{DoxyCompactList}\small\item\em This function get wan rx real time rate. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a1c8f4f47a3657da4d414677ef5d3b3d8}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets} (unsigned int $\ast$frame\+Byte\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan tx frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a600662d9ceae886ab47bf6171cfc878e}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets} (unsigned int $\ast$frame\+Byte\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan rx frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a10d9d7515ccd307fea7f8a91a17b1b9e}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter} (unsigned int $\ast$discard\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan tx discard frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ad34a5719f1ccf2839ac5d044a2965ee0}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter} (unsigned int $\ast$discard\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan rx discard frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_adbbc048107e0aa0d2b138198fb2e6c0e}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter} (unsigned int $\ast$error\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan tx error frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a11ddc2294eae373d14389080c08ffc6b}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter} (unsigned int $\ast$error\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function get wan rx error frame byte cnt in 15minutes. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_abb3797db6ebbfa1d156600838b03c089}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics} (\hyperlink{structECNT__TRAFFIC__WAN__RX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+R\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS} $\ast$p\+\_\+stat)
+\begin{DoxyCompactList}\small\item\em This function get wan rx statistics. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a33798219a294f4caeceede47f44adbbb}{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics} (\hyperlink{structECNT__TRAFFIC__WAN__TX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+T\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS} $\ast$p\+\_\+stat)
+\begin{DoxyCompactList}\small\item\em This function get wan tx statistics. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a78b9a037108a4ac3ffc2989c73a9e72a}{blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock} (int socket, unsigned char $\ast$grp\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em This function drop ipv6 unknown mc by socket info,used in mld proxy. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa031c994116ca9e8304e454f89385e2d}{blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc} (unsigned char $\ast$grp\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em This function delete ipv6 unknown mc hwdrop learned by blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock,used in mld proxy. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a82aa058cf8441b499d327e767af88c54}{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock} (int socket, unsigned char wan\+\_\+type, unsigned char wan\+\_\+index)
+\begin{DoxyCompactList}\small\item\em This function set ipv6 mc wan info to socket,used in mld proxy. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ad61d1f6ca4b6e40813359930680c256e}{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info} (int socket)
+\begin{DoxyCompactList}\small\item\em This function clear foe info in socket,used in mld proxy. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a55ab45797637421784e771e0ec5f2a7c}{blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit} (E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+E\+\_\+\+P\+O\+N\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE mode, unsigned int index, unsigned int rate)
+\begin{DoxyCompactList}\small\item\em This function set ratelimit for pon. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a5c33d66ed651d89de8d8195a39c8016d}{blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix} (unsigned char $\ast$ifname, unsigned char $\ast$snpt\+\_\+str, unsigned char $\ast$dnpt\+\_\+str)
+\begin{DoxyCompactList}\small\item\em ppe add nptv6 prefix \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a2831c0bba9b31b29c593b61a07088d66}{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix} (unsigned char $\ast$ifname)
+\begin{DoxyCompactList}\small\item\em ppe del nptv6 prefix \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a64d857ae53019525b1fa9f990d6794a0}{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all} (void)
+\begin{DoxyCompactList}\small\item\em ppe del nptv6 prefix all \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aeefa6520cb8007e5be7c62708d0cb329}{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu} (int wan\+\_\+idx, int wan\+\_\+mtu)
+\begin{DoxyCompactList}\small\item\em set wan interface mtu \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_ac6b21d1f7c95744cc3c34779cf7868b5}{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port} (unsigned short sport, unsigned short dport, E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+V\+I\+P\+\_\+\+P\+R\+O\+T\+O\+C\+OL vip\+\_\+p)
+\begin{DoxyCompactList}\small\item\em set vip by port \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a5784a65244a38dd453d63cde8d2988c9}{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport} (unsigned int dip, unsigned short dport)
+\begin{DoxyCompactList}\small\item\em add vip by dip and dport \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_aa403ef479d898217baf781e51ed96882}{blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport} (unsigned int dip, unsigned short dport)
+\begin{DoxyCompactList}\small\item\em del vip by dip and dport \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a1cd68508fe0c3e6d35594cc10244f944}{blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg} (unsigned int direction, unsigned int sla\+\_\+index, unsigned int enable, unsigned int chnl\+\_\+index)
+\begin{DoxyCompactList}\small\item\em blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg \end{DoxyCompactList}\item 
+int \hyperlink{blapi__traffic_8h_a2a22ee0152576ac5e349fcac2e16bb1b}{blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth} (unsigned int direction, unsigned int sla\+\_\+index, unsigned int queue\+\_\+index, unsigned int cbs\+\_\+value, unsigned int pbs\+\_\+value)
+\begin{DoxyCompactList}\small\item\em blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi traffic header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+zhang.\+lei 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/01-\/03 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__traffic_8h_adf56224cdd00d9077b6650e87e1b5923}\label{blapi__traffic_8h_adf56224cdd00d9077b6650e87e1b5923}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}}
+\index{blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol()}{blapi\_traffic\_add\_black\_ip\_port\_protocol()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+add\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol (\begin{DoxyParamCaption}\item[{unsigned int}]{ip,  }\item[{unsigned int}]{port,  }\item[{unsigned int}]{protocol }\end{DoxyParamCaption})}
+
+
+
+This function add the black ip to hwnat. 
+
+This function add black ip to hwnat, and let it do not go through hwnat. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip} & \\
+\hline
+\mbox{\tt in}  & {\em port} & \\
+\hline
+\mbox{\tt in}  & {\em protocol} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_a5c33d66ed651d89de8d8195a39c8016d}\label{blapi__traffic_8h_a5c33d66ed651d89de8d8195a39c8016d}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix@{blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix}}
+\index{blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix@{blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix()}{blapi\_traffic\_add\_nptv6\_prefix()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+add\+\_\+nptv6\+\_\+prefix (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{ifname,  }\item[{unsigned char $\ast$}]{snpt\+\_\+str,  }\item[{unsigned char $\ast$}]{dnpt\+\_\+str }\end{DoxyParamCaption})}
+
+
+
+ppe add nptv6 prefix 
+
+This function add nptv6 prefix.\+submit by Feijie.\+Wang 2020.\+7.\+30 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifname,vr} & wan interface name; \\
+\hline
+\mbox{\tt in}  & {\em snpt\+\_\+str,format} & is xxxx\+:xxxx\+:\+:/xx; \\
+\hline
+\mbox{\tt in}  & {\em dnpt\+\_\+str,format} & is xxxx\+:xxxx\+:\+:/xx; \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+nptv6 prefix. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ac99d926ec87e2f298e773fb82cd3c2de}\label{blapi__traffic_8h_ac99d926ec87e2f298e773fb82cd3c2de}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add@{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add}}
+\index{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add@{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add()}{blapi\_traffic\_black\_ip\_for\_hwnat\_add()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+add (\begin{DoxyParamCaption}\item[{unsigned int}]{ip,  }\item[{unsigned int}]{mask,  }\item[{unsigned int}]{type,  }\item[{unsigned int}]{sign }\end{DoxyParamCaption})}
+
+
+
+This function set the black ip of hwnat . 
+
+This function set the black ip of hwnat .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip} & I\+Pv4 address \\
+\hline
+\mbox{\tt in}  & {\em mask} & Mask num \\
+\hline
+\mbox{\tt in}  & {\em type} & P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+P\+S\+T\+R\+E\+AM=0,P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+W\+S\+T\+R\+E\+AM=1,P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+B\+O\+TH=2 \\
+\hline
+\mbox{\tt in}  & {\em sign} & P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+E\+T\+A\+IL=0,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+I\+R\+R\+OR=1,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+O\+N\+I\+T\+OR=2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the black ip of hwnat. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a8e4286608cfa6a1f2b44f23aa45206d4}\label{blapi__traffic_8h_a8e4286608cfa6a1f2b44f23aa45206d4}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete@{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete}}
+\index{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete@{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete()}{blapi\_traffic\_black\_ip\_for\_hwnat\_delete()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+black\+\_\+ip\+\_\+for\+\_\+hwnat\+\_\+delete (\begin{DoxyParamCaption}\item[{unsigned int}]{sign }\end{DoxyParamCaption})}
+
+
+
+This function delete black ip addr for hwnat . 
+
+This function delete black ip addr for hwnat .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sign} & P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+E\+T\+A\+IL=0,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+I\+R\+R\+OR=1,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+O\+N\+I\+T\+OR=2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+delete black ip addr for hwnat . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a29ba3601005813b98d9a8943ad5fb045}\label{blapi__traffic_8h_a29ba3601005813b98d9a8943ad5fb045}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add@{blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add}}
+\index{blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add@{blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add()}{blapi\_traffic\_black\_ipv6\_for\_hwnat\_add()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+black\+\_\+ipv6\+\_\+for\+\_\+hwnat\+\_\+add (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{u6\+\_\+addr8,  }\item[{unsigned int}]{mask,  }\item[{unsigned int}]{type,  }\item[{unsigned int}]{sign }\end{DoxyParamCaption})}
+
+
+
+This function set the black ipv6 addr of hwnat . 
+
+This function set the black ipv6 addr of hwnat .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em u6\+\_\+addr8} & I\+Pv6 address \\
+\hline
+\mbox{\tt in}  & {\em mask} & Mask num \\
+\hline
+\mbox{\tt in}  & {\em type} & P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+P\+S\+T\+R\+E\+AM=0,P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+W\+S\+T\+R\+E\+AM=1,P\+P\+E\+M\+G\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+B\+O\+TH=2 \\
+\hline
+\mbox{\tt in}  & {\em sign} & P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+E\+T\+A\+IL=0,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+I\+R\+R\+OR=1,P\+P\+E\+M\+G\+R\+\_\+\+S\+I\+G\+N\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+O\+N\+I\+T\+OR=2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the black ipv6 addr of hwnat . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a067d9b2e077ddae69902e355a0b2ffe6}\label{blapi__traffic_8h_a067d9b2e077ddae69902e355a0b2ffe6}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status@{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status}}
+\index{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status@{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status()}{blapi\_traffic\_check\_eth\_link\_status()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+link\+\_\+status (\begin{DoxyParamCaption}\item[{int $\ast$}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function get the link status of ether port. 
+
+This function get the link status of ether port.\+submit by Yifan.\+Chen 2019.\+1.\+9 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em flag\+:the} & status of eth link 1\+:down;2\+:up. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the link status of ether port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a65984f521f0deb68e42d8e5e5e7c92ad}\label{blapi__traffic_8h_a65984f521f0deb68e42d8e5e5e7c92ad}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status@{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status}}
+\index{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status@{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status()}{blapi\_traffic\_check\_eth\_port\_status()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+check\+\_\+eth\+\_\+port\+\_\+status (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{port\+Status\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function get the port status of ether port. 
+
+This function get the port status of ether port.\+submit by Yifan.\+Chen 2019.\+1.\+9 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em buf\+:port} & status make buffer \\
+\hline
+\mbox{\tt out}  & {\em port\+Status\+:port} & status of ether port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the port status of ether port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a8b8c8bfe8326644882693ceadbbb6021}\label{blapi__traffic_8h_a8b8c8bfe8326644882693ceadbbb6021}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect@{blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect}}
+\index{blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect@{blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect()}{blapi\_traffic\_check\_loop\_detect()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+check\+\_\+loop\+\_\+detect (\begin{DoxyParamCaption}\item[{char $\ast$}]{ifname,  }\item[{char $\ast$}]{Status,  }\item[{char $\ast$}]{detection\+Status }\end{DoxyParamCaption})}
+
+
+
+This function check the status of loop detece. 
+
+This function check the status of loop detece. submit by Zhen.\+Xu 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifname} & eth0.\+x/ra/rai \\
+\hline
+\mbox{\tt out}  & {\em Status} & The status of eth0.\+x. \\
+\hline
+\mbox{\tt out}  & {\em detection\+Status} & The detection\+Status of eth0.\+x. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+check the status of loop detece. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa031c994116ca9e8304e454f89385e2d}\label{blapi__traffic_8h_aa031c994116ca9e8304e454f89385e2d}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc@{blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc}}
+\index{blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc@{blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc()}{blapi\_traffic\_del\_hwdrop\_ipv6\_unknown\_mc()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+del\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{grp\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+This function delete ipv6 unknown mc hwdrop learned by blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock,used in mld proxy. 
+
+This function delete ipv6 unknown mc hwdrop.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ipv6} & multicast address \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+ipv6 unknown mc hwdrop. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a2831c0bba9b31b29c593b61a07088d66}\label{blapi__traffic_8h_a2831c0bba9b31b29c593b61a07088d66}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix@{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix}}
+\index{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix@{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix()}{blapi\_traffic\_del\_nptv6\_prefix()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{ifname }\end{DoxyParamCaption})}
+
+
+
+ppe del nptv6 prefix 
+
+This function del nptv6 prefix.\+submit by Feijie.\+Wang 2020.\+7.\+30 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ifname,vr} & wan interface name; \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+nptv6 prefix. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a64d857ae53019525b1fa9f990d6794a0}\label{blapi__traffic_8h_a64d857ae53019525b1fa9f990d6794a0}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all@{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all}}
+\index{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all@{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all()}{blapi\_traffic\_del\_nptv6\_prefix\_all()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+del\+\_\+nptv6\+\_\+prefix\+\_\+all (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ppe del nptv6 prefix all 
+
+This function del nptv6 prefix all.\+submit by Feijie.\+Wang 2020.\+7.\+30 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+nptv6 prefix all. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa403ef479d898217baf781e51ed96882}\label{blapi__traffic_8h_aa403ef479d898217baf781e51ed96882}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport@{blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport}}
+\index{blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport@{blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport()}{blapi\_traffic\_del\_vip\_by\_dip\_and\_dport()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+del\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport (\begin{DoxyParamCaption}\item[{unsigned int}]{dip,  }\item[{unsigned short}]{dport }\end{DoxyParamCaption})}
+
+
+
+del vip by dip and dport 
+
+This function add vip by dip and dport.\+submit by feijie.\+wang 2020.\+09.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dip} & ipv4 dest ip,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em dport} & udp/tcp dest port ,0 means not care \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+vip by dip and dport 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a63fd9b66272e8bb96bde3b9b2d2a7fc0}\label{blapi__traffic_8h_a63fd9b66272e8bb96bde3b9b2d2a7fc0}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}}
+\index{blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol()}{blapi\_traffic\_delete\_all\_black\_ip\_port\_protocol()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+delete\+\_\+all\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function delete all the black ip from hwnat. 
+
+This function delete all black ip from hwnat, and let it go through hwnat again. 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_aa0c1f5b23c71a663984729f50c1afa1f}\label{blapi__traffic_8h_aa0c1f5b23c71a663984729f50c1afa1f}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}}
+\index{blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol()}{blapi\_traffic\_delete\_black\_ip\_port\_protocol()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+delete\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol (\begin{DoxyParamCaption}\item[{unsigned int}]{ip,  }\item[{unsigned int}]{port,  }\item[{unsigned int}]{protocol }\end{DoxyParamCaption})}
+
+
+
+This function delete the black ip from hwnat. 
+
+This function delete black ip from hwnat, and let it go through hwnat again. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip} & \\
+\hline
+\mbox{\tt in}  & {\em port} & \\
+\hline
+\mbox{\tt in}  & {\em protocol} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_abd11adcf081edb39643b8973277cc6fe}\label{blapi__traffic_8h_abd11adcf081edb39643b8973277cc6fe}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac@{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac@{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac()}{blapi\_traffic\_get\_dev\_acnt\_by\_mac()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+acnt\+\_\+by\+\_\+mac (\begin{DoxyParamCaption}\item[{int}]{Enable\+Stats,  }\item[{char $\ast$}]{mac,  }\item[{unsigned long long $\ast$}]{rxbytes,  }\item[{unsigned long long $\ast$}]{txbytes }\end{DoxyParamCaption})}
+
+
+
+This function get the tx/rx bytes by device mac. 
+
+This function get the tx/rx bytes by device mac. submit by Zhen.\+Xu 2019.\+12.\+05 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mac} & The mac of sta \\
+\hline
+\mbox{\tt in}  & {\em Enable\+Status} & The Enable\+Status in the node of lanhost2\+\_\+common \\
+\hline
+\mbox{\tt out}  & {\em rxbytes} & The rxbytes of device. \\
+\hline
+\mbox{\tt out}  & {\em txbytes} & The txbytes of device. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the tx/rx bytes by device mac. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a049af2ac795cac7a4ef8619e6b88fd66}\label{blapi__traffic_8h_a049af2ac795cac7a4ef8619e6b88fd66}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth@{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth@{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth()}{blapi\_traffic\_get\_dev\_bandwidth()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+dev\+\_\+bandwidth (\begin{DoxyParamCaption}\item[{\hyperlink{structDevBandWidth__t}{Dev\+Band\+Width\+\_\+\+Info\+\_\+t} $\ast$}]{Dev\+Band\+Width\+\_\+\+Info }\end{DoxyParamCaption})}
+
+
+
+This function get the tx/rx bytes and mac info. 
+
+This function get the tx/rx bytes and mac info . submit by Sheng\+Qian.\+Wang 2020.\+07.\+06 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em Dev\+Band\+Width\+\_\+\+Info} & Dev\+Bandwidth info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the tx/rx bytes and mac info. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_acf59a4c91ea6e872671e67d435c02191}\label{blapi__traffic_8h_acf59a4c91ea6e872671e67d435c02191}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num@{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num@{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num()}{blapi\_traffic\_get\_ether\_port\_num()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+port\+\_\+num (\begin{DoxyParamCaption}\item[{int $\ast$}]{port\+Num }\end{DoxyParamCaption})}
+
+
+
+This function set the number of lan port . 
+
+This function set the number of lan port .submit by Zhen.\+Xu 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+Num} & \+: The number of lan port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the number of lan port . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a7f04cf0dafd4872c200100afbeb498fd}\label{blapi__traffic_8h_a7f04cf0dafd4872c200100afbeb498fd}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state@{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state@{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state()}{blapi\_traffic\_get\_ether\_wan\_state()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+ether\+\_\+wan\+\_\+state (\begin{DoxyParamCaption}\item[{int $\ast$}]{ether\+Status }\end{DoxyParamCaption})}
+
+
+
+This function gets ether wan state. 
+
+This function gets ether wan state. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sock} & socket ID. \\
+\hline
+\mbox{\tt in}  & {\em sockinfo} & socket infomation include \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & down. \\
+\hline
+{\em 1} & up. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+gets ether wan state 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a1acc3ae2f241206d22d6061d91d0976b}\label{blapi__traffic_8h_a1acc3ae2f241206d22d6061d91d0976b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt()}{blapi\_traffic\_get\_flowid\_cnt()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+flowid\+\_\+cnt (\begin{DoxyParamCaption}\item[{unsigned int}]{dir,  }\item[{unsigned int}]{flowid,  }\item[{unsigned long long $\ast$}]{cnt,  }\item[{int $\ast$}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function get flow bytes according to the direction and flow id. 
+
+This function get flow bytes according to the direction and flow id. submit by Lei.\+Zhang 2019.\+12.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dir} & flow direction. D\+O\+W\+N\+\_\+\+D\+IR=0, U\+P\+\_\+\+D\+IR=1 \\
+\hline
+\mbox{\tt in}  & {\em flowid} & flow ID. \\
+\hline
+\mbox{\tt out}  & {\em flag} & flow bytes you get \\
+\hline
+\mbox{\tt out}  & {\em flag} & 1\+:flow rate can be more than max, need to check outside \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get flow bytes according to the direction and flow id. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a35e7f754e0199990d37914903aa59f7b}\label{blapi__traffic_8h_a35e7f754e0199990d37914903aa59f7b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock@{blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock@{blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock()}{blapi\_traffic\_get\_foe\_info\_from\_sock()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+foe\+\_\+info\+\_\+from\+\_\+sock (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{struct \hyperlink{structSockInfo}{Sock\+Info} $\ast$}]{sockinfo }\end{DoxyParamCaption})}
+
+
+
+This function get the foe info from sock. 
+
+This function get the foe info from sock.\+submit by Jason.\+Gong 2020.\+6.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em sock\+\_\+info} & foe info in sock. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+the foe info from sock. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ae702d30da2034bb787c0132e6b0eb7e3}\label{blapi__traffic_8h_ae702d30da2034bb787c0132e6b0eb7e3}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter()}{blapi\_traffic\_get\_lan\_rx\_discard\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+discard\+\_\+counter (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{discard\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan rx discard frame byte cnt in 15minutes. 
+
+This function get lan rx discard frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan rx discard frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ae6830eec962dad46307ddc8fa486826e}\label{blapi__traffic_8h_ae6830eec962dad46307ddc8fa486826e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter()}{blapi\_traffic\_get\_lan\_rx\_error\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+error\+\_\+counter (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{error\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan rx error frame byte cnt in 15minutes. 
+
+This function get lan rx error frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan rx error frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_acff6253cf00727ed28e558729c13cdbd}\label{blapi__traffic_8h_acff6253cf00727ed28e558729c13cdbd}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets()}{blapi\_traffic\_get\_lan\_rx\_octets()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+octets (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{frame\+Byte\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan rx frame byte cnt in 15minutes. 
+
+This function get lan rx frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan rx frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a371e215896f0cc56f5bc03b3164daabf}\label{blapi__traffic_8h_a371e215896f0cc56f5bc03b3164daabf}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate()}{blapi\_traffic\_get\_lan\_rx\_rate()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+rate (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get lan rx real time rate. 
+
+This function get lan rx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em rate} & unit is pps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan rx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa0dde4d0d606b01a0e435c6b032a1185}\label{blapi__traffic_8h_aa0dde4d0d606b01a0e435c6b032a1185}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic()}{blapi\_traffic\_get\_lan\_rx\_traffic()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+rx\+\_\+traffic (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get lan rx real time rate. 
+
+This function get lan rx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em rate} & unit is kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan rx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_afad434af48c37d8dbd21105cbc01528e}\label{blapi__traffic_8h_afad434af48c37d8dbd21105cbc01528e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter()}{blapi\_traffic\_get\_lan\_tx\_discard\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+discard\+\_\+counter (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{discard\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan tx discard frame byte cnt in 15minutes. 
+
+This function get lan tx discard frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em discard} & frame byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan tx discard frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a30595b15c776386a5688dd5ed771f173}\label{blapi__traffic_8h_a30595b15c776386a5688dd5ed771f173}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter()}{blapi\_traffic\_get\_lan\_tx\_error\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+error\+\_\+counter (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{error\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan tx error frame byte cnt in 15minutes. 
+
+This function get lan tx error frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em discard} & frame byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan tx error frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aeb65aad5b0babaaa8fc6192f8f0344fa}\label{blapi__traffic_8h_aeb65aad5b0babaaa8fc6192f8f0344fa}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets()}{blapi\_traffic\_get\_lan\_tx\_octets()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+octets (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{frame\+Byte\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get lan tx frame byte cnt in 15minutes. 
+
+This function get lan tx frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan tx frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ac22c3ea79df305c40fcf12e65fff1c1d}\label{blapi__traffic_8h_ac22c3ea79df305c40fcf12e65fff1c1d}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate()}{blapi\_traffic\_get\_lan\_tx\_rate()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+rate (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get lan tx real time rate. 
+
+This function get lan tx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em rate} & unit is pps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan tx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a01990fd634655e609bf9c4335e4f9673}\label{blapi__traffic_8h_a01990fd634655e609bf9c4335e4f9673}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic()}{blapi\_traffic\_get\_lan\_tx\_traffic()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lan\+\_\+tx\+\_\+traffic (\begin{DoxyParamCaption}\item[{int}]{lan\+\_\+port,  }\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get lan tx real time rate. 
+
+This function get lan tx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan} & port lan port num \\
+\hline
+\mbox{\tt out}  & {\em rate} & unit is kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+lan tx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a0c33f1ff6fee844d526c553bd12622d1}\label{blapi__traffic_8h_a0c33f1ff6fee844d526c553bd12622d1}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info@{blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info@{blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info()}{blapi\_traffic\_get\_lanport\_info()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+lanport\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structlanport__info__s}{lanport\+\_\+info\+\_\+t} $\ast$}]{lanport\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+This function get lanport information . 
+
+This function get lanport information .submit by Yifan.\+Chen 2019.\+1.\+9 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em lanport\+\_\+info\+:information} & of lan port. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get lanport information . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa55bd1512af197070e09f8f5537bcab2}\label{blapi__traffic_8h_aa55bd1512af197070e09f8f5537bcab2}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt@{blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt@{blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt()}{blapi\_traffic\_get\_multicast\_acnt()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+multicast\+\_\+acnt (\begin{DoxyParamCaption}\item[{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+M\+C\+S\+T\+\_\+\+A\+C\+N\+T\+\_\+\+M\+O\+DE}]{mode,  }\item[{unsigned long long $\ast$}]{cnt }\end{DoxyParamCaption})}
+
+
+
+This function get the bytes according to type. 
+
+This function get the bytes of multicast. submit by Lei.\+Zhang 2019.\+12.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of data you will get. 0\+:mulbytes, 1\+:packet \\
+\hline
+\mbox{\tt out}  & {\em bytes} & The data you get. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the bytes according to type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a411b2963d01f1b8962162d1bf709d5f9}\label{blapi__traffic_8h_a411b2963d01f1b8962162d1bf709d5f9}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt()}{blapi\_traffic\_get\_port\_rx\_cnt()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+rx\+\_\+cnt (\begin{DoxyParamCaption}\item[{unsigned char}]{port,  }\item[{unsigned long long $\ast$}]{outptr\+\_\+\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get the rx cnt of port . 
+
+This function get the rx cnt of port .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & lan prot index \\
+\hline
+\mbox{\tt out}  & {\em outptr\+\_\+\+Cnt} & rx cnt of port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 1} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the rx cnt of port . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a832afcaf18ee835bde2920412e364fd2}\label{blapi__traffic_8h_a832afcaf18ee835bde2920412e364fd2}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt@{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt()}{blapi\_traffic\_get\_port\_tx\_cnt()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+port\+\_\+tx\+\_\+cnt (\begin{DoxyParamCaption}\item[{unsigned char}]{port,  }\item[{unsigned long long $\ast$}]{outptr\+\_\+\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get the tx cnt of port . 
+
+This function get the tx cnt of port .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & lan prot index \\
+\hline
+\mbox{\tt out}  & {\em outptr\+\_\+\+Cnt} & tx cnt of port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 1} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the tx cnt of port . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a6048ff5dcbe28fc43d9a95cf3678778b}\label{blapi__traffic_8h_a6048ff5dcbe28fc43d9a95cf3678778b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info@{blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info@{blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info()}{blapi\_traffic\_get\_portrate\_info()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+portrate\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function get portrate information . 
+
+This function get portrate information .submit by Hao.\+Tang 2020.\+6.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em buf\+:port} & rate make buffer \\
+\hline
+\mbox{\tt in}  & {\em size\+:the} & size of buff. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get portrate information . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa029e578bda2f48cecbcccdb9b61c668}\label{blapi__traffic_8h_aa029e578bda2f48cecbcccdb9b61c668}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val@{blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val@{blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val()}{blapi\_traffic\_get\_pppoe\_info\_val()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+pppoe\+\_\+info\+\_\+val (\begin{DoxyParamCaption}\item[{\hyperlink{structECNT__TRAFFIC__PPPOE__INFO__DATA}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+P\+P\+P\+O\+E\+\_\+\+I\+N\+F\+O\+\_\+\+D\+A\+TA} $\ast$}]{pppoe\+\_\+info\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+This function gets the pppoe information of P\+Cs. 
+
+This function gets the pppoe information of P\+Cs. Such as interface name 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pppoe\+\_\+info\+\_\+val} & Pointer to the info struct. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_ab7aa483b85402bb853ca0faa5d08aa0e}\label{blapi__traffic_8h_ab7aa483b85402bb853ca0faa5d08aa0e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode@{blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode@{blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode()}{blapi\_traffic\_get\_ratelimit\_mode()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+ratelimit\+\_\+mode (\begin{DoxyParamCaption}\item[{Stream\+\_\+\+Dir\+\_\+t}]{dir,  }\item[{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE $\ast$}]{mode }\end{DoxyParamCaption})}
+
+
+
+This function gets the ratelimit mode. 
+
+This function gets the the ratelimit mode. Such as W\+A\+N\+\_\+\+M\+O\+DE 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em upsream(1)} & or downstream(0) \\
+\hline
+\mbox{\tt out}  & {\em mode} & 0\+:D\+EV M\+AC 1\+: W\+A\+N\+\_\+\+M\+O\+DE \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+gets the ratelimit mode. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a63e1d01a757a972a7190140700fdde71}\label{blapi__traffic_8h_a63e1d01a757a972a7190140700fdde71}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt()}{blapi\_traffic\_get\_wan\_acnt()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+acnt (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{\hyperlink{structwan__acnt}{wan\+\_\+acnt\+\_\+t} $\ast$}]{cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan acct according to wan port index. 
+
+This function get wan acct according to wan port index. submit by Lei.\+Zhang 2019.\+12.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & wan port index. \\
+\hline
+\mbox{\tt out}  & {\em cnt} & The data you get. \\
+\hline
+\mbox{\tt out}  & {\em flag} & 1\+:only get multi packet info, 0\+:get all info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get wan acct according to wan port index. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ad34a5719f1ccf2839ac5d044a2965ee0}\label{blapi__traffic_8h_ad34a5719f1ccf2839ac5d044a2965ee0}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter()}{blapi\_traffic\_get\_wan\_rx\_discard\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+discard\+\_\+counter (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{discard\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx discard frame byte cnt in 15minutes. 
+
+This function get wan rx discard frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx discard frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a11ddc2294eae373d14389080c08ffc6b}\label{blapi__traffic_8h_a11ddc2294eae373d14389080c08ffc6b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter()}{blapi\_traffic\_get\_wan\_rx\_error\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+error\+\_\+counter (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{error\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx error frame byte cnt in 15minutes. 
+
+This function get wan rx error frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx error frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a600662d9ceae886ab47bf6171cfc878e}\label{blapi__traffic_8h_a600662d9ceae886ab47bf6171cfc878e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets()}{blapi\_traffic\_get\_wan\_rx\_octets()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+octets (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{frame\+Byte\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx frame byte cnt in 15minutes. 
+
+This function get wan rx frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a5ed8744cbecce9f61d4067b17285e18b}\label{blapi__traffic_8h_a5ed8744cbecce9f61d4067b17285e18b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate()}{blapi\_traffic\_get\_wan\_rx\_rate()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+rate (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx real time rate. 
+
+This function get wan rx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em rate} & unit is pps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_abb3797db6ebbfa1d156600838b03c089}\label{blapi__traffic_8h_abb3797db6ebbfa1d156600838b03c089}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics()}{blapi\_traffic\_get\_wan\_rx\_statistics()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+statistics (\begin{DoxyParamCaption}\item[{\hyperlink{structECNT__TRAFFIC__WAN__RX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+R\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS} $\ast$}]{p\+\_\+stat }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx statistics. 
+
+This function get wan rx statistics.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em wan} & rx statistics \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx statistics. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a18bd9b3941188c661c3609a025a9cc0b}\label{blapi__traffic_8h_a18bd9b3941188c661c3609a025a9cc0b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic()}{blapi\_traffic\_get\_wan\_rx\_traffic()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+rx\+\_\+traffic (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get wan rx real time rate. 
+
+This function get wan rx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em rate} & unit is kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan rx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a10d9d7515ccd307fea7f8a91a17b1b9e}\label{blapi__traffic_8h_a10d9d7515ccd307fea7f8a91a17b1b9e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter()}{blapi\_traffic\_get\_wan\_tx\_discard\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+discard\+\_\+counter (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{discard\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx discard frame byte cnt in 15minutes. 
+
+This function get wan tx discard frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em discard} & frame byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx discard frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_adbbc048107e0aa0d2b138198fb2e6c0e}\label{blapi__traffic_8h_adbbc048107e0aa0d2b138198fb2e6c0e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter()}{blapi\_traffic\_get\_wan\_tx\_error\_counter()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+error\+\_\+counter (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{error\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx error frame byte cnt in 15minutes. 
+
+This function get wn tx error frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em discard} & frame byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx error frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a1c8f4f47a3657da4d414677ef5d3b3d8}\label{blapi__traffic_8h_a1c8f4f47a3657da4d414677ef5d3b3d8}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets()}{blapi\_traffic\_get\_wan\_tx\_octets()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+octets (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{frame\+Byte\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx frame byte cnt in 15minutes. 
+
+This function get wan tx frame byte cnt in 15minutes.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em frame} & byte cnt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx frame byte cnt in 15minutes. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ad8b1646e23070819f66f658f381cff54}\label{blapi__traffic_8h_ad8b1646e23070819f66f658f381cff54}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate()}{blapi\_traffic\_get\_wan\_tx\_rate()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+rate (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx real time rate. 
+
+This function get wan tx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em rate} & unit is pps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a33798219a294f4caeceede47f44adbbb}\label{blapi__traffic_8h_a33798219a294f4caeceede47f44adbbb}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics()}{blapi\_traffic\_get\_wan\_tx\_statistics()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+statistics (\begin{DoxyParamCaption}\item[{\hyperlink{structECNT__TRAFFIC__WAN__TX__STATISTICS}{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+W\+A\+N\+\_\+\+T\+X\+\_\+\+S\+T\+A\+T\+I\+S\+T\+I\+CS} $\ast$}]{p\+\_\+stat }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx statistics. 
+
+This function get wan tx statistics.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em wan} & tx statistics \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx statistics. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aef062815f96a0faa9ac8253fccc57dab}\label{blapi__traffic_8h_aef062815f96a0faa9ac8253fccc57dab}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic}}
+\index{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic@{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic()}{blapi\_traffic\_get\_wan\_tx\_traffic()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+get\+\_\+wan\+\_\+tx\+\_\+traffic (\begin{DoxyParamCaption}\item[{unsigned int $\ast$}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function get wan tx real time rate. 
+
+This function get wan tx real time rate.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em rate} & unit is kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan tx real time rate. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a78b9a037108a4ac3ffc2989c73a9e72a}\label{blapi__traffic_8h_a78b9a037108a4ac3ffc2989c73a9e72a}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock@{blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock}}
+\index{blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock@{blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock()}{blapi\_traffic\_hwdrop\_ipv6\_unknown\_mc\_by\_sock()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+hwdrop\+\_\+ipv6\+\_\+unknown\+\_\+mc\+\_\+by\+\_\+sock (\begin{DoxyParamCaption}\item[{int}]{socket,  }\item[{unsigned char $\ast$}]{grp\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+This function drop ipv6 unknown mc by socket info,used in mld proxy. 
+
+This function drop ipv6 unknown mc by socket info.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em socket} & \\
+\hline
+\mbox{\tt in}  & {\em ipv6} & multicast address \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+ipv6 unknown mc by socket info. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ad61d1f6ca4b6e40813359930680c256e}\label{blapi__traffic_8h_ad61d1f6ca4b6e40813359930680c256e}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info@{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info}}
+\index{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info@{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info()}{blapi\_traffic\_ipv6\_mc\_clear\_sock\_info()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+clear\+\_\+sock\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{socket }\end{DoxyParamCaption})}
+
+
+
+This function clear foe info in socket,used in mld proxy. 
+
+This function clear foe info in socket.\+submit by Feijie.\+Wang 2020.\+8.\+12 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em socket} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+foe info in socket. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a82aa058cf8441b499d327e767af88c54}\label{blapi__traffic_8h_a82aa058cf8441b499d327e767af88c54}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock@{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock}}
+\index{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock@{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock()}{blapi\_traffic\_ipv6\_mc\_set\_wan\_info\_to\_sock()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+ipv6\+\_\+mc\+\_\+set\+\_\+wan\+\_\+info\+\_\+to\+\_\+sock (\begin{DoxyParamCaption}\item[{int}]{socket,  }\item[{unsigned char}]{wan\+\_\+type,  }\item[{unsigned char}]{wan\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+This function set ipv6 mc wan info to socket,used in mld proxy. 
+
+This function drop ipv6 unknown mc by socket info.\+submit by Feijie.\+Wang 2020.\+8.\+12 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em socket} & \\
+\hline
+\mbox{\tt in}  & {\em wan} & type\+:1 pppoe 2 ipoe \\
+\hline
+\mbox{\tt in}  & {\em wan} & index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan info to socket. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a737746bf5dac3d3ec7302367e6d26788}\label{blapi__traffic_8h_a737746bf5dac3d3ec7302367e6d26788}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port()}{blapi\_traffic\_set\_alg\_rtsp\_port()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+alg\+\_\+rtsp\+\_\+port (\begin{DoxyParamCaption}\item[{const char $\ast$}]{Rtsp\+Port }\end{DoxyParamCaption})}
+
+
+
+This function is used to write context to rtsp\+\_\+alg\+\_\+port. 
+
+This function is used to write context to rtsp\+\_\+alg\+\_\+port submit by Jin\+Chao.\+Yao 2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Rtsp\+Port\+:rtsp} & port \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Rtsp\+Port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a2a22ee0152576ac5e349fcac2e16bb1b}\label{blapi__traffic_8h_a2a22ee0152576ac5e349fcac2e16bb1b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth@{blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth@{blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth()}{blapi\_traffic\_set\_assure\_max\_bandwidth()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+assure\+\_\+max\+\_\+bandwidth (\begin{DoxyParamCaption}\item[{unsigned int}]{direction,  }\item[{unsigned int}]{sla\+\_\+index,  }\item[{unsigned int}]{queue\+\_\+index,  }\item[{unsigned int}]{cbs\+\_\+value,  }\item[{unsigned int}]{pbs\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg 
+
+This function set sla cfg 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em direction} & 0\+: down stream,set qdma\+\_\+lan 1\+:upstream set qdma\+\_\+wan \\
+\hline
+\mbox{\tt in}  & {\em sla\+\_\+index} & range 0-\/3, hw support max 4 sla. \\
+\hline
+\mbox{\tt in}  & {\em queue\+\_\+index} & range 0-\/1 \\
+\hline
+\mbox{\tt in}  & {\em cbs\+\_\+value} & unkt kbps \\
+\hline
+\mbox{\tt in}  & {\em pbs\+\_\+value} & unkt kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_abe46755d23592fba19412496e8fba192}\label{blapi__traffic_8h_abe46755d23592fba19412496e8fba192}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit()}{blapi\_traffic\_set\_broadcast\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+broadcast\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{int}]{bsr\+\_\+lan,  }\item[{int}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function set the broadcast ratelimit. 
+
+This function set the broadcast ratelimit.\+submit by Zhen.\+Xu 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bsr\+\_\+lan} & The index of lan port \\
+\hline
+\mbox{\tt in}  & {\em rate} & The max rate of lan port. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the broadcast ratelimit. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a468128b3e533fa14494a58d6d1c52d97}\label{blapi__traffic_8h_a468128b3e533fa14494a58d6d1c52d97}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap@{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap@{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap()}{blapi\_traffic\_set\_default\_switch\_portmap()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+switch\+\_\+portmap (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function set switch port mapping. 
+
+This function set switch port mapping.\+submit by Zhen.\+Xu 2019.\+12.\+24 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set defualt switch port mapping. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_abafc906a8a1bfac8c5feb4b7fc6dfbe7}\label{blapi__traffic_8h_abafc906a8a1bfac8c5feb4b7fc6dfbe7}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface@{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface@{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface()}{blapi\_traffic\_set\_default\_wan\_interface()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+default\+\_\+wan\+\_\+interface (\begin{DoxyParamCaption}\item[{const char $\ast$}]{wanname }\end{DoxyParamCaption})}
+
+
+
+This function is used to write wanname to proc file. 
+
+This function is used to write wanname to proc file. submit by Jin\+Chao.\+Yao 2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wanname} & the name of wan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to write wanname to proc file. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a2640f8baff52a43ca2847d71aba0fd52}\label{blapi__traffic_8h_a2640f8baff52a43ca2847d71aba0fd52}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable()}{blapi\_traffic\_set\_dev\_acnt\_enable()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+acnt\+\_\+enable (\begin{DoxyParamCaption}\item[{unsigned char}]{sw\+\_\+acnt\+\_\+en,  }\item[{unsigned char}]{hw\+\_\+acnt\+\_\+en }\end{DoxyParamCaption})}
+
+
+
+This function will enable the rate statistics based on device mode. 
+
+This function will enable rate statistics based on devices mode. submit by Lei.\+Zhang 2019.\+12.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mode} & 1\+:D\+E\+V\+\_\+\+M\+O\+DE, other\+:D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+U\+L\+L\+\_\+\+M\+O\+DE \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Enable the rate statistics based on devices mode. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aa3768c6091b462e9ceeafc961b915655}\label{blapi__traffic_8h_aa3768c6091b462e9ceeafc961b915655}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac@{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac@{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac()}{blapi\_traffic\_set\_dev\_ratelimit\_by\_mac()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+dev\+\_\+ratelimit\+\_\+by\+\_\+mac (\begin{DoxyParamCaption}\item[{\hyperlink{structdev__bandwidth__tmp__s}{dev\+\_\+bandwidth\+\_\+tmp\+\_\+t} $\ast$}]{p\+\_\+dev\+\_\+mac\+\_\+acl,  }\item[{int}]{bandwidth\+\_\+cnt }\end{DoxyParamCaption})}
+
+
+
+This function set the ratelimit rule of device. 
+
+This function set the ratelimit rule of device. submit by Zhen.\+Xu 2019.\+12.\+05 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+\_\+dev\+\_\+mac\+\_\+acl} & The info of device. \\
+\hline
+\mbox{\tt in}  & {\em bandwidth\+\_\+cnt} & The count of bandwidth. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the ratelimit rule of device. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a0de227815294a7153ab5a7ba93b6ce03}\label{blapi__traffic_8h_a0de227815294a7153ab5a7ba93b6ce03}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable()}{blapi\_traffic\_set\_flowid\_acnt\_enable()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+acnt\+\_\+enable (\begin{DoxyParamCaption}\item[{int}]{enable }\end{DoxyParamCaption})}
+
+
+
+This function will enable the flow rate statistics. 
+
+This function will enable the flow rate statistics . 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+enable the flow rate statistics 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a6d8bd87321bd103f7dffc0076046369c}\label{blapi__traffic_8h_a6d8bd87321bd103f7dffc0076046369c}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit()}{blapi\_traffic\_set\_flowid\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+flowid\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{unsigned char}]{direction,  }\item[{unsigned char}]{flowid,  }\item[{unsigned int}]{ratelimit }\end{DoxyParamCaption})}
+
+
+
+This function set the ratelimit of qos flow . 
+
+This function set the ratelimit of qos flow .submit by S\+S.\+Zhao 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em direction} & \+: M\+E\+T\+E\+R\+\_\+\+D\+I\+R\+\_\+\+UP=0, M\+E\+T\+E\+R\+\_\+\+D\+I\+R\+\_\+\+D\+O\+WN=1 \\
+\hline
+\mbox{\tt in}  & {\em flowid} & \+: flow ID \\
+\hline
+\mbox{\tt in}  & {\em ratelimit} & \+: limit rate \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the ratelimit of qos flow . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a8abf09202066bcb95d666443d263e13b}\label{blapi__traffic_8h_a8abf09202066bcb95d666443d263e13b}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock@{blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock@{blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock()}{blapi\_traffic\_set\_foe\_info\_to\_sock()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+foe\+\_\+info\+\_\+to\+\_\+sock (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{struct \hyperlink{structSockInfo}{Sock\+Info} $\ast$}]{sockinfo }\end{DoxyParamCaption})}
+
+
+
+This function st the foe into sock. 
+
+This function set the foe info from sock.\+submit by Jason.\+Gong 2020.\+6.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em sock\+\_\+info} & foe info in sock. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+the foe info from sock. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a9c61468b2835788a90f402e06ed96335}\label{blapi__traffic_8h_a9c61468b2835788a90f402e06ed96335}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit()}{blapi\_traffic\_set\_general\_rx\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+general\+\_\+rx\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function set the value of general\+\_\+rx\+\_\+ratelimit . 
+
+This function set the value of general\+\_\+rx\+\_\+ratelimit .submit by Yifan.\+Chen 2020.\+1.\+2 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the value of general\+\_\+rx\+\_\+ratelimit . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a6ce4a5cb8308f45ffeb8aa15fcba8826}\label{blapi__traffic_8h_a6ce4a5cb8308f45ffeb8aa15fcba8826}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info@{blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info@{blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info()}{blapi\_traffic\_set\_lan\_info()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+lan\+\_\+info (\begin{DoxyParamCaption}\item[{char}]{lan\+\_\+ip\mbox{[}$\,$\mbox{]},  }\item[{char}]{lan\+\_\+mask\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+This function set lan information to lan\+\_\+ip\+\_\+mask. 
+
+This function set lan information to lan\+\_\+ip\+\_\+mask.\+submit by Yifan.\+Chen 2019.\+1.\+9 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lan\+\_\+ip\+:lan} & ip \\
+\hline
+\mbox{\tt in}  & {\em lan\+\_\+mask\+:lan} & mask \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set lan information to lan\+\_\+ip\+\_\+mask. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a544cf33f4ebed6c7327f8261dc9f6fa6}\label{blapi__traffic_8h_a544cf33f4ebed6c7327f8261dc9f6fa6}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data@{blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data@{blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data()}{blapi\_traffic\_set\_max\_bandwidth\_data()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+max\+\_\+bandwidth\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{dslflag,  }\item[{struct \hyperlink{structMaxBandWidth__node__info__s}{Max\+Band\+Width\+\_\+node\+\_\+info\+\_\+s}}]{Max\+Band\+Width\+Node\+Info\mbox{[}$\,$\mbox{]},  }\item[{int $\ast$}]{is\+Rule\+Exist }\end{DoxyParamCaption})}
+
+
+
+This function set the max bandwidth data . 
+
+This function set the max bandwidth data.\+submit by Lei.\+Zhang 2020.\+1.\+10 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dslflag} & 1=L\+AN interface,2=V\+L\+AN id,3=IP range,0= Disable \\
+\hline
+\mbox{\tt in}  & {\em Max\+Band\+Width\+Node\+Info} & all value of Max\+Band\+Width\+\_\+\+Entry \\
+\hline
+\mbox{\tt out}  & {\em is\+Rule\+Exist} & up\+Rate or down\+Rate is exist or not. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the max bandwidth data . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aaaefe48aab029daef3592a4836b49ff5}\label{blapi__traffic_8h_aaaefe48aab029daef3592a4836b49ff5}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+mtu@{blapi\+\_\+traffic\+\_\+set\+\_\+mtu}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+mtu@{blapi\+\_\+traffic\+\_\+set\+\_\+mtu}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+mtu()}{blapi\_traffic\_set\_mtu()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+mtu (\begin{DoxyParamCaption}\item[{unsigned int}]{mtu }\end{DoxyParamCaption})}
+
+
+
+This function set the mtu for H\+W\+\_\+\+N\+A\+T\+\_\+\+S\+E\+T\+\_\+\+M\+TU. 
+
+This function set the mtu for H\+W\+\_\+\+N\+A\+T\+\_\+\+S\+E\+T\+\_\+\+M\+T\+U.\+submit by Bin.\+Wang 2020.\+6.\+23 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mtu} & max mtu for interface \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 1} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the mtu for H\+W\+\_\+\+N\+A\+T\+\_\+\+S\+E\+T\+\_\+\+M\+TU. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a55ab45797637421784e771e0ec5f2a7c}\label{blapi__traffic_8h_a55ab45797637421784e771e0ec5f2a7c}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit()}{blapi\_traffic\_set\_pon\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+pon\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+E\+\_\+\+P\+O\+N\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE}]{mode,  }\item[{unsigned int}]{index,  }\item[{unsigned int}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function set ratelimit for pon. 
+
+This function set ratelimit for pon.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mode,reference} & to E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+E\+\_\+\+P\+O\+N\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE \\
+\hline
+\mbox{\tt in}  & {\em index} & \\
+\hline
+\mbox{\tt in}  & {\em unit} & is kbps \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+ratelimit for pon. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a9655d4f3838df97b39061f54eadf10eb}\label{blapi__traffic_8h_a9655d4f3838df97b39061f54eadf10eb}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode@{blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode@{blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode()}{blapi\_traffic\_set\_ratelimit\_mode()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+ratelimit\+\_\+mode (\begin{DoxyParamCaption}\item[{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+R\+A\+T\+E\+L\+I\+M\+I\+T\+\_\+\+M\+O\+DE}]{mode }\end{DoxyParamCaption})}
+
+
+
+This function will enable the rate limit of wan/lan based on meter\+\_\+mode. 
+
+This function set mode of the rate limit of wan/lan. submit by Sheng\+Qian.\+Wang 2019.\+03.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em meter\+\_\+mode} & 1\+: dev mac mode, 2\+: wan mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set mode of the rate limit of wan/lan. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a1cd68508fe0c3e6d35594cc10244f944}\label{blapi__traffic_8h_a1cd68508fe0c3e6d35594cc10244f944}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg@{blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg@{blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg()}{blapi\_traffic\_set\_sla\_cfg()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg (\begin{DoxyParamCaption}\item[{unsigned int}]{direction,  }\item[{unsigned int}]{sla\+\_\+index,  }\item[{unsigned int}]{enable,  }\item[{unsigned int}]{chnl\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg 
+
+This function set sla cfg 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em direction} & 0\+: down stream,set qdma\+\_\+lan 1\+:upstream set qdma\+\_\+wan \\
+\hline
+\mbox{\tt in}  & {\em sla\+\_\+index} & range 0-\/3, hw support max 4 sla. \\
+\hline
+\mbox{\tt in}  & {\em enable} & range 0-\/1 \\
+\hline
+\mbox{\tt in}  & {\em chnl\+\_\+index} & range 0-\/31 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+blapi\+\_\+traffic\+\_\+set\+\_\+sla\+\_\+cfg 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a19f245ce29558210c6864add09e18684}\label{blapi__traffic_8h_a19f245ce29558210c6864add09e18684}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode@{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode@{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode()}{blapi\_traffic\_set\_switch\_linkmode()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+linkmode (\begin{DoxyParamCaption}\item[{char $\ast$}]{enable,  }\item[{int}]{switchpara\+\_\+id,  }\item[{char $\ast$}]{maxbitrate,  }\item[{char $\ast$}]{duplexmode }\end{DoxyParamCaption})}
+
+
+
+This function set the switch parameter of lan port. 
+
+This function set the switch parameter of lan port.\+submit by Zhen.\+Xu 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em switchpara\+\_\+id} & \+:The index of lan port \\
+\hline
+\mbox{\tt in}  & {\em maxbitrate} & The max bit rate of lan port. \\
+\hline
+\mbox{\tt in}  & {\em duplexmode} & The duplex mode of lan port. \\
+\hline
+\mbox{\tt in}  & {\em enable} & The status of lan port. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the switch parameter of lan port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a2cc46e87a4f9ef2b8420c324fa9b4fdd}\label{blapi__traffic_8h_a2cc46e87a4f9ef2b8420c324fa9b4fdd}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap@{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap@{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap()}{blapi\_traffic\_set\_switch\_portmap()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+switch\+\_\+portmap (\begin{DoxyParamCaption}\item[{char $\ast$}]{portmap,  }\item[{char $\ast$}]{portvlan }\end{DoxyParamCaption})}
+
+
+
+This function set switch port mapping. 
+
+This function set switch port mapping.\+submit by Sheng\+Qian.\+Wang 2020.\+10.\+28 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em portmap} & \+: portmap set in romfile \\
+\hline
+\mbox{\tt in}  & {\em portvlan} & \+: portvlan set in romfile \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set switch port mapping from romfile. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a6c53c418e5f87269aeaa201d8e67e163}\label{blapi__traffic_8h_a6c53c418e5f87269aeaa201d8e67e163}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port()}{blapi\_traffic\_set\_tls\_port()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{enable,  }\item[{unsigned char}]{lan\+\_\+port }\end{DoxyParamCaption})}
+
+
+
+This function set tls port. 
+
+This function set tls port.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & 0-\/\+Disable 1-\/\+Enable \\
+\hline
+\mbox{\tt in}  & {\em lan\+\_\+port} & lan port num \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+tls port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a22aad6cd799f09ced23fcf583c94d2a4}\label{blapi__traffic_8h_a22aad6cd799f09ced23fcf583c94d2a4}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan@{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan@{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan()}{blapi\_traffic\_set\_tls\_vlan()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+tls\+\_\+vlan (\begin{DoxyParamCaption}\item[{int}]{enable,  }\item[{unsigned short}]{vlan }\end{DoxyParamCaption})}
+
+
+
+This function set tls port. 
+
+This function set tls vlan.\+submit by Feijie.\+Wang 2020.\+7.\+1 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & 0-\/\+Disable 1-\/\+Enable \\
+\hline
+\mbox{\tt in}  & {\em vlan} & vlan id \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+tls vlan. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_af94a2d0b26d863b284b8ff9bd7924db7}\label{blapi__traffic_8h_af94a2d0b26d863b284b8ff9bd7924db7}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class@{blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class@{blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class()}{blapi\_traffic\_set\_traffic\_class()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+traffic\+\_\+class (\begin{DoxyParamCaption}\item[{char $\ast$}]{type,  }\item[{int}]{min\+Val,  }\item[{int}]{max\+Val,  }\item[{int}]{flag }\end{DoxyParamCaption})}
+
+
+
+This function set the traffic class by type \& flag. 
+
+This function set the traffic class by type \& flag. submit by Lei.\+Zhang 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & traffic class type(Pbit/\+D\+S\+C\+P/\+T\+O\+S/\+V\+L\+A\+N\+ID) \\
+\hline
+\mbox{\tt in}  & {\em min\+Val} & the Min value. \\
+\hline
+\mbox{\tt in}  & {\em max\+Val} & the Max value. \\
+\hline
+\mbox{\tt in}  & {\em flag} & D\+E\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+SS=0,A\+D\+D\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+SS=1 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set the traffic class by type \& flag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a5784a65244a38dd453d63cde8d2988c9}\label{blapi__traffic_8h_a5784a65244a38dd453d63cde8d2988c9}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport@{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport@{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport()}{blapi\_traffic\_set\_vip\_by\_dip\_and\_dport()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+dip\+\_\+and\+\_\+dport (\begin{DoxyParamCaption}\item[{unsigned int}]{dip,  }\item[{unsigned short}]{dport }\end{DoxyParamCaption})}
+
+
+
+add vip by dip and dport 
+
+This function add vip by dip and dport.\+submit by feijie.\+wang 2020.\+09.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dip} & ipv4 dest ip,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em dport} & udp/tcp dest port ,0 means not care \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+vip by dip and dport 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_ac6b21d1f7c95744cc3c34779cf7868b5}\label{blapi__traffic_8h_ac6b21d1f7c95744cc3c34779cf7868b5}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port@{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port()}{blapi\_traffic\_set\_vip\_by\_port()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+vip\+\_\+by\+\_\+port (\begin{DoxyParamCaption}\item[{unsigned short}]{sport,  }\item[{unsigned short}]{dport,  }\item[{E\+C\+N\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+V\+I\+P\+\_\+\+P\+R\+O\+T\+O\+C\+OL}]{vip\+\_\+p }\end{DoxyParamCaption})}
+
+
+
+set vip by port 
+
+del vip by port
+
+This function set vip by port.\+submit by feijie.\+wang 2020.\+09.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sport} & udp/tcp source port,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em dport} & udp/tcp dest port,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em vip\+\_\+p} & tcp/udp/all \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+vip by port 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+This function del vip by port.\+submit by feijie.\+wang 2020.\+09.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sport} & udp/tcp source port,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em dport} & udp/tcp dest port ,0 means not care \\
+\hline
+\mbox{\tt in}  & {\em vip\+\_\+p} & tcp/udp/all \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+vip by port 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_afac79b27dc8c5574f90c0179d2d04bb4}\label{blapi__traffic_8h_afac79b27dc8c5574f90c0179d2d04bb4}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable()}{blapi\_traffic\_set\_wan\_acnt\_enable()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+acnt\+\_\+enable (\begin{DoxyParamCaption}\item[{int}]{enable }\end{DoxyParamCaption})}
+
+
+
+This function will enable the wanif rate statistics. 
+
+This function will enable the wanif rate statistics . submit by Lei.\+Zhang 2019.\+12.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+enable the wanif rate statistics 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_aeefa6520cb8007e5be7c62708d0cb329}\label{blapi__traffic_8h_aeefa6520cb8007e5be7c62708d0cb329}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu()}{blapi\_traffic\_set\_wan\_mtu()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu (\begin{DoxyParamCaption}\item[{int}]{wan\+\_\+idx,  }\item[{int}]{wan\+\_\+mtu }\end{DoxyParamCaption})}
+
+
+
+set wan interface mtu 
+
+This function set wan mtu.\+submit by kevin.\+shi 2020.\+08.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wan\+\_\+idx} & wan interface index ranged 0 -\/ 7 \\
+\hline
+\mbox{\tt in}  & {\em wan\+\_\+mtu} & the mtu size example for 1518, and 0x3fff means M\+TU disable \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+wan interface mtu 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a887ac07d08f0dc403118b92141f876bf}\label{blapi__traffic_8h_a887ac07d08f0dc403118b92141f876bf}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val()}{blapi\_traffic\_set\_wan\_mtu\_val()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+mtu\+\_\+val (\begin{DoxyParamCaption}\item[{unsigned char}]{wan\+\_\+type,  }\item[{unsigned int}]{wan\+\_\+mtu }\end{DoxyParamCaption})}
+
+
+
+This function set wan type \& M\+TU value. 
+
+This function set wan type \& M\+TU value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wan\+\_\+type,route} & or bridge; wan mtu value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_ae98de2d7f96dc051a930c16196b06c76}\label{blapi__traffic_8h_ae98de2d7f96dc051a930c16196b06c76}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold()}{blapi\_traffic\_set\_wan\_rate\_threshold()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+rate\+\_\+threshold (\begin{DoxyParamCaption}\item[{unsigned int}]{threshold }\end{DoxyParamCaption})}
+
+
+
+This function set wan rate use pps mode threshold. 
+
+This function set wan rate threshold value. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wan} & rate limit threshold value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_abf2a67e1e5ddae7b449b66f672aa8d77}\label{blapi__traffic_8h_abf2a67e1e5ddae7b449b66f672aa8d77}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit()}{blapi\_traffic\_set\_wan\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{char $\ast$}]{wanname,  }\item[{unsigned int}]{wanid,  }\item[{unsigned int}]{up\+\_\+rate,  }\item[{unsigned int}]{dn\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+This function will set wan ratalimit(U\+P/\+D\+O\+WN). 
+
+This function set the value of wan ratalimit(U\+P/\+D\+O\+WN). submit by Sheng\+Qian.\+Wang 2019.\+03.\+16 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wanname} & name of wan interface; \\
+\hline
+\mbox{\tt in}  & {\em wanid} & wan port index \\
+\hline
+\mbox{\tt in}  & {\em up\+\_\+rate} & the value of upstream ratelimit \\
+\hline
+\mbox{\tt in}  & {\em dn\+\_\+rate} & the value of downstream ratelimit \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set the value of wan ratalimit(U\+P/\+D\+O\+WN). 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_acd8ea019cda0b2dc57e5f0a4acc65c70}\label{blapi__traffic_8h_acd8ea019cda0b2dc57e5f0a4acc65c70}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template()}{blapi\_traffic\_set\_wanInterface\_qos\_template()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qos\+\_\+template (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{wan\+If\+Idx }\end{DoxyParamCaption})}
+
+
+
+This function set wan Interface qos template. 
+
+This function set wan Interface qos template. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wan\+If\+Idx} & the arry of wan index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set wan Interface qos template. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a99185d9be6a30711459de8071b8a3c83}\label{blapi__traffic_8h_a99185d9be6a30711459de8071b8a3c83}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype@{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype()}{blapi\_traffic\_set\_wanInterface\_qostype()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wan\+Interface\+\_\+qostype (\begin{DoxyParamCaption}\item[{\hyperlink{structqos__wanIf__value__s}{qos\+\_\+wan\+If\+\_\+value\+\_\+t} $\ast$}]{wan\+If\+Value }\end{DoxyParamCaption})}
+
+
+
+This function set wan Interface qos type. 
+
+This function set wan Interface qos type. submit by Lei.\+Zhang 2020.\+01.\+02 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wan\+If\+Value} & the struct include index,wan type name,value and mask. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set wan Interface qos type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a96474c26dc27173b9cdf6913ecb8ad68}\label{blapi__traffic_8h_a96474c26dc27173b9cdf6913ecb8ad68}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable@{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable()}{blapi\_traffic\_set\_wifi\_dev\_ratelimit\_enable()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+dev\+\_\+ratelimit\+\_\+enable (\begin{DoxyParamCaption}\item[{int}]{enable }\end{DoxyParamCaption})}
+
+
+
+This function set the bandwidth of lan device. 
+
+This function enable/disable the ratelimit of wifi device. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & 1 enable 0 disable. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+enable/disable the ratelimit of wifi device. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a1b167c21b39f46ee3225fc005ed255d2}\label{blapi__traffic_8h_a1b167c21b39f46ee3225fc005ed255d2}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit}}
+\index{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit@{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit()}{blapi\_traffic\_set\_wifi\_interface\_ratelimit()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+set\+\_\+wifi\+\_\+interface\+\_\+ratelimit (\begin{DoxyParamCaption}\item[{unsigned int}]{dir,  }\item[{unsigned char}]{wifi\+Idx,  }\item[{unsigned int}]{rate }\end{DoxyParamCaption})}
+
+
+
+This function set wlan rate limit by wlan index \& stream direction. 
+
+This function set the set wlan rate limit by wlan index \& stream direction. submit by Lei.\+Zhang 2019.\+12.\+24 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dir} & stream direction(up/down) \\
+\hline
+\mbox{\tt in}  & {\em wifi\+Idx} & wlan interface index \\
+\hline
+\mbox{\tt in}  & {\em rate} & limit rate \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+set wlan rate limit by wlan index \& stream direction. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__traffic_8h_a5f5ab96f4735a56fcf64569b57414edc}\label{blapi__traffic_8h_a5f5ab96f4735a56fcf64569b57414edc}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}}
+\index{blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol@{blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol()}{blapi\_traffic\_show\_black\_ip\_port\_protocol()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+show\+\_\+black\+\_\+ip\+\_\+port\+\_\+protocol (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function show black ip port protocol from hwnat. 
+
+This function show black ip port protocol from hwnat, and let it go through hwnat again. 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\mbox{\Hypertarget{blapi__traffic_8h_ad070a03c60dcbd1b3293bae96e57be5a}\label{blapi__traffic_8h_ad070a03c60dcbd1b3293bae96e57be5a}} 
+\index{blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}!blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic@{blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic}}
+\index{blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic@{blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic}!blapi\+\_\+traffic.\+h@{blapi\+\_\+traffic.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic()}{blapi\_traffic\_uninstall\_mirror\_traffic()}}
+{\footnotesize\ttfamily int blapi\+\_\+traffic\+\_\+uninstall\+\_\+mirror\+\_\+traffic (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function uninstall mirror traffic. 
+
+This function uninstall mirror traffic. submit by Lei.\+Zhang 2020.\+01.\+02 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+uninstall mirror traffic. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

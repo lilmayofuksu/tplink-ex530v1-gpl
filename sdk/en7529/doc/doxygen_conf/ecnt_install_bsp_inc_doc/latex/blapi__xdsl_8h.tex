@@ -1,0 +1,203 @@
+\hypertarget{blapi__xdsl_8h}{}\section{blapi\+\_\+xdsl.\+h File Reference}
+\label{blapi__xdsl_8h}\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+
+
+This file is blapi xdsl header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__xdsl_8h_a8a83a9497aa270abe269cc3886885acd}{blapi\+\_\+xdsl\+\_\+reload\+\_\+ko} (int state)
+\begin{DoxyCompactList}\small\item\em This function will reload adsl/vdsl .ko file when change the xdsl mode. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xdsl_8h_ac2a20133930a5874c9820b8218334816}{blapi\+\_\+xdsl\+\_\+get\+\_\+fwver} (char $\ast$fwver, const int size)
+\begin{DoxyCompactList}\small\item\em This function is used to get fwver. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xdsl_8h_af8a279d1e5f60408eadaa02271c69105}{blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm} (char $\ast$tsarm, const int size)
+\begin{DoxyCompactList}\small\item\em This function is used to get tsarm. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xdsl_8h_a4db0cf46ffea6bc4def0ffb48f1b0004}{blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence} (const int adsl\+\_\+status, const int gdsl\+\_\+status)
+\begin{DoxyCompactList}\small\item\em This function is used to wirte message to ptm\+\_\+do\+\_\+reset\+\_\+sequence. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__xdsl_8h_a3e47bf55c016390e146aaef2261d0818}{blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file} (char $\ast$file\+Name, const unsigned int size)
+\begin{DoxyCompactList}\small\item\em This function is used to get get the name of interface onfig file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi xdsl header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Zhen.\+Xu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/01-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__xdsl_8h_ac2a20133930a5874c9820b8218334816}\label{blapi__xdsl_8h_ac2a20133930a5874c9820b8218334816}} 
+\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}!blapi\+\_\+xdsl\+\_\+get\+\_\+fwver@{blapi\+\_\+xdsl\+\_\+get\+\_\+fwver}}
+\index{blapi\+\_\+xdsl\+\_\+get\+\_\+fwver@{blapi\+\_\+xdsl\+\_\+get\+\_\+fwver}!blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+xdsl\+\_\+get\+\_\+fwver()}{blapi\_xdsl\_get\_fwver()}}
+{\footnotesize\ttfamily int blapi\+\_\+xdsl\+\_\+get\+\_\+fwver (\begin{DoxyParamCaption}\item[{char $\ast$}]{fwver,  }\item[{const int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function is used to get fwver. 
+
+This function is used to get fwver.. submit by jin\+Chao.\+Yao2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em state\+:the} & current xdsl mode. \\
+\hline
+\mbox{\tt in}  & {\em the} & size of file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to get fwver. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xdsl_8h_a3e47bf55c016390e146aaef2261d0818}\label{blapi__xdsl_8h_a3e47bf55c016390e146aaef2261d0818}} 
+\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}!blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file@{blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file}}
+\index{blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file@{blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file}!blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file()}{blapi\_xdsl\_get\_interface\_config\_file()}}
+{\footnotesize\ttfamily int blapi\+\_\+xdsl\+\_\+get\+\_\+interface\+\_\+config\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{const unsigned int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function is used to get get the name of interface onfig file. 
+
+This function is used to get get the name of interface onfig file. submit by jin\+Chao.\+Yao2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em state\+:the} & current xdsl mode. \\
+\hline
+\mbox{\tt in}  & {\em the} & size of file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to get get the name of interface onfig file 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xdsl_8h_af8a279d1e5f60408eadaa02271c69105}\label{blapi__xdsl_8h_af8a279d1e5f60408eadaa02271c69105}} 
+\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}!blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm@{blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm}}
+\index{blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm@{blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm}!blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm()}{blapi\_xdsl\_get\_tsarm()}}
+{\footnotesize\ttfamily int blapi\+\_\+xdsl\+\_\+get\+\_\+tsarm (\begin{DoxyParamCaption}\item[{char $\ast$}]{tsarm,  }\item[{const int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function is used to get tsarm. 
+
+This function is used to get fwver.. submit by jin\+Chao.\+Yao2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em state\+:the} & current xdsl mode. \\
+\hline
+\mbox{\tt in}  & {\em the} & size of file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to get tsarm. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xdsl_8h_a4db0cf46ffea6bc4def0ffb48f1b0004}\label{blapi__xdsl_8h_a4db0cf46ffea6bc4def0ffb48f1b0004}} 
+\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}!blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence@{blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence}}
+\index{blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence@{blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence}!blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence()}{blapi\_xdsl\_ptm\_do\_reset\_sequence()}}
+{\footnotesize\ttfamily int blapi\+\_\+xdsl\+\_\+ptm\+\_\+do\+\_\+reset\+\_\+sequence (\begin{DoxyParamCaption}\item[{const int}]{adsl\+\_\+status,  }\item[{const int}]{gdsl\+\_\+status }\end{DoxyParamCaption})}
+
+
+
+This function is used to wirte message to ptm\+\_\+do\+\_\+reset\+\_\+sequence. 
+
+This function is used to wirte message to ptm\+\_\+do\+\_\+reset\+\_\+sequence.. submit by jin\+Chao.\+Yao2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em state\+:the} & current xdsl mode. \\
+\hline
+\mbox{\tt in}  & {\em the} & size of file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to wirte message to ptm\+\_\+do\+\_\+reset\+\_\+sequence. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__xdsl_8h_a8a83a9497aa270abe269cc3886885acd}\label{blapi__xdsl_8h_a8a83a9497aa270abe269cc3886885acd}} 
+\index{blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}!blapi\+\_\+xdsl\+\_\+reload\+\_\+ko@{blapi\+\_\+xdsl\+\_\+reload\+\_\+ko}}
+\index{blapi\+\_\+xdsl\+\_\+reload\+\_\+ko@{blapi\+\_\+xdsl\+\_\+reload\+\_\+ko}!blapi\+\_\+xdsl.\+h@{blapi\+\_\+xdsl.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+xdsl\+\_\+reload\+\_\+ko()}{blapi\_xdsl\_reload\_ko()}}
+{\footnotesize\ttfamily int blapi\+\_\+xdsl\+\_\+reload\+\_\+ko (\begin{DoxyParamCaption}\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+This function will reload adsl/vdsl .ko file when change the xdsl mode. 
+
+This function will reload adsl/vdsl .ko file when change the xdsl mode. submit by Lei.\+Zhang 2019.\+12.\+10 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em state\+:the} & current xdsl mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Reload adsl/vdsl .ko file 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

@@ -1,0 +1,13 @@
+
+
+menu "Account Configuration"
+
+config INCLUDE_SERIAL_SYNC_CMM_ADMIN_ACCOUNT
+	bool "Sync superadmin account and serial account"
+	default n
+
+config INCLUDE_ACCESS_CTRL_EXT
+	bool "Can set access ctrl for every account and protocol"
+	default n
+
+endmenu

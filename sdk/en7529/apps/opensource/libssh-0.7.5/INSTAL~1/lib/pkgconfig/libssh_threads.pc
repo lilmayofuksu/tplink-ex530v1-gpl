@@ -1,0 +1,6 @@
+Name: libssh_threads
+Description: The SSH Library Thread Extension
+Version: 0.7.5
+Libs: -L/proj/mtk69551/tony/ws_tony.du_AP31/BBN_Linux/DEV/main/tclinux_phoenix/apps/public/libssh-0.7.5/install/lib -lssh_threads
+Cflags: -I/proj/mtk69551/tony/ws_tony.du_AP31/BBN_Linux/DEV/main/tclinux_phoenix/apps/public/libssh-0.7.5/install/include
+

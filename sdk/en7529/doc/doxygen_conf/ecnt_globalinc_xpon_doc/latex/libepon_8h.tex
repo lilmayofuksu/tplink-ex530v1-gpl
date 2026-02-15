@@ -1,0 +1,908 @@
+\hypertarget{libepon_8h}{}\section{public/libepon.h File Reference}
+\label{libepon_8h}\index{public/libepon.\+h@{public/libepon.\+h}}
+
+
+This file is lib epon header file that will be exported for others to use.  
+
+
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$asm/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}libcompileoption.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpon\+\_\+ioctl\+\_\+if.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structeponOamCmdMsg__s}{epon\+Oam\+Cmd\+Msg\+\_\+s}
+\item 
+struct \hyperlink{structeponOamIpcCmdMsg__s}{epon\+Oam\+Ipc\+Cmd\+Msg\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libepon_8h_a9d699b0ff765a097eade3dabd389299f}\label{libepon_8h_a9d699b0ff765a097eade3dabd389299f}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+M\+Q\+\_\+\+F\+L\+A\+G\+\_\+\+P\+A\+TH}~\char`\"{}/tmp/epon\+\_\+oam/epon\+\_\+oam\+\_\+cmd\+\_\+queue\char`\"{}
+\item 
+\mbox{\Hypertarget{libepon_8h_a49469ee27df38742cb6d7f37288ab32d}\label{libepon_8h_a49469ee27df38742cb6d7f37288ab32d}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+P\+R\+O\+J\+ID}~10
+\item 
+\mbox{\Hypertarget{libepon_8h_af57c50646863c735bc2c9df88386e0c3}\label{libepon_8h_af57c50646863c735bc2c9df88386e0c3}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+I\+N\+F\+O\+\_\+\+L\+EN}~128
+\item 
+\mbox{\Hypertarget{libepon_8h_acc52d01cf507b3988d552ed5c1084fb0}\label{libepon_8h_acc52d01cf507b3988d552ed5c1084fb0}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+B\+U\+G\+L\+E\+V\+EL}~1
+\item 
+\mbox{\Hypertarget{libepon_8h_a1a1492765c15ca822dc76b80a16d9c20}\label{libepon_8h_a1a1492765c15ca822dc76b80a16d9c20}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+IT}~2
+\item 
+\mbox{\Hypertarget{libepon_8h_ac799909a61e85da3657e2266063082e2}\label{libepon_8h_ac799909a61e85da3657e2266063082e2}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+T\+OP}~3
+\item 
+\mbox{\Hypertarget{libepon_8h_aa6e21ffdab28199cfbc2e308226560de}\label{libepon_8h_aa6e21ffdab28199cfbc2e308226560de}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+E\+S\+T\+O\+RY}~4
+\item 
+\mbox{\Hypertarget{libepon_8h_a6c71e51064cf25beb14df941a6f29393}\label{libepon_8h_a6c71e51064cf25beb14df941a6f29393}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+H\+O\+W\+\_\+\+S\+T\+A\+T\+US}~5
+\item 
+\mbox{\Hypertarget{libepon_8h_a1f342d00bbb5418f969c8ffe4b528915}\label{libepon_8h_a1f342d00bbb5418f969c8ffe4b528915}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+T\+O\+P\+P\+D\+U\+TM}~6
+\item 
+\mbox{\Hypertarget{libepon_8h_a6338765564da57ff625bd541acda9781}\label{libepon_8h_a6338765564da57ff625bd541acda9781}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+E\+N\+D\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+P\+DU}~7
+\item 
+\mbox{\Hypertarget{libepon_8h_a0eec13bba2212bff20418c5a9a31e7c6}\label{libepon_8h_a0eec13bba2212bff20418c5a9a31e7c6}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+E\+N\+D\+\_\+\+C\+R\+I\+T\+I\+C\+A\+L\+\_\+\+P\+DU}~8
+\item 
+\mbox{\Hypertarget{libepon_8h_a37828445f2a05a99d065fdd025ac2438}\label{libepon_8h_a37828445f2a05a99d065fdd025ac2438}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+O\+C\+A\+L\+S\+A\+T\+I\+S\+FY}~9
+\item 
+\mbox{\Hypertarget{libepon_8h_a33d0abd9d66fb82dbb4156e49db3b1f6}\label{libepon_8h_a33d0abd9d66fb82dbb4156e49db3b1f6}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+T\+C\+\_\+\+D\+B\+G\+\_\+\+L\+VL}~10
+\item 
+\mbox{\Hypertarget{libepon_8h_a1bf8652e4a70981a7db6339bf9a2a04c}\label{libepon_8h_a1bf8652e4a70981a7db6339bf9a2a04c}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+T\+C\+\_\+\+S\+E\+T\+\_\+\+D\+S\+C\+V\+Y\+\_\+\+S\+T\+A\+TE}~11
+\item 
+\mbox{\Hypertarget{libepon_8h_ae8f36866a633313be3addec24dcec6e9}\label{libepon_8h_ae8f36866a633313be3addec24dcec6e9}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+A\+M\+\_\+\+A\+L\+A\+RM}~12
+\item 
+\mbox{\Hypertarget{libepon_8h_a1a99c81712b3705f702a060fa43f4300}\label{libepon_8h_a1a99c81712b3705f702a060fa43f4300}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+A\+N\+\_\+\+D\+BG}~15
+\item 
+\mbox{\Hypertarget{libepon_8h_aa0a5ecd227391b99dfe0a3801397acff}\label{libepon_8h_aa0a5ecd227391b99dfe0a3801397acff}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+T\+M\+S\+E\+N\+D\+I\+N\+FO}~16
+\item 
+\mbox{\Hypertarget{libepon_8h_a5d0eb28fea07f97d4b2850833a83b551}\label{libepon_8h_a5d0eb28fea07f97d4b2850833a83b551}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+E\+N\+D\+\_\+\+D\+Y\+G\+A\+SP}~17
+\item 
+\mbox{\Hypertarget{libepon_8h_a5a55954df0edc48d77b1164685792f76}\label{libepon_8h_a5a55954df0edc48d77b1164685792f76}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+O\+S\+T\+T\+M\+O\+UT}~18
+\item 
+\mbox{\Hypertarget{libepon_8h_a05bdc6f86dbc87fdeb2bf43cea02eced}\label{libepon_8h_a05bdc6f86dbc87fdeb2bf43cea02eced}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+X\+P\+D\+U\+N\+U\+M\+P\+E\+R\+S\+EC}~19
+\item 
+\mbox{\Hypertarget{libepon_8h_a44d24c534ee159faba7b0e0f830df9ac}\label{libepon_8h_a44d24c534ee159faba7b0e0f830df9ac}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+D\+R\+I\+V\+E\+R\+\_\+\+E\+V\+E\+NT}~20
+\item 
+\mbox{\Hypertarget{libepon_8h_a1592ea68e15a394defbf479d6c095abf}\label{libepon_8h_a1592ea68e15a394defbf479d6c095abf}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+E\+S\+T\+A\+RT}~21
+\item 
+\mbox{\Hypertarget{libepon_8h_ab006f0a2088e779acdcb71594e386fdf}\label{libepon_8h_ab006f0a2088e779acdcb71594e386fdf}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+A\+V\+E\+C\+FG}~22
+\item 
+\mbox{\Hypertarget{libepon_8h_a6103ae19dd0addc95809c6fc178b06fd}\label{libepon_8h_a6103ae19dd0addc95809c6fc178b06fd}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+O\+A\+D\+C\+FG}~23
+\item 
+\mbox{\Hypertarget{libepon_8h_a2829d5770aa7026d70cacf52a3659d5d}\label{libepon_8h_a2829d5770aa7026d70cacf52a3659d5d}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+P\+D\+A\+T\+A\+C\+FG}~24
+\item 
+\mbox{\Hypertarget{libepon_8h_a554e17937f0b67f22a8f846fb5868b5d}\label{libepon_8h_a554e17937f0b67f22a8f846fb5868b5d}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+O\+N\+U\+T\+Y\+PE}~25
+\item 
+\mbox{\Hypertarget{libepon_8h_af97d08faa369e2e85571f8f921fd7ea4}\label{libepon_8h_af97d08faa369e2e85571f8f921fd7ea4}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+E\+T\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+D\+O\+WN}~26
+\item 
+\mbox{\Hypertarget{libepon_8h_a451a4734a64d41166eb04c2babaff5ae}\label{libepon_8h_a451a4734a64d41166eb04c2babaff5ae}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+M\+M\+G\+R\+\_\+\+R\+E\+I\+N\+IT}~27
+\item 
+\mbox{\Hypertarget{libepon_8h_ae9dcdc8c8de8f23a284b58abb5e5619e}\label{libepon_8h_ae9dcdc8c8de8f23a284b58abb5e5619e}} 
+\#define {\bfseries E\+P\+O\+N\+O\+A\+M\+\_\+\+C\+M\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+P\+C\+P\+\_\+\+W\+A\+N\+R\+E\+S\+ET}~28
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libepon_8h_a00f4ce62078e9d384d04c354959870bb}\label{libepon_8h_a00f4ce62078e9d384d04c354959870bb}} 
+typedef struct \hyperlink{structeponOamCmdMsg__s}{epon\+Oam\+Cmd\+Msg\+\_\+s} {\bfseries epon\+Oam\+Cmd\+Msg\+\_\+t}
+\item 
+\mbox{\Hypertarget{libepon_8h_a7c4eae22b7a87860d610d72f41531b5a}\label{libepon_8h_a7c4eae22b7a87860d610d72f41531b5a}} 
+typedef struct \hyperlink{structeponOamIpcCmdMsg__s}{epon\+Oam\+Ipc\+Cmd\+Msg\+\_\+s} {\bfseries epon\+Oam\+Ipc\+Cmd\+Msg\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libepon_8h_a2a148569803bf9bc04cff65d49baf886}{epon\+Api\+Set\+Onu\+Mpcp\+Time} (uint16\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon onu mpcp time. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a1606a5926d7f3741f5811baf96742e63}{epon\+Api\+Get\+Onu\+Mpcp\+Time} (uint16\+\_\+t $\ast$time)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon onu mpcp time. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a4de8c53201135af97d6068f89859b68a}{epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack} (int llid\+Idx, int ack\+Flag)
+\begin{DoxyCompactList}\small\item\em This function is used to set mpcp discovery request ack. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_ad213d459b8bd35b162c7d0b595860a8b}{epon\+Api\+Set\+Mpcp\+Local\+De\+Reg} (int llid\+Idx)
+\begin{DoxyCompactList}\small\item\em This function is used to set local deregister. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_add9b81b9dfd3a5bd4eaf16f20e2a2bf4}{epon\+Api\+Set\+Mac\+Reset} ()
+\begin{DoxyCompactList}\small\item\em This function is used to set mac reset. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_ae6dc18737421bd694436424fb8832548}{epon\+Api\+Set\+Onu\+Holdover\+Cfg} (uint8\+\_\+t enable, uint16\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em This function is used to set onu holdover cfg. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a635bc4d3e26d78144dc0dce498fbf415}{epon\+Api\+Get\+Onu\+Holdover\+Cfg} (uint8\+\_\+t $\ast$enable, uint16\+\_\+t $\ast$time)
+\begin{DoxyCompactList}\small\item\em This function is used to get onu holdover cfg. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a76a5fff175d5bcbda6678a810b793dad}{epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt} (uint8\+\_\+t clear\+Tx, uint8\+\_\+t clear\+Rx)
+\begin{DoxyCompactList}\small\item\em This function is used to clear onu tx and rx counter. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_ae50d5ea93310954f69a5ee6d28d2f477}{epon\+Api\+Get\+Onu\+Tx\+Cnt} (epon\+Tx\+Cnt\+\_\+t $\ast$tx\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function is used to get onu tx counter. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a47acbb4d12b1f0c54be34ebe9ea2e661}{epon\+Api\+Get\+Onu\+Rx\+Cnt} (epon\+Rx\+Cnt\+\_\+t $\ast$rx\+Cnt)
+\begin{DoxyCompactList}\small\item\em This function is used to get onu rx counter. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a260c3e0ffe023198c2e118fcce094bc3}{epon\+Api\+Get\+Llidkey} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t key\+Index, uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to get llid key. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a9fd995d373cd485e7260e249fee23e72}{epon\+Api\+Set\+Llidkey} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t key\+Index, uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to set llid key. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_aad31a6206f020a74536eef3f43b0079c}{epon\+Cmd\+Set\+Llid\+Mask} (uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon llid enable mask. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a321164cd719c13b7fd9eb88dfb480d0d}{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t num)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon llid dba threshold num. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a94bf908a59543201a78cdf93ea3e02d5}{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t $\ast$num)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon llid dba threshold num. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_af9c2f89853176335e05ccd5460dcb5de}{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t thrshld\+Index, uint8\+\_\+t mask, uint16\+\_\+t $\ast$threshold)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon llid dba threshold . \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_afa4d2c30ba162f771ffb67cda871f636}{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t thrshld\+Index, uint8\+\_\+t mask, uint16\+\_\+t $\ast$threshold)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon llid dba threshold . \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a55abdbb1c17a2bc046c82058d6c07541}{epon\+Api\+Set\+Phy\+Power} (unsigned int time)
+\begin{DoxyCompactList}\small\item\em This function is used to set epon phy power. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_ab46d73cc4a5dfb56515ec7fc85e2d79c}{epon\+Api\+Set\+Auth\+Fail} (uint8\+\_\+t is\+Auth\+Fail)
+\begin{DoxyCompactList}\small\item\em This function is used to set authentication fail. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a71ad93534a4069b2e1dcbff8bf3ba5cd}{epon\+Api\+Set10\+G\+Llid\+Key} (uint8\+\_\+t llid\+Idx, uint8\+\_\+t key\+Index, uint8\+\_\+t $\ast$key)
+\begin{DoxyCompactList}\small\item\em This function is used to set 10G llid key. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{libepon_8h_aa4e1adb890d5cd1b471c79d16a1c05c2}{epon\+Api\+Get\+Epon\+Mode} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to get epon mode. \end{DoxyCompactList}\item 
+int \hyperlink{libepon_8h_a15a2410bef9fea2e8cbd627bef706b87}{send\+Epon\+Oam\+Cmd\+Msg} (uint32\+\_\+t msg\+Type, uint8\+\_\+t $\ast$buf, uint32\+\_\+t len, uint32\+\_\+t $\ast$cmd\+Seq\+Out)
+\begin{DoxyCompactList}\small\item\em This function is used to send epon oam cmd message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is lib epon header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libepon_8h_a76a5fff175d5bcbda6678a810b793dad}\label{libepon_8h_a76a5fff175d5bcbda6678a810b793dad}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt@{epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt}}
+\index{epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt@{epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt()}{eponApiClearOnuTxRxCnt()}}
+{\footnotesize\ttfamily int epon\+Api\+Clear\+Onu\+Tx\+Rx\+Cnt (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{clear\+Tx,  }\item[{uint8\+\_\+t}]{clear\+Rx }\end{DoxyParamCaption})}
+
+
+
+This function is used to clear onu tx and rx counter. 
+
+This function is used to clear onu tx and rx counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em clear\+Tx} & clear tx counter \\
+\hline
+\mbox{\tt in}  & {\em clear\+Rx} & clear rx counter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clear onu tx and rx counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_aa4e1adb890d5cd1b471c79d16a1c05c2}\label{libepon_8h_aa4e1adb890d5cd1b471c79d16a1c05c2}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Epon\+Mode@{epon\+Api\+Get\+Epon\+Mode}}
+\index{epon\+Api\+Get\+Epon\+Mode@{epon\+Api\+Get\+Epon\+Mode}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Epon\+Mode()}{eponApiGetEponMode()}}
+{\footnotesize\ttfamily uint8\+\_\+t epon\+Api\+Get\+Epon\+Mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon mode. 
+
+This function is used to get epon mode. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em epon} & mode\+: 0\+: R\+A\+T\+E\+\_\+1\+G\+\_\+1G, 1\+: R\+A\+T\+E\+\_\+10\+G\+\_\+1\+G\+\_\+\+A\+S\+YM, 2\+: R\+A\+T\+E\+\_\+10\+G\+\_\+10\+G\+\_\+\+S\+YM \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon mode. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_afa4d2c30ba162f771ffb67cda871f636}\label{libepon_8h_afa4d2c30ba162f771ffb67cda871f636}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld@{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld}}
+\index{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld@{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld()}{eponApiGetLlidDBAThrshld()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{thrshld\+Index,  }\item[{uint8\+\_\+t}]{mask,  }\item[{uint16\+\_\+t $\ast$}]{threshold }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon llid dba threshold . 
+
+This function is used to get epon llid dba threshold. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em thrshld\+Index} & threshold index \\
+\hline
+\mbox{\tt in}  & {\em mask} & mask \\
+\hline
+\mbox{\tt in}  & {\em threshold} & pointer to the threshold \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon llid dba threshold. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a94bf908a59543201a78cdf93ea3e02d5}\label{libepon_8h_a94bf908a59543201a78cdf93ea3e02d5}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num@{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num}}
+\index{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num@{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num()}{eponApiGetLlidDBAThrshldNum()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Llid\+D\+B\+A\+Thrshld\+Num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t $\ast$}]{num }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon llid dba threshold num. 
+
+This function is used to get epon llid dba threshold num. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em num} & number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon llid dba threshold num. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a260c3e0ffe023198c2e118fcce094bc3}\label{libepon_8h_a260c3e0ffe023198c2e118fcce094bc3}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Llidkey@{epon\+Api\+Get\+Llidkey}}
+\index{epon\+Api\+Get\+Llidkey@{epon\+Api\+Get\+Llidkey}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Llidkey()}{eponApiGetLlidkey()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Llidkey (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{key\+Index,  }\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to get llid key. 
+
+This function is used to get llid key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em key\+Index} & key index \\
+\hline
+\mbox{\tt in}  & {\em key} & pointer to key value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get llid key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a635bc4d3e26d78144dc0dce498fbf415}\label{libepon_8h_a635bc4d3e26d78144dc0dce498fbf415}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Onu\+Holdover\+Cfg@{epon\+Api\+Get\+Onu\+Holdover\+Cfg}}
+\index{epon\+Api\+Get\+Onu\+Holdover\+Cfg@{epon\+Api\+Get\+Onu\+Holdover\+Cfg}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Onu\+Holdover\+Cfg()}{eponApiGetOnuHoldoverCfg()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Onu\+Holdover\+Cfg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{enable,  }\item[{uint16\+\_\+t $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to get onu holdover cfg. 
+
+This function is used to get onu holdover cfg. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & enable \\
+\hline
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get onu holdover cfg. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a1606a5926d7f3741f5811baf96742e63}\label{libepon_8h_a1606a5926d7f3741f5811baf96742e63}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Onu\+Mpcp\+Time@{epon\+Api\+Get\+Onu\+Mpcp\+Time}}
+\index{epon\+Api\+Get\+Onu\+Mpcp\+Time@{epon\+Api\+Get\+Onu\+Mpcp\+Time}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Onu\+Mpcp\+Time()}{eponApiGetOnuMpcpTime()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Onu\+Mpcp\+Time (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to get epon onu mpcp time. 
+
+This function is used to get epon onu mpcp time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get epon onu mpcp time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a47acbb4d12b1f0c54be34ebe9ea2e661}\label{libepon_8h_a47acbb4d12b1f0c54be34ebe9ea2e661}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Onu\+Rx\+Cnt@{epon\+Api\+Get\+Onu\+Rx\+Cnt}}
+\index{epon\+Api\+Get\+Onu\+Rx\+Cnt@{epon\+Api\+Get\+Onu\+Rx\+Cnt}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Onu\+Rx\+Cnt()}{eponApiGetOnuRxCnt()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Onu\+Rx\+Cnt (\begin{DoxyParamCaption}\item[{epon\+Rx\+Cnt\+\_\+t $\ast$}]{rx\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function is used to get onu rx counter. 
+
+This function is used to get onu rx counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em clear\+Rx} & clear rx counter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get onu rx counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_ae50d5ea93310954f69a5ee6d28d2f477}\label{libepon_8h_ae50d5ea93310954f69a5ee6d28d2f477}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Get\+Onu\+Tx\+Cnt@{epon\+Api\+Get\+Onu\+Tx\+Cnt}}
+\index{epon\+Api\+Get\+Onu\+Tx\+Cnt@{epon\+Api\+Get\+Onu\+Tx\+Cnt}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Get\+Onu\+Tx\+Cnt()}{eponApiGetOnuTxCnt()}}
+{\footnotesize\ttfamily int epon\+Api\+Get\+Onu\+Tx\+Cnt (\begin{DoxyParamCaption}\item[{epon\+Tx\+Cnt\+\_\+t $\ast$}]{tx\+Cnt }\end{DoxyParamCaption})}
+
+
+
+This function is used to get onu tx counter. 
+
+This function is used to get onu tx counter. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em clear\+Tx} & clear tx counter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get onu tx counter. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a71ad93534a4069b2e1dcbff8bf3ba5cd}\label{libepon_8h_a71ad93534a4069b2e1dcbff8bf3ba5cd}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set10\+G\+Llid\+Key@{epon\+Api\+Set10\+G\+Llid\+Key}}
+\index{epon\+Api\+Set10\+G\+Llid\+Key@{epon\+Api\+Set10\+G\+Llid\+Key}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set10\+G\+Llid\+Key()}{eponApiSet10GLlidKey()}}
+{\footnotesize\ttfamily int epon\+Api\+Set10\+G\+Llid\+Key (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{key\+Index,  }\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to set 10G llid key. 
+
+This function is used to set 10G llid key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em key\+Index} & key index \\
+\hline
+\mbox{\tt in}  & {\em key} & pointer to key value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set 10G llid key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_ab46d73cc4a5dfb56515ec7fc85e2d79c}\label{libepon_8h_ab46d73cc4a5dfb56515ec7fc85e2d79c}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Auth\+Fail@{epon\+Api\+Set\+Auth\+Fail}}
+\index{epon\+Api\+Set\+Auth\+Fail@{epon\+Api\+Set\+Auth\+Fail}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Auth\+Fail()}{eponApiSetAuthFail()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Auth\+Fail (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{is\+Auth\+Fail }\end{DoxyParamCaption})}
+
+
+
+This function is used to set authentication fail. 
+
+This function is used to set authentication fail. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em is\+Auth\+Fail} & authentication fail \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set authentication fail. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_af9c2f89853176335e05ccd5460dcb5de}\label{libepon_8h_af9c2f89853176335e05ccd5460dcb5de}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld@{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld}}
+\index{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld@{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld()}{eponApiSetLlidDBAThrshld()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{thrshld\+Index,  }\item[{uint8\+\_\+t}]{mask,  }\item[{uint16\+\_\+t $\ast$}]{threshold }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon llid dba threshold . 
+
+This function is used to set epon llid dba threshold. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em thrshld\+Index} & threshold index \\
+\hline
+\mbox{\tt in}  & {\em mask} & mask \\
+\hline
+\mbox{\tt in}  & {\em threshold} & pointer to the threshold \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon llid dba threshold. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a321164cd719c13b7fd9eb88dfb480d0d}\label{libepon_8h_a321164cd719c13b7fd9eb88dfb480d0d}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num@{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num}}
+\index{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num@{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num()}{eponApiSetLlidDBAThrshldNum()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Llid\+D\+B\+A\+Thrshld\+Num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon llid dba threshold num. 
+
+This function is used to set epon llid dba threshold num. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em num} & number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon llid dba threshold num. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a9fd995d373cd485e7260e249fee23e72}\label{libepon_8h_a9fd995d373cd485e7260e249fee23e72}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Llidkey@{epon\+Api\+Set\+Llidkey}}
+\index{epon\+Api\+Set\+Llidkey@{epon\+Api\+Set\+Llidkey}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Llidkey()}{eponApiSetLlidkey()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Llidkey (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{llid\+Idx,  }\item[{uint8\+\_\+t}]{key\+Index,  }\item[{uint8\+\_\+t $\ast$}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to set llid key. 
+
+This function is used to set llid key. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em key\+Index} & key index \\
+\hline
+\mbox{\tt in}  & {\em key} & pointer to key value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set llid key. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_add9b81b9dfd3a5bd4eaf16f20e2a2bf4}\label{libepon_8h_add9b81b9dfd3a5bd4eaf16f20e2a2bf4}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Mac\+Reset@{epon\+Api\+Set\+Mac\+Reset}}
+\index{epon\+Api\+Set\+Mac\+Reset@{epon\+Api\+Set\+Mac\+Reset}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Mac\+Reset()}{eponApiSetMacReset()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Mac\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to set mac reset. 
+
+This function is used to set mac reset. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set mac reset. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a4de8c53201135af97d6068f89859b68a}\label{libepon_8h_a4de8c53201135af97d6068f89859b68a}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack@{epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack}}
+\index{epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack@{epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack()}{eponApiSetMpcpDiscvRgstAck()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Mpcp\+Discv\+Rgst\+Ack (\begin{DoxyParamCaption}\item[{int}]{llid\+Idx,  }\item[{int}]{ack\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function is used to set mpcp discovery request ack. 
+
+This function is used to set mpcp discovery request ack. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\mbox{\tt in}  & {\em ack\+Flag} & ack flag \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set mpcp discovery request ack. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_ad213d459b8bd35b162c7d0b595860a8b}\label{libepon_8h_ad213d459b8bd35b162c7d0b595860a8b}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Mpcp\+Local\+De\+Reg@{epon\+Api\+Set\+Mpcp\+Local\+De\+Reg}}
+\index{epon\+Api\+Set\+Mpcp\+Local\+De\+Reg@{epon\+Api\+Set\+Mpcp\+Local\+De\+Reg}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Mpcp\+Local\+De\+Reg()}{eponApiSetMpcpLocalDeReg()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Mpcp\+Local\+De\+Reg (\begin{DoxyParamCaption}\item[{int}]{llid\+Idx }\end{DoxyParamCaption})}
+
+
+
+This function is used to set local deregister. 
+
+This function is used to set local deregister. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em llid\+Idx} & llid index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set local deregister. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_ae6dc18737421bd694436424fb8832548}\label{libepon_8h_ae6dc18737421bd694436424fb8832548}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Onu\+Holdover\+Cfg@{epon\+Api\+Set\+Onu\+Holdover\+Cfg}}
+\index{epon\+Api\+Set\+Onu\+Holdover\+Cfg@{epon\+Api\+Set\+Onu\+Holdover\+Cfg}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Onu\+Holdover\+Cfg()}{eponApiSetOnuHoldoverCfg()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Onu\+Holdover\+Cfg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{enable,  }\item[{uint16\+\_\+t}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to set onu holdover cfg. 
+
+This function is used to set onu holdover cfg. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em enable} & enable \\
+\hline
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set onu holdover cfg. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a2a148569803bf9bc04cff65d49baf886}\label{libepon_8h_a2a148569803bf9bc04cff65d49baf886}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Onu\+Mpcp\+Time@{epon\+Api\+Set\+Onu\+Mpcp\+Time}}
+\index{epon\+Api\+Set\+Onu\+Mpcp\+Time@{epon\+Api\+Set\+Onu\+Mpcp\+Time}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Onu\+Mpcp\+Time()}{eponApiSetOnuMpcpTime()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Onu\+Mpcp\+Time (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon onu mpcp time. 
+
+This function is used to set epon onu mpcp time. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon onu mpcp time. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a55abdbb1c17a2bc046c82058d6c07541}\label{libepon_8h_a55abdbb1c17a2bc046c82058d6c07541}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Api\+Set\+Phy\+Power@{epon\+Api\+Set\+Phy\+Power}}
+\index{epon\+Api\+Set\+Phy\+Power@{epon\+Api\+Set\+Phy\+Power}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Api\+Set\+Phy\+Power()}{eponApiSetPhyPower()}}
+{\footnotesize\ttfamily int epon\+Api\+Set\+Phy\+Power (\begin{DoxyParamCaption}\item[{unsigned int}]{time }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon phy power. 
+
+This function is used to set epon phy power. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & time \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon phy power. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_aad31a6206f020a74536eef3f43b0079c}\label{libepon_8h_aad31a6206f020a74536eef3f43b0079c}} 
+\index{libepon.\+h@{libepon.\+h}!epon\+Cmd\+Set\+Llid\+Mask@{epon\+Cmd\+Set\+Llid\+Mask}}
+\index{epon\+Cmd\+Set\+Llid\+Mask@{epon\+Cmd\+Set\+Llid\+Mask}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{epon\+Cmd\+Set\+Llid\+Mask()}{eponCmdSetLlidMask()}}
+{\footnotesize\ttfamily int epon\+Cmd\+Set\+Llid\+Mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+This function is used to set epon llid enable mask. 
+
+This function is used to set epon llid enable mask. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mask} & nable mask \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Set epon llid enable mask. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libepon_8h_a15a2410bef9fea2e8cbd627bef706b87}\label{libepon_8h_a15a2410bef9fea2e8cbd627bef706b87}} 
+\index{libepon.\+h@{libepon.\+h}!send\+Epon\+Oam\+Cmd\+Msg@{send\+Epon\+Oam\+Cmd\+Msg}}
+\index{send\+Epon\+Oam\+Cmd\+Msg@{send\+Epon\+Oam\+Cmd\+Msg}!libepon.\+h@{libepon.\+h}}
+\subsubsection{\texorpdfstring{send\+Epon\+Oam\+Cmd\+Msg()}{sendEponOamCmdMsg()}}
+{\footnotesize\ttfamily int send\+Epon\+Oam\+Cmd\+Msg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{msg\+Type,  }\item[{uint8\+\_\+t $\ast$}]{buf,  }\item[{uint32\+\_\+t}]{len,  }\item[{uint32\+\_\+t $\ast$}]{cmd\+Seq\+Out }\end{DoxyParamCaption})}
+
+
+
+This function is used to send epon oam cmd message. 
+
+This function is used to send epon oam cmd message. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em msg\+Type\+:message} & type \\
+\hline
+\mbox{\tt in}  & {\em buf} & pointer to the buf \\
+\hline
+\mbox{\tt in}  & {\em len\+:length} & \\
+\hline
+\mbox{\tt in}  & {\em cmd\+Seq\+Out\+:pointer} & to the cmd\+Seq\+Out \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send epon oam cmd message. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

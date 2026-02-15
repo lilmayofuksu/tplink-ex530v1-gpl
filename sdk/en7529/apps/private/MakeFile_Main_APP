@@ -1,0 +1,150 @@
+ifneq ($(strip $(CUSTOM)),)
+include install_bsp/Project/profile/$(CUSTOM)/$(PROFILE)/$(PROFILE).profile
+else
+CUSTOM=RT
+include install_bsp/Project/profile/$(CUSTOM)/$(PROFILE)/$(PROFILE).profile
+endif
+
+include install_bsp/Project/rule.mak
+include apps/private/apps_rule.mak
+include apps/private/apps_dir.mak
+include install_bsp/Project/make_inc/toolchain.mk
+include install_bsp/Project/release.chk
+include $(APP_PRIVATE_DIR)/make_apps
+include $(APP_PRIVATE_DIR)/make_build_sdk_fw
+include install_bsp/Project/make_devgen
+
+ifneq ($(strip $(TCSUPPORT_VOIP)),)
+ifeq ("$(IS_VOIP_APP_DIR_EXIST)", "Y")
+include $(VOIP_APP_DIR)/make_voip_app
+endif
+endif
+
+export CFG_CFLAGS = -msoft-float -fomit-frame-pointer
+
+ifneq ($(strip $(MSDK)),)
+ifneq ($(strip $(MPLATFORM)),)
+TCPLATFORM=$(MPLATFORM)
+else
+TCPLATFORM=$(PROFILE)
+endif
+endif
+
+ifneq ($(strip $(BAK_PATH)),)
+export BIN_BAK_PATH=$(BAK_PATH)
+else
+export BIN_BAK_PATH=$(TRUNK_DIR)
+endif
+
+
+ifneq ($(strip $(TCSUPPORT_CODE_SHRINK)),)
+CFG_CFLAGS += -Os
+else
+CFG_CFLAGS += -O2
+endif
+
+ifneq ($(strip $(VP_MEGACO)),)
+TCSUPPORT_VOIP_IMSSIP=
+CFG_CFLAGS += -DVP_MEGACO
+endif
+
+#if/*TCSUPPORT_COMPILE*/ defined(TCSUPPORT_C1_NEW_GUI)
+ifneq ($(strip $(TCSUPPORT_C1_NEW_GUI)),)
+CFG_CFLAGS += -DTCSUPPORT_C1_NEW_GUI
+endif
+#endif/*TCSUPPORT_COMPILE*/
+
+ifneq ($(strip $(TCSUPPORT_ZEBRA_WORKAROUND)),)
+CFG_CFLAGS += -DTCSUPPORT_ZEBRA_WORKAROUND
+endif
+
+ifneq ($(strip $(TCSUPPORT_FON)),)
+#if defined(TCSUPPORT_FON_MODEL_B)
+ifneq ($(strip $(TCSUPPORT_FON_MODEL_B)),)
+FON_CFLAGS += -DTCSUPPORT_FON_MODEL_B
+endif
+#if/*TCSUPPORT_COMPILE*/ defined(TCSUPPORT_OI_C9)
+ifneq ($(strip $(TCSUPPORT_OI_C9)),)
+FON_CFLAGS += -DTCSUPPORT_OI_C9
+endif
+#endif/*TCSUPPORT_COMPILE*/
+#if/*TCSUPPORT_COMPILE*/ defined(TCSUPPORT_OI_C7)
+ifneq ($(strip $(TCSUPPORT_OI_C7)),)
+FON_CFLAGS += -DTCSUPPORT_OI_C7
+endif
+#endif/*TCSUPPORT_COMPILE*/
+FON_CFLAGS += -Os
+FON_CFLAGS += -Wall
+FON_CFLAGS += -mips1
+#endif
+endif
+
+ifneq ($(strip $(SUBTARGET)),)
+TARGETS:=$(subst /, , $(SUBTARGET))
+else
+TARGETS:=apps_cp_before_cleanfs apps app_buildimage
+endif
+
+
+ifneq ($(strip $(BSP)),)
+sdk_fw:
+	echo "nothing to do in BSP version!"
+sdk_fw_clean:
+	echo "nothing to do in BSP version!"
+else
+sdk_fw: $(TARGETS)
+sdk_fw_clean:apps_clean
+endif
+
+app_buildimage:packer pack sdkfs_prepare devgen_fakeroot build_fw
+
+devgen_fakeroot:
+	echo > $(PROJECT_APP_DIR)/.fake
+	/usr/bin/fakeroot -i $(PROJECT_APP_DIR)/.fake -s $(PROJECT_APP_DIR)/.fake make -f $(APP_PRIVATE_DIR)/MakeFile_Main_APP devgen
+
+sdkfs_prepare:
+	rm -rf $(FS_GEN_DIR)
+	install -d $(FS_GEN_DIR)
+
+	#for copy apps lib/bin
+	cp -rf $(BSP_EXT_FS)/* $(FS_GEN_DIR)
+	
+	cp -rf $(FILESYSTEM_DIR)/*  $(FS_GEN_DIR)
+
+
+ifneq ($(strip $(PACK)),)	
+packer:
+	echo "make ELF packer"
+	make -C $(TOOLS_APP_DIR)/Packer/ clean
+	make -C $(TOOLS_APP_DIR)/Packer/
+else
+packer:
+	echo "Not make  ELF packer,please add compile option"
+endif
+
+ifneq ($(strip $(PACK)),)
+pack:
+
+	echo "Pack executables"
+	for file1 in `find $(FILESYSTEM_DIR)/userfs/bin -type f -perm -111` ; \
+  do \
+  	echo $${file1}; \
+	  $(TOOLS_APP_DIR)/Packer/packer $${file1}; \
+  done ; \
+  for file2 in `find $(FILESYSTEM_DIR)/lib -type f -perm -111` ; \
+  do \
+  	echo $${file2}; \
+	  $(TOOLS_APP_DIR)/Packer/packer $${file2}; \
+  done ; \
+  for file3 in `find $(FILESYSTEM_DIR)/lib/modules -type f -name "*.ko"` ; \
+	do \
+		echo $${file3}; \
+		$(TOOLS_APP_DIR)/Packer/packer $${file3};\
+  done
+
+else
+pack:
+	echo "Not Pack"
+endif
+
+include $(TOOLS_APP_DIR)/make_tools

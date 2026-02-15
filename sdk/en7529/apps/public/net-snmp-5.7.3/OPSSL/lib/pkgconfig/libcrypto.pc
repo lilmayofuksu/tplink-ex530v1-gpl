@@ -1,0 +1,11 @@
+prefix=/proj/vend_sr00012/P4_Linux_180412/BBN_Linux/Branch/Branch_for_New_ECNT_IPV6_7526_20180131/tclinux_phoenix/apps/public/openssl-1.0.0d/OPSSL
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OpenSSL-libcrypto
+Description: OpenSSL cryptography library
+Version: 1.0.0d
+Requires: 
+Libs: -L${libdir} -lcrypto 
+Cflags: -I${includedir} 

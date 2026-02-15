@@ -1,0 +1,217 @@
+bsp_fw:bsp_sdk bsp_buildimage
+bsp_fw_clean:bsp_sdk_clean
+
+ifneq ($(strip $(TCSUPPORT_OPENWRT)),)
+include ecnt-bsp.mk
+endif
+
+bsp_sdk: pre_profile bsp_prepare clean_fs bootbase kernel modules app_bsp bsp_exclusive kocopy bspcopy
+
+bsp_sdk_clean: test_env bsp_clean clean_fs bootbase_clean kernel_clean modules_clean app_bsp_clean bsp_exclusive_clean copy_project_tools_for_app_clean
+
+test_env:
+	echo "test_env====================================>"
+	PATH=$(PATH)
+	uname -a	
+	automake --version
+	echo "test_env<===================================="
+
+openwrt_ecnt_bsp: mtd_bsp brctl_bsp tcci_bsp ebtables_bsp
+
+bsp_clean:
+	rm -rf $(BSP_EXT_INSTALL)/lib_install
+	rm -rf $(FILESYSTEM_DIR)
+	rm -rf $(BSP_EXT_FS) $(BSP_EXT_INC)
+	rm -rf $(BSP_EXCL_FS) $(BSP_EXCL_INC)
+
+bsp_prepare:
+	rm -rf $(BSP_EXT_INSTALL)/lib_install
+	install -d $(BSP_EXT_INSTALL)/lib_install
+	rm -rf $(APP_PRIVATE_DIR)/lib
+#delete later
+	test -d $(FILESYSTEM_DIR) || mkdir -p $(FILESYSTEM_DIR)
+	chmod -R 777 $(FILESYSTEM_DIR)
+	cp -rf $(TRUNK_DIR)/filesystem/* $(FILESYSTEM_DIR)
+	
+#	BSP_EXT
+	install -d $(BSP_EXT_FS) $(BSP_EXT_INC)
+	chmod -R 777 $(BSP_EXT_FS)
+	cp -rf $(TRUNK_DIR)/filesystem/* $(BSP_EXT_FS)
+	
+#BSP_EXCL	
+	install -d $(BSP_EXCL_FS) $(BSP_EXCL_INC)
+	chmod -R 777 $(BSP_EXCL_FS)
+	cp -rf $(TRUNK_DIR)/filesystem/* $(BSP_EXCL_FS)
+	
+clean_fs:  squashfs4_3 lzma trx secure_header dtc
+	chmod -R 777 $(PROJECT_DIR)
+	chmod -R 777 $(KERNEL_DIR)
+	chmod -R 777 $(APP_BSP_DIR)
+	chmod -R 777 $(GLOBAL_INC_DIR)
+ifneq ($(strip $(CUSTOMER_BUILD_RELEASECODE)),)
+	chmod -R 777 $(MODULE_DIR)
+else
+	chmod -R 777 $(MODULES_PRIV_SRC_DIR)
+	chmod -R 777 $(MODULES_PUBLIC_SRC_DIR)
+endif
+
+	chmod -R 777 $(TOOLS_DIR)
+ifneq ("$(wildcard $(BOOTROM_DIR))", "")
+	chmod -R 777 $(BOOTROM_DIR)
+endif
+	rm -rf $(FILESYSTEM_DIR)/lib/*
+	rm -rf $(FILESYSTEM_DIR)/bin/*
+	rm -rf $(FILESYSTEM_DIR)/userfs/bin/*
+	rm -rf $(FILESYSTEM_DIR)/userfs/dlna
+	rm -rf $(FILESYSTEM_DIR)/usr/bin/*
+	rm -rf $(FILESYSTEM_DIR)/sbin/*
+	mkdir -p $(FILESYSTEM_DIR)/lib/modules
+	find $(FILESYSTEM_DIR) -name "dummpy.file" | xargs rm -f
+
+squashfs4_3:
+	make -C $(TOOLS_DIR)/squashfs4.3/squashfs-tools CC=gcc GZIP_SUPPORT=0 LZMA_SUPPORT=1 COMP_DEFAULT=lzma XATTR_SUPPORT= LZMA_DIR="./lzma465" clean
+	make -C $(TOOLS_DIR)/squashfs4.3/squashfs-tools CC=gcc GZIP_SUPPORT=0 LZMA_SUPPORT=1 COMP_DEFAULT=lzma XATTR_SUPPORT= LZMA_DIR="./lzma465"
+	cp -f $(TOOLS_DIR)/squashfs4.3/squashfs-tools/mksquashfs $(TOOLS_DIR)/mksquashfs4
+	cp -f $(TOOLS_DIR)/squashfs4.3/squashfs-tools/unsquashfs $(TOOLS_DIR)/unsquashfs4
+	$(TOOLS_DIR)/mksquashfs4 -version
+
+trx:
+	echo "make trx"
+	make -C $(TOOLS_DIR)/trx/ clean
+	make -C $(TOOLS_DIR)/trx/	
+
+dtc:
+	echo "make dtc"
+	make -C $(TOOLS_DIR)/dtc-1.4.0/ clean
+	make -C $(TOOLS_DIR)/dtc-1.4.0/	
+
+secure_header:
+ifneq ($(strip $(TCSUPPORT_SECURE_BOOT)),)
+	echo "secure_header"
+	make -C $(TOOLS_DIR)/secure_header/ clean
+	make -C $(TOOLS_DIR)/secure_header/
+endif
+		
+bsp_buildimage: packer pack fs_prepare devgen bsp_build_fw
+#from now on we use FS_GEN_DIR 
+fs_prepare:
+	rm -rf $(FS_GEN_DIR)
+	install -d $(FS_GEN_DIR)
+
+	cp -rf $(BSP_EXCL_FS)/* $(FS_GEN_DIR)
+	cp -rf $(BSP_INT_FS)/* $(FS_GEN_DIR)
+	cp -rf $(FILESYSTEM_DIR)/*  $(FS_GEN_DIR)
+	#will delete later
+	cp -rf $(BSP_EXT_FS)/* $(FS_GEN_DIR)
+
+
+ifeq ($(strip $(TCSUPPORT_OPENWRT)),)
+ifneq ("$(wildcard $(BOOTROM_DIR))", "")
+include $(BOOTROM_DIR)/make_bootbase
+else
+bootbase:
+	#build mbedtls
+	make -C $(MBEDTLS) CC=gcc AR=ar clean
+	make -C $(MBEDTLS) CC=gcc AR=ar programs
+bootbase_clean:
+endif
+include $(PROJECT_DIR)/make_kernel
+#include $(MODULE_DIR)/make_modules
+include $(APP_BSP_DIR)/make_app_bsp
+include $(PROJECT_DIR)/make_devgen
+ifeq ("$(IS_XPON_BSP_DIR_EXIST)", "Y")
+include $(XPON_BSP_DIR)/make_xpon_bsp
+include $(XPON_BSP_DIR)/make_xpon_bsp.release
+endif
+
+ifeq ($(strip $(TC_BUILD_RELEASECODE)),)
+ifneq ($(strip $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527) $(TCSUPPORT_CPU_EN7580) $(TCSUPPORT_CPU_EN7523)),)
+ifneq ("$(wildcard $(FT_DIR)/make_ft)","")
+	include $(FT_DIR)/make_ft
+endif
+ifneq ($(strip $(TCSUPPORT_AUTOBENCH)),)
+ifneq ("$(wildcard $(MODULES_AUTOBENCH_DIR)/make_autobench)","")
+	include $(MODULES_AUTOBENCH_DIR)/make_autobench
+endif
+endif
+endif
+endif
+
+ifneq ($(strip $(TCSUPPORT_CPU_EN7580)),)
+ifneq ($(strip $(TCSUPPORT_AUTOBENCH)),)
+include $(MODULES_AUTOBENCH_DIR)/make_autobench
+endif
+endif
+
+ifneq ($(strip $(TCSUPPORT_VOIP)),)
+ifeq ("$(IS_VOIP_BSP_DIR_EXIST)", "Y")
+include $(VOIP_BSP_DIR)/make_voip_bsp
+else
+ifeq ("$(IS_VOIP_APP_BSP_DIR_EXIST)", "Y")
+include $(VOIP_APP_BSP_DIR)/make_voip_bsp
+endif
+endif
+endif
+endif
+
+bspcopy:
+	rm -rf $(PROFILE_APP_DIR)
+	install -d $(PROFILE_APP_DIR)
+	cp -rf $(PROFILE_DIR)/* $(PROFILE_APP_DIR)
+	cp -rf $(PROJECT_DIR)/make_devgen $(PROJECT_APP_DIR)
+	cp -rf $(PROJECT_DIR)/rule.mak $(PROJECT_APP_DIR)
+	cp -rf $(PROJECT_DIR)/release.chk $(PROJECT_APP_DIR)
+	install -d $(TOOLS_APP_DIR)
+	cp -rf $(TOOLS_DIR)/* $(TOOLS_APP_DIR)
+	install -d $(PROJECT_MAKE_INC_APP_DIR)
+	cp -rf $(PROJECT_MAKE_INC_DIR)/* $(PROJECT_MAKE_INC_APP_DIR)
+	install -d $(PROJECT_LIB_APP_DIR)
+	cp -rf $(PROJECT_LIB_DIR)/* $(PROJECT_LIB_APP_DIR)
+#	rm -f $(BSP_EXT_FS)/usr/script/lib_kernel
+#	rm -f $(BSP_EXT_FS)/usr/script/lib_modules
+#	rm -f $(BSP_EXT_FS)/usr/script/lib_xpon
+#	rm -f $(BSP_EXT_FS)/usr/script/lib_xdsl
+	
+#	cp $(BSP_PRIVATEDIR)/etc_script/lib_kernel $(BSP_EXT_FS)/usr/script/
+#	cp $(BSP_PRIVATEDIR)/etc_script/lib_modules $(BSP_EXT_FS)/usr/script/
+#	cp $(BSP_PRIVATEDIR)/etc_script/lib_xpon $(BSP_EXT_FS)/usr/script/
+#	cp $(BSP_PRIVATEDIR)/etc_script/lib_xdsl $(BSP_EXT_FS)/usr/script/
+#	cp $(BSP_PRIVATEDIR)/etc_script/lib_voip $(BSP_EXT_FS)/usr/script/
+
+	$(call copy_conf_files)
+	#will delete later after voip/pon change filesystem dir
+	cp -rf $(BSP_EXT_FS)/* $(FILESYSTEM_DIR)
+	cp -rf $(FILESYSTEM_DIR)/*  $(BSP_EXT_FS)
+
+#copy install_bsp/lib and install_bsp/fs to filesystem
+	#cp -rf $(BSP_EXT_LIB)/* $(FILESYSTEM_DIR)/lib
+	#cp -rf $(BSP_EXT_FS)/* $(FILESYSTEM_DIR)
+
+#below install lib will be deleted later
+	#cp -rf $(BSP_INT_LIB)/* $(FILESYSTEM_DIR)/lib
+	#cp -rf $(BSP_INT_FS)/* $(FILESYSTEM_DIR)
+	
+	cp $(VERSION_DIR)/fwver.conf $(BSP_EXT_FS)/usr/etc/fwver.conf
+
+	test -d install_bsp/tclinux_builder || mkdir install_bsp/tclinux_builder
+	cp $(KERNEL_DIR)/linux.7z install_bsp/tclinux_builder
+	
+#ifeq ($(strip $(TCSUPPORT_CPU_ARMV8)),)
+#	cp $(APP_BSP_PRIVATEDIR)/etc_script/buildImage.sh install_bsp/tclinux_builder
+#else
+#	cp $(APP_BSP_PRIVATEDIR)/etc_script/buildImageARM.sh install_bsp/tclinux_builder/buildImage.sh
+#endif
+
+copy_project_tools_for_app_clean:
+	rm -rf $(PROFILE_APP_DIR)
+	install -d $(PROFILE_APP_DIR)
+	cp -rf $(PROFILE_DIR)/* $(PROFILE_APP_DIR)
+	cp -rf $(PROJECT_DIR)/make_devgen $(PROJECT_APP_DIR)
+	cp -rf $(PROJECT_DIR)/rule.mak $(PROJECT_APP_DIR)
+	cp -rf $(PROJECT_DIR)/release.chk $(PROJECT_APP_DIR)
+	install -d $(TOOLS_APP_DIR)
+	cp -rf $(TOOLS_DIR)/* $(TOOLS_APP_DIR)
+	install -d $(PROJECT_MAKE_INC_APP_DIR)
+	cp -rf $(PROJECT_MAKE_INC_DIR)/* $(PROJECT_MAKE_INC_APP_DIR)
+	install -d $(PROJECT_LIB_APP_DIR)
+	cp -rf $(PROJECT_LIB_DIR)/* $(PROJECT_LIB_APP_DIR)

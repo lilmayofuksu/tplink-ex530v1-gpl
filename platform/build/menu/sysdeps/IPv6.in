@@ -1,0 +1,68 @@
+
+menu 'IPv6 Options'
+	
+config INCLUDE_IPV6
+	bool "Build IPv6"
+	default n
+	
+config INCLUDE_IPV6_MLD
+	bool "Build IPv6 MLD"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_BCM_MLD_MCPD
+	bool "Build BCM_MLD_MCPD"
+	default n
+	depends on INCLUDE_IPV6_MLD
+
+config INCLUDE_MLD_ETHPROXY
+	bool "Enable MLD ETHPROXY of PPPoE"
+	default n
+	depends on INCLUDE_IPV6_MLD
+
+config INCLUDE_IPV6_SLAAC
+	bool "Build IPv6 WAN SLAAC"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_IPV6_HTTP
+	bool "Build IPv6 HTTP & Telnet"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_IPV6_MAP
+	bool "Build IPV6 MAP"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_IPV6_MAP_MAPE
+	bool "Build IPV6 MAP-E"
+	default n
+	depends on INCLUDE_IPV6_MAP
+	
+config INCLUDE_IPV6_CE_ROUTER_AUTH
+	bool "Build IPv6 CE Router Auth"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_IPV6_PASSTHROUGH
+	bool "Enable ipv6 passthrough"
+	default n
+	depends on INCLUDE_IPV6
+
+config INCLUDE_DIAG_TR143_IPPING_IPV6
+	bool "support ipv6 ipping diag"
+	default n
+	depends on INCLUDE_IPV6 && INCLUDE_IPPING_DIAG 
+
+config INCLUDE_DIAG_TR143_TRACE_IPV6
+	bool "support ipv6 traceroute diag"
+	default n
+	depends on INCLUDE_IPV6 && INCLUDE_TRACEROUTE_DIAG 
+	
+config INCLUDE_IPV6_AUTO_DISABLE
+	bool "auto disable all intf ipv6 function when no ipv6 wan"
+	default n 
+	depends on INCLUDE_IPV6
+	
+endmenu

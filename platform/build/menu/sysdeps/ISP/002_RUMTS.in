@@ -1,0 +1,32 @@
+config INCLUDE_RUMTS_OPTIONS
+	bool "RUMTS all options (B&C)"
+	depends on INCLUDE_RUMTS
+
+	######## SELECT Type B ##########
+	select INCLUDE_CWMP_DMMAP_DEVLOG
+	select INCLUDE_LANGUAGE_RU_RU
+	select INCLUDE_DHCP_OPTION133
+	select INCLUDE_UDPXY
+	select INCLUDE_DHCP_OPTION60
+	select INCLUDE_FIREWALL_LEVEL
+
+	######## SELECT Type C ##########
+	select INCLUDE_RUMTS_TEST1
+	select INCLUDE_RUMTS_TEST2
+	select INCLUDE_RUMTS_CWMP_DMMAP
+
+########## Define Type C ############
+config INCLUDE_RUMTS_TEST1
+	bool "for test1 (C)"
+	default n
+	depends on INCLUDE_RUMTS_OPTIONS
+
+config INCLUDE_RUMTS_TEST2
+	bool "for test2 (C)"
+	default n
+	depends on INCLUDE_RUMTS_OPTIONS
+
+config INCLUDE_RUMTS_CWMP_DMMAP
+	bool "cwmp dmmap use param name of RUMTS"
+	default n
+	depends on INCLUDE_RUMTS_OPTIONS

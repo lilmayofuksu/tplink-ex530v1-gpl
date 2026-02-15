@@ -1,0 +1,206 @@
+#!/bin/ash
+
+
+LXC_MAPPED_UID=
+LXC_MAPPED_GID=
+
+# Make sure the usual locations are in PATH
+export PATH=$PATH:/usr/sbin:/usr/bin:/sbin:/bin
+
+am_in_userns() {
+    [ -e /proc/self/uid_map ] || { echo no; return; }
+    [ "$(wc -l /proc/self/uid_map | awk '{ print $1 }')" -eq 1 ] || { echo yes; return; }
+    line=$(awk '{ print $1 " " $2 " " $3 }' /proc/self/uid_map)
+    [ "$line" = "0 0 4294967295" ] && { echo no; return; }
+    echo yes
+}
+
+in_userns=0
+[ $(am_in_userns) = "yes" ] && in_userns=1
+
+install_app()
+{
+    rootfs=$1
+	name=$2
+    tree="\
+$rootfs/etc/init.d \
+$rootfs/etc/rc.d \
+$rootfs/etc/config \
+$rootfs/dev/shm \
+$rootfs/run/shm \
+$rootfs/proc \
+$rootfs/sys \
+$rootfs/bin \
+$rootfs/sbin \
+$rootfs/usr/etc \
+$rootfs/usr/lib \
+$rootfs/usr/bin \
+$rootfs/usr/sbin \
+$rootfs/data \
+$rootfs/files \
+$rootfs/mnt \
+$rootfs/tmp \
+$rootfs/opt/apps \
+$rootfs/var/run/dbus \
+$rootfs/lib"
+    echo "run templates => install_app"
+    echo "name = $name"
+    echo "rootfs = $rootfs"
+	echo "ls -l /opt/upt/apps/$name/"
+	#ls -l /opt/upt/apps/$name/
+	#echo "ls -l /opt/upt/apps/LXC/$name/"
+	#ls -l /opt/upt/apps/LXC/$name/
+	#rm -rf /opt/upt/apps/LXC/$name/rootfs/
+    #echo "after rm: /opt/upt/apps/LXC/$name/"
+	#ls -l /opt/upt/apps/LXC/$name/
+    #echo "ln -s /opt/upt/apps/$name $rootfs"	
+    #ln -s /opt/upt/apps/$name $rootfs 
+    echo "mkdir tree"
+	mkdir -p $tree
+	echo "cp -ra /bin/* /opt/upt/apps/LXC/$name/rootfs/bin/"
+	cp -ra /bin/* /opt/upt/apps/LXC/$name/rootfs/bin/
+	echo "cp -ra /lib/* /opt/upt/apps/LXC/$name/rootfs/lib/"
+	cp -ra /lib/* /opt/upt/apps/LXC/$name/rootfs/lib/
+	echo "cp -ra /usr/lib/* /opt/upt/apps/LXC/$name/rootfs/usr/lib/"
+	cp -ra /usr/lib/* /opt/upt/apps/LXC/$name/rootfs/usr/lib/
+	echo "cp -ra /sbin/* /opt/upt/apps/LXC/$name/rootfs/sbin/"
+	cp -ra /sbin/* /opt/upt/apps/LXC/$name/rootfs/sbin/
+	echo "cp -ra /usr/bin/* /opt/upt/apps/LXC/$name/rootfs/usr/bin/"
+	cp -ra /usr/bin/* /opt/upt/apps/LXC/$name/rootfs/usr/bin/
+	echo "cp -ra /usr/sbin/* /opt/upt/apps/LXC/$name/rootfs/usr/sbin/"
+	cp -ra /usr/sbin/* /opt/upt/apps/LXC/$name/rootfs/usr/sbin/
+	echo "cp -ra /opt/upt/apps/$name/* /opt/upt/apps/LXC/$name/rootfs/"
+	cp -ra /opt/upt/apps/$name/* /opt/upt/apps/LXC/$name/rootfs/
+	#echo "mount -t devtmpfs devtmpfs $rootfs/dev"
+	#mount -t devtmpfs devtmpfs $rootfs/dev
+	#echo "mkdir -p $rootfs/dev/pts"
+	#mkdir -p $rootfs/dev/pts
+	#echo "mount -t devpts devpts $rootfs/dev/pts"
+	#mount -t devpts devpts $rootfs/dev/pts
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+	echo "::respawn:/bin/ash --login" > $rootfs/etc/inittab
+	cd $rootfs/dev
+	#rm -rf $rootfs/dev/console
+	#rm -rf $rootfs/dev/null
+	mknod $rootfs/dev/console c 4 64
+	mknod $rootfs/dev/null c 1 3
+    return 0
+}
+
+
+copy_configuration()
+{
+    path=$1
+    rootfs=$2
+    name=$3
+    echo "run templates => copy_configuration"
+    echo "path = $path"
+	echo "rootfs = $rootfs"
+	echo "name = $name"
+    grep -q "^lxc.rootfs.mount" $path/config 2>/dev/null || echo "lxc.rootfs.mount = $rootfs" >> $path/config
+	grep -q "^lxc.rootfs.path" $path/config 2>/dev/null || echo "lxc.rootfs.path = $rootfs" >> $path/config
+cat <<EOF >> $path/config
+lxc.uts.name = $name
+lxc.autodev = 0
+lxc.mount.auto = proc:rw sys:rw cgroup-full:rw
+lxc.net.0.type = none
+#lxc.mount.entry = /lib lib none bind 0 0
+#lxc.mount.entry = /bin bin none bind 0 0
+#lxc.mount.entry = /usr/lib usr/lib none bind 0 0
+#lxc.mount.entry = /sbin sbin none bind 0 0
+#lxc.mount.entry = /opt/upt/apps/$3 data none ro,bind 0 0
+#lxc.mount.entry = /var/tmp tmp none bind 0 0
+lxc.mount.entry = /var var none bind 0 0
+lxc.mount.entry = /sys sys none bind 0 0
+#lxc.mount.entry = /var/tmp/dev dev none bind,create=dir 0 0
+lxc.mount.entry = /dev/pts dev/pts none bind,create=dir 0 0
+EOF
+
+}
+
+remap_userns()
+{
+    path=$1
+
+    if [ -n "$LXC_MAPPED_UID" ] && [ "$LXC_MAPPED_UID" != "-1" ]; then
+        chown $LXC_MAPPED_UID $path/config 2>&1
+        chown -R root $path/rootfs 2>&1
+    fi
+
+    if [ -n "$LXC_MAPPED_GID" ] && [ "$LXC_MAPPED_GID" != "-1" ]; then
+        chgrp $LXC_MAPPED_GID $path/config 2>&1
+        chgrp -R root $path/rootfs 2>&1
+    fi
+}
+
+usage()
+{
+    cat <<EOF
+$1 -h|--help -p|--path=<path>
+EOF
+    return 0
+}
+
+options=$(getopt -o hp:n:u: -l help,rootfs:,path:,name:,mapped-uid:,mapped-gid: -- "$@")
+if [ $? -ne 0 ]; then
+        usage $(basename $0)
+    exit 1
+fi
+eval set -- "$options"
+
+while true
+do
+    case "$1" in
+        -h|--help)      usage $0 && exit 0;;
+        -p|--path)      path=$2; shift 2;;
+        --rootfs)       rootfs=$2; shift 2;;
+        -n|--name)      name=$2; shift 2;;
+        --mapped-uid)   LXC_MAPPED_UID=$2; shift 2;;
+        --mapped-gid)   LXC_MAPPED_GID=$2; shift 2;;
+        --)             shift 1; break ;;
+        *)              break ;;
+    esac
+done
+
+if [ "$(id -u)" != "0" ]; then
+    echo "This script should be run as 'root'"
+    exit 1
+fi
+
+if [ -z "$path" ]; then
+    echo "'path' parameter is required"
+    exit 1
+fi
+echo path=$path > /proc/tc3162/dbg_msg
+echo rootfs=$rootfs > /proc/tc3162/dbg_msg
+echo name=$name > /proc/tc3162/dbg_msg
+# detect rootfs
+config="$path/config"
+if [ -z "$rootfs" ]; then
+    if grep -q '^lxc.rootfs' $config 2>/dev/null ; then
+        rootfs=$(awk -F= '/^lxc.rootfs =/{ print $2 }' $config)
+    else
+        rootfs=$path/rootfs
+    fi
+fi
+
+install_app $rootfs $url $name
+if [ $? -ne 0 ]; then
+    echo "failed to install app's rootfs"
+    exit 1
+fi
+
+
+copy_configuration $path $rootfs $name
+if [ $? -ne 0 ]; then
+    echo "failed to write configuration file"
+    exit 1
+fi
+
+remap_userns $path
+if [ $? -ne 0 ]; then
+    echo "failed to remap files to user"
+    exit 1
+fi

@@ -1,0 +1,12 @@
+config INCLUDE_MYTM_OPTIONS
+	bool "MYTM all options (B&C)"
+	depends on INCLUDE_MYTM
+
+	######## SELECT Type B ##########
+	select INCLUDE_DUALLAN
+	select INCLUDE_WAN_VLAN_TAGGING
+	select INCLUDE_SSH_ACCESS
+
+	######## SELECT Type C ##########
+
+########## Define Type C ############

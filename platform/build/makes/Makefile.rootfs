@@ -1,0 +1,952 @@
+####################################################
+#
+# Build filesystem, prepare basic fs first
+#
+####################################################
+DM_VERSION = "$(shell cat $(DM_TG_PATH)/reduced_data_model.xml | grep -w X_TP_DMVersion | sed 's/.*d=\(0x[0-9a-fA-F]\{1,\}\).*/\1/')"
+CONFIG_VERSION = "$(shell cat $(DM_TG_PATH)/default_config.xml | grep -w X_TP_ConfigVersion | sed 's/.*val=\(0x[0-9a-fA-F]\{1,\}\).*/\1/')"
+
+ifeq ($(INCLUDE_IMDA), y)
+default_config = default_config.xml
+reduced_data_model = reduced_data_model.xml
+else
+default_config = default_config.xml
+reduced_data_model = reduced_data_model.xml
+endif
+
+FS_BUILD =
+FS_BUILD += fs_clean
+FS_BUILD += fs_create
+FS_BUILD += fs_lib
+FS_BUILD += fs_bin
+FS_BUILD += fs_modules
+FS_BUILD += fs_sysfiles
+FS_BUILD += fs_check
+FS_BUILD += fs_dev
+FS_BUILD += fs_strip
+FS_BUILD += fs_strip_post
+FS_BUILD += fs_rootfs
+FS_BUILD += fs_ver
+
+FS_CLEAN = fs_clean
+ifeq ($(INCLUDE_ECONET), y)
+ifeq ($(strip $(SDK_DIR)),en7516)
+else
+ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7915D_MAP_demo)
+EXLIB_PATH = $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/lib
+else ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7916D_7623_MAP_demo)
+EXLIB_PATH = $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/lib
+else ifeq ($(strip $(SDK_CONFIG)), UNION_EN7580_SFU_KERNEL_4_4_demo)
+EXLIB_PATH = $(TOOLROOTPATH)/mips-buildroot-linux-uclibc/lib
+else
+ifeq ($(strip $(TOOLROOTPATH)),)
+TOOLROOTPATH :=/opt/trendchip/mips-linux-uclibc-4.6.3-kernel3.18/usr/
+endif
+ifeq ($(strip $(EXLIB_PATH)),)
+EXLIB_PATH = $(TOOLROOTPATH)/mips-buildroot-linux-uclibc/lib
+endif
+endif
+endif
+endif
+.PHONY: $(FS_BUILD) $(FS_CLEAN) fake_env
+
+fake_env:
+	mkdir -p $(TOOLS_PATH)/fakeroot/.fake_env && cd $(TOOLS_PATH)/fakeroot/.fake_env && echo > $(MODEL).fake
+
+####################################################
+# FS build
+####################################################
+
+fs_build: fs_clean $(FS_BUILD)
+
+fs_check:
+	if [ ! $(DM_VERSION) = $(CONFIG_VERSION) ]; \
+	then \
+		echo "WARNING: X_TP_ConfigVersion in $(default_config) not the same with X_TP_DMVersion"; \
+		exit 1; \
+	fi
+
+fs_clean:
+	rm -rf $(FS_TG_PATH)
+
+fs_create: fake_env
+	cp -pRfT $(TARGETS_PATH)/fs.dir $(FS_TG_PATH)
+	find  $(FS_TG_PATH) -name ".svn" | xargs rm -rf
+	find  $(FS_TG_PATH) -name ".gitignore" | xargs rm -rf
+	
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/
+	mkdir -p $(FS_TG_PATH)/bin/
+
+	cp $(MODEL_PATH)/inittab $(FS_TG_PATH)/etc
+	cp $(MODEL_PATH)/rcS $(FS_TG_PATH)/etc/init.d/
+	cp $(MODEL_PATH)/rcS.model $(FS_TG_PATH)/etc/init.d/
+
+	test -e $(MODEL_PATH)/banner && cp $(MODEL_PATH)/banner $(FS_TG_PATH)/etc/ || echo ""
+	test -e $(MODEL_PATH)/profile && cp $(MODEL_PATH)/profile $(FS_TG_PATH)/etc/ || echo ""
+	
+	echo "dropbear:x:500:500:dropbear:/var/tmp/dropbear:/bin/sh" > $(FS_TG_PATH)/etc/passwd.bak
+	echo "nobody:*:0:0:nobody:/:/bin/sh" >> $(FS_TG_PATH)/etc/passwd.bak
+ifeq ($(INCLUDE_USB_SAMBA_SERVER), y)
+	echo "guest:*:0:0:guest:/var/usbdisk/:/bin/sh" >> $(FS_TG_PATH)/etc/passwd.bak
+endif
+ifneq ($(INCLUDE_SERIAL_SYNC_CMM_ADMIN_ACCOUNT), y)
+	echo "admin:I55OiXWnKr89Y:0:0:root:/:/bin/sh" >> $(FS_TG_PATH)/etc/passwd.bak
+endif
+
+ifeq ($(INCLUDE_MTK), y)
+	cp $(MODEL_PATH)/smp.sh $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/init_console.sh $(FS_TG_PATH)/etc/init.d/
+endif
+ifeq ($(INCLUDE_CORE_BINDING), y)
+	cp $(MODEL_PATH)/coreBinding.sh $(FS_TG_PATH)/etc/init.d/
+endif
+	
+	cp $(MODEL_PATH)/config.bba $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/config.sdk $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/rcS.$(SUPPLIER) $(FS_TG_PATH)/etc/init.d/
+ifeq ($(INCLUDE_ECONET), y)
+ifeq ($(strip $(SDK_CONFIG)), UNION_EN7561D_LE_7915D_demo)
+	cp -rpf $(MODEL_PATH)/wlan_config/* $(FS_TG_PATH)/etc/
+else ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7916D_7623_MAP_demo)
+	find $(MODEL_PATH)/wlan_config/ -maxdepth 1 -type f | xargs -i cp -p {} $(FS_TG_PATH)/etc/
+	test -e $(MODEL_PATH)/wlan_config/firmware && cp -fr $(MODEL_PATH)/wlan_config/firmware $(FS_TG_PATH)/lib || echo ""
+else
+	cp -p $(MODEL_PATH)/wlan_config/* $(FS_TG_PATH)/etc/
+endif
+endif
+
+ifeq ($(strip $(MODEL)), EX221-G5V1)
+	cp $(MODEL_PATH)/wlan_config/MT7915_iPAiLNA_EEPROM.bin $(FS_TG_PATH)/etc/MT7915_iPAiLNA_EEPROM.bin
+	cp $(MODEL_PATH)/wlan_config/l1profile_MT7915.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_5g.dat
+	cp -fr $(MODEL_PATH)/wlan_config/firmware $(FS_TG_PATH)/lib
+endif
+
+ifeq ($(strip $(MODEL)), HX220)
+	cp $(MODEL_PATH)/wlan_config/MT7915_iPAiLNA_EEPROM.bin $(FS_TG_PATH)/etc/MT7915_iPAiLNA_EEPROM.bin
+	cp $(MODEL_PATH)/wlan_config/l1profile_MT7915.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-FCC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-FCC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-IC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-IC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-IC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-IC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-RCM_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-RCM_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-RCM_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-RCM_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-FCC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-FCC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-IC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-IC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-IC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-IC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-RCM_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-RCM_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-RCM_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-RCM_5g.dat
+	cp -fr $(MODEL_PATH)/wlan_config/firmware $(FS_TG_PATH)/lib
+endif
+	
+ifeq ($(strip $(MODEL)), EX230)
+	cp $(MODEL_PATH)/wlan_config/MT7915_iPAiLNA_EEPROM.bin $(FS_TG_PATH)/etc/MT7915_iPAiLNA_EEPROM.bin
+	cp $(MODEL_PATH)/wlan_config/l1profile_MT7915.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-FCC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-FCC_2g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-CE_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-FCC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf-FCC_5g.dat $(FS_TG_PATH)/etc/mt7915-sku-bf-FCC_5g.dat
+	cp -rf $(MODEL_PATH)/wlan_config/firmware $(FS_TG_PATH)/lib
+endif
+	
+ifeq ($(strip $(MODEL)), HC220-G5V1)
+	cp $(MODEL_PATH)/wlan_config/l1profile.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/MT7613B_iPAiLNA.bin $(FS_TG_PATH)/etc/MT7613B_iPAiLNA.bin
+	cp $(MODEL_PATH)/wlan_config/MT7603E_iPAiLNA.bin $(FS_TG_PATH)/etc/MT7603E_iPAiLNA.bin
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku.dat $(FS_TG_PATH)/etc/mt7603-sku-TARGET.dat
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku-CE.dat $(FS_TG_PATH)/etc/mt7603-sku-CE.dat
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku-FCC.dat $(FS_TG_PATH)/etc/mt7603-sku-FCC.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku.dat $(FS_TG_PATH)/etc/mt7663-sku-TARGET.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku-CE.dat $(FS_TG_PATH)/etc/mt7663-sku-CE.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku-FCC.dat $(FS_TG_PATH)/etc/mt7663-sku-FCC.dat
+endif
+
+ifeq ($(strip $(MODEL)), EC223-G5V1)
+	cp $(MODEL_PATH)/wlan_config/l1profile.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/MT7613B_iPAiLNA.bin $(FS_TG_PATH)/etc/MT7613B_iPAiLNA.bin
+	cp $(MODEL_PATH)/wlan_config/MT7603E_iPAiLNA.bin $(FS_TG_PATH)/etc/MT7603E_iPAiLNA.bin
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku.dat $(FS_TG_PATH)/etc/mt7603-sku-TARGET.dat
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku-CE.dat $(FS_TG_PATH)/etc/mt7603-sku-CE.dat
+	cp $(MODEL_PATH)/wlan_config/mt7603-sku-FCC.dat $(FS_TG_PATH)/etc/mt7603-sku-FCC.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku.dat $(FS_TG_PATH)/etc/mt7663-sku-TARGET.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku-CE.dat $(FS_TG_PATH)/etc/mt7663-sku-CE.dat
+	cp $(MODEL_PATH)/wlan_config/mt7663-sku-FCC.dat $(FS_TG_PATH)/etc/mt7663-sku-FCC.dat
+endif
+
+ifeq ($(strip $(MODEL)), NX440-G5vV1)
+	cp $(MODEL_PATH)/smp.sh $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/wlan_config/e2p* $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/wlan_config/l1profile.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku.dat $(FS_TG_PATH)/etc/mt7915-sku.dat
+	cp $(MODEL_PATH)/wlan_config/mt7915-sku-bf.dat $(FS_TG_PATH)/etc/mt7915-sku-bf.dat
+endif
+
+ifeq ($(strip $(MODEL)), EX820V1)
+	cp $(MODEL_PATH)/wlan_config/MT7986_iPAiLNA_EEPROM_AX6000.bin $(FS_TG_PATH)/etc/MT7986_iPAiLNA_EEPROM_AX6000.bin
+	cp $(MODEL_PATH)/wlan_config/l1profile_MT7986.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-CE_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-CE_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-CE_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-CE_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-FCC_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-FCC_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-FCC_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-FCC_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-FCC_2g.dat
+endif
+
+ifeq ($(strip $(MODEL)), HX820V1)
+	cp $(MODEL_PATH)/wlan_config/MT7986_iPAiLNA_EEPROM_AX6000.bin $(FS_TG_PATH)/etc/MT7986_iPAiLNA_EEPROM_AX6000.bin
+	cp $(MODEL_PATH)/wlan_config/l1profile_MT7986.dat $(FS_TG_PATH)/etc/l1profile.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-TARGET_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-TARGET_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-CE_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-CE_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-CE_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-TARGET_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-TARGET_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-CE_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-CE_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-CE_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-FCC_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-FCC_5g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-FCC_5g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-FCC_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-FCC_2g.dat
+	cp $(MODEL_PATH)/wlan_config/mt7986-sku-bf-FCC_2g.dat $(FS_TG_PATH)/etc/mt7986-sku-bf-FCC_2g.dat
+endif
+
+ifeq ($(strip $(MODEL)), EX920V1)
+	cp $(MODEL_PATH)/wlan_config/* $(FS_TG_PATH)/etc/
+endif
+
+ifeq ($(strip $(MODEL)), EX820v)
+	cp $(MODEL_PATH)/wlan_config/* $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/voip_sdk/ve_vtsp_main $(FS_TG_PATH)/usr/sbin/
+endif
+
+ifeq ($(strip $(MODEL)), EX821v)
+	cp $(MODEL_PATH)/wlan_config/* $(FS_TG_PATH)/etc/
+	cp $(MODEL_PATH)/voip_sdk/ve_vtsp_main $(FS_TG_PATH)/usr/sbin/
+endif
+
+ifeq ($(INCLUDE_WIFI_RTL), y)
+ifeq ($(INCLUDE_WIRELESS_UCI), y)
+	cp -rf $(MODEL_PATH)/exfiles/etc/* $(FS_TG_PATH)/etc/
+	ln -s /tmp/config_uci $(FS_TG_PATH)/etc/config
+endif
+endif
+
+ifeq ($(INCLUDE_EASYMESH), y)
+	cp -pR $(MODEL_PATH)/mapBhOpt.conf $(FS_TG_PATH)/etc/mapBhOpt.conf
+endif
+
+	rm -f $(FS_TG_PATH)/tmp
+	cd $(FS_TG_PATH) && ln -sfn /var/tmp tmp
+
+ifneq ($(INCLUDE_CWMP_SSL_VERIFY_PEER), y)
+	@rm -fr $(FS_TG_PATH)/etc/cert
+endif
+ifneq ($(INCLUDE_VOIP), y)
+	@rm -fr $(FS_TG_PATH)/etc/voiceNotify
+endif	
+
+	cp $(BUILD_PATH)/platform_ver $(FS_TG_PATH)/etc/	
+
+fs_lib:
+ifeq ($(INCLUDE_ECONET), y)
+ifeq ($(findstring $(SDK_DIR), en7580 en7529),$(SDK_DIR))
+	cp -P $(SLIB_PATH)/*.so* $(FS_TG_PATH)/lib/
+else
+	cp -P $(SLIB_PATH)/lib/*.so* $(FS_TG_PATH)/lib/
+endif
+endif
+
+ifeq ($(INCLUDE_REALTEK), y)
+	cp -P $(SLIB_PATH)/lib/*.so* $(FS_TG_PATH)/lib/
+endif
+
+ifeq ($(INCLUDE_BROADCOM), y)
+	cp -L $(SLIB_PATH)/lib/ld-linux*.so* $(FS_TG_PATH)/lib/
+	cp -P $(SLIB_PATH)/lib/lib*.so* $(FS_TG_PATH)/lib/
+endif
+ifeq ($(INCLUDE_QUALCOMM), y)
+	cp -L $(SLIB_PATH)/ld-*.so* $(FS_TG_PATH)/lib/
+	cp -P $(SLIB_PATH)/lib*.so* $(FS_TG_PATH)/lib/
+endif
+ifeq ($(INCLUDE_MTK), y)
+	cp -L $(SLIB_PATH)/lib/ld-*.so* $(FS_TG_PATH)/lib/
+	cp -P $(SLIB_PATH)/lib/lib*.so* $(FS_TG_PATH)/lib/
+endif
+
+ifeq ($(INCLUDE_QUECTEL), y)
+	cp -L $(SLIB_PATH)/ld-*.so* $(FS_TG_PATH)/lib/
+	cp -P $(SLIB_PATH)/lib*.so* $(FS_TG_PATH)/lib/
+endif
+
+ifneq ($(KSLIB_PATH),)
+	mkdir -p $(FS_TG_PATH)/lib64
+	cp -L $(KSLIB_PATH)/lib64/ld-linux*.so* $(FS_TG_PATH)/lib/
+	cp -P $(KSLIB_PATH)/lib64/lib*.so* $(FS_TG_PATH)/lib64/
+endif
+
+ifeq ($(INCLUDE_SPEEDTEST),y)
+ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7915D_MAP_demo)
+	test -e $(EXLIB_PATH) && cp -a $(EXLIB_PATH)/libstdc++.so.6.0.20 $(FS_TG_PATH)/lib/ && cp -a $(EXLIB_PATH)/libstdc++.so.6 $(FS_TG_PATH)/lib/
+else ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7916D_7623_MAP_demo)
+	test -e $(EXLIB_PATH) && cp -a $(EXLIB_PATH)/libstdc++.so.6.0.20 $(FS_TG_PATH)/lib/ && cp -a $(EXLIB_PATH)/libstdc++.so.6 $(FS_TG_PATH)/lib/
+else ifeq ($(INCLUDE_BROADCOM),y)
+	test -e $(TOOLROOTPATH) && cp -a $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/lib/libstdc++.so.6.0.27 $(FS_TG_PATH)/lib/ && cp -a $(TOOLROOTPATH)/arm-buildroot-linux-gnueabi/lib/libstdc++.so.6 $(FS_TG_PATH)/lib/
+else
+	test -e $(EXLIB_PATH) && cp -a $(EXLIB_PATH)/libstdc++.so.6.0.16 $(FS_TG_PATH)/lib/ && cp -a $(EXLIB_PATH)/libstdc++.so.6 $(FS_TG_PATH)/lib/
+endif
+endif
+ifeq ($(INCLUDE_QUALCOMM), y)
+	cd $(FS_TG_PATH) && ln -sfn lib lib64
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/net/ipv4
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/net/ipv4 && ln -sfn ../../../../../modules netfilter
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/net/ && ln -sfn ../../../../modules netfilter
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net && ln -sfn ../../../../../modules usb
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb && ln -sfn ../../../../../modules serial
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb && ln -sfn ../../../../../modules class
+endif
+
+ifeq ($(INCLUDE_QUECTEL), y)
+	cd $(FS_TG_PATH) && ln -sfn lib lib64
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/net/ipv4
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/net && ln -sfn ../../../../../modules usb
+	mkdir -p $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb && ln -sfn ../../../../../modules serial
+	cd $(FS_TG_PATH)/lib/modules/kmdir/kernel/drivers/usb && ln -sfn ../../../../../modules class
+endif
+
+ifeq ($(INCLUDE_IPV6), y)
+	#used by dibber for Charter, waste lots of flash space
+	mkdir -p $(FS_TG_PATH)/usr/lib
+ifeq ($(INCLUDE_ECONET), y)
+ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7915D_MAP_demo)
+	cp -a $(EXLIB_PATH)/libstdc++.so.6.0.20 $(FS_TG_PATH)/lib/ && cp -a $(EXLIB_PATH)/libstdc++.so.6 $(FS_TG_PATH)/lib/
+else ifeq ($(strip $(SDK_CONFIG)), UNION_EN7523_GLIBC_7916D_7623_MAP_demo)
+	cp -a $(EXLIB_PATH)/libstdc++.so.6.0.20 $(FS_TG_PATH)/lib/ && cp -a $(EXLIB_PATH)/libstdc++.so.6 $(FS_TG_PATH)/lib/
+else
+ifneq ($(strip $(SDK_CONFIG)), UNION_EN7580_SFU_KERNEL_4_4_demo)
+	cp -P $(SLIB_PATH)/usr/lib/libstdc++.so* $(FS_TG_PATH)/usr/lib/
+endif
+endif
+else ifeq ($(INCLUDE_MTK), y)
+	cp -P $(SLIB_PATH)/lib/libstdc++.so* $(FS_TG_PATH)/usr/lib/
+else ifeq ($(INCLUDE_BROADCOM), y)
+	cp -P $(SLIB_PATH)/usr/lib/libstdc++.so* $(FS_TG_PATH)/usr/lib/
+else ifeq ($(INCLUDE_REALTEK), y)
+	cp -P $(SLIB_PATH)/lib/libstdc++.so* $(FS_TG_PATH)/usr/lib/
+else
+	cp -P $(SLIB_PATH)/libstdc++.so* $(FS_TG_PATH)/usr/lib/
+endif
+ifneq ($(KSLIB_PATH),)
+	mkdir -p $(FS_TG_PATH)/usr/lib64
+	cp -P $(KSLIB_PATH)/usr/lib64/libstdc++.so* $(FS_TG_PATH)/usr/lib64/
+endif
+endif
+
+ifeq ($(INCLUDE_LTE_WIFI_COEX), y)
+	cp $(MODEL_PATH)/LteCoexTx.conf $(FS_TG_PATH)/lib/
+	cp $(MODEL_PATH)/LteCoexRx.conf $(FS_TG_PATH)/lib/
+endif
+
+ifeq ($(INCLUDE_ECONET), y)
+fs_bin: supplier_apps_install supplier_fs_bin public_apps_install
+else
+fs_bin: supplier_fs_bin public_apps_install supplier_apps_install
+endif
+	if [ -d $(FS_TG_PATH)/lib/private ]; then \
+		cp -pfR $(FS_TG_PATH)/lib/private/* $(FS_TG_PATH)/lib; \
+		rm -Rf $(FS_TG_PATH)/lib/private; \
+	fi
+	if [ -d $(FS_TG_PATH)/lib/public ]; then \
+		cp -pfR $(FS_TG_PATH)/lib/public/* $(FS_TG_PATH)/lib; \
+		rm -Rf $(FS_TG_PATH)/lib/public; \
+	fi
+
+fs_modules: public_modules_install
+	
+fs_sysfiles: 
+	-cp -pR $(MODEL_PATH)/filesystem/* $(FS_TG_PATH)/
+	-chmod +x $(FS_TG_PATH)/usr/bin/*
+
+	cp -pR $(MODEL_PATH)/$(default_config) $(FS_TG_PATH)/etc/default_config.xml
+ifeq ($(INCLUDE_REGION_EU), y)
+	sed 's/US\([ \"]\)/DE\1/g' $(MODEL_PATH)/$(default_config) > $(FS_TG_PATH)/etc/default_config.xml
+endif
+ifeq ($(INCLUDE_REGION_AU), y)
+	sed 's/US\([ \"]\)/AU\1/g' $(MODEL_PATH)/$(default_config) > $(FS_TG_PATH)/etc/default_config.xml
+endif
+	cp -pR $(FS_TG_PATH)/etc/default_config.xml $(DM_TG_PATH)
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/default_config.xml
+
+ifeq ($(INCLUDE_TTNET), y)
+	$(TOOLS_PATH)/enc -e -i $(DM_TG_PATH)/default_config.xml -o $(DM_TG_PATH)/default_config_enc.xml
+	cp -pR $(DM_TG_PATH)/default_config.xml $(DM_TG_PATH)/default_config_dev.xml
+	sed -i 's#http://acs-tr069.ttnet.com.tr/cwmpWeb/WGCPEMgt#http://acsdev-tr069.ttnet.com.tr/cwmpWeb/WGCPEMgt#' $(DM_TG_PATH)/default_config_dev.xml
+	#sed -i '/<CWMPSettings/{n;n;n;s#<Lock t=b r=W d=1 />#<Lock t=b r=W d=0 />#;}' $(DM_TG_PATH)/default_config_dev.xml
+	#sed -i '/<WANPacketsCapture/{n;n;n;s#<Lock t=b r=W d=1 />#<Lock t=b r=W d=0 />#;}' $(DM_TG_PATH)/default_config_dev.xml
+	#sed -i '/<PortMirrorSettings/{n;n;n;s#<Lock t=b r=W d=1 />#<Lock t=b r=W d=0 />#;}' $(DM_TG_PATH)/default_config_dev.xml
+	$(TOOLS_PATH)/enc -e -i $(DM_TG_PATH)/default_config_dev.xml -o $(DM_TG_PATH)/default_config_dev_enc.xml
+endif # INCLUDE_TTNET
+
+	if [ -f $(MODEL_PATH)/file/reduced_data_model.xml ]; \
+	then \
+		$(TOOLS_PATH)/mkcfg -m $(MODEL_PATH)/file/reduced_data_model.xml -s $(MODEL_PATH)/$(reduced_data_model) -o $(FS_TG_PATH)/etc/reduced_data_model.xml; \
+	else \
+		$(TOOLS_PATH)/mkcfg -m $(DEF_DM_PATH)/file/reduced_data_model.xml -s $(MODEL_PATH)/$(reduced_data_model) -o $(FS_TG_PATH)/etc/reduced_data_model.xml; \
+	fi
+
+ifeq ($(INCLUDE_BETA_SIGNAL), y)
+	echo '<?xml version="1.0" encoding="UTF-8"?><Device><DeviceInfo><X_TP_IsBeta d=1 /></DeviceInfo></Device>' > .temp.xml
+	echo '<?xml version="1.0" encoding="UTF-8"?><Device><DeviceInfo><X_TP_BetaCode d=b /></DeviceInfo></Device>' > .temp.xml
+	$(TOOLS_PATH)/mkcfg -m $(FS_TG_PATH)/etc/reduced_data_model.xml -s ./.temp.xml -o $(FS_TG_PATH)/etc/.temp.xml
+	cp -f $(FS_TG_PATH)/etc/.temp.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	rm -f ./.temp.xml $(FS_TG_PATH)/etc/.temp.xml
+endif
+	
+ifneq ($(SPEC), )
+	sed -i 's/\(X_TP_BuildSpec.*d=\)[^ ]*/\1$(SPEC)/' $(FS_TG_PATH)/etc/reduced_data_model.xml
+endif
+	cp -pR $(FS_TG_PATH)/etc/reduced_data_model.xml $(DM_TG_PATH)
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model.xml
+ifeq ($(INCLUDE_TTNET), y)
+	# official
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_official.xml
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official.xml
+	# official uptest
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_official_uptest.xml
+	# dev
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_dev.xml
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_dev.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev.xml
+	# dev uptest
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml
+endif # INCLUDE_TTNET
+
+ifneq ($(BETA), n)
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_beta.xml
+ifeq ($(INCLUDE_TTNET), y)
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+endif # INCLUDE_TTNET
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_trans.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_datecode.xml
+ifeq ($(INCLUDE_TTNET), y)
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	cp -pR $(DM_TG_PATH)/reduced_data_model.xml $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+endif # INCLUDE_TTNET
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta.xml
+ifeq ($(INCLUDE_TTNET), y)
+	# official
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official.xml
+	# official uptest
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml
+	# dev
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_dev.xml
+	# dev uptest
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml
+endif # INCLUDE_TTNET
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_trans.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_trans.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_trans.xml
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode.xml
+ifeq ($(INCLUDE_TTNET), y)
+	# official
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official.xml
+
+	# official uptest
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml
+
+	# dev
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml
+	# dev uptest
+	sed -i 's/\(X_TP_IsBeta.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+	sed -i 's/\(X_TP_IsTrans.*d=\)./\10/' $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+	sed -i 's/\(X_TP_IsDateCode.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+	sed -i 's/\(X_TTNET_IsDev.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+	sed -i 's/\(X_TTNET_UsePostfix.*d=\)./\11/' $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml
+endif # INCLUDE_TTNET
+endif
+
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	
+	if [ -f $(MODEL_PATH)/flash_config.xml ]; \
+	then \
+		cp -pR $(MODEL_PATH)/flash_config.xml $(DM_TG_PATH)/flash_config.xml; \
+	else \
+		cp -pR $(MODEL_PATH)/$(default_config) $(DM_TG_PATH)/flash_config.xml; \
+	fi
+
+.PHONY: tp_fs_dev supplier_fs_dev
+ifeq ($(INCLUDE_QUALCOMM)$(INCLUDE_MTK), y)
+fs_dev:  supplier_fs_dev
+else
+fs_dev: tp_fs_dev supplier_fs_dev
+endif
+
+tp_fs_dev: fakeroot
+	rm -rf $(FS_TG_PATH)/dev/*
+	# For telnet
+	mkdir -p $(FS_TG_PATH)/dev/pts
+ifeq ($(INCLUDE_ECONET), y)
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot -i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake -s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake $(TOOLS_PATH)/buildDevs_econet $(FS_TG_PATH)
+endif
+ifeq ($(INCLUDE_QUALCOMM), y)
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot -i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake -s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake $(TOOLS_PATH)/buildDevs_qca $(FS_TG_PATH)
+endif
+ifeq ($(INCLUDE_BROADCOM), y)
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot -i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake -s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake $(TOOLS_PATH)/buildDevs $(FS_TG_PATH)
+endif
+
+ifeq ($(INCLUDE_ECONET), y)
+fs_strip:
+	dirs="$(FS_TG_PATH)/bin $(FS_TG_PATH)/sbin $(FS_TG_PATH)/usr/bin $(FS_TG_PATH)/usr/sbin $(FS_TG_PATH)/lib"; \
+	for x in $$dirs; do \
+		files=`find $$x -name "*" -type f`; \
+		if [ "$$files" != "" ]; then \
+			for y in $$files; do \
+				if [ "`file -b $$y|awk '{print $$1$$2}'`" == "ELF32-bit" -o "`file -b $$y|awk '{print $$3}'`" == "archive" ]; then \
+					chmod +w $$y; \
+					if [ -n "$(strip $(INCLUDE_KEEP_LIB_SYMBOL))" -a "`file -b $$y|awk '{print $$4$$5}'`" == "sharedobject," ]; then \
+						echo Skip stiping lib $$y; \
+					else \
+						$(STRIP) --strip-unneeded $$y; \
+						echo Striping elf32 $$y; \
+					fi; \
+				fi; \
+			done; \
+		fi; \
+	done
+else
+fs_strip:
+	$(MAKE) fs_strip_elf32
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) fs_strip_elf64
+	
+fs_strip_elf32:
+	dirs="$(FS_TG_PATH)/bin $(FS_TG_PATH)/sbin $(FS_TG_PATH)/usr/bin $(FS_TG_PATH)/usr/sbin $(FS_TG_PATH)/lib"; \
+	for x in $$dirs; do \
+		files=`find $$x -name "*" -type f`; \
+		if [ "$$files" != "" ]; then \
+			for y in $$files; do \
+				if [ "`file -b $$y|awk '{print $$1$$2}'`" == "ELF32-bit" -o "`file -b $$y|awk '{print $$3}'`" == "archive" ]; then \
+					chmod +w $$y; \
+					if [ -n "$(strip $(INCLUDE_KEEP_LIB_SYMBOL))" -a "`file -b $$y|awk '{print $$4$$5}'`" == "sharedobject," ]; then \
+						echo Skip stiping lib $$y; \
+					else \
+						$(STRIP) --strip-unneeded $$y; \
+						echo Striping elf32 $$y; \
+					fi; \
+				fi; \
+			done; \
+		fi; \
+	done
+
+fs_strip_elf64:
+	dirs="$(FS_TG_PATH)/bin $(FS_TG_PATH)/sbin $(FS_TG_PATH)/usr/bin $(FS_TG_PATH)/usr/sbin $(FS_TG_PATH)/lib"; \
+	for x in $$dirs; do \
+		files=`find $$x -name "*" -type f`; \
+		if [ "$$files" != "" ]; then \
+			for y in $$files; do \
+				if [ "`file -b $$y|awk '{print $$1$$2}'`" == "ELF64-bit" -o "`file -b $$y|awk '{print $$3}'`" == "archive" ]; then \
+					chmod +w $$y; \
+					if [ -n "$(strip $(INCLUDE_KEEP_LIB_SYMBOL))" -a "`file -b $$y|awk '{print $$4$$5}'`" == "sharedobject" ]; then \
+						echo Skip stiping lib $$y; \
+					else \
+						$(STRIP) --strip-unneeded $$y; \
+						echo Striping elf64 $$y; \
+					fi; \
+				fi; \
+			done; \
+		fi; \
+	done
+endif	
+
+fs_strip_post:
+ifneq ($(strip $(INCLUDE_CMM_STRIP_DEBUG))$(strip $(INCLUDE_CMM_STRIP_NONE)),)
+	$(MAKE) cmm_install
+endif
+
+ifeq ($(INCLUDE_MTD_TYPE_RAW1)$(INCLUDE_MTD_TYPE_RAW2), y)
+ROOTFS_TYPE = fs_rootfs_squash
+ifneq ($(INCLUDE_SPEC_SQUASH_BLOCK_SIZE),)
+SQUASH_BLOCK_SIZE = $(INCLUDE_SQUASH_BLOCK_SIZE)
+else
+SQUASH_BLOCK_SIZE = $(MTD_BLOCK_SIZE)
+endif
+endif
+
+ifeq ($(INCLUDE_MTD_TYPE_FS), y)
+ROOTFS_TYPE = fs_rootfs_jffs
+endif
+
+# Overwrite
+ifeq ($(INCLUDE_BROADCOM), y)
+include $(MODEL_PATH)/fs_build
+ROOTFS_TYPE = fs_bcm_rootfs
+endif
+
+ifeq ($(INCLUDE_MTK), y)
+include $(MODEL_PATH)/fs_build
+ROOTFS_TYPE = fs_mtk_rootfs
+endif
+
+ifeq ($(INCLUDE_SPEC_EX230), y)
+include $(MODEL_PATH)/fs_build
+ROOTFS_TYPE = fs_rootfs_squash_128k
+endif
+
+ifeq ($(INCLUDE_SPEC_VOICE_BOARD),y)
+include $(MODEL_PATH)/fs_build
+ROOTFS_TYPE = fs_rootfs_voiceboard
+endif
+
+.PHONY: $(ROOTFS_TYPE)
+ifeq ($(INCLUDE_QUALCOMM), y)
+fs_rootfs: fs_ipq50xx_rootfs
+else
+ifeq  ($(INCLUDE_QUECTEL), y)
+fs_rootfs: fs_t750_rootfs
+else
+fs_rootfs: $(ROOTFS_TYPE)
+endif
+endif
+
+fs_rootfs_jffs: fakeroot
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mkfs.jffs2 \
+		-r $(FS_TG_PATH) \
+		-o $(IMG_TG_PATH)/rootfs.jffs2 \
+		-p -n \
+		$(INCLUDE_ENDIAN_FLAG_ROOTFS) \
+		-e $(MTD_BLOCK_SIZE) \
+		-x $(INCLUDE_COMPRESS_TYPE)
+
+fs_rootfs_squash: fakeroot
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(SQUASH_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+ifeq ($(INCLUDE_TTNET), y)
+	cp -pR $(DM_TG_PATH)/reduced_data_model_official.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.official \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_official_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.official_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_dev.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.dev \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.dev_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+endif # INCLUDE_TTNET
+
+ifneq ($(BETA), n)
+	cp -pR $(DM_TG_PATH)/reduced_data_model_beta.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.beta \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(SQUASH_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+ifeq ($(INCLUDE_TTNET), y)
+	cp -pR $(DM_TG_PATH)/reduced_data_model_beta_official.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.beta_official \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.beta_official_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_beta_dev.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.beta_dev \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.beta_dev_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+endif # INCLUDE_TTNET
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_trans.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.trans \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(SQUASH_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+endif
+
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.datecode \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+ifeq ($(INCLUDE_TTNET), y)
+	cp -pR $(DM_TG_PATH)/reduced_data_model_datecode_official.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.datecode_official \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.datecode_official_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.datecode_dev \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+
+	cp -pR $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml $(FS_TG_PATH)/etc/reduced_data_model.xml
+	$(TOOLS_PATH)/enc -e -i $(FS_TG_PATH)/etc/reduced_data_model.xml
+	cp -pR $(DM_TG_PATH)/default_config_dev_enc.xml $(FS_TG_PATH)/etc/default_config.xml
+	cd $(TOOLS_PATH) && $(TOOLS_PATH)/fakeroot/fakeroot \
+		-i $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		-s $(TOOLS_PATH)/fakeroot/.fake_env/$(MODEL).fake \
+		$(TOOLS_PATH)/mksquashfs4 \
+		$(FS_TG_PATH) \
+		$(IMG_TG_PATH)/rootfs.datecode_dev_uptest \
+		-nopad \
+		-noappend \
+		-all-root \
+		-b $(shell printf "%d" $(MTD_BLOCK_SIZE)) \
+		-comp $(INCLUDE_COMPRESS_TYPE)
+endif # INCLUDE_TTNET
+
+fs_ver: public_apps_ver public_modules_ver

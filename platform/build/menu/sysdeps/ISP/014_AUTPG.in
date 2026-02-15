@@ -1,0 +1,9 @@
+config INCLUDE_AUTPG_OPTIONS
+	bool "AU TPG all options (B&C)"
+	depends on INCLUDE_AU_TPG
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

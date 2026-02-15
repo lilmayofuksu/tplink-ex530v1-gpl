@@ -1,0 +1,107 @@
+
+menu 'PON Options'
+
+config INCLUDE_PON
+        bool "Build PON"
+        default n
+choice
+	prompt "PON Type"
+	default INCLUDE_PON_MTK
+	depends on INCLUDE_PON
+	
+config INCLUDE_PON_MARVELL
+	bool "Build marvell PON"
+	depends on INCLUDE_PON
+	
+config INCLUDE_PON_BCM
+	bool "Build broadcom PON"
+	depends on INCLUDE_PON
+	
+config INCLUDE_PON_MTK
+	bool "Build MTK PON"
+	depends on INCLUDE_PON
+	
+endchoice
+
+config INCLUDE_PON_EPON
+	bool "Build PON EPON"
+	default n
+	depends on INCLUDE_PON
+
+config INCLUDE_PON_GPON
+	bool "Build PON GPON"
+	default n
+	depends on INCLUDE_PON
+	select INCLUDE_GPON_INFO
+
+config INCLUDE_GPON_XGSPON
+	bool "Build PON GPON XGSPON"
+	default n
+	depends on INCLUDE_PON_GPON
+	
+config INCLUDE_GPON_SFU
+	bool "Build GPON SFU"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_GPON_BOB7572
+	bool "Build PON GPON BOB7572"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_GPON_BOBUX3320S
+	bool "Build PON GPON BOBUX3320S"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_GPON_INFO
+	bool "Build PON GPON Info"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_GPON_CTC
+	bool "Build GPON CTC Authentication"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_GPON_FWDRULE
+	bool "Build GPON Forward Rules"
+	default n
+	depends on INCLUDE_PON_GPON
+				
+config INCLUDE_GPON_IOT
+	bool "Build GPON IOT"
+	default n
+	depends on INCLUDE_PON_GPON
+
+config INCLUDE_KEEP_AUTHINFO
+	bool "keep pon auth info(EPON:MAC) (GPON:SN&PWD)"
+	default n
+	depends on INCLUDE_PON
+	select INCLUDE_IMPORTANT_CONFIG
+		
+config INCLUDE_MULTI_PRIO
+	bool "Build Single-VLAN-multi-qosMark"
+	default n
+	depends on INCLUDE_PON
+
+config INCLUDE_VLAN_SEARCH
+	bool "Build VLAN Search function"
+	default n
+	depends on INCLUDE_PON
+		
+config INCLUDE_SEARCH_PRIO
+	bool "VLAN search function will search pbits of VLAN"
+	default n
+	depends on INCLUDE_VLAN_SEARCH
+	select INCLUDE_MULTI_PRIO
+	help 
+		suggest select with INCLUDE_MULTI_PRIO, because of the WEB logic
+
+config INCLUDE_REAL_NAME_PREFIX_PON
+	string "real interface name prefix of PON"
+	default "veip" if INCLUDE_PON_BCM
+	default "pon" if INCLUDE_PON_ECN
+	depends on INCLUDE_PON
+
+endmenu

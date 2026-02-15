@@ -1,0 +1,37 @@
+config INCLUDE_HKBN_OPTIONS
+	bool "HKBN all options (B&C)"
+	depends on INCLUDE_HKBN
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############
+config INCLUDE_SIP_REG_FORBIDDEN_RANDOM_INTERVAL
+	bool "Enable SIP registration for random interval after SIP 403 FORBIDDEN"
+	default y
+	depends on INCLUDE_HKBN_OPTIONS
+
+config INCLUDE_SIP_REG_FORBIDDEN_INTERVAL_FIXED
+	int "Fixed re-registration minimal time interval, unit is 1 sec"
+	default 900
+	depends on INCLUDE_SIP_REG_FORBIDDEN_RANDOM_INTERVAL
+	
+config INCLUDE_SIP_REG_FORBIDDEN_INTERVAL_RANDOM
+	int "Random re-registration time interval exclude the minimal time interval, unit is 1 sec"
+	default 300
+	depends on INCLUDE_SIP_REG_FORBIDDEN_RANDOM_INTERVAL
+
+config INCLUDE_CANCEL_100REL_SUPPORT
+	depends on INCLUDE_VOIP
+	bool "not support voip 100 rel"
+	default y
+	help
+		not support voip 100 rel
+		
+config INCLUDE_USER_AGENT_IN_ACK
+	depends on INCLUDE_VOIP
+	bool "include User-Agent field in ACK response"
+	default y
+	help
+		include User-Agent field in ACK response

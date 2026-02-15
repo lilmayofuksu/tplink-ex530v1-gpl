@@ -1,0 +1,13 @@
+prefix = /proj/mtk69551/tony/Git/netconf/tclinux_phoenix/apps/opensource/NETCONF_LIB
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir =  ${exec_prefix}/lib
+datarootdir = ${prefix}/share
+datadir = ${datarootdir}
+ncworkingdir = /tmp/work_dir 
+
+Name: libnetconf
+Version: 0.10.0
+Description: NETCONF protocol library for NETCONF applications development.
+Libs: -L${libdir} -lnetconf
+Cflags: -I${includedir}

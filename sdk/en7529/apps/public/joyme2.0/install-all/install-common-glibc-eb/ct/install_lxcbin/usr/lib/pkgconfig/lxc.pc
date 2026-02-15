@@ -1,0 +1,12 @@
+bindir=/proj/mtk19274/W/tclinux_phoenix/apps/public/joyme2.0/install_lxclib/bin
+libdir=/proj/mtk19274/W/tclinux_phoenix/apps/public/joyme2.0/install_lxclib/lib
+localstatedir=/proj/mtk19274/W/tclinux_phoenix/apps/public/joyme2.0/install_lxclib/var
+includedir=/proj/mtk19274/W/tclinux_phoenix/apps/public/joyme2.0/install_lxclib/include
+rootfsmountdir=/proj/mtk19274/W/tclinux_phoenix/apps/public/joyme2.0/install_lxclib/lib/lxc/rootfs
+
+Name: lxc
+Description: linux container tools
+Version: 1.0.8
+URL: http://linuxcontainers.org
+Libs: -L${libdir} -llxc -lutil
+Cflags: -I${includedir}

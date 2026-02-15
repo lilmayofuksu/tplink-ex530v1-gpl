@@ -1,0 +1,123 @@
+TOOLS_BUILD =
+TOOLS_BUILD +=
+TOOLS_BUILD += liblzma
+TOOLS_BUILD += squashfs_tools
+TOOLS_BUILD += mtd_tools
+TOOLS_BUILD += fakeroot
+
+TOOLS_CLEAN = tools_clean fakeroot_clean
+
+XZ_TOOLS=xz-5.2.2
+
+.PHONY: $(TOOLS_BUILD) $(TOOLS_CLEAN)
+
+####################################################
+# Tools
+####################################################
+
+tools_build: $(TOOLS_BUILD) supplier_tools
+	# v3.1 docker image doesnt have libz.so.1 in /usr/lib
+ifeq ($(INCLUDE_PON), y)
+	if [ ! -f /usr/lib/libz.so.1 -a -f /usr/lib32/libz.so.1 ];then \
+		cd /usr/lib/ && ln -sf /usr/lib32/libz.so.1 libz.so.1; \
+	fi
+endif
+
+tools_clean: supplier_tools_clean
+	-cd $(TOOLS_PATH)/$(XZ_TOOLS) && test -e Makefile && $(MAKE) clean && rm -f Makefile
+	cd $(TOOLS_PATH)/squashfs4.2/squashfs-tools && $(MAKE) clean
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1 && $(MAKE) clean
+	cd $(TOOLS_PATH) && rm -f mksquashfs4 unsquashfs4 mkfs.jffs2 sumtool mkfs.ubifs ubinize
+
+liblzma:
+	rm -rf $(TOOLS_PATH)/$(XZ_TOOLS) && tar -xvf $(TOOLS_PATH)/$(XZ_TOOLS).tar.bz2 -C $(TOOLS_PATH)
+	cd $(TOOLS_PATH)/$(XZ_TOOLS) && ./configure CC=gcc LD=ld AR=ar CFLAGS=-O2 RANLIB=ranlib STRIP=strip
+	cd $(TOOLS_PATH)/$(XZ_TOOLS)/src/liblzma && $(MAKE)
+
+	
+squashfs_tools: liblzma
+	cd $(TOOLS_PATH)/squashfs4.2/squashfs-tools \
+		&& $(MAKE) CC=gcc XZ_SUPPORT=1 LZMA_XZ_SUPPORT=1 \
+		XATTR_SUPPORT= \
+		LZMA_LIB=../../$(XZ_TOOLS)/src/liblzma/.libs/liblzma.a \
+		EXTRA_CFLAGS=-I../../$(XZ_TOOLS)/src/liblzma/api/ \
+		mksquashfs unsquashfs
+	cd $(TOOLS_PATH)/squashfs4.2/squashfs-tools && cp -f mksquashfs $(TOOLS_PATH)/mksquashfs4
+	cd $(TOOLS_PATH)/squashfs4.2/squashfs-tools && cp -f unsquashfs $(TOOLS_PATH)/unsquashfs4
+
+mtd_tools: liblzma
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1 && \
+		$(MAKE) \
+		CC=gcc LD=ld WITHOUT_LZO=1 WITHOUT_XATTR=1 \
+		BUILDDIR=$(TOOLS_PATH)/mtd-utils-1.5.1 \
+		CFLAGS=" \
+			-I../$(XZ_TOOLS)/src/liblzma/api/ \
+			-L../$(XZ_TOOLS)/src/liblzma/.libs/" \
+		TARGETS="mkfs.jffs2 sumtool ubi-utils/ubinize mkfs.ubifs/mkfs.ubifs"
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1 && \
+		cp -f mkfs.jffs2 $(TOOLS_PATH)
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1 && \
+		cp -f sumtool $(TOOLS_PATH)
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1/mkfs.ubifs && \
+		cp -f mkfs.ubifs $(TOOLS_PATH)
+	cd $(TOOLS_PATH)/mtd-utils-1.5.1/ubi-utils && \
+		cp -f ubinize $(TOOLS_PATH)
+
+####################################################
+#
+# update / check version of submodules
+#
+####################################################
+.PHONY: sub_check sub_update
+
+sub_check:
+	@$(BUILD_PATH)/submodule.sh check || exit 1
+
+sub_update:
+	@$(BUILD_PATH)/submodule.sh update || exit 1
+
+
+####################################################
+#
+# Prepare SDK and sync needed files by MODEL
+#
+####################################################
+# Sync config.sdk to SDK for any label
+$(shell cp -pf $(MODEL_PATH)/config.sdk $(SDK_CONFIG_FILE))
+
+sdk_init:
+	@if [ ! -e $(SDK_PATH) ]; then \
+		echo "#######################"; \
+		echo "Prepare SDK now..."; \
+		echo "#######################"; \
+		cd $(TOP_PATH) && git clone $(SDK_REPO_URL) sdk; \
+	else \
+		echo "#######################"; \
+		echo "The SDK has been exist!"; \
+		echo "#######################"; \
+	fi
+	# For first time
+	cp -pf $(MODEL_PATH)/config.sdk $(SDK_CONFIG_FILE)
+	cd $(BUILD_PATH) && make MODEL=$(MODEL) SPEC=$(SPEC) BBA_BUILD=LETSGO $(MAKECMDGOALS)
+
+model_init:
+	mkdir -p $(BOOT_TG_PATH)
+	mkdir -p $(KERNEL_TG_PATH)
+	mkdir -p $(DM_TG_PATH)
+	mkdir -p $(IMG_TG_PATH)
+	mkdir -p $(TEST_TG_PATH)
+
+$(TOOLS_PATH)/fakeroot/.configured:
+	(tar -jkxf fakeroot.tar.bz2 2> /dev/null || true)
+	cd $(TOOLS_PATH)/fakeroot; CFLAGS="-O2 -DGNU -I./" CC=gcc LD=ld RANLIB=ranlib AR=ar ./configure --prefix=/usr --disable-nls
+	touch $@
+	make -C $(TOOLS_PATH)/fakeroot
+
+fakeroot: $(TOOLS_PATH)/fakeroot/.configured
+	@sed -e 's,^PREFIX=.*,PREFIX=$(TOOLS_PATH)/fakeroot,g' -e 's,^BINDIR=.*,BINDIR=$(TOOLS_PATH)/fakeroot,g' -e 's,^PATHS=.*,PATHS=$(TOOLS_PATH)/fakeroot/.libs:/lib:/usr/lib,g' $(TOOLS_PATH)/fakeroot/scripts/fakeroot > $(TOOLS_PATH)/fakeroot/fakeroot
+	@chmod u+x $(TOOLS_PATH)/fakeroot/fakeroot
+
+fakeroot_clean:
+	if [ -e $(TOOLS_PATH)/fakeroot/Makefile ];  then make -C $(TOOLS_PATH)/fakeroot distclean; fi
+	rm -f $(TOOLS_PATH)/fakeroot/fakeroot
+	rm -f $(TOOLS_PATH)/fakeroot/.configured

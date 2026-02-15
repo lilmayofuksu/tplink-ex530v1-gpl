@@ -1,0 +1,18 @@
+config INCLUDE_WISP_RU_OPTIONS
+	bool "WISP(RU) all options (B&C)"
+	depends on INCLUDE_WISP_RU
+
+	######## SELECT Type B ##########
+	select INCLUDE_DHCP_OPTION60
+	select INCLUDE_RU_PREINSTALLED_ISP
+	select INCLUDE_LANGUAGE_RU_RU
+	select INCLUDE_DUAL_ACCESS
+	select INCLUDE_SYNC_SECOND_CONN_FORWARD_RULES
+	select INCLUDE_MULTI_WAN_WITH_SAME_VID
+	select INCLUDE_WAN_MAC_ALL_INTF_DIFFERENT
+	select INCLUDE_WAN_MAC_CALCULATE_FIRST_BYTE
+	select INCLUDE_DHCP_OPTION50_DISCOVER
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

@@ -1,0 +1,141 @@
+\hypertarget{blapi__tc__partition_8h}{}\section{blapi\+\_\+tc\+\_\+partition.\+h File Reference}
+\label{blapi__tc__partition_8h}\index{blapi\+\_\+tc\+\_\+partition.\+h@{blapi\+\_\+tc\+\_\+partition.\+h}}
+
+
+This file is blapi tc\+\_\+partition header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__tc__partition_8h_a5a7b039c886b23b26a33c18e6ec1088a}\label{blapi__tc__partition_8h_a5a7b039c886b23b26a33c18e6ec1088a}} 
+\#define {\bfseries B\+L\+A\+P\+I\+\_\+\+S\+U\+C\+C\+E\+SS}~0
+\item 
+\mbox{\Hypertarget{blapi__tc__partition_8h_a93e09169a39cbdef521bfc3628c8513b}\label{blapi__tc__partition_8h_a93e09169a39cbdef521bfc3628c8513b}} 
+\#define {\bfseries B\+L\+A\+P\+I\+\_\+\+F\+A\+IL}~-\/1
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__tc__partition_8h_a5da4b2a41020cc899a5b670808d91047}\label{blapi__tc__partition_8h_a5da4b2a41020cc899a5b670808d91047}} 
+enum {\bfseries blapi\+\_\+name} \{ \newline
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M1\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M2\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M3\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M4\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M1\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M2\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M3\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+C\+E\+R\+M4\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+B\+O\+B\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+O\+L\+D\+\_\+\+M\+O\+DE}, 
+{\bfseries G\+E\+T\+\_\+\+N\+A\+N\+D\+\_\+\+F\+L\+A\+S\+H\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+A\+C\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+A\+C\+\_\+\+R\+E\+S\+E\+R\+V\+E\+\_\+\+S\+I\+ZE}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+R\+E\+S\+E\+R\+V\+E\+A\+R\+E\+A\+\_\+\+E\+R\+A\+S\+E\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+R\+E\+S\+E\+R\+V\+E\+A\+R\+E\+A\+\_\+\+T\+O\+T\+A\+L\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+B\+A\+C\+K\+U\+P\+R\+O\+M\+F\+I\+L\+E\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+B\+A\+C\+K\+U\+P\+R\+O\+M\+F\+I\+L\+E\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+T\+E\+M\+P\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+T\+E\+M\+P\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+U\+S\+E\+R\+N\+A\+M\+E\+P\+A\+S\+S\+W\+D\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+U\+S\+E\+R\+N\+A\+M\+E\+P\+A\+S\+S\+W\+D\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+S\+Y\+S\+L\+O\+G\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+S\+Y\+S\+L\+O\+G\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+P\+R\+O\+L\+I\+N\+E\+\_\+\+C\+W\+M\+P\+P\+A\+R\+A\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+P\+R\+O\+L\+I\+N\+E\+\_\+\+C\+W\+M\+P\+P\+A\+R\+A\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+B\+O\+B\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+B\+O\+B\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+I\+M\+G\+\_\+\+B\+O\+O\+T\+\_\+\+F\+L\+A\+G\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+I\+M\+G\+\_\+\+B\+O\+O\+T\+\_\+\+F\+L\+A\+G\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+I\+M\+G\+\_\+\+B\+O\+O\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+S\+E\+R\+V\+E\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+I\+M\+G\+\_\+\+B\+O\+O\+T\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+S\+E\+R\+V\+E\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+A\+C\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+\+A\+C\+\_\+\+R\+E\+S\+E\+R\+V\+E\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+D\+E\+F\+A\+U\+L\+T\+R\+O\+M\+F\+I\+L\+E\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+D\+E\+F\+A\+U\+L\+T\+R\+O\+M\+F\+I\+L\+E\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+761511\+N\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+761511\+N\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+T\+R\+X\+\_\+\+S\+E\+T1\+\_\+\+S\+E\+T2\+\_\+11\+N\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+T\+R\+X\+\_\+\+S\+E\+T1\+\_\+\+S\+E\+T2\+\_\+11\+N\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+761511\+A\+C\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+761511\+A\+C\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+T\+R\+X\+\_\+\+S\+E\+T1\+\_\+\+S\+E\+T2\+\_\+11\+A\+C\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+T\+R\+X\+\_\+\+S\+E\+T1\+\_\+\+S\+E\+T2\+\_\+11\+A\+C\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+761511\+A\+C\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+761311\+A\+C\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+R\+A\+\_\+761311\+A\+C\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+M\+R\+D\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+M\+R\+D\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+R\+O\+M\+\_\+\+T\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries G\+E\+T\+\_\+\+R\+O\+M\+\_\+\+T\+\_\+\+R\+A\+\_\+\+O\+F\+F\+S\+ET}, 
+{\bfseries G\+E\+T\+\_\+\+M\+A\+X\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+B\+I\+N\+\_\+\+F\+I\+L\+E\+\_\+\+S\+I\+ZE}, 
+\newline
+{\bfseries G\+E\+T\+\_\+\+O\+M\+C\+I\+\_\+\+R\+A\+\_\+\+S\+I\+ZE}, 
+{\bfseries M\+A\+X\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+N\+UM}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{blapi__tc__partition_8h_a6d01f864aa9f866bcfe9426ac6d2cc73}{get\+\_\+tc\+\_\+partition\+\_\+value} (int name)
+\begin{DoxyCompactList}\small\item\em This function get the marco of tc partition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi tc\+\_\+partition header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Gareth.\+Kuo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/01-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__tc__partition_8h_a6d01f864aa9f866bcfe9426ac6d2cc73}\label{blapi__tc__partition_8h_a6d01f864aa9f866bcfe9426ac6d2cc73}} 
+\index{blapi\+\_\+tc\+\_\+partition.\+h@{blapi\+\_\+tc\+\_\+partition.\+h}!get\+\_\+tc\+\_\+partition\+\_\+value@{get\+\_\+tc\+\_\+partition\+\_\+value}}
+\index{get\+\_\+tc\+\_\+partition\+\_\+value@{get\+\_\+tc\+\_\+partition\+\_\+value}!blapi\+\_\+tc\+\_\+partition.\+h@{blapi\+\_\+tc\+\_\+partition.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+tc\+\_\+partition\+\_\+value()}{get\_tc\_partition\_value()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+tc\+\_\+partition\+\_\+value (\begin{DoxyParamCaption}\item[{int}]{name }\end{DoxyParamCaption})}
+
+
+
+This function get the marco of tc partition. 
+
+This function get the marco of tc partition. submit by Gareth.\+Kuo 2019.\+12.\+27 
+\begin{DoxyRetVals}{Return values}
+{\em value} & The value of marco. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the marco of tc partition. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

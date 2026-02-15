@@ -1,0 +1,98 @@
+
+CHECK_BUILD=
+CHECK_BUILD+=check_dm_macro
+CHECK_BUILD+=check_ulimit
+
+CHECK_RESULT_FILE=.tmp_check_result
+
+define pushCheckResult
+	echo "$@ $(1)" >> $(CHECK_RESULT_FILE)
+endef
+
+define printCheckName
+	@echo "*************************************$@*********************************************"
+endef
+
+define printCheckResult
+	@echo -n "Check for $@ ................... "
+	@if [ $(1) == "0" ]; then \
+		echo -e "\e[1;32mOK\e[0m"; \
+	else \
+		echo -e "\e[1;31mFAIL\e[0m"; \
+	fi
+endef
+
+.PHONY: check_pre $(CHECK_BUILD) check_print_result
+
+check_build: check_pre $(CHECK_BUILD) check_print_result
+
+check_pre:
+	@echo "**********************************************************************************************"
+	@echo "*                                    Start to check                                          *"
+	@echo "**********************************************************************************************"
+
+check_print_result:
+	@echo "**********************************************************************************************"
+	@echo "*                                    Check result:                                           *"
+	@echo "**********************************************************************************************"
+	@check_result=`cat $(CHECK_RESULT_FILE)`; \
+	for x in $$check_result; do \
+		if [ $$x == "0" ]; then \
+			echo -e "\e[1;32mOK\e[0m"; \
+		elif [ $$x == "1" ]; then \
+			echo -e "\e[1;31mFAIL\e[0m"; \
+		else \
+			echo -n "Check for $$x ................... "; \
+		fi; \
+	done
+	@echo "NOTICE: If any FAIL, please read comments of fail entry in Makefile.check!"
+	@rm -f $(CHECK_RESULT_FILE)
+
+#下面是自定义的检查
+
+#check_dm_macro: 检查DataModel中是否有“宏定义被节点使用，但是未同步到DataModel最后的宏定义列表”的问题
+#                如果FAIL，可导致使用该宏的的节点所在的对象，字符串数据和结构数据转换时发生错位，从而出现各种问题。
+#                比如http://sohoicigit.rd.tp-link.net/#/c/226387/记录的问题
+#                如果FAIL，可以查看检查此项时的打印"XXX used but not defined"，确定是哪些宏出现了问题
+check_dm_macro:
+	$(printCheckName)
+	@macro_used=`cat $(DEF_DM_PATH)/Dev2DataModel.xml | grep -o "macro=\"INCLUDE[0-9A-Z_]\{1,\}\"" | sort -u | sed s/macro=//`; \
+	macro_defined=`cat $(DEF_DM_PATH)/Dev2DataModel.xml | grep -o "macro name=\"INCLUDE[0-9A-Z_]\{1,\}\"" | sort -u | sed 's/macro name=//'`; \
+	for x in $$macro_used; do \
+		macro_found=0; \
+		for y in $$macro_defined; do \
+			if [ $$x == $$y ]; then \
+				macro_found=1; \
+				break; \
+			fi; \
+		done; \
+		if [ "$$macro_found" -eq "0" ]; then \
+			echo "$$x used but not defined"; \
+			macro_error=1; \
+		fi; \
+	done; \
+	if [ -z $$macro_error ]; then \
+		$(call pushCheckResult, 0); \
+	else \
+		$(call pushCheckResult, 1); \
+	fi
+
+#check_ulimit: 检查最终文件系统里的rcS脚本中是否有ulimit -c和core_pattern的设置
+#              如果FAIL，menuconfig中针对core dump size的设置不会生效，且可能不会生成core文件
+check_ulimit:
+	$(printCheckName)
+	@find_ulimit=`cat $(FS_TG_PATH)/etc/init.d/rcS | grep -o "ulimit -c"`; \
+	find_corepattern=`cat $(FS_TG_PATH)/etc/init.d/rcS | grep -o "core_pattern"`; \
+	if [ -z $$find_ulimit ]; then \
+		echo "ulimit command not found in rcS"; \
+		ulimit_error=1; \
+	fi; \
+	if [ -z $$find_corepattern ]; then \
+		echo "core_pattern not set in rcS"; \
+		ulimit_error=1; \
+	fi; \
+	if [ -z $$ulimit_error ]; then \
+		$(call pushCheckResult, 0); \
+	else \
+		$(call pushCheckResult, 1); \
+	fi

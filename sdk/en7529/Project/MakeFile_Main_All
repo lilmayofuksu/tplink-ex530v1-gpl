@@ -1,0 +1,11 @@
+All:
+	make -f app_bsp/MakeFile_Main_BSP bsp_sdk 
+
+clean:
+	make -f app_bsp/MakeFile_Main_BSP bsp_sdk_clean
+
+bsp/%::
+	make -f app_bsp/MakeFile_Main_BSP $(patsubst bsp/%, %, $@)
+
+app/%::
+	make -f apps/private/MakeFile_Main_APP $(patsubst app/%, %, $@)

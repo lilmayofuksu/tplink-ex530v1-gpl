@@ -1,0 +1,173 @@
+
+
+menu 'Test Suit Options'
+
+config INCLUDE_TEST_SUIT
+	bool 'Test Suit Support'
+	default n
+
+menu 'BSP'
+config INCLUDE_TEST_BSP
+	bool 'Test suit for BSP module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Account'
+config INCLUDE_TEST_ACCOUNT
+	bool 'Test suit for Account module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'DSL'
+config INCLUDE_TEST_DSL
+	bool 'Test suit for DSL module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'WAN'
+config INCLUDE_TEST_WAN
+	bool 'Test suit for WAN module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'LAN'
+config INCLUDE_TEST_LAN
+	bool 'Test suit for LAN module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Wi-Fi'
+config INCLUDE_TEST_WIFI
+	bool 'Test suit for Wi-Fi module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+
+config INCLUDE_TEST_WIFI_CHANNEL_LIST
+	bool 'Test suit for Wi-Fi channel list'
+	default n
+	depends on INCLUDE_TEST_WIFI
+endmenu
+
+menu 'QoS'
+config INCLUDE_TEST_QOS
+	bool 'Test suit for QoS module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'VoIP'
+config INCLUDE_TEST_VOIP
+	bool 'Test suit for VoIP module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'USB Storage'
+config INCLUDE_TEST_USB_STORAGE
+	bool 'Test suit for USB Storage module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'USB Dongle'
+config INCLUDE_TEST_USB_DONGLE
+	bool 'Test suit for USB Dongle module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'NAT Forwarding'
+config INCLUDE_TEST_NAT_FORWARDING
+	bool 'Test suit for NAT module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Parent Control'
+config INCLUDE_TEST_PARENT_CONTROL
+	bool 'Test suit for Parent Control module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Security'
+config INCLUDE_TEST_SECURITY
+	bool 'Test suit for Security module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'System Tools'
+config INCLUDE_TEST_SYSTEM_TOOLS
+	bool 'Test suit for System tools'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Management'
+config INCLUDE_TEST_MANAGEMENT
+	bool 'Test suit for Management modules'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Peripheral Interface'
+config INCLUDE_TEST_PERIPHERAL_INTERFACE
+	bool 'Test suit for Peripheral interface'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Manufacture'
+config INCLUDE_TEST_MANUFACTURE
+	bool 'Test suit for Manufacture modules'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'Stable'
+config INCLUDE_TEST_STABLE
+	bool 'Test suit for Stable test'
+	default n
+	depends on INCLUDE_TEST_SUIT
+
+config INCLUDE_TEST_STRACE_CMM_MSG
+	bool 'Test suit for cmm message with strace'
+	default n
+	depends on INCLUDE_STRACE && INCLUDE_TEST_STABLE
+endmenu
+
+menu 'Performance'
+config INCLUDE_TEST_PERFORMANCE
+	bool 'Test suit for Performance test'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'System Mode'
+config INCLUDE_TEST_SYSTEM_MODE
+	bool 'Test suit for System mode'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'OneMesh'
+config INCLUDE_TEST_ONEMESH
+	bool 'Test suit for OneMesh module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+menu 'EasyMesh'
+config INCLUDE_TEST_EASYMESH
+	bool 'Test suit for EasyMesh module'
+	default n
+	depends on INCLUDE_TEST_SUIT
+endmenu
+
+endmenu

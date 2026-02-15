@@ -1,0 +1,24 @@
+
+menu 'Scheduling Options'
+
+config INCLUDE_LED_SCHEDULE
+	bool 'LED Scheduling'
+	default n
+
+config LED_SCHEDULE_CFG
+	string "LED Scheduling UI Configuration"
+	default ""
+
+config INCLUDE_REBOOT_SCHEDULE
+	bool 'REBOOT Scheduling'
+	default n
+
+config INCLUDE_POWER_SCHEDULE
+	bool 'POWER Scheduling'
+	default n
+
+config POWER_SCHEDULE_CFG
+	string "POWER Scheduling UI Configuration"
+	default ""
+
+endmenu

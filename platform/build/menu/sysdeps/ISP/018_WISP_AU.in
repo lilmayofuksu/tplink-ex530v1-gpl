@@ -1,0 +1,11 @@
+config INCLUDE_WISP_AU_OPTIONS
+	bool "WISP(AU) all options (B&C)"
+	depends on INCLUDE_WISP_AU
+
+	######## SELECT Type B ##########
+	select INCLUDE_802_1P_VOIP
+	select INCLUDE_VOIP_INFORM
+	select INCLUDE_OPTION66_URL_RESET
+	select INCLUDE_CWMP_DMMAP_HTTP_REMOTE
+
+	######## SELECT Type C ##########

@@ -1,0 +1,48 @@
+/dts-v1/;
+/ {
+    compatible = "econet,en751221";
+    #address-cells = <1>;
+    #size-cells = <1>; 
+    interrupt-parent = <&intc>;
+      
+    intc: interrupt-controller{
+        compatible = "en751221,intc";
+        reg = <0x1fb40000 0x10000 >;
+        interrupt-controller;
+        #interrupt-cells = <2>;
+    };
+    
+            
+    wdma{    
+        compatible = "en751221,wdma"; 
+        reg = <0x1fa06000 0x400 >,
+        			<0x1fa06400 0x400 >;    
+        interrupts = < 17 0 >,  
+        						< 16 0 >,
+        						< 15 0 >, 
+        						< 14 0 >, 
+        						< 13 0 >, 
+        						< 12 0 >; 
+    };   
+    
+    wed{    
+        compatible = "en751221,wed";    
+        wed_num = <2>;
+        pci_slot_map = <0>, <1>;
+        reg = <0x1fa02000 0x1000 >,
+        			<0x1fa03000 0x1000 >;    
+        interrupts = < 19 0 >,  
+        						< 18 0 >; 
+    };  
+    
+    wed2{    
+        compatible = "en751221,wed2";    
+        wed_num = <2>;
+        pci_slot_map = <0>, <1>;
+        reg = <0x1fa02000 0x1000 >,
+        			<0x1fa03000 0x1000 >;    
+        interrupts = < 19 0 >,  
+        						< 18 0 >; 
+    };    
+
+};

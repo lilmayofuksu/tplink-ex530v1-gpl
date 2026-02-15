@@ -1,0 +1,312 @@
+#!/bin/sh
+
+mount -a
+# added by yangcaiyong for sysfs
+mount -t sysfs /sys /sys
+# ended add
+
+mknod /dev/kmem c 1 2
+mknod /dev/tty0 c 4 0
+mknod /dev/tty1 c 4 1
+
+#added for 3G/4G dongle
+mknod 	dev/ttyUSB0		c 	188	0
+mknod 	dev/ttyUSB1 	c 	188	1
+mknod 	dev/ttyUSB2 	c 	188	2
+mknod 	dev/ttyUSB3 	c 	188	3
+mknod 	dev/ttyUSB4 	c 	188 4
+mknod 	dev/ttyUSB5 	c 	188 5	
+mknod 	dev/ttyUSB6 	c 	188 6
+mknod 	dev/ttyUSB7 	c 	188 7
+mknod 	dev/ttyUSB8 	c 	188 8
+mknod 	dev/ttyUSB9 	c 	188 9
+mknod 	dev/ttyUSB10 	c 	188 10
+mknod 	dev/ttyUSB11 	c 	188 11
+mknod 	dev/ttyUSB12 	c 	188 12
+mknod 	dev/ttyUSB13 	c 	188 13
+mknod 	dev/ttyUSB14 	c 	188 14
+mknod 	dev/ttyUSB15 	c 	188 15
+#end added
+
+mknod 	dev/ttyACM0 	c 	166 0
+mknod 	dev/ttyACM1 	c 	166 1
+mknod 	dev/ttyACM2 	c 	166 2
+mknod 	dev/ttyACM3 	c 	166 3
+mknod 	dev/ttyACM4 	c 	166 4
+mknod 	dev/ttyACM5 	c 	166 5
+mknod 	dev/ttyACM6 	c 	166 6
+mknod 	dev/ttyACM7 	c 	166 7
+mknod 	dev/ttyACM8 	c 	166 8
+mknod 	dev/ttyACM9 	c 	166 9
+mknod 	dev/ttyACM10 	c 	166 10
+mknod 	dev/ttyACM11 	c 	166 11
+mknod 	dev/ttyACM12 	c 	166 12
+mknod 	dev/ttyACM13 	c 	166 13
+mknod 	dev/ttyACM14 	c 	166 14
+mknod 	dev/ttyACM15 	c 	166 15
+
+mknod /dev/ttyH0 c 4 70
+mknod /dev/ptm c 128 1
+mknod /dev/printer0 c 180 0
+mknod /dev/voip c 214 0
+mknod /dev/dect c 351 0
+mknod /dev/dectdbg c 351 1
+mknod /dev/slicslac c 350 1
+mknod /dev/ac97 c 3060 0
+
+mknod /dev/pwrmngt c        300 0
+mknod /dev/bcmfap c         301 0
+mknod /dev/fcache c         302 0
+mknod /dev/ingqos c         303 0
+mknod /dev/bpm c            304 0
+mknod /dev/bcmarl c         305 0
+mknod /dev/chipinfo c       306 0
+mknod /dev/bcm_user_tod c   307 0
+mknod /dev/tms c            308 0
+mknod /dev/pktrunner c      309 0
+mknod /dev/otp c            310 0
+mknod /dev/ext_bonding c    311 0
+mknod /dev/fbond c          312 0
+mknod /dev/bcmepon c        313 0
+mknod /dev/laser_dev c      314 0
+mknod /dev/ivi c            315 0
+mknod /dev/bcmomcipm c      316 0
+mknod /dev/bcm_user_ploam c 317 0
+mknod /dev/bcm_omci c       318 0
+mknod /dev/bcm_ploam c      319 0
+mknod /dev/opticaldetect c  320 0
+mknod /dev/bdmf_shell c     321 0
+mknod /dev/rgs_logger c     322 0
+mknod /dev/bcmvlan c        323 0
+mknod /dev/buzzz c          324 0
+mknod /dev/sysperf c        325 0
+mknod /dev/gmac c           326 0
+mknod /dev/bcmtm c          327 0
+mknod /dev/spdsvc c         328 0
+mknod /dev/bcmxtmcfg0 c     329 0
+mknod /dev/bcmprof c        330 0
+mknod /dev/bcm c            331 0
+mknod /dev/bcmatm0 c        332 0
+mknod /dev/bcmadsl0 c       333 0
+mknod /dev/bcmadsl1 c       333 1
+mknod /dev/detector c       334 0
+#mknod /dev/bcmrdpa c        3037 0 is created by rdpa_cmd.ko
+mknod /dev/blog c           338 0
+mknod /dev/flash0 c		    200	0
+/bin/mkdir -p /dev/pts
+/bin/mount -t devpts /dev/pts
+mknod /dev/btusb0 c 180 194
+
+/bin/mkdir -m 0777 -p /var/lock
+/bin/mkdir -m 0777 -p /var/log
+/bin/mkdir -m 0777 -p /var/run
+/bin/mkdir -m 0777 -p /var/tmp
+/bin/mkdir -m 0777 -p /var/tmp/wsc_upnp
+
+# for tpapp dropbear
+/bin/mkdir -m 0777 -p /var/tmp/dropbear
+
+# for MTD_TYPE_FS
+# Jffs2 type, mount misc_ro/rw partion
+
+mount -t jffs2 mtd:data /data
+mount -t jffs2 mtd:bootfs /bootfs
+
+/bin/mkdir -m 0777 -p /var/run/misc/misc_ro
+/bin/mkdir -m 0777 -p /var/run/misc/misc_rw
+mount -t jffs2 -r mtd:misc1 /var/run/misc/misc_ro
+mount -t jffs2 mtd:misc2 /var/run/misc/misc_rw
+
+
+#for the dirs of samba and ntfs-3g, zjj, 20111129
+/bin/mkdir -m 0777 -p /var/3G
+/bin/mkdir -m 0777 -p /var/usbdisk
+/bin/mkdir -m 0777 -p /var/dev
+/bin/mkdir -m 0777 -p /var/samba/lib
+/bin/mkdir -m 0777 -p /var/samba/private
+/bin/mkdir -m 0777 -p /var/samba/var/locks
+cp -p /etc/passwd.bak /var/passwd
+#end by zjj
+#dibbler work directory
+/bin/mkdir -m 0777 -p /var/run/dibbler/
+#added by CCy for Vpn, 07Jul2015
+/bin/mkdir -m 0777 -p /var/easy-rsa
+/bin/mkdir -m 0777 -p /var/easy-rsa/keys
+/bin/mkdir -m 0777 -p /var/openvpn
+
+/bin/mkdir -m 0777 -p /var/pptpd
+#add ended
+
+/bin/mkdir -m 0777 -p /var/l2tp
+/bin/mkdir -m 0777 -p /var/https
+
+#insmod /lib/modules/kmdir/kernel/net/l2tp/l2tp_core.ko
+#insmod /lib/modules/kmdir/kernel/net/l2tp/l2tp_ppp.ko
+#insmod /lib/modules/kmdir/kernel/net/l2tp/l2tp_fastpath.ko
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+
+#add by Chen Zexian for increasing limit of UNIX domain socket datagram
+echo 30 > /proc/sys/net/unix/max_dgram_qlen
+#end by Chen Zexian
+
+#krammer add for LAN can't continuous ping to WAN when exchenging the routing mode
+#bug1126
+echo 3 > /proc/sys/net/netfilter/nf_conntrack_icmp_timeout
+
+echo 0 > /proc/sys/net/ipv4/conf/default/accept_source_route
+echo 0 > /proc/sys/net/ipv4/conf/all/accept_source_route
+
+# RDPA
+#insmod /lib/modules/kmdir/extra/bdmf.ko bdmf_chrdev_major=215
+#insmod /lib/modules/kmdir/extra/rdpa_gpl.ko 
+#insmod /lib/modules/kmdir/extra/rdpa.ko 
+#insmod /lib/modules/kmdir/extra/rdpa_mw.ko
+#insmod /lib/modules/kmdir/extra/rdpa_gpl_ext.ko
+# General
+insmod /lib/modules/kmdir/extra/wlcsm.ko
+insmod /lib/modules/kmdir/extra/bcmlibs.ko
+insmod /lib/modules/kmdir/extra/chipinfo.ko
+insmod /lib/modules/kmdir/extra/bcm_ingqos.ko
+# pktflow
+
+insmod /lib/modules/kmdir/extra/pktflow.ko
+# SAR Driver
+
+# DMT Driver
+insmod /lib/modules/kmdir/extra/cmdlist.ko
+insmod /lib/modules/kmdir/extra/archer.ko
+
+insmod /lib/modules/kmdir/extra/bcmxtmrtdrv.ko
+insmod /lib/modules/kmdir/extra/bcmxtmcfg.ko
+insmod /lib/modules/kmdir/extra/adsldd.ko
+# enet depends on moca depends on i2c
+ 
+insmod /lib/modules/kmdir/extra/bcm_enet.ko
+# moving pktrunner after bcm_enet to get better FlowCache ICache performance
+insmod /lib/modules/kmdir/extra/bcmmcast.ko
+
+#insmod /lib/modules/kmdir/extra/wfd.ko
+#insmod /lib/modules/kmdir/extra/pktrunner.ko 
+insmod /lib/modules/kmdir/extra/nciTMSkmod.ko 
+
+#added by wxy for test
+insmod /lib/modules/kmdir/extra/bcm_pcie_hcd.ko
+
+#insmod /lib/modules/kmdir/extra/wfd.ko
+
+sleep 1
+./etc/init.d/hndnvram_tp.sh
+
+#insmod /lib/modules/kmdir/kernel/net/wireless/cfg80211.ko
+#insmod /lib/modules/kmdir/extra/hnd.ko
+#insmod /lib/modules/kmdir/extra/emf.ko
+#insmod /lib/modules/kmdir/extra/igs.ko
+#insmod /lib/modules/kmdir/extra/dhd.ko
+#insmod /lib/modules/kmdir/extra/wl.ko intf_name=wl%d
+
+
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ehci-hcd.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ehci-platform.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ehci-pci.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ohci-hcd.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ohci-platform.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/ohci-pci.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/xhci-hcd.ko  
+insmod /lib/modules/kmdir/kernel/drivers/usb/host/xhci-plat-hcd.ko
+
+
+
+
+insmod /lib/modules/kmdir/extra/bcm_usb.ko
+#insmod /lib/modules/kmdir/kernel/drivers/usb/class/usblp.ko 
+insmod /lib/modules/kmdir/kernel/drivers/usb/storage/usb-storage.ko
+insmod /lib/modules/kmdir/kernel/drivers/usb/storage/uas.ko
+
+# changed by wxy for test
+#insmod /lib/modules/kmdir/kernel/drivers/scsi/scsi_mod.ko
+#insmod /lib/modules/kmdir/kernel/drivers/scsi/sd_mod.ko
+#insmod /lib/modules/kmdir/kernel/drivers/usb/core/usbcore.ko
+#for 3g-dongle, add by zjj, 20120521
+mount --bind /dev/bus /proc/bus
+ln -s /sys/bus /dev/bus
+ln -s /sys/kernel/debug/usb/devices /proc/bus/usb/devices
+
+#for tuxera file system, zhm, 20140828
+#insmod /lib/modules/tfat.ko
+#insmod /lib/modules/tntfs.ko
+#insmod /lib/modules/texfat.ko
+#insmod /lib/modules/thfsplus.ko
+#end by zhm
+
+#load usb modules
+
+
+
+insmod /lib/modules/kmdir/extra/bcmvlan.ko 
+insmod /lib/modules/kmdir/extra/pwrmngtd.ko 
+
+
+insmod /lib/modules/kmdir/kernel/drivers/scsi/scsi_wait_scan.ko
+#netfilter modules load
+#insmod /lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_proto_gre.ko
+#insmod /lib/modules/kmdir/kernel/net/netfilter/nf_conntrack_pptp.ko
+insmod /lib/modules/tp_board.ko
+insmod /lib/modules/tp_gpio.ko
+insmod /lib/modules/ipt_STAT.ko
+insmod /lib/modules/tp_domain.ko
+insmod /lib/modules/xt_massurl.ko
+insmod /lib/modules/xt_TRIGGER.ko
+
+# voip
+insmod /lib/modules/kmdir/extra/dsphal.ko  
+insmod /lib/modules/kmdir/extra/slicslac.ko  
+#insmod /lib/modules/kmdir/extra/dect.ko 
+
+#insmod /lib/modules/kmdir/kernel/crypto/arc4.ko
+#insmod /lib/modules/kmdir/kernel/crypto/ecb.ko
+insmod /lib/modules/kmdir/kernel/drivers/net/ppp/pptp.ko 
+#insmod /lib/modules/kmdir/kernel/drivers/net/accel-pptp/pptp.ko 
+#insmod /lib/modules/kmdir/kernel/drivers/net/ppp/pptp_fastpath.ko 
+ifconfig lo 127.0.0.1 netmask 255.0.0.0
+echo 2097152 > /proc/sys/net/core/rmem_max
+echo 133120 > /proc/sys/net/core/rmem_default
+echo 2097152 > /proc/sys/net/core/wmem_max
+echo 133120 > /proc/sys/net/core/wmem_default
+echo 4096 65536 2097152 > /proc/sys/net/ipv4/tcp_rmem
+echo 4096 65536 2097152 > /proc/sys/net/ipv4/tcp_wmem
+
+echo "/var/core-%e-%p-%s-%t" > /proc/sys/kernel/core_pattern
+
+if [ -n "$INCLUDE_CORE_DUMP_MAPS" ]; then
+echo "| /usr/sbin/coredump_map.sh %e %p %s %t" > /proc/sys/kernel/core_pattern
+fi
+
+if [ ! -f /var/run/misc/misc_rw/0x00100000 ] ; then
+        #set as manufacture config
+        cp -v /etc/mf_config /var/run/misc/misc_rw/0x00100000
+fi
+fc config --accel-mode 1
+
+ulimit -c $INCLUDE_CORE_DUMP_SIZE
+
+rcsHook
+
+cmmsyslogd &
+#swmdk &
+cos &
+
+telnetd &
+voip_server &
+
+/bin/mkdir -m 0777 -p /var/memaccess
+ln -sf /bin/memaccess /var/memaccess/dw
+ln -sf /bin/memaccess /var/memaccess/dh
+ln -sf /bin/memaccess /var/memaccess/db
+ln -sf /bin/memaccess /var/memaccess/sw
+ln -sf /bin/memaccess /var/memaccess/sb
+ln -sf /bin/memaccess /var/memaccess/fw
+ln -sf /bin/memaccess /var/memaccess/fh
+ln -sf /bin/memaccess /var/memaccess/fb
+ln -sf /bin/memaccess /var/memaccess/sh

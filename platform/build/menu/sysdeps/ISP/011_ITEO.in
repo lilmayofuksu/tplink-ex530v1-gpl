@@ -1,0 +1,16 @@
+config INCLUDE_ITEO_OPTIONS
+	bool "Italy EOLO all options (B&C)"
+	depends on INCLUDE_ITEO
+
+	######## SELECT Type B ##########
+	select INCLUDE_VOIP_ACL
+	select INCLUDE_HTTP_FILTER_BY_ACL
+	select INCLUDE_CWMP_CONNECTION_ACL
+	select INCLUDE_SSH_ACCESS_LIFETIME
+	select INCLUDE_SSH_ACCESS
+	select INCLUDE_CLI_ACL
+	select INCLUDE_IP_RESTRIC_FORWARD_VS
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

@@ -1,0 +1,22 @@
+config INCLUDE_ATA1_OPTIONS
+	bool "ATA1 all options (B&C)"
+	depends on INCLUDE_ATA1
+
+	######## SELECT Type B ##########
+	select INCLUDE_LIFEMOTE
+
+	######## SELECT Type C ##########
+	select INCLUDE_ATA1_TEST1
+	select INCLUDE_ATA1_TEST2
+
+
+########## Define Type C ############
+config INCLUDE_ATA1_TEST1
+	bool "for test1 (C)"
+	default n
+	depends on INCLUDE_ATA1_OPTIONS
+
+config INCLUDE_ATA1_TEST2
+	bool "for test2 (C)"
+	default n
+	depends on INCLUDE_ATA1_OPTIONS

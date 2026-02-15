@@ -1,0 +1,11 @@
+prefix=/proj/mtk14508/workspace/branch_joyme3_0711/tclinux_phoenix/apps/public/joyme2.0/install_glib_prelib
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+toolexeclibdir=${exec_prefix}/lib
+includedir=${libdir}/libffi-3.2.1/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.2.1
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}

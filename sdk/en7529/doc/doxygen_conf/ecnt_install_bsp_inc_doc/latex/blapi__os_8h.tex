@@ -1,0 +1,104 @@
+\hypertarget{blapi__os_8h}{}\section{blapi\+\_\+os.\+h File Reference}
+\label{blapi__os_8h}\index{blapi\+\_\+os.\+h@{blapi\+\_\+os.\+h}}
+
+
+This file contains the declarations of os/kernel related business logic A\+P\+Is.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__os_8h_a4211d0a4d87c6f4a70fd82f2015f8358}{blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val} (int sockfd, int family, unsigned short $\ast$vlan\+\_\+val)
+\begin{DoxyCompactList}\small\item\em This function set the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option on socket. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__os_8h_aa708b7b75b8eab564f2f3e61ef7132fd}{blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val} (int sockfd, int family, unsigned short $\ast$vlan\+\_\+val)
+\begin{DoxyCompactList}\small\item\em This function gets the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option on socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the declarations of os/kernel related business logic A\+P\+Is. 
+
+\begin{DoxyAuthor}{Author}
+Bryan.\+Sun 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019-\/09-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__os_8h_aa708b7b75b8eab564f2f3e61ef7132fd}\label{blapi__os_8h_aa708b7b75b8eab564f2f3e61ef7132fd}} 
+\index{blapi\+\_\+os.\+h@{blapi\+\_\+os.\+h}!blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val@{blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val}}
+\index{blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val@{blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val}!blapi\+\_\+os.\+h@{blapi\+\_\+os.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val()}{blapi\_os\_get\_sock\_vlan\_val()}}
+{\footnotesize\ttfamily int blapi\+\_\+os\+\_\+get\+\_\+sock\+\_\+vlan\+\_\+val (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{family,  }\item[{unsigned short $\ast$}]{vlan\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+This function gets the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option on socket. 
+
+This function gets the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option for the socket referred to by the file descriptor sockfd.\+The value will be put in vlan\+\_\+val. I\+P\+\_\+\+S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID or I\+P\+V6\+\_\+\+S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option value will be get according to the value of family. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sockfd} & The file descriptor of the socket that is to be manipulated. \\
+\hline
+\mbox{\tt in}  & {\em family} & The address domain of the socket,it can be A\+F\+\_\+\+I\+N\+ET or A\+F\+\_\+\+I\+N\+E\+T6. \\
+\hline
+\mbox{\tt in}  & {\em vlan\+\_\+val} & Pointer to the current S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__os_8h_a4211d0a4d87c6f4a70fd82f2015f8358}\label{blapi__os_8h_a4211d0a4d87c6f4a70fd82f2015f8358}} 
+\index{blapi\+\_\+os.\+h@{blapi\+\_\+os.\+h}!blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val@{blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val}}
+\index{blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val@{blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val}!blapi\+\_\+os.\+h@{blapi\+\_\+os.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val()}{blapi\_os\_set\_sock\_vlan\_val()}}
+{\footnotesize\ttfamily int blapi\+\_\+os\+\_\+set\+\_\+sock\+\_\+vlan\+\_\+val (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{family,  }\item[{unsigned short $\ast$}]{vlan\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+This function set the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option on socket. 
+
+This function sets the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option for the socket referred to by the file descriptor sockfd using vlan\+\_\+val. I\+P\+\_\+\+S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID or I\+P\+V6\+\_\+\+S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option will be set according to the value of family. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sockfd} & The file descriptor of the socket that is to be manipulated. \\
+\hline
+\mbox{\tt in}  & {\em family} & The address domain of the socket,it can be A\+F\+\_\+\+I\+N\+ET or A\+F\+\_\+\+I\+N\+E\+T6. \\
+\hline
+\mbox{\tt in}  & {\em vlan\+\_\+val} & Pointer to the value that the S\+K\+B\+\_\+\+V\+L\+A\+N\+\_\+\+ID option will be set. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em 1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Write the things that need to pay attention to when using this function. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

@@ -1,0 +1,98 @@
+\hypertarget{libapi__lib__meshmgr_8h}{}\section{libapi\+\_\+lib\+\_\+meshmgr.\+h File Reference}
+\label{libapi__lib__meshmgr_8h}\index{libapi\+\_\+lib\+\_\+meshmgr.\+h@{libapi\+\_\+lib\+\_\+meshmgr.\+h}}
+
+
+This file is meshmgr api header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structevt__ct}{evt\+\_\+ct}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__meshmgr_8h_a1fe04fc214faad1c006728b38d5bb040}\label{libapi__lib__meshmgr_8h_a1fe04fc214faad1c006728b38d5bb040}} 
+\#define {\bfseries G\+N\+U\+\_\+\+P\+A\+C\+K\+ED}~\+\_\+\+\_\+attribute\+\_\+\+\_\+ ((packed))
+\item 
+\mbox{\Hypertarget{libapi__lib__meshmgr_8h_ae8b52af3bca410742145255bf382c319}\label{libapi__lib__meshmgr_8h_ae8b52af3bca410742145255bf382c319}} 
+\#define {\bfseries T\+M\+P\+\_\+\+M\+E\+S\+H\+\_\+\+C\+T\+R\+L\+\_\+\+D\+IR}~\char`\"{}/tmp/mesh\+\_\+msg\char`\"{}
+\item 
+\mbox{\Hypertarget{libapi__lib__meshmgr_8h_aa52b2d2b4320bd87a7d9c02f16c685e4}\label{libapi__lib__meshmgr_8h_aa52b2d2b4320bd87a7d9c02f16c685e4}} 
+\#define {\bfseries M\+A\+X\+\_\+\+E\+V\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}~256
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__meshmgr_8h_a83b545b16a9ef8a46e68a44411cea935}\label{libapi__lib__meshmgr_8h_a83b545b16a9ef8a46e68a44411cea935}} 
+enum {\bfseries evt\+\_\+type} \{ \newline
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+W\+A\+P\+P\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+P1905\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+M\+A\+P\+D\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+W\+P\+S\+\_\+\+S\+T\+A\+RT}, 
+\newline
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+W\+P\+S\+\_\+\+S\+T\+OP}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+T\+O\+P\+O\+L\+O\+G\+Y\+\_\+\+P\+R\+O\+C\+E\+SS}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+A\+P\+C\+L\+I\+\_\+\+D\+I\+S\+A\+S\+S\+O\+C\+I\+A\+T\+ED}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+A\+P\+C\+L\+I\+\_\+\+A\+S\+S\+O\+C\+I\+A\+T\+ED}, 
+\newline
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+B\+H\+\_\+\+R\+E\+A\+DY}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+M\+P\+L\+E\+TE}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+B\+H\+\_\+\+D\+I\+S\+C\+O\+N\+N\+ET}, 
+{\bfseries N\+O\+T\+I\+F\+Y\+\_\+\+W\+A\+P\+P\+\_\+\+D\+E\+V\+\_\+\+R\+E\+A\+DY}, 
+\newline
+{\bfseries M\+A\+X\+\_\+\+E\+VT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libapi__lib__meshmgr_8h_aa7b6b95286a3ed984460a9ee8ad98f4f}{meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg} (int type)
+\begin{DoxyCompactList}\small\item\em This function send msg to up process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is meshmgr api header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Yifan.\+Chen 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/9-\/28 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__meshmgr_8h_aa7b6b95286a3ed984460a9ee8ad98f4f}\label{libapi__lib__meshmgr_8h_aa7b6b95286a3ed984460a9ee8ad98f4f}} 
+\index{libapi\+\_\+lib\+\_\+meshmgr.\+h@{libapi\+\_\+lib\+\_\+meshmgr.\+h}!meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg@{meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg}}
+\index{meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg@{meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg}!libapi\+\_\+lib\+\_\+meshmgr.\+h@{libapi\+\_\+lib\+\_\+meshmgr.\+h}}
+\subsubsection{\texorpdfstring{meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg()}{meshmgr\_lib\_notify\_cfg()}}
+{\footnotesize\ttfamily int meshmgr\+\_\+lib\+\_\+notify\+\_\+cfg (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+This function send msg to up process. 
+
+This function send msg to up process. submit by 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+send msg to up process. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

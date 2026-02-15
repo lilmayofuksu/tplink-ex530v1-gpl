@@ -1,0 +1,512 @@
+
+menu 'VoIP Options'
+	
+config INCLUDE_VOIP
+	bool "Build VoIP"
+	help
+	      VOIP Support
+	
+choice
+	prompt "DSP selection"
+	depends on INCLUDE_VOIP && (INCLUDE_CPU_TC3182 || INCLUDE_CPU_RT63368)
+
+config INCLUDE_VOIP_WITH_DSP_D2_2S1O
+	depends on INCLUDE_VOIP && INCLUDE_CPU_TC3182
+	bool "D2 2S1O support"
+
+config INCLUDE_VOIP_WITH_DSP_MTK
+	depends on INCLUDE_VOIP && INCLUDE_CPU_RT63368
+	bool "MTK DSP support"
+
+endchoice
+
+config INCLUDE_DSP_D2
+	depends on INCLUDE_VOIP
+	bool "D2 DSP support"
+	default n
+	
+config INCLUDE_D2_TEMP_LICENSE
+	depends on INCLUDE_VOIP && INCLUDE_DSP_D2
+	bool "write D2 temporary MAC & license for manufacture mode"
+	default n
+
+config INCLUDE_DSP_SOCKET_OPEN
+	bool "DSP socket open for upper use"
+	default n
+	help
+		We can call setsockopt for the RTP/RTCP socket
+
+config NUM_FXS_CHANNELS
+	depends on INCLUDE_VOIP
+	int "FxS ports number to be supported"
+	range 1 2
+	default 2
+
+config FXS_LOGIC_HWMAPPING
+	bool "Customize logic and hardware mapping for econet"
+	depends on INCLUDE_VOIP && INCLUDE_ECONET
+	default n
+	help
+		help Customize logic and hardware mapping
+
+config FXS_PORT0_IDX_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Port0 mapping index"
+	range 0 1
+	default 0
+
+config FXS_PORT1_IDX_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Port1 mapping index"
+	range 0 1
+	default 1
+
+config FXS1_DSP_CH0_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Ch0 mapping index"
+	range 0 3
+	default 0
+
+config FXS1_DSP_CH2_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Ch2 mapping index"
+	range 0 3
+	default 2
+
+config FXS2_DSP_CH1_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Ch1 mapping index"
+	range 0 3
+	default 1
+
+config FXS2_DSP_CH3_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Ch3 mapping index"
+	range 0 3
+	default 3
+
+config FXS_PORT0_LED_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Port0 FXS? index mapping, ex: FXS1, FXS2.."
+	range 0 2
+	default 1
+
+config FXS_PORT1_LED_MAPPING
+	depends on FXS_LOGIC_HWMAPPING
+	int "Port1 FXS? index mapping, ex: FXS1, FXS2.."
+	range 0 2
+	default 2
+
+config NUM_FXO_CHANNELS
+	depends on INCLUDE_VOIP
+	int "FxO ports number to be supported"
+	range 0 1
+	default 0
+
+config NUM_VOICEAPP_CHANNELS
+	depends on INCLUDE_VOIP
+	int "Voice App channel number to be supported"
+	range 0 1
+	default 0
+
+config INCLUDE_EMERGENCY_CALL
+	depends on INCLUDE_VOIP
+	bool "support emergency call"
+	default n
+	help
+		support emgergency call
+
+config INCLUDE_P2P_CALL
+	depends on INCLUDE_VOIP
+	bool "support point to point call"
+	default n
+	help
+		support point to point call
+
+config INCLUDE_DIGITMAP
+	depends on INCLUDE_VOIP
+	bool "support digitmap"
+	default n
+	help
+		support digitmap
+
+config INCLUDE_DIGITMAP_POUND
+	depends on INCLUDE_DIGITMAP
+	bool "support '#' and '*' in digitmap rule, treat these as digit"
+	default n
+	help
+		support treat '#' and '*' as digit in digitmap rule.
+
+config INCLUDE_RFC3325
+	depends on INCLUDE_VOIP
+	bool "INCLUDE_RFC3325"
+	default n
+	help
+		support INCLUDE_RFC3325 function
+
+config INCLUDE_USB_VOICEMAIL
+	depends on INCLUDE_USB_STORAGE && INCLUDE_VOIP
+	bool "INCLUDE USB VOICEMAIL"
+	default n
+	help
+		support usb voicemail function 
+
+config INCLUDE_USBVM_MODULE
+	depends on INCLUDE_USB_VOICEMAIL
+	bool "INCLUDE USBVM module"
+	default n
+	help
+		Build a usbvm module for usbvm to play voicemail or voice prompt,the HZ MUST be the multiple of 100
+   
+config INCLUDE_DMZ
+	bool "DMZ Support"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		SIP uses it to ADD/DEL nat rule
+
+config INCLUDE_VOIP_CALLBLOCK_IT
+	bool "Change call blocking Outgoing-Support rule for 'IT'"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		 Outgoing-Support the rule to differentiate different types of phones when the region is selected as "IT".
+
+config INCLUDE_VOIP_ISP_IT
+	bool "Update voip isp for Italy country"
+	depends on INCLUDE_VOIP
+	default n
+
+config INCLUDE_VOIP_ISP_UK
+	bool "Update voip isp for United Kingdom country"
+	depends on INCLUDE_VOIP
+	default n
+
+config INCLUDE_VOIP_PASSWORD_HIDE
+	bool "Change voip password value to '*' for WEB cgi"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		Change voip password value to '*' for WEB cgi, once click voip password, the password clear
+
+config INCLUDE_VOIP_CALLFORWARDING_PLUS_SIGN
+	bool "Support '+' in Call Forwarding"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		 Support to type '+' for International Crown Code in Call Forwarding
+
+config INCLUDE_CALLLOG
+	bool "Call log Support"
+	depends on INCLUDE_VOIP
+	default n
+	
+config INCLUDE_ROBIN_DNS
+	bool "Robin DNS Support"
+	depends on INCLUDE_VOIP
+	default n
+
+config INCLUDE_VOIPLED_BASE_ON_SIP
+	bool "LED is used for VoIP not for FxS"
+	depends on INCLUDE_VOIP	
+	default n
+
+config INCLUDE_VOIPLED_BLINK_SLOW_WHEN_VMUNREAD
+	bool "Voip LED is blink slow when there is any unread voice mail"
+	depends on INCLUDE_VOIPLED_BASE_ON_SIP	
+	default n
+	
+config INCLUDE_CALLTHROUGH
+	bool "Call through Support"
+	depends on INCLUDE_VOIP
+	default n
+
+config INCLUDE_CALLFWD_THROUGH_DUT
+	bool "Call forward through dut Support"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		For germany special callforward env.
+
+config INCLUDE_AREACODE
+	bool "Area code Support(for germany)"
+	depends on INCLUDE_VOIP
+	default n
+		
+config INCLUDE_DECT
+	bool "DECT Support"
+	depends on INCLUDE_VOIP	
+	default n
+
+config INCLUDE_DECT_DSPG
+	bool "DSP Group is the DECT vender"
+	depends on INCLUDE_DECT	
+	default n
+
+config NUM_DECT_CHANNELS
+	int "DECT handsets number to be supported"
+	range 1 6
+	default 6 if INCLUDE_DECT
+	default 0 if !INCLUDE_DECT
+
+config INCLUDE_VOIP_SUPPORT_IPV6
+	depends on INCLUDE_VOIP && INCLUDE_IPV6
+	bool "VoIP support IPv6"
+	default n
+   
+config INCLUDE_PSTN
+	bool "IAD supports PSTN"
+	depends on INCLUDE_VOIP
+ 
+config INCLUDE_VOIP_INFORM
+	bool "Enable VoIP node inform"
+	depends on INCLUDE_VOIP
+	default n
+
+config INCLUDE_PSTN_LIFELINE
+	bool "IAD supports PSTN lifeline function"
+	depends on INCLUDE_PSTN 
+   
+config INCLUDE_PSTN_POLREV
+	bool "PSTN provides polarity reversal to the FXO port"
+	depends on INCLUDE_PSTN 
+   
+config INCLUDE_PSTN_GATEWAY
+	bool "IAD can act as VoIP to PSTN or PSTN to VoIP gateway"
+	depends on INCLUDE_PSTN 
+
+config INCLUDE_802_1P_VOIP
+	bool "Enable 802.1P for VoIP"
+	depends on INCLUDE_VOIP
+	default n
+
+
+config INCLUDE_SRTP
+	bool "Enable SRTP for VoIP"
+	depends on INCLUDE_VOIP
+	default n
+	help
+		SRTP can provide encryption and authentication for media stream
+
+menu "VOIP locale support"
+	depends on INCLUDE_VOIP
+	   
+choice
+	prompt "Locale selection"
+	depends on INCLUDE_VOIP
+	
+config VOIP_LOCALE_ALL
+	bool "SUPPORT all countries"
+	      
+config VOIP_LOCALE_CUSTOM
+	bool "Support customized contries"
+
+endchoice
+
+config VOIP_CFG_AUSTRALIA
+	bool "Australia"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_BELGIUM	
+	bool "Belgium"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_BRAZIL
+	bool "Brazil"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_CANADA
+	bool "Canada"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_CHILE
+#	bool "Chile"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_CHINA
+	bool "China"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_COLOMBIA
+	bool "Colombia"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_CZECH
+#	bool "Czech"
+#	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_DENMARK
+#	bool "Denmark"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_ETSI
+	bool "ETSI"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_FINLAND
+#	bool "Finland"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_FRANCE
+	bool "France"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_GERMANY
+	bool "Germany"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_HUNGARY
+#	bool "Hungary"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_INDIA
+	bool "India"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_INDONESIA
+	bool "Indonesia"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_ITALY
+	bool "Italy"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_JAPAN
+#	bool "Japan"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_LATVIA
+	bool "Latvia"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_LITHUANIA
+	bool "Lithuania"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_MEXICO
+	bool "Mexico"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_NETHERLANDS
+#	bool "Netherlands"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_NEWZEALAND
+	bool "New Zealand"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_NORTHAMERICA
+#	bool "North America"
+	def_bool y
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_NORWAY
+#	bool "Norway"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_PERU
+	bool "Peru"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_POLAND
+	bool "Poland"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_PORTUGAL
+	bool "Portugal"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_RUSSIA
+	bool "Russia"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_SERBIA
+	bool "Serbia"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_SPAIN
+	bool "Spain"
+	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_SWEDEN
+#	bool "Sweden"
+#	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_SWITZERLAND
+#	bool "Switzerland"
+#	depends on VOIP_LOCALE_CUSTOM
+
+#config VOIP_CFG_TAIWAN
+#	bool "Taiwan"
+#	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_THAILAND
+	bool "Thailand"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_TURKEY
+	bool "Turkey"
+	depends on VOIP_LOCALE_CUSTOM
+
+config VOIP_CFG_UK
+	bool "United Kindom"
+	depends on VOIP_LOCALE_CUSTOM
+
+endmenu  # menu "VOIP locale support"
+
+config INCLUDE_AGINET_APP_VOIP
+	depends on INCLUDE_VOIP
+	bool "Agient app support voip"
+	default n
+
+config INCLUDE_AGINET_APP_USB_VOICEMAIL
+	depends on INCLUDE_VOIP && INCLUDE_USB_VOICEMAIL
+	bool "Agient app support voicemail"
+	default n
+
+config INCLUDE_AGINET_APP_VOIP_DECT
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Agient app support dect"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_WAN
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip wan setting"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_VOICE_MAIL
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip voice mail"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_FIRST_GUIDE
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip first guide"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_TELEPHONE_DEVICE
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip telephone device"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_CALL_LOG
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip call log"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_CALL_FORWARD
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip call forward"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_DND
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip do not disturb"
+	default n
+
+config INCLUDE_AGINET_APP_HIDE_VOIP_CALL_BLOCKING
+	depends on INCLUDE_AGINET_APP_VOIP
+	bool "Hide app voip call blocking"
+	default n
+
+endmenu	# menu 'VoIP Options'

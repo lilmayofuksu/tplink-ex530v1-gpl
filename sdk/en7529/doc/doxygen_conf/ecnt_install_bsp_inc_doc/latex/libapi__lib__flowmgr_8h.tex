@@ -1,0 +1,194 @@
+\hypertarget{libapi__lib__flowmgr_8h}{}\section{libapi\+\_\+lib\+\_\+flowmgr.\+h File Reference}
+\label{libapi__lib__flowmgr_8h}\index{libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}}
+
+
+This file is libapi lib flowmgr header file for flowmgr A\+P\+Is that will be exported for others to use.  
+
+
+{\ttfamily \#include \char`\"{}uapi/modules/traffic\+\_\+classify\+\_\+global/traffic\+\_\+classify\+\_\+global.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a5643f6e1d3a49bb4c3c4156480360c07}\label{libapi__lib__flowmgr_8h_a5643f6e1d3a49bb4c3c4156480360c07}} 
+\#define {\bfseries ecnt\+\_\+flowmgr\+\_\+lib\+\_\+add}~\hyperlink{libapi__lib__flowmgr_8h_a65e8d5e54f8882d11e36f2c734964e97}{flowmgr\+\_\+lib\+\_\+add}
+\item 
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a27c6de09d90bdd8e89ae0058947df168}\label{libapi__lib__flowmgr_8h_a27c6de09d90bdd8e89ae0058947df168}} 
+\#define {\bfseries ecnt\+\_\+flowmgr\+\_\+lib\+\_\+del}~\hyperlink{libapi__lib__flowmgr_8h_ad42a12b844ac749840dbce10db6b37c7}{flowmgr\+\_\+lib\+\_\+del}
+\item 
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a63abcbed70b7bcbbeb6255c7ac211975}\label{libapi__lib__flowmgr_8h_a63abcbed70b7bcbbeb6255c7ac211975}} 
+\#define {\bfseries ecnt\+\_\+flowmgr\+\_\+lib\+\_\+clean}~\hyperlink{libapi__lib__flowmgr_8h_aa82b2269b40620e72317cfd6edc6af22}{flowmgr\+\_\+lib\+\_\+clean}
+\item 
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a54951325a29c4385e2c43b8184c089f4}\label{libapi__lib__flowmgr_8h_a54951325a29c4385e2c43b8184c089f4}} 
+\#define {\bfseries ecnt\+\_\+flowmgr\+\_\+lib\+\_\+ioctl}~\hyperlink{libapi__lib__flowmgr_8h_a769e165f9d4ec440a060de066b2c1da9}{flowmgr\+\_\+lib\+\_\+ioctl}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_ac4cdaa6706d55343b38eca4e030faa50}\label{libapi__lib__flowmgr_8h_ac4cdaa6706d55343b38eca4e030faa50}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET} \{ \newline
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+S\+U\+C\+C\+E\+SS} = 0, 
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+N\+E\+X\+I\+ST}, 
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+E\+X\+I\+ST}, 
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+O\+V\+ER}, 
+\newline
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+O\+D\+EV}, 
+{\bfseries E\+C\+N\+T\+\_\+\+E\+\_\+\+F\+L\+O\+W\+\_\+\+F\+A\+IL}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET \hyperlink{libapi__lib__flowmgr_8h_a65e8d5e54f8882d11e36f2c734964e97}{flowmgr\+\_\+lib\+\_\+add} (ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$port\+\_\+rule)
+\begin{DoxyCompactList}\small\item\em This function add traffic classify entry. \end{DoxyCompactList}\item 
+E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET \hyperlink{libapi__lib__flowmgr_8h_ad42a12b844ac749840dbce10db6b37c7}{flowmgr\+\_\+lib\+\_\+del} (ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$port\+\_\+rule)
+\begin{DoxyCompactList}\small\item\em This function delete traffic classify entry. \end{DoxyCompactList}\item 
+E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET \hyperlink{libapi__lib__flowmgr_8h_aa82b2269b40620e72317cfd6edc6af22}{flowmgr\+\_\+lib\+\_\+clean} (ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$port\+\_\+rule)
+\begin{DoxyCompactList}\small\item\em This function clean traffic classify entry. \end{DoxyCompactList}\item 
+E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET \hyperlink{libapi__lib__flowmgr_8h_a769e165f9d4ec440a060de066b2c1da9}{flowmgr\+\_\+lib\+\_\+ioctl} (unsigned int cmd, ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$port\+\_\+rule)
+\begin{DoxyCompactList}\small\item\em This function is ioctl for traffic classify entry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is libapi lib flowmgr header file for flowmgr A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Lei.\+Zhang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/11-\/18 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a65e8d5e54f8882d11e36f2c734964e97}\label{libapi__lib__flowmgr_8h_a65e8d5e54f8882d11e36f2c734964e97}} 
+\index{libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}!flowmgr\+\_\+lib\+\_\+add@{flowmgr\+\_\+lib\+\_\+add}}
+\index{flowmgr\+\_\+lib\+\_\+add@{flowmgr\+\_\+lib\+\_\+add}!libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}}
+\subsubsection{\texorpdfstring{flowmgr\+\_\+lib\+\_\+add()}{flowmgr\_lib\_add()}}
+{\footnotesize\ttfamily E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET flowmgr\+\_\+lib\+\_\+add (\begin{DoxyParamCaption}\item[{ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$}]{port\+\_\+rule }\end{DoxyParamCaption})}
+
+
+
+This function add traffic classify entry. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+\_\+rule} & traffic classify entry info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em !0} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add traffic classify entry. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_aa82b2269b40620e72317cfd6edc6af22}\label{libapi__lib__flowmgr_8h_aa82b2269b40620e72317cfd6edc6af22}} 
+\index{libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}!flowmgr\+\_\+lib\+\_\+clean@{flowmgr\+\_\+lib\+\_\+clean}}
+\index{flowmgr\+\_\+lib\+\_\+clean@{flowmgr\+\_\+lib\+\_\+clean}!libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}}
+\subsubsection{\texorpdfstring{flowmgr\+\_\+lib\+\_\+clean()}{flowmgr\_lib\_clean()}}
+{\footnotesize\ttfamily E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET flowmgr\+\_\+lib\+\_\+clean (\begin{DoxyParamCaption}\item[{ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$}]{port\+\_\+rule }\end{DoxyParamCaption})}
+
+
+
+This function clean traffic classify entry. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+\_\+rule} & traffic classify entry info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em !0} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Clean traffic classify entry. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_ad42a12b844ac749840dbce10db6b37c7}\label{libapi__lib__flowmgr_8h_ad42a12b844ac749840dbce10db6b37c7}} 
+\index{libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}!flowmgr\+\_\+lib\+\_\+del@{flowmgr\+\_\+lib\+\_\+del}}
+\index{flowmgr\+\_\+lib\+\_\+del@{flowmgr\+\_\+lib\+\_\+del}!libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}}
+\subsubsection{\texorpdfstring{flowmgr\+\_\+lib\+\_\+del()}{flowmgr\_lib\_del()}}
+{\footnotesize\ttfamily E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET flowmgr\+\_\+lib\+\_\+del (\begin{DoxyParamCaption}\item[{ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$}]{port\+\_\+rule }\end{DoxyParamCaption})}
+
+
+
+This function delete traffic classify entry. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+\_\+rule} & traffic classify entry info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em !0} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Delete traffic classify entry. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libapi__lib__flowmgr_8h_a769e165f9d4ec440a060de066b2c1da9}\label{libapi__lib__flowmgr_8h_a769e165f9d4ec440a060de066b2c1da9}} 
+\index{libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}!flowmgr\+\_\+lib\+\_\+ioctl@{flowmgr\+\_\+lib\+\_\+ioctl}}
+\index{flowmgr\+\_\+lib\+\_\+ioctl@{flowmgr\+\_\+lib\+\_\+ioctl}!libapi\+\_\+lib\+\_\+flowmgr.\+h@{libapi\+\_\+lib\+\_\+flowmgr.\+h}}
+\subsubsection{\texorpdfstring{flowmgr\+\_\+lib\+\_\+ioctl()}{flowmgr\_lib\_ioctl()}}
+{\footnotesize\ttfamily E\+C\+N\+T\+\_\+\+L\+I\+B\+\_\+\+F\+L\+O\+W\+\_\+\+R\+ET flowmgr\+\_\+lib\+\_\+ioctl (\begin{DoxyParamCaption}\item[{unsigned int}]{cmd,  }\item[{ecn\+\_\+traffic\+\_\+classify\+\_\+info\+\_\+t $\ast$}]{port\+\_\+rule }\end{DoxyParamCaption})}
+
+
+
+This function is ioctl for traffic classify entry. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port\+\_\+rule} & traffic classify entry info \\
+\hline
+\mbox{\tt in}  & {\em cmd} & T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+A\+D\+D\+\_\+\+E\+N\+T\+R\+Y/\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+D\+E\+L\+\_\+\+E\+N\+T\+R\+Y/\+T\+R\+A\+F\+F\+I\+C\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+C\+L\+E\+AN \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em !0} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Add traffic classify entry. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

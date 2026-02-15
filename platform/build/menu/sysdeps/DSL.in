@@ -1,0 +1,134 @@
+
+menu 'DSL Options'
+
+config INCLUDE_ADSLWAN
+	bool "Build DSL"
+	default n
+
+config INCLUDE_VDSLWAN
+	bool "Build vdsl module"
+	depends on INCLUDE_ADSLWAN
+	default n
+
+config INCLUDE_DSL_GFAST
+	bool "Build dsl G.fast module"
+	depends on INCLUDE_ADSLWAN
+	default n
+
+config INCLUDE_ANNEXB
+	bool "Build AnnexB"
+	depends on INCLUDE_ADSLWAN
+	default n 
+	
+config INCLUDE_VDSL35B
+	bool "Build 35b"
+	depends on INCLUDE_VDSLWAN
+	default n 
+
+config INCLUDE_WAN_VLAN
+	bool "Build Vlan tag with WAN"
+	depends on INCLUDE_ADSLWAN
+	default n
+
+choice
+	prompt "ADSL Supplier"
+	default INCLUDE_ADSL_FAKE
+	depends on INCLUDE_ADSLWAN
+
+config INCLUDE_ADSL_ECN
+	bool "Build Econet DSL"
+
+config INCLUDE_ADSL_BCM
+	bool "Build BCM DSL"
+	
+config INCLUDE_ADSL_FAKE
+	bool "Build Fake DSL"
+
+config INCLUDE_ADSL_REMOTE
+	bool "Build remote DSL control for 2in1 board"
+	
+endchoice
+
+config INCLUDE_REAL_NAME_ATM
+	string "ADSL Interface Real Name"
+	default "eth2" if INCLUDE_ADSL_BCM && INCLUDE_ADSL_REMOTE
+	default "nas0" if INCLUDE_ADSL_ECN
+
+config INCLUDE_REAL_NAME_PTM
+	string "VDSL Interface Real Name"
+	default "eth2" if INCLUDE_ADSL_BCM && INCLUDE_ADSL_REMOTE
+	default "ptm0" if INCLUDE_ADSL_BCM
+	default "nas8" if INCLUDE_ADSL_ECN
+	default "ptm0" if INCLUDE_ADSL_LTQ
+
+config INCLUDE_REAL_NAME_PREFIX_ATM
+	string "ATM Interface Real Name Prefix"
+	default "nas"
+
+config INCLUDE_REAL_NAME_PREFIX_IPOA
+	string "IPOA Interface Real Name Prefix"
+	default "atm"
+
+config INCLUDE_REAL_NAME_PREFIX_PTM
+	string "PTM Interface Real Name Prefix"
+	default "ptm" if INCLUDE_ADSL_BCM
+	default "nas" if INCLUDE_ADSL_ECN
+
+config INCLUDE_AUTO_PVC
+	bool "Build auto PVC"
+	default n
+	
+config INCLUDE_DSL_BR2684CTL
+	bool "Build br2684ctl"
+	default n
+
+config INCLUDE_DSL_DIAGNOSTICS
+	bool "Build Support To Get Diagnostics Params."
+	depends on INCLUDE_ADSLWAN
+	depends on INCLUDE_CWMP
+	default n
+
+config INCLUDE_DSL_EXTSTATS
+	bool "Build Support To Get Total, ShowTime, CurDay, QuaHour Stats."
+	default n
+	depends on INCLUDE_ADSLWAN
+
+config INCLUDE_DSL_TESTPARAMS
+	bool "Build Support To Get Test Params."
+	depends on INCLUDE_DSL_DIAGNOSTICS
+	default n
+
+config INCLUDE_DSL_G_INP
+	bool "Build G.INP Enable/Disable Option"
+	depends on INCLUDE_ADSLWAN
+	default n
+	
+config INCLUDE_ECONET_VDSL_35B_COMPAT
+	depends on INCLUDE_VDSLWAN && INCLUDE_VDSL35B && INCLUDE_ADSL_ECN 
+	bool "Build Econet none standard 35B compat support"
+	default n
+
+config INCLUDE_DSL_UPBO
+	bool "Build Upstream power back-off support"
+	depends on INCLUDE_ADSLWAN
+	default n
+
+config INCLUDE_ADSL_VDSL_IN_ONECONN
+	bool "ADSL and VDSL in one connection"
+	depends on INCLUDE_VDSLWAN
+	depends on INCLUDE_INTF_MULTIPLEXER
+	depends on !INCLUDE_WAN_VLAN
+	default n
+
+config INCLUDE_DSL_INTERLEAVE_DEPTH
+	bool "Build Support To Get Interleaving depth"
+	depends on INCLUDE_ADSLWAN
+	default n
+	
+config INCLUDE_ROC_SOS
+	bool "Enable ROC/SOS"
+	depends on INCLUDE_ADSLWAN
+	default n
+
+
+endmenu	# menu 'DSL Options'

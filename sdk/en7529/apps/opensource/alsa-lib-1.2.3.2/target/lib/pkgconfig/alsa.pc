@@ -1,0 +1,12 @@
+prefix=/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/target
+exec_prefix=/proj/mtk08176/git_test/7523_0918_0301/tclinux_phoenix/apps/public/alsa-lib-1.2.3.2/target
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: alsa
+Description: Advanced Linux Sound Architecture (ALSA) - Library
+Version: 1.2.3.2
+Requires: 
+Libs: -L${libdir} -lasound
+Libs.private: -lm -ldl -lpthread -lrt
+Cflags: -I${includedir}

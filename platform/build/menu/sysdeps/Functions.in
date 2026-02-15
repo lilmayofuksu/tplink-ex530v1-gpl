@@ -1,0 +1,1171 @@
+
+menu 'Function Options'
+config INCLUDE_SMART_DHCP
+    bool "Build Smart DHCP"
+    default n
+
+config INCLUDE_SMART_DHCP_CLIENT_ONLY
+    bool "Build Smart DHCP as Client only"
+    default n
+    depends on INCLUDE_SMART_DHCP
+
+config INCLUDE_SMART_DHCP_LINK_DETECT
+    bool "Build Smart DHCP with link detect"
+    default n
+    depends on INCLUDE_SMART_DHCP
+
+config INCLUDE_MULTIMODE
+    bool "Build MultiMode"
+    default n
+
+config INCLUDE_ROUTER_MODE
+    bool "Build Router Mode"
+    default n
+    depends on INCLUDE_MULTIMODE
+
+config INCLUDE_AP_MODE
+    bool "Build Ap Mode"
+    default n
+    depends on INCLUDE_MULTIMODE
+
+config INCLUDE_RE_MODE
+    bool "Build RE Mode"
+    default n
+    depends on INCLUDE_MULTIMODE
+
+config INCLUDE_FACTORY_TEST_RANDOM_MAC
+	bool "build readom MAC in factory"
+	default n
+
+config INCLUDE_SYSMODE
+	bool "build system mode"
+	default n
+
+config INCLUDE_AUTOGATEWAY
+	bool "enable autogateway"
+	default n
+
+config INCLUDE_DEFAULT_GATEWAY
+	bool "enable default gateway functions"
+	default n
+	depends on !(INCLUDE_AUTOGATEWAY) && INCLUDE_ONLINE_DETECTION
+
+config INCLUDE_ONLINE_DETECTION
+	bool "enable online detection functions"
+	default n
+
+config INCLUDE_CUSTOM_CONNNAME
+	bool "enable custom connection name"
+	default n
+
+config INCLUDE_CUSTOM_CONNNAME_UNIQ
+	bool "enable uniq custom connection name"
+	default n
+	depends on INCLUDE_CUSTOM_CONNNAME
+
+config INCLUDE_SAME_DEFAULT_GATEWAY_FOR_V4V6
+	bool "enable same default gateway for IPv4 and IPv6 connections"
+	default n
+	depends on INCLUDE_DEFAULT_GATEWAY
+
+config INCLUDE_INTERNET_ONLINE_FOR_DEFAULT_GATEWAY
+	bool "enable Internet online detect for IPv4 and IPv6 default gateway"
+	default n
+	depends on INCLUDE_DEFAULT_GATEWAY
+
+config INCLUDE_PRE_CONFIG
+	bool "enable Pre-Configuration"
+	default n
+	depends on INCLUDE_TAUC
+
+config INCLUDE_APPS_MONITOR
+	bool "enable apps monitor in COS"
+	default n
+
+config INCLUDE_QOS_ENABLE
+	bool "enable QOS function"
+	default n
+choice
+	prompt "QoS Switch"
+	default INCLUDE_APP_IQOS
+	depends on INCLUDE_QOS_ENABLE
+config INCLUDE_APP_IQOS
+	bool "enable QOS lite function"
+
+config INCLUDE_QOS_FUNCTION
+	bool "enable classic QOS function"
+endchoice
+
+choice
+	prompt "IQoS Model"
+	default INCLUDE_SW_IQOS
+	depends on INCLUDE_APP_IQOS
+
+config INCLUDE_SW_IQOS
+	bool "SoftWare IQoS"
+
+config INCLUDE_HW_IQOS
+	bool "HardWare IQoS"
+endchoice
+
+choice
+	prompt "QoS Model"
+	default INCLUDE_QOS
+	depends on INCLUDE_QOS_FUNCTION
+
+config INCLUDE_QOS
+	bool "SoftWare QoS"
+	
+config INCLUDE_HW_QOS
+	bool "HardWare QoS"
+	
+config INCLUDE_TC
+	bool "SoftWare Traffic Control"
+
+config INCLUDE_HW_QOS_ECONET
+	bool "HardWare ECN QoS"
+endchoice
+
+config INCLUDE_HW_QOS_VOIP
+	bool "support voip qos"
+	default n
+	depends on INCLUDE_HW_QOS
+
+config INCLUDE_HW_QOS_MTK
+	bool "Hardware MTK QoS"
+	default n
+	depends on INCLUDE_QOS
+
+config INCLUDE_QOS_SHAPE
+	bool "Build QoS Shape for econet"
+	default n
+
+config INCLUDE_MTK_HWNAT_V4
+	bool "Build MTK HWNAT V4"
+	depends on INCLUDE_MTK
+	default n
+
+config INCLUDE_SSL
+	bool "build openSSL"
+	default n
+
+config INCLUDE_SSL_LIB_NAME
+	string "openSSL Version"
+	default "openssl-1.1.1f"
+	depends on INCLUDE_SSL
+
+config INCLUDE_CLIENT_TYPE_RECOGNITION
+	bool "support client type recogition"
+	default n
+	
+config INCLUDE_IPSEC
+	bool "build IPSec"
+	default n
+
+config INCLUDE_LOGIN_GDPR_ENCRYPT
+	bool "Build LOGIN GDPR Encrypt "
+	default n
+	
+config INCLUDE_CWMP
+	bool "build CWMP/TR069"
+	default n
+
+config INCLUDE_CWMP_DOWNLOAD_MAX_RETRY
+	int "Max Number Of Retries When CWMP Download, (unit: times)"
+	default 2
+	range 0 1024
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_DMMAP
+        bool "build CWMP/DMMAP (TR098 and TR181 data model mapping)"
+        default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_DMMAP_DEVLOG
+	bool "build CWMP/DMMAP to support InternetGatewayDevice.DeviceInfo.DeviceLog"
+	default n
+	depends on INCLUDE_CWMP_DMMAP
+
+config INCLUDE_CWMP_DMMAP_HTTP_REMOTE
+	bool "build CWMP/DMMAP to support InternetGatewayDevice.X_TP_AppCfg.HttpCfg.HttpRemoteEnabled/HttpRemotePort"
+	default n
+	depends on INCLUDE_CWMP_DMMAP
+
+config INCLUDE_CWMP_SUPPORT_302
+	bool "Let CWMP support 301/302/307 message"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_ACS_USERNAME_AND_PASSWORD_FOR_SN
+	bool "Let CWMP ACS username and password the same as CPE Serial Number"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_URL_UPDATE_TO_DEFAULTCONFIG
+	bool "Let CWMP URL be special default config while upgrade firmware"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_TR069_ACSURL_FROM_DHCP
+	bool "build receive ACS URL via DHCP"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_TR069_ACSURL_FROM_DHCP_ADVANCED
+	bool "build receive ACS URL/Username/Password via DHCP, and open CWMP/INFORM when received."
+	default n
+	depends on INCLUDE_TR069_ACSURL_FROM_DHCP
+
+config INCLUDE_AUTO_CHANGE_CWMP_INTF
+        bool "Auto select an available cwmp intf when Bound Ifname is Any_WAN"
+        default n
+        depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_SSL
+	bool "build SSL CWMP/TR069"
+	default n
+	depends on INCLUDE_CWMP && INCLUDE_SSL
+
+config INCLUDE_CWMP_SSL_MIN_TLS1_0
+	bool "Force SSL CWMP/TR069 TLS version >=1.0"
+	default n
+	depends on INCLUDE_CWMP_SSL
+
+config INCLUDE_CWMP_SSL_MIN_TLS1_1
+	bool "Force SSL CWMP/TR069 TLS version >=1.1"
+	default n
+	depends on INCLUDE_CWMP_SSL
+
+config INCLUDE_CWMP_SSL_MIN_TLS1_2
+	bool "Force SSL CWMP/TR069 TLS version >=1.2"
+	default n
+	depends on INCLUDE_CWMP_SSL
+
+config INCLUDE_CWMP_SSL_MIN_TLS1_3
+	bool "Force SSL CWMP/TR069 TLS version >=1.3"
+	default n
+	depends on INCLUDE_CWMP_SSL
+
+config INCLUDE_CWMP_SSL_VERIFY_PEER
+	bool "CWMP verify the certification of peer"
+	default n
+	depends on INCLUDE_CWMP_SSL
+
+config INCLUDE_CWMP_SSL_CERT_SETTING
+	bool "CWMP setting of the CA/CPE certificate"
+	default n
+	depends on INCLUDE_CWMP_SSL_VERIFY_PEER
+
+config INCLUDE_CWMP_CRPORT_CFGMODE
+	bool "It is used to determine how the port information in the ConnectionRequestURL of the CPE with the structure http(s)://host:port/path will be assigned"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_CRPORT_CFGMODE_NEXTBOOT
+	bool "Keep old ConnReqPort, new ConnReqPortwork on next rebooting"
+	default n
+	depends on INCLUDE_CWMP_CRPORT_CFGMODE
+	
+config INCLUDE_IPV6_CWMP
+	bool "CWMP enable IPv6 Connection"
+	default n
+	depends on INCLUDE_CWMP && INCLUDE_IPV6
+
+config INCLUDE_CWMP_CONNECTION_ACL
+	bool "CWMP enable ACL rules for Connection"
+	default n
+	depends on INCLUDE_CWMP
+	
+config INCLUDE_TR143
+	bool "Build TR143"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_GENERATE_CWMP_USERNAME
+	bool "Build Support CWMP username generation in the form of OUI-SN."
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_WRITE_CWMP_PWD
+	bool "Build support for writing CWMP pwd to Flash."
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_CWMP_SET_VALUES_IGNORE_TYPE
+	bool "Build support for ignoring type of parameters when cwmp performs SetParameterValues (for A1BG)."
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_IPPING_DIAG
+	bool "Build ipping diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_TRACEROUTE_DIAG
+	bool "Build traceroute diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_TRACEROUTE_DIAG_ICMP
+	bool "Build traceroute diag by ICMP "
+	default n
+	depends on INCLUDE_TRACEROUTE_DIAG
+	
+config INCLUDE_DOWNLOAD_DIAG
+	bool "Build download diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_UPLOAD_DIAG
+	bool "Build upload diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_ECONET_TR143_SPEEDUP
+	bool "Build econet tr143 speedup module"
+	default n
+	depends on INCLUDE_TR143 && INCLUDE_ECONET
+
+config INCLUDE_UDPECHO_DIAG
+	bool "Build udpecho diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_NSLOOKUP_DIAG
+	bool "Build nsloopup diag"
+	default n
+	depends on INCLUDE_TR143
+
+config INCLUDE_TR143_V1_1_0
+	bool "Build TR143 version 1_1_0"
+	default n
+	depends on	INCLUDE_TR143
+
+config INCLUDE_TR111_PART1
+	bool "Build TR111 part1"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_TR111_PART2
+	bool "Build TR111 part2"
+	default n
+	depends on INCLUDE_CWMP
+
+config INCLUDE_FIREWALL_LEVEL
+	bool "Build firewall level"
+	default n
+
+config INCLUDE_FIREWALL_DDOS
+	bool "Build ddos firewall"
+	default n
+
+config INCLUDE_ADVANCED_FIREWALL
+	bool "Build advanced firewall rule setting."
+	default n
+
+config INCLUDE_ADVANCED_FIREWALL_LOG
+	bool "Build advanced firewall log support"
+	default n
+	depends on INCLUDE_ADVANCED_FIREWALL
+	help
+	   Build fwlogd, collect firewall log from kernel,
+	   send to cmmsyslogd and show on system log of web.
+
+config INCLUDE_ADVANCED_FIREWALL_LOG_MARK
+	string "Mark added before origin firewall log"
+	default "1F1W4L5O1G4"
+	depends on INCLUDE_ADVANCED_FIREWALL_LOG
+	help
+	   We add mark in front of the origin firewall log,
+	   and we also filter out firewall log from kmsg through the mark.
+
+config INCLUDE_ADVANCED_FIREWALL_LOG_SHM_LEN
+	int "Length of share memory to save firewall log(unit: 1kB)"
+	default 32
+	depends on INCLUDE_ADVANCED_FIREWALL_LOG
+	help
+	   Firewall logs will be send to cmmsyslog,
+	   need a new space to save them because of overlapping.
+
+config INCLUDE_ADVANCED_FIREWALL_LOG_SPEED_MIN
+	int "Min speed of firewall rule log"
+	default 1
+	depends on INCLUDE_ADVANCED_FIREWALL_LOG
+	help
+	   Min speed of firewall rule log. It should more than 0.
+	   Speed unit depends on user input, it can be per second, per minute and per hour.
+
+config INCLUDE_ADVANCED_FIREWALL_LOG_SPEED_MAX
+	int "Max speed of firewall rule log"
+	default 360000
+	depends on INCLUDE_ADVANCED_FIREWALL_LOG
+	help
+	   Max speed of firewall rule log. It should less than or equal to 360000.
+	   Speed unit depends on user input, it can be per second, per minute and per hour.
+
+config INCLUDE_AGILEACS_SIG
+	bool "Build AgileACS Signature"
+	default n
+
+config INCLUDE_ACS_MULTISSID_HIDE
+	bool "hide multissid show on ACS"
+	default n
+	depends on INCLUDE_CWMP_DMMAP
+
+config INCLUDE_RIP
+	bool "Build RIP"
+	default n
+
+config INCLUDE_SNMP
+	bool "Build SNMP"
+	default n
+
+config INCLUDE_DDNS
+	bool "Build DDNS"
+	default n
+	
+config INCLUDE_DDNS_PH
+	bool "Build oray DDNS"
+	default n
+	depends on INCLUDE_DDNS
+	
+config INCLUDE_DYNDNS
+	bool "Build dyn DDNS"
+	default n
+	depends on INCLUDE_DDNS
+	
+config INCLUDE_NOIPDNS
+	bool "Build NO-ip DDNS"
+	default n
+	depends on INCLUDE_DDNS
+	
+config INCLUDE_DDNS_USERDEFINE
+	bool "Build user defined DDNS"
+	default n
+	depends on INCLUDE_DDNS
+
+config INCLUDE_DDNS_TR181
+	bool "Build TR181 DDNS"
+	default n
+	depends on INCLUDE_DDNS
+
+config INCLUDE_IPTV
+	bool "Build IPTV"
+	default n
+	
+config INCLUDE_IGMP
+	bool "Build IGMP"
+	default n
+
+config INCLUDE_IGMP_VERSION_SWITCH
+	bool "Build IGMP version switch"
+	default n
+	depends on INCLUDE_IGMP
+
+config INCLUDE_BCM_IGMP_MCPD
+	bool "Build BCM_IGMP_MCPD"
+	default n
+	depends on INCLUDE_IGMP
+
+config INCLUDE_IGMP_ETHPROXY
+	bool "Enable IGMP ETHPROXY of PPPoE"
+	default n
+	depends on INCLUDE_IGMP
+
+config INCLUDE_BCM_NETFILTER
+	bool "BCM ebtables"
+	default n
+
+config INCLUDE_IGMP_ETHPROXY
+	bool "Enable IGMP ETHPROXY"
+	default n
+	depends on INCLUDE_IGMP
+
+config INCLUDE_IGMP_HWNAT
+	bool "Enable IGMP HWNAT, it relate to SDK"
+	default n
+	depends on INCLUDE_IGMP
+
+config INCLUDE_IGMP_SNOOPING_BY_BRCTL
+	bool "Enable snooping by brctl"
+	default n
+	depends on INCLUDE_IGMP
+
+config CONFIG_TP_IGMP_SNOOPING
+	bool "Old snooping flag, Enable snooping by brctl"
+	default n if INCLUDE_IGMP_SNOOPING_BY_BRCTL
+	depends on INCLUDE_IGMP
+
+config INCLUDE_IGMP_SNOOPING_ADV_BY_BRCTL
+	bool "Config advence snooping function by brctl(such like fastleave)"
+	default n
+	depends on INCLUDE_IGMP_SNOOPING_BY_BRCTL
+
+config CONFIG_TP_IGMP_SNOOPING_PLUS
+	bool "Old snooping flag, Config advence snooping function by brctl(such like fastleave)"
+	default n if INCLUDE_IGMP_SNOOPING_ADV_BY_BRCTL
+	depends on INCLUDE_IGMP_SNOOPING_BY_BRCTL
+
+config INCLUDE_IGMP_SRC_CARE
+	bool "Build srouce care to support fast leave for RU IPTV"
+	depends on INCLUDE_IGMP
+	default n
+
+config INCLUDE_IGMP_MAX_GROUP_COUNT
+	int "IGMP MAX GROUP COUNT ( 32:MIN, 48:MID, 64:MAX )"
+	range 32,64
+	depends on INCLUDE_IGMP
+	default 32
+
+config INCLUDE_IGMP_MAX_MSF_PER_GROUP
+	int "IGMP MAX MSF PER GROUP ( 20:MIN, 40:MID, 60:MAX )"
+	range 20,60
+	depends on INCLUDE_IGMP
+	default 20
+
+config INCLUDE_ETHERNET_WAN
+	bool "Build ethernet WAN"
+	default n
+
+config INCLUDE_INDEPENDENT_EWAN_PORT
+	depends on INCLUDE_ETHERNET_WAN
+	bool "Build independent ewan port"
+	default n
+	
+config INCLUDE_ETHERNET_MULTI_WAN
+	depends on INCLUDE_ETHERNET_WAN
+	bool "Build ethernet Mutil-WAN"
+	default n
+
+config INCLUDE_WAN_802_1P
+	bool "WAN PVC support 802.1p"
+	default n
+
+config INCLUDE_WAN_VLAN_ID_MIN
+	int "VLAN ID min value"
+	range 0, 4095
+	default 1
+
+config INCLUDE_WAN_VLAN_ID_MAX
+	int "VLAN ID max value"
+	range 0, 4095
+	default 4094
+
+config INCLUDE_MULTI_WAN_WITH_SAME_VID
+	bool "Support multi WAN connections with same VLAN ID, depends on macvlan"
+	depends on INCLUDE_WAN_MAC_ALL_INTF_DIFFERENT
+	depends on INCLUDE_WAN_MAC_CALCULATE_FIRST_BYTE
+	default n
+
+config INCLUDE_WAN_MAC_ALL_INTF_DIFFERENT
+	depends on INCLUDE_ETHERNET_MULTI_WAN
+	bool "All WAN interface has different MAC"
+	default n
+
+config INCLUDE_WAN_MAC_CALCULATE_FIRST_BYTE
+	depends on INCLUDE_ETHERNET_WAN
+	bool "Re-calculate the first byte"
+	default n
+	
+config INCLUDE_BRIDGING
+	bool "Build bridging"
+	default n
+	
+config INCLUDE_NETFILTER_FULLCONE
+	bool "Build Fullcone function in ipt_MASQUERADE.c"
+	default n
+
+config INCLUDE_NETFILTER_XT_TARGET_TRIGGER
+	bool "Port Trigger target support"
+	default n
+
+config INCLUDE_NETFILTER_XT_MATCH_MASSURL
+	bool "Massurl match support"
+	default n
+
+config INCLUDE_ALG
+	bool "Build ALG"
+	default n
+	
+config INCLUDE_ALG_H323
+	bool "Build H323 ALG"
+	default n
+	depends on INCLUDE_ALG
+
+config INCLUDE_ALG_SIP
+	bool "Build SIP ALG"
+	default n
+	depends on INCLUDE_ALG
+	
+config INCLUDE_ALG_RTSP
+	bool "Build RTSP ALG"
+	default n
+	depends on INCLUDE_ALG
+	
+config INCLUDE_WAN_DETECT
+	bool "Build Wan Detect"
+	default n
+
+config INCLUDE_INTF_GROUPING
+	bool "Layer 2 Interface grouping"
+	default n
+
+config INCLUDE_INTF_BINDING
+	bool "LAN-WAN interface binding"
+	default n
+
+choice
+	prompt "LAN-WAN binding implementation scheme"
+	depends on INCLUDE_INTF_BINDING
+	default INCLUDE_WAN_PORT_BINDING
+
+config INCLUDE_WAN_PORT_BINDING
+	bool "BBA1.0 PON scheme"
+	help
+		Interface Grouping not supported.
+	
+config INCLUDE_ROUTE_BINDING
+	bool "BBA1.0 DSL scheme"
+	help
+		Yet untested on BBA2.0 
+endchoice
+
+config INCLUDE_WAN_VLAN_TAGGING
+	bool "LAN-WAN interface binding with vlan tag"
+	depends on INCLUDE_WAN_PORT_BINDING
+	default n
+	
+config INCLUDE_TP_MARK
+	bool "Use iptables tpmark match and ebtables tpmark target"
+	default n
+	depends on INCLUDE_ECONET
+	help
+		Use iptables tpmark match and ebtables tpmark target for WAN_PORT_BINDING and software TC(not include iQoS)
+
+config INCLUDE_PPTP
+bool "Build PPTP"
+	default n
+	
+config INCLUDE_L2TP
+bool "Build L2TP"
+	default n
+
+config INCLUDE_PADT_PRECEDE
+bool "Build Sending PADT before session launches"
+	default n
+
+config INCLUDE_PPP_DRYRUN_EMPTY_ACCOUNT
+	bool "Build Dryrun ppp dial while the account is empty"
+	default n
+
+config INCLUDE_ACL
+	bool "Build Basic ACL Function(PING ACL)"
+	default n
+
+config INCLUDE_ICMP_PING_ACL
+    bool "Enable ACL rules for ICMP Ping"
+    default n
+    depends on INCLUDE_ACL
+
+config INCLUDE_ACL_ADVANCE
+	bool "Build Full Access Control List Function(Not support yet!!!)"
+	default n
+	depends on INCLUDE_ACL
+
+config INCLUDE_FIREWALL_IPFILTER
+	bool "Build Extended Access Control Function (IP Filter)"
+	default n
+
+config INCLUDE_DUAL_ACCESS
+	bool "Build PPPoE Dual Access"
+	default n
+	depends on INCLUDE_ETHERNET_WAN
+	depends on INCLUDE_MULTI_WAN_WITH_SAME_VID
+
+config INCLUDE_SYNC_SECOND_CONN_FORWARD_RULES
+	bool "Build Sync the forwarding rules for wan second connection"
+	default n
+	depends on INCLUDE_ETHERNET_WAN
+	depends on INCLUDE_MULTI_WAN_WITH_SAME_VID
+
+config INCLUDE_GERMANY_SPEC
+	bool "Build Germany Spec"
+	default n
+
+config INCLUDE_PPP_RECONN
+	bool "Build PPP RECONNECTION(usually used in Germany.)"
+	default n
+
+config INCLUDE_PPPOE_USERNAME_AND_PASSWORD_FOR_SN
+	bool "Let default PPPOE username and password the same as CPE Serial Number"
+	default n
+
+config INCLUDE_PPP_PASSWORD_HIDE
+	bool "Hide PPPoE Password from WEB GUI Page."
+	default n
+
+config INCLUDE_CPU_MEMORY_DISPLAY
+	bool "Build cpu memory display in web"
+	default n
+	
+config INCLUDE_WEB_DISPLAY_PROC_LIST
+	bool "Build device process list display in web"
+	default n
+
+config INCLUDE_VPN
+	bool "Build VPN Function"
+	default n
+	
+config INCLUDE_IPSEC
+	bool "Build IPSec"
+	default n
+	depends on INCLUDE_VPN
+	
+config 	INCLUDE_OPENVPN_SERVER
+	bool "Build OpenVPN server"
+	default n
+	depends on INCLUDE_VPN
+	
+config INCLUDE_PPTPVPN_SERVER
+	bool "Build PPTPVPN server"
+	default n
+	depends on INCLUDE_VPN
+
+config INCLUDE_GRE
+	bool "Build GRE Tunnel"
+	default n
+	depends on INCLUDE_VPN
+
+config INCLUDE_SPEEDTEST
+	bool "Build Speedtest Client ookla"
+	default n
+
+config INCLUDE_HTTP_SSL
+	bool "Build Https(SSL) Support For Access DUT "
+	default n
+	depends on INCLUDE_SSL
+
+config INCLUDE_HTTP_SSL_MIN_TLS1_0
+	bool "Force Https(SSL) TLS version >= 1.0"
+	default n
+	depends on INCLUDE_HTTP_SSL
+
+config INCLUDE_HTTP_SSL_MIN_TLS1_1
+	bool "Force Https(SSL) TLS version >= 1.1"
+	default n
+	depends on INCLUDE_HTTP_SSL
+
+config INCLUDE_HTTP_SSL_MIN_TLS1_2
+	bool "Force Https(SSL) TLS version >= 1.2"
+	default n
+	depends on INCLUDE_HTTP_SSL
+
+config INCLUDE_HTTP_SSL_MIN_TLS1_3
+	bool "Force Https(SSL) TLS version >= 1.3"
+	default n
+	depends on INCLUDE_HTTP_SSL
+
+config INCLUDE_HTTP_FILTER_BY_ACL
+	bool "do http filter by acl"
+	default n
+	
+config INCLUDE_HTTP_MULTI_CLIENT
+	bool "support multi http client login at the same time"
+	default n
+
+config INCLUDE_VOIP_ACL
+	bool "VOIP enable ACL rules for Connection"
+	default n
+	depends on INCLUDE_VOIP
+
+config INCLUDE_DNS_PROXY
+	bool "Build TP-link Domain Name Login"
+	default n
+	help
+	  For TP-link Domain Name Login
+
+config INCLUDE_WRITE_SN
+	bool "Build support for writing Serial Number to Flash. "
+	default n
+
+config INCLUDE_WRITE_MNGT_URL
+	bool "Build support for writing ACS URL to Flash. "
+	default n
+	
+config INCLUDE_WRITE_WIFI_PWD
+	bool "Build support for writing Wifi password to Flash. "
+	default n
+
+config INCLUDE_WRITE_MULTI_GUEST_PWD
+	bool "Build support for writing MultiSSID and Guest password to Flash. "
+	default n
+	depends on INCLUDE_WRITE_WIFI_PWD
+
+config INCLUDE_WRITE_ADMIN_PWD
+	bool "Build support for writing Web admin password to Flash. "
+	default n
+
+config INCLUDE_RESTORE_ADMIN_PASSWORD
+	bool "Allow restore admin password to default value in flash. "
+	default n
+	depends on INCLUDE_WRITE_ADMIN_PWD
+
+config INCLUDE_WRITE_USER_PWD
+	bool "Build support for writing Web user password to Flash. "
+	default n
+
+config INCLUDE_RESTORE_USER_PASSWORD
+	bool "Allow restore user password to default value in flash. "
+	default n
+	depends on INCLUDE_WRITE_USER_PWD
+
+config INCLUDE_WRITE_COUNTRY
+	bool "Build support for writing Country Code to Flash. "
+	default n
+
+config INCLUDE_HOSTNAME_EDITABLE
+	bool "Build support for editable hostname"
+	default n
+
+config INCLUDE_WRITE_FUNCTION_CODE
+	bool "Build support for writing Function Code to Flash. "
+	default n
+
+config INCLUDE_WRITE_HARDVER
+	bool "Build support for writing Hardware version to Flash. "
+	default n
+	
+config INCLUDE_DHCP_OPTION50_DISCOVER
+	bool "Build support dhcpc option 50 of DHCPDISCOVER"
+	default n
+	
+config INCLUDE_DHCP_OPTION42_LAN
+	bool "Build support dhcps option 42 from lan client"
+	default n
+	
+config INCLUDE_PORT_MIRROR
+	bool "Build support port mirror"
+	default n
+	
+config INCLUDE_PORT_MIRROR_MULTI_WAN
+	bool "Build support port mirror of many wan connections seperately"
+	depends on INCLUDE_PORT_MIRROR
+	default n
+	
+config INCLUDE_PORT_MIRROR_MULTI_WAN_VLAN
+	bool "Build support port mirror from a wan connection of selected VLAN"
+	depends on INCLUDE_PORT_MIRROR_MULTI_WAN
+	default n
+	
+config INCLUDE_PORT_MIRROR_MULTI_WAN_INTF
+	bool "Build support port mirror with many wan connections, seperated by interface"
+	depends on INCLUDE_PORT_MIRROR_MULTI_WAN
+	default n
+	
+config 	INCLUDE_PACKET_CAPTURE
+	bool "Build support packet capture"
+	default n
+
+config 	INCLUDE_PKTCAP_UPLOAD
+	bool "Build support packet upload"
+	default n
+	depends on INCLUDE_PACKET_CAPTURE
+
+config INCLUDE_CLOUD
+	bool "Build Cloud Service"
+	default n
+
+config INCLUDE_CLOUD_V1
+	bool "Build CLOUD Service V1, Firmware Upgrade"
+	default n
+	depends on INCLUDE_CLOUD
+	
+config INCLUDE_CLOUD_L3_TO_FORCE_UPGRADE
+	bool "Build CLOUD Force Firmware Upgrade no user call"
+	default n
+	depends on INCLUDE_CLOUD_V1
+	help
+	   override level 3 to force upgrade, according to the need to open
+	   
+config INCLUDE_CLOUD_V2
+	bool "Build CLOUD Service V2"
+	default n
+	depends on INCLUDE_CLOUD
+	
+config INCLUDE_CLOUD_HTTPS
+	bool "Build CLOUD HTTPS"
+	default n
+	depends on INCLUDE_CLOUD_V2
+	help
+		Use a new interface to communicate with the Cloud platform for safty purpose
+
+config INCLUDE_CLOUD_EASYMESH_GROUP_MANAGEMENT
+	bool "Build CLOUD Easymesh group management"
+	default n
+	depends on INCLUDE_CLOUD_V2 && INCLUDE_EASYMESH
+
+if INCLUDE_CLOUD_V2
+config INCLUDE_CLOUD_ACCOUNT
+	def_bool y if INCLUDE_CLOUD_V2
+endif
+
+config INCLUDE_WAN_BLOCK
+	bool "Build WAN Block"
+	default n
+	depends on INCLUDE_CLOUD
+	
+config INCLUDE_WAN_BLOCK_FW_UP_INFO
+	bool "Build Firmware Upgrade Info Block"
+	default n
+	depends on INCLUDE_WAN_BLOCK
+
+config INCLUDE_XMPP
+        bool "Build XMPP"
+        default n
+
+config INCLUDE_TR369
+        bool "Build TR369"
+        default n
+
+config INCLUDE_QOE
+	bool "Build QoE Feature"
+	default n
+
+config INCLUDE_QOE_SPEEDTEST
+	bool "Build QoE Speed Test"
+	default n
+	depends on INCLUDE_QOE
+
+config INCLUDE_QOE_WAN_CONN_THROUGHPUT
+	bool "Build QoE WAN Connection Throughput"
+	default n
+	depends on INCLUDE_QOE
+
+config INCLUDE_PARENTCONTROL_V2
+	bool "Build Parental Control V2"
+	default n
+
+config INCLUDE_PC_V2_SAVE_ALL_HISTORY
+	bool "Save all history record to Flash. If defined, history record occupies 3 blocks in flash. If not defined, only online time and top visits will be saved, which occupy 1 block in flash. "
+	default n
+	depends on INCLUDE_PARENTCONTROL_V2
+
+config INCLUDE_CLI_DIAGNOSIS
+	bool "cli diagnosis interface"
+	default n
+
+config INCLUDE_TR143D_FOR_CAF_TEST
+	bool "Build CAF Feature"
+	default n
+	depends on INCLUDE_QOE && INCLUDE_TR143
+
+config INCLUDE_TAUC
+	bool "Support TAUC1.0 or not"
+	default n
+
+config INCLUDE_TAUC_WIFI_PWD_PT
+	bool "enable TAUC display wifi plaintext password"
+	default n
+	depends on INCLUDE_TAUC
+
+config INCLUDE_NO_WAN
+	bool "Build No Wan Feature"
+	default n
+
+config INCLUDE_REDIRECT_HTTP_TO_HTTPS
+	bool "Build support redirect http to https"
+	default n
+	help
+	   redirect http to https
+
+config INCLUDE_REDIRECT_REMOTE_HTTP_TO_HTTPS
+	bool "Build support redirect remote http to https"
+	default n
+	help
+	   redirect remote http to https
+
+config INCLUDE_HIDDEN_CWMP_PAGE
+	bool "Build support hidden page for cwmp"
+	default n
+	help
+	   hide cwmp and create a hidden page for cwmp
+
+config INCLUDE_NO_CONSECUTIVE_SAME_CHAR
+	bool "Build support no consecutive same characters in password"
+	default n
+	help
+	   consecutive same characters are not allowed in password
+
+config INCLUDE_CLS_L1_IMDA_LOGIN_WAIT
+	bool "Build support imda login wait"
+	default n
+	help
+	   wait 2 seconds after login failure
+
+config INCLUDE_SAVE_KEY_AS_HASH
+	bool "Build support save key as hash(salt+sha256)"
+	default n
+	help
+	   save key as hash(salt+sha256)
+
+config INCLUDE_CLS_L1_IMDA_TPAPP
+	bool "Build support for IMDA TPAPP"
+	default n
+	help
+	   IMDA TPAPP
+
+config INCLUDE_MIN_PASSWD_LEN
+	string "Define the min length of password"
+	default "10" if INCLUDE_IMDA
+	default "6"
+	help
+	   min length of password
+
+config INCLUDE_IMDA
+	bool "IMDA: Build support Singapore IMDA"
+	default n
+	select INCLUDE_REDIRECT_HTTP_TO_HTTPS
+	select INCLUDE_HIDDEN_CWMP_PAGE
+	select INCLUDE_NO_CONSECUTIVE_SAME_CHAR
+	select INCLUDE_CLS_L1_IMDA_LOGIN_WAIT
+	select INCLUDE_SAVE_KEY_AS_HASH
+	select INCLUDE_CLS_L1_IMDA_TPAPP
+	help
+	   IMDA TS Security Requirements for Residential Gateways
+
+config INCLUDE_UPNP_PORTMAP_SWITCH
+	bool "Build UPnP Port Mapping Switch"
+	default n
+
+config INCLUDE_UPNP_DYNAMIC_INIT
+	bool "Init UPnP Service Only When UPnP is enabled"
+	default n
+
+config INCLUDE_ROUTE_TBL
+	bool "Build Route Table Show"
+	default n
+
+config INCLUDE_MULTIPLE_ROUTING
+	bool "Contains dynamic routings、 static routings and policy routings"
+	default n
+
+config INCLUDE_ROUTE_TBL_SHOW_ALL_ENTRY
+	bool "Route table show all entry in webUI"
+	default n
+	depends on INCLUDE_ROUTE_TBL
+
+config INCLUDE_CWMP_DMMAP_PORT_TRIGGER
+	bool "Open Tr98 Param Of Port Trigger To Acs"
+	default n
+
+config INCLUDE_CWMP_DMMAP_DMZ
+	bool "Open Tr98 Param Of DMZ To Acs"
+	default n
+
+config INCLUDE_MULTIPORT_FORWARD_VS
+	bool "Build Support Of MultiPort(External port and Internal port) For Virtual Servers"
+	default n
+
+config INCLUDE_MAC_CLIENT_FORWARD_VS
+	bool "Build Support Of Mac Address Internal Client For Virtual Servers"
+	default n
+
+config INCLUDE_IP_RESTRIC_FORWARD_VS
+	bool "Build Support Of IP Restriction For Virtual Server"
+	default n
+
+config INCLUDE_SESSION_TIMEOUT
+	 bool "TCP/UDP session timeout"
+	 default n
+
+config INCLUDE_MULTICORES_WATCHDOG
+	bool "Build multi-cores watchdog"
+	default n
+	
+config INCLUDE_DUALLAN
+	bool "Build Support Of Static Ip Pool For Ethernet Lan"
+	default n
+	
+config INCLUDE_LIFEMOTE
+	bool "Build Support of Lifemote Function"
+	default n
+
+config INCLUDE_UDPXY
+	bool "Enable udpxy function"
+	default n
+
+config INCLUDE_WAN_LOCK
+    bool "Build Support of WANLock Function"
+    default n
+	
+config INCLUDE_SYSLOG_SECURITY_SPEC
+    bool "Build Support of Security System Log"
+    default n
+
+config INCLUDE_MULTIPLE_NAT
+	bool "enable multiple nat function"
+	default n
+
+config INCLUDE_MULTIPLE_NAT_CHECK_WANIP
+	bool "Check WAN IP is valid or not before effect multile nat rules"
+	default n
+	depends on INCLUDE_MULTIPLE_NAT
+
+config INCLUDE_DEV_EXTSTATS
+	bool "(ONLY FOR \"sdk/en7516\") Build Support To Get Dev Unicast, Multicast And Broadcast Packets Stats."
+	default n
+	help
+		This feature needs support of SDK, and only "bba_3_0_platform/sdk/en7516" supports now
+
+config INCLUDE_WEB_WARN
+	bool "Build web warn function"
+	default n
+
+config INCLUDE_DISABLE_BROWSER_DEVELOP_TOOL
+	bool "Disable browser develop tool"
+	default n
+
+config INCLUDE_WEB_WARN_WIFI_NOSEC
+	bool "Web warn when some SSID has no security"
+	default n
+	depends on INCLUDE_WEB_WARN
+
+config INCLUDE_INTF_MULTIPLEXER
+	bool "enable Interface Multiplexer function"
+	default n
+
+config INCLUDE_WAN_CREATOR_RECORD
+	bool "Record the level of the account that created the wan connection"
+	default n
+
+config INCLUDE_EASYDIAG
+	bool "Build Connection Diagnostic"
+
+config INCLUDE_EASYDIAG_LAN_NUM
+	int "lan port num of DUT"
+	depends on INCLUDE_EASYDIAG
+	range 2 4
+	default 4
+
+config INCLUDE_OAM_CLIENT
+	bool "Build Support of OAM(CFM/EFM) for MCT certification(British Telecom mandatory)"
+	default n
+
+config INCLUDE_IGMP_DIAG
+	bool "Build IGMP Diagnostic"
+	default n
+
+config INCLUDE_CLOUD_ISOLATION_SWVER
+	bool "Build cloud isolation software version. Some ISP often customize the software version format, however, this will conflict with the software version format of the TP-LINK cloud upgrade. So we need to separate the generic version from the cloud upgrade version"
+	default n
+	depends on INCLUDE_CLOUD
+
+config INCLUDE_THERMAL_FAN
+	bool "Build THERMAL_FAN"
+	default n
+	
+config INCLUDE_IPERF3
+	bool "Build iperf3"
+	default n
+
+endmenu  # menu "Function Options"

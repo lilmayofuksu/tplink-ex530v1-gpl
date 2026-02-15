@@ -1,0 +1,33 @@
+config INCLUDE_WISP_DE_OPTIONS
+	bool "WISP(DE) all options (B&C)"
+	depends on INCLUDE_WISP_DE
+
+	######## SELECT Type B ##########
+	select INCLUDE_WAN_VLAN
+	select INCLUDE_USB_SFTP_SERVER
+	select INCLUDE_STORAGE_HTTP_SERVICE	
+	select INCLUDE_DAY_MONTH_YEAR
+	select INCLUDE_CWMP_SSL_VERIFY_PEER
+	select INCLUDE_CWMP_SSL_CERT_SETTING
+	select INCLUDE_CALLFWD_THROUGH_DUT
+	select INCLUDE_IPV6_PASSTHROUGH
+	select INCLUDE_DDNS
+	select INCLUDE_DDNS_USERDEFINE
+	select INCLUDE_GENERATE_CWMP_USERNAME
+	select INCLUDE_WRITE_CWMP_PWD
+	select INCLUDE_CWMP_AND_VOIP_AUTO_CHOOSE_INTF
+
+	######## SELECT Type C ##########
+	select INCLUDE_WISP_DE_TEST1
+	select INCLUDE_WISP_DE_TEST2
+
+########## Define Type C ############
+config INCLUDE_WISP_DE_TEST1
+	bool "for WISP DE test1 (C)"
+	default n
+	depends on INCLUDE_WISP_DE_OPTIONS
+
+config INCLUDE_WISP_DE_TEST2
+	bool "for WISP DE test2 (C)"
+	default n
+	depends on INCLUDE_WISP_DE_OPTIONS

@@ -1,0 +1,7 @@
+menu "WAN Options"
+
+config INCLUDE_WAN_REAL_TIME_STATS
+    bool "get wan real time traffic stats"
+    default n
+
+endmenu

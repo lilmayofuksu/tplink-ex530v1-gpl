@@ -1,0 +1,79 @@
+\hypertarget{libapi__lib__cputempmgr_8h}{}\section{libapi\+\_\+lib\+\_\+cputempmgr.\+h File Reference}
+\label{libapi__lib__cputempmgr_8h}\index{libapi\+\_\+lib\+\_\+cputempmgr.\+h@{libapi\+\_\+lib\+\_\+cputempmgr.\+h}}
+
+
+This file is cpu temperature api header file.  
+
+
+{\ttfamily \#include $<$uapi/cpu/cpu\+\_\+temp.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__cputempmgr_8h_a2d9ac899379e53e36c7b2dc7b7e70c7a}\label{libapi__lib__cputempmgr_8h_a2d9ac899379e53e36c7b2dc7b7e70c7a}} 
+\#define {\bfseries ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get}~cputempmgr\+\_\+lib\+\_\+get
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{libapi__lib__cputempmgr_8h_af3af869c55864796edba8460740e4ef7}\label{libapi__lib__cputempmgr_8h_af3af869c55864796edba8460740e4ef7}} 
+enum {\bfseries E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+R\+ET} \{ {\bfseries E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+S\+U\+C\+C\+E\+SS} = 0, 
+{\bfseries E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+F\+A\+IL}, 
+{\bfseries E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+D\+E\+F\+\_\+\+NO}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+R\+ET \hyperlink{libapi__lib__cputempmgr_8h_ace80fc1b121f9a0b41ee11fc9571cad5}{ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get} (cpu\+\_\+temp\+\_\+msg\+\_\+t $\ast$msg)
+\begin{DoxyCompactList}\small\item\em This function is used to get the C\+PU temperature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is cpu temperature api header file. 
+
+\begin{DoxyAuthor}{Author}
+E\+C\+O\+N\+ET 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/12-\/02 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libapi__lib__cputempmgr_8h_ace80fc1b121f9a0b41ee11fc9571cad5}\label{libapi__lib__cputempmgr_8h_ace80fc1b121f9a0b41ee11fc9571cad5}} 
+\index{libapi\+\_\+lib\+\_\+cputempmgr.\+h@{libapi\+\_\+lib\+\_\+cputempmgr.\+h}!ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get@{ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get}}
+\index{ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get@{ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get}!libapi\+\_\+lib\+\_\+cputempmgr.\+h@{libapi\+\_\+lib\+\_\+cputempmgr.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get()}{ecnt\_cputempmgr\_lib\_get()}}
+{\footnotesize\ttfamily E\+C\+N\+T\+\_\+\+C\+P\+U\+T\+E\+M\+P\+M\+G\+R\+\_\+\+R\+ET ecnt\+\_\+cputempmgr\+\_\+lib\+\_\+get (\begin{DoxyParamCaption}\item[{cpu\+\_\+temp\+\_\+msg\+\_\+t $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the C\+PU temperature. 
+
+This function is used to get the C\+PU temperature. submit by E\+C\+O\+N\+ET 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em msg} & struct which stores C\+PU temperature. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the C\+PU temperature. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

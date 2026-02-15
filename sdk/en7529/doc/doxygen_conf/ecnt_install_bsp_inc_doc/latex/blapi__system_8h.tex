@@ -1,0 +1,1673 @@
+\hypertarget{blapi__system_8h}{}\section{blapi\+\_\+system.\+h File Reference}
+\label{blapi__system_8h}\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+
+
+This file is blapi system header file of business logic A\+P\+Is that will be exported for others to use.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__url__info__cfg}{\+\_\+url\+\_\+info\+\_\+cfg}
+\item 
+struct \hyperlink{struct__urlfilter__obj__cfg__data__s}{\+\_\+urlfilter\+\_\+obj\+\_\+cfg\+\_\+data\+\_\+s}
+\item 
+struct \hyperlink{struct__urlfilter__ioctl__cfg__data__s}{\+\_\+urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a2e28dd357b1daadb27ded5286e929c6b}\label{blapi__system_8h_a2e28dd357b1daadb27ded5286e929c6b}} 
+\#define {\bfseries P\+R\+O\+D\+U\+C\+T\+N\+A\+M\+E\+L\+EN}~32
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a0a6c4b95e1a2aa138bf88bf5f2b70f89}\label{blapi__system_8h_a0a6c4b95e1a2aa138bf88bf5f2b70f89}} 
+\#define {\bfseries V\+E\+N\+D\+O\+R\+N\+A\+M\+E\+L\+EN}~32
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a47bd2a3aadcfce06b3fcf71897c00e28}\label{blapi__system_8h_a47bd2a3aadcfce06b3fcf71897c00e28}} 
+\#define {\bfseries O\+N\+U\+T\+Y\+P\+E\+M\+A\+SK}~0xf
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a4cb8c06bea4559cb6301c4c67066d1de}\label{blapi__system_8h_a4cb8c06bea4559cb6301c4c67066d1de}} 
+\#define {\bfseries O\+N\+U\+M\+O\+D\+E\+M\+A\+SK}~0xf0
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a6754574d0746035bc6c67948306733d5}\label{blapi__system_8h_a6754574d0746035bc6c67948306733d5}} 
+\#define {\bfseries Q\+D\+M\+A\+\_\+\+M\+A\+S\+K\+\_\+\+L\+A\+N\+\_\+\+P\+A\+Y\+L\+O\+AD}~0x03
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a44058498d9bce9e996ccb5724f881db1}\label{blapi__system_8h_a44058498d9bce9e996ccb5724f881db1}} 
+\#define {\bfseries Q\+D\+M\+A\+\_\+\+M\+A\+S\+K\+\_\+\+L\+A\+N\+\_\+\+D\+S\+CP}~0x08
+\item 
+\mbox{\Hypertarget{blapi__system_8h_ad9f12aeed12d99aad5ff5a9cfdd3f924}\label{blapi__system_8h_ad9f12aeed12d99aad5ff5a9cfdd3f924}} 
+\#define {\bfseries Q\+D\+M\+A\+\_\+\+M\+A\+S\+K\+\_\+\+W\+A\+N\+\_\+\+P\+A\+Y\+L\+O\+AD}~0x30
+\item 
+\mbox{\Hypertarget{blapi__system_8h_ae96096ace4565fb0489614c0ea1a45cc}\label{blapi__system_8h_ae96096ace4565fb0489614c0ea1a45cc}} 
+\#define {\bfseries Q\+D\+M\+A\+\_\+\+M\+A\+S\+K\+\_\+\+W\+A\+N\+\_\+\+D\+S\+CP}~0x80
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a455564278d0ab1cb394984a1f4bb83ef}\label{blapi__system_8h_a455564278d0ab1cb394984a1f4bb83ef}} 
+\#define {\bfseries E\+T\+H\+E\+R\+L\+EN}~6
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a828f30cf09893144d1c847b1d404c229}\label{blapi__system_8h_a828f30cf09893144d1c847b1d404c229}} 
+\#define {\bfseries S\+N\+M\+P\+S\+Y\+S\+O\+B\+J\+L\+EN}~22
+\item 
+\mbox{\Hypertarget{blapi__system_8h_adf0811224872c24315a810245fc3d0a3}\label{blapi__system_8h_adf0811224872c24315a810245fc3d0a3}} 
+\#define {\bfseries C\+O\+U\+N\+T\+R\+Y\+C\+O\+D\+E\+L\+EN}~1
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a64483c507cebf8288c996dcad89d15c9}\label{blapi__system_8h_a64483c507cebf8288c996dcad89d15c9}} 
+typedef struct \hyperlink{struct__url__info__cfg}{\+\_\+url\+\_\+info\+\_\+cfg} {\bfseries url\+\_\+info\+\_\+cfg}
+\item 
+\mbox{\Hypertarget{blapi__system_8h_acdeef195428a3c5f9be2271f3524d3b4}\label{blapi__system_8h_acdeef195428a3c5f9be2271f3524d3b4}} 
+typedef struct \hyperlink{struct__urlfilter__obj__cfg__data__s}{\+\_\+urlfilter\+\_\+obj\+\_\+cfg\+\_\+data\+\_\+s} {\bfseries urlfilter\+\_\+obj\+\_\+cfg\+\_\+data}
+\item 
+\mbox{\Hypertarget{blapi__system_8h_a1b294f246339a0a981c9965710c9eb80}\label{blapi__system_8h_a1b294f246339a0a981c9965710c9eb80}} 
+typedef struct \hyperlink{struct__urlfilter__ioctl__cfg__data__s}{\+\_\+urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data\+\_\+s} {\bfseries urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blapi__system_8h_ab35aad0c8612555ea537763853349161}{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset} (int $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of mac address. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a7e74cea8a2e0d0a165ac0a98d7916eb1}{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L} (long $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of mac address. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ad3c4ba83227baeca17e160814cbf990e}{blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L} (long $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of onu type. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ad473e0f4d203f2bfbaad1090e3b6230f}{blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size} (int $\ast$size)
+\begin{DoxyCompactList}\small\item\em This function get the size of tcboot. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a3ef91801e4679384d744be2fd7731e16}{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L} (long $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of mac address range. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a5dc3cad4c7d109cb80dbb943aaf3b862}{blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L} (long $\ast$product\+Addr, long $\ast$vendor\+Addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of product and vendor name. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a224132e54979a7066e58eab759031f4f}{blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L} (long $\ast$ether\+Addr, long $\ast$snmp\+Addr, long $\ast$country\+Code\+Addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of mac addr ,snmp obj\+ID and country Code. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a2b510331c0910d8409e3cc1893b0f21a}{blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L} (long $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This function get the offest of SN. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ae82e5f79937f319b39bfa9dfe3e40e63}{blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash} (void)
+\begin{DoxyCompactList}\small\item\em This function will write bob to flash. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ade80ca10039c26b8920f509401cadc55}{blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device} (int $\ast$action)
+\begin{DoxyCompactList}\small\item\em This function check wifidevice for write alarm information. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ae8a8a6041ee97e4251866ffc3226c8b2}{blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value} (char $\ast$Mode, char $\ast$Link\+Sta, char $\ast$temp\+Value, int len)
+\begin{DoxyCompactList}\small\item\em This function get the status of uplink. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_aea050328fbd5c05dc9b3e6f273365e5d}{blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value} (char $\ast$temp\+Value)
+\begin{DoxyCompactList}\small\item\em This function get the capability of lan port. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a4a8770b703588a545ae81b653707acb1}{blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity} (unsigned long $\ast$val)
+\begin{DoxyCompactList}\small\item\em This function get cpu affinity. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ade0d8ce7ad61c77aec87bec92cfaed13}{blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size} (unsigned long $\ast$val)
+\begin{DoxyCompactList}\small\item\em This function get max receive file size. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_aa20372893dcaabccb968e9dc8b229c1f}{blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led} (int lan\+Port, int led\+\_\+st)
+\begin{DoxyCompactList}\small\item\em This function is used to set lan led. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ab3e30a4d3d8d15bab0528a725bc114d9}{blapi\+\_\+system\+\_\+secure\+\_\+upgrade} (int length, int offset, char $\ast$file\+\_\+path, unsigned char firmware\+\_\+type)
+\begin{DoxyCompactList}\small\item\em This function set secure upgrade ioctl . \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ab3a91fc55598a8e8a43e070731da3ebf}{blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str} (char $\ast$buf, int size)
+\begin{DoxyCompactList}\small\item\em This function get the command of clean the hw\+\_\+nat. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a893038af3dd1de60cb92679f6188c3ac}{blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration} ()
+\begin{DoxyCompactList}\small\item\em This function do bob carlibration. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a1b48b87abbad26a2944f21df01b1d887}{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap} (void)
+\begin{DoxyCompactList}\small\item\em This function set boot flag. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ad4db2ff3887dc5adbf645e24571d9098}{blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag} (char $\ast$boot\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em This function get current boot flag. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a62e3461cf257fca543a7788cab5fdb28}{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag} (char $\ast$mtd)
+\begin{DoxyCompactList}\small\item\em This function set boot flag according to tclinux.\+bin or tclinux\+\_\+slave.\+bin. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a725c635b5fcf0b55fafae5500da094bd}{blapi\+\_\+system\+\_\+calculate\+\_\+crc32} (int imagefd, long len, unsigned long crc)
+\begin{DoxyCompactList}\small\item\em This function check C\+RC algorithm. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a3126fc7eb85e48f3770dbfb1875b040b}{blapi\+\_\+system\+\_\+checkimage\+Crc} (int img, int $\ast$checksum)
+\begin{DoxyCompactList}\small\item\em This function check image C\+RC. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a40c67d335d64fce464d3a048726755ef}{blapi\+\_\+system\+\_\+get\+\_\+mtdsize} (char $\ast$mtd, int $\ast$mtd\+\_\+size, int $\ast$mtd\+\_\+erasesize)
+\begin{DoxyCompactList}\small\item\em This function get mtdsize. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_aef335d1b22d306b98182e9869d6c853a}{blapi\+\_\+system\+\_\+do\+Rom\+Reset} (int reboot\+Flag)
+\begin{DoxyCompactList}\small\item\em This function do Rom\+Reset. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a6aadc27c1ef6bff99476f5f03da73174}{blapi\+\_\+system\+\_\+do\+Sys\+Mac} (unsigned char $\ast$mac\+\_\+addr, unsigned char mac\+\_\+range, int reboot\+Flag)
+\begin{DoxyCompactList}\small\item\em This function do sys mac. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a5da863ea6bfc858a4c24ef2ce2805faa}{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show} ()
+\begin{DoxyCompactList}\small\item\em This function do Sys Atspv show. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a73e66df02b7f010ac430d87c6b0f5793}{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write} (char $\ast$Product\+Name, char $\ast$Vendor\+Name)
+\begin{DoxyCompactList}\small\item\em This function do Sys Atspv. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a9b2bb0de1604f64638f95b98887414b1}{blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type} (unsigned char type)
+\begin{DoxyCompactList}\small\item\em This function do Sys Onu type. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a4470150f5cebaf0a933c35d85f31a482}{blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode} (unsigned char pon\+Mode, unsigned char wan\+Ram\+Mode, unsigned char wan\+Payload\+Mode)
+\begin{DoxyCompactList}\small\item\em This function do Sys Onumode xxx. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_aa16953bc0c8e7649b19ed552849a2e52}{blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init} (unsigned char qdma\+Value, unsigned char qdma\+Mask)
+\begin{DoxyCompactList}\small\item\em This function do Sys Sys\+Qdma Init. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a3926152e59ff0ad821cd9935a3f22e2f}{blapi\+\_\+system\+\_\+setbootloader} (unsigned char $\ast$mac\+\_\+addr, unsigned char $\ast$mode\+\_\+name)
+\begin{DoxyCompactList}\small\item\em This function do setbootloader. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a79193ace9176645bfbf5df7783537880}{blapi\+\_\+system\+\_\+do\+Sys\+Atsn} (char $\ast$buf, int size, long addr)
+\begin{DoxyCompactList}\small\item\em This function do Sys Atsn. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_aa145dc83cc2d96860a924cb815daaf9d}{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr} (unsigned char $\ast$macaddr)
+\begin{DoxyCompactList}\small\item\em This function get ether address. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a7d850ac6ed4b205906ad1f79d891e6f7}{blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em This function show Vendor name. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a2bb51b86f627a028feb437bf56915591}{blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em This function show Product name. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ac5118de80a897c79d77eed65c6c775c3}{blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em This function show mac address. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a36661d19f6710fc8618693fd066931f2}{blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em This function show snmp\+Obj\+ID. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_addfa45246198b6126092bf9f0be4a4bd}{blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em This function show country Code. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_af6a132a10c5262002cee4c2093eda79c}{blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp} (int $\ast$temp)
+\begin{DoxyCompactList}\small\item\em This function gets bosa temp. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ae96c59c3886245ac5b7c85f7014e8543}{blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset} (unsigned long $\ast$mask)
+\begin{DoxyCompactList}\small\item\em This function gets correct C\+PU mask when using taskset in E\+N7523. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ae652741358aad53da42e89bf36b10359}{blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap} (int idx)
+\begin{DoxyCompactList}\small\item\em This function is used to free vpn ip hashmap. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a5294cca6c5e29c79dc3fdf6bbccd41b2}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable} (void $\ast$data, int datealen)
+\begin{DoxyCompactList}\small\item\em This function set urlfilter enable value. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_ad1bfa12bd7e104ada53acfc310e8333b}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode} (void $\ast$data, int datealen)
+\begin{DoxyCompactList}\small\item\em This function set urlfilter mode. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_acc96e8b83b066117a8a1aab9728974d0}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host} (\hyperlink{struct__url__info__cfg}{url\+\_\+info\+\_\+cfg} $\ast$cfg\+\_\+url\+Info)
+\begin{DoxyCompactList}\small\item\em This function set urlfilter url host. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a1a7bd7949fe86ba37bfdcf19bf5cb512}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path} (\hyperlink{struct__url__info__cfg}{url\+\_\+info\+\_\+cfg} $\ast$cfg\+\_\+url\+Info)
+\begin{DoxyCompactList}\small\item\em This function set urlfilter url path. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a1f750a26b870e871e3d5e05931fbf5f2}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes} (void $\ast$data, int datealen)
+\begin{DoxyCompactList}\small\item\em This function gets urlfilter info. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_abe78288b6451fa7f46e61f922aba45da}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule} (void)
+\begin{DoxyCompactList}\small\item\em This function clear all urlfilter rule. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a59472da4dafd5f62b95b3eeccccb8f92}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting} (\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$cfg\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This function clear urlfilter global setting. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_a3012e7cc0af769748b6750a48240664e}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule} (\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$cfg\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This function clear urlfilter all basic mac rule. \end{DoxyCompactList}\item 
+int \hyperlink{blapi__system_8h_add1cbcb1b3729f2acd75876769eec4f8}{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule} (\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$cfg\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This function add urlfilter url rule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is blapi system header file of business logic A\+P\+Is that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Zhen.\+Xu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/01-\/06 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blapi__system_8h_a725c635b5fcf0b55fafae5500da094bd}\label{blapi__system_8h_a725c635b5fcf0b55fafae5500da094bd}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+calculate\+\_\+crc32@{blapi\+\_\+system\+\_\+calculate\+\_\+crc32}}
+\index{blapi\+\_\+system\+\_\+calculate\+\_\+crc32@{blapi\+\_\+system\+\_\+calculate\+\_\+crc32}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+calculate\+\_\+crc32()}{blapi\_system\_calculate\_crc32()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+calculate\+\_\+crc32 (\begin{DoxyParamCaption}\item[{int}]{imagefd,  }\item[{long}]{len,  }\item[{unsigned long}]{crc }\end{DoxyParamCaption})}
+
+
+
+This function check C\+RC algorithm. 
+
+This function calculate the C\+R\+C-\/32 checck code. submit by Yifan.\+Chen 2020.\+1.\+17 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em imagefd} & the first address of the block to be calculated. \\
+\hline
+\mbox{\tt in}  & {\em len} & number of 32 words of data block to be calculated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function calculate the C\+R\+C-\/32 checck code. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ade80ca10039c26b8920f509401cadc55}\label{blapi__system_8h_ade80ca10039c26b8920f509401cadc55}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device@{blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device}}
+\index{blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device@{blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device()}{blapi\_system\_check\_WifiDevice()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+check\+\_\+\+Wifi\+Device (\begin{DoxyParamCaption}\item[{int $\ast$}]{action }\end{DoxyParamCaption})}
+
+
+
+This function check wifidevice for write alarm information. 
+
+This function check wifidevice for write alarm information. submit by Zhen.\+Xu 2019.\+12.\+18 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em action} & the action of add/del alarm information. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+check wifidevice for write alarm information. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a3126fc7eb85e48f3770dbfb1875b040b}\label{blapi__system_8h_a3126fc7eb85e48f3770dbfb1875b040b}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+checkimage\+Crc@{blapi\+\_\+system\+\_\+checkimage\+Crc}}
+\index{blapi\+\_\+system\+\_\+checkimage\+Crc@{blapi\+\_\+system\+\_\+checkimage\+Crc}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+checkimage\+Crc()}{blapi\_system\_checkimageCrc()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+checkimage\+Crc (\begin{DoxyParamCaption}\item[{int}]{img,  }\item[{int $\ast$}]{checksum }\end{DoxyParamCaption})}
+
+
+
+This function check image C\+RC. 
+
+This function check image C\+RC. submit by Yifan.\+Chen 2020.\+1.\+17 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em img} & the flag of boot. \\
+\hline
+\mbox{\tt out}  & {\em checksum} & the crc checksum. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function check image C\+RC. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ae96c59c3886245ac5b7c85f7014e8543}\label{blapi__system_8h_ae96c59c3886245ac5b7c85f7014e8543}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset@{blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset}}
+\index{blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset@{blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset()}{blapi\_system\_cpu\_remap\_taskset()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+cpu\+\_\+remap\+\_\+taskset (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{mask }\end{DoxyParamCaption})}
+
+
+
+This function gets correct C\+PU mask when using taskset in E\+N7523. 
+
+This function gets correct C\+PU mask when using taskset in E\+N7523. submit by Gareth.\+Kuo 2020.\+07.\+31 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mask} & the cpu mask of taskset. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function gets gets correct C\+PU mask when using taskset in E\+N7523. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a5da863ea6bfc858a4c24ef2ce2805faa}\label{blapi__system_8h_a5da863ea6bfc858a4c24ef2ce2805faa}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show@{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show}}
+\index{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show@{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show()}{blapi\_system\_do\_Sys\_Atspv\_show()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Atspv show. 
+
+This function do Sys Atspv show. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Atspv. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a73e66df02b7f010ac430d87c6b0f5793}\label{blapi__system_8h_a73e66df02b7f010ac430d87c6b0f5793}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write@{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write}}
+\index{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write@{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write()}{blapi\_system\_do\_Sys\_Atspv\_write()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+\_\+\+Sys\+\_\+\+Atspv\+\_\+write (\begin{DoxyParamCaption}\item[{char $\ast$}]{Product\+Name,  }\item[{char $\ast$}]{Vendor\+Name }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Atspv. 
+
+This function do Sys Atspv. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Product\+Name} & the name of Product\+Name. \\
+\hline
+\mbox{\tt in}  & {\em Vendor\+Name} & the sizeof of Vendor\+Name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Atspv. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_aef335d1b22d306b98182e9869d6c853a}\label{blapi__system_8h_aef335d1b22d306b98182e9869d6c853a}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Rom\+Reset@{blapi\+\_\+system\+\_\+do\+Rom\+Reset}}
+\index{blapi\+\_\+system\+\_\+do\+Rom\+Reset@{blapi\+\_\+system\+\_\+do\+Rom\+Reset}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Rom\+Reset()}{blapi\_system\_doRomReset()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Rom\+Reset (\begin{DoxyParamCaption}\item[{int}]{reboot\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function do Rom\+Reset. 
+
+This function do Rom\+Reset.. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \+:reboot\+Flag} & 1\+:need reboot; 0\+:no need reboot. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Rom\+Reset. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a79193ace9176645bfbf5df7783537880}\label{blapi__system_8h_a79193ace9176645bfbf5df7783537880}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+Atsn@{blapi\+\_\+system\+\_\+do\+Sys\+Atsn}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+Atsn@{blapi\+\_\+system\+\_\+do\+Sys\+Atsn}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+Atsn()}{blapi\_system\_doSysAtsn()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+Atsn (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{size,  }\item[{long}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Atsn. 
+
+This function do Sys Atsn. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buf} & new SN. \\
+\hline
+\mbox{\tt in}  & {\em size} & SN size. \\
+\hline
+\mbox{\tt in}  & {\em addr} & SN addr in boot.\+bin. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Atsn. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a893038af3dd1de60cb92679f6188c3ac}\label{blapi__system_8h_a893038af3dd1de60cb92679f6188c3ac}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration@{blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration@{blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration()}{blapi\_system\_doSysBobCarlibration()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+Bob\+Carlibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function do bob carlibration. 
+
+This function do bob carlibration. submit by Yifan.\+Chen 2020.\+1.\+17 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do bob carlibration. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a6aadc27c1ef6bff99476f5f03da73174}\label{blapi__system_8h_a6aadc27c1ef6bff99476f5f03da73174}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+Mac@{blapi\+\_\+system\+\_\+do\+Sys\+Mac}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+Mac@{blapi\+\_\+system\+\_\+do\+Sys\+Mac}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+Mac()}{blapi\_system\_doSysMac()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+Mac (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{mac\+\_\+addr,  }\item[{unsigned char}]{mac\+\_\+range,  }\item[{int}]{reboot\+Flag }\end{DoxyParamCaption})}
+
+
+
+This function do sys mac. 
+
+This function do do sys mac.. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \+:mac\+\_\+addr} & new mac addr. \\
+\hline
+\mbox{\tt in}  & {\em \+:mac\+\_\+range} & mac range. \\
+\hline
+\mbox{\tt in}  & {\em \+:reboot\+Flag} & 1\+:need reboot; 0\+:no need reboot. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Rom\+Reset. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a9b2bb0de1604f64638f95b98887414b1}\label{blapi__system_8h_a9b2bb0de1604f64638f95b98887414b1}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type@{blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type@{blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type()}{blapi\_system\_doSysOnuType()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+Onu\+Type (\begin{DoxyParamCaption}\item[{unsigned char}]{type }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Onu type. 
+
+This function do Sys Onu type. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & onu type. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Onu type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a4470150f5cebaf0a933c35d85f31a482}\label{blapi__system_8h_a4470150f5cebaf0a933c35d85f31a482}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode@{blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode@{blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode()}{blapi\_system\_doSysPONMode()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+P\+O\+N\+Mode (\begin{DoxyParamCaption}\item[{unsigned char}]{pon\+Mode,  }\item[{unsigned char}]{wan\+Ram\+Mode,  }\item[{unsigned char}]{wan\+Payload\+Mode }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Onumode xxx. 
+
+This function do Sys Onumode xxx. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pon\+Mode} & onu mode. \\
+\hline
+\mbox{\tt in}  & {\em wan\+Ram\+Mode} & wan Ram mode. \\
+\hline
+\mbox{\tt in}  & {\em wan\+Payload\+Mode} & wan\+Payload\+Mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Onumode xxx. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_aa16953bc0c8e7649b19ed552849a2e52}\label{blapi__system_8h_aa16953bc0c8e7649b19ed552849a2e52}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init@{blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init}}
+\index{blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init@{blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init()}{blapi\_system\_doSysQdmaInit()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+do\+Sys\+Qdma\+Init (\begin{DoxyParamCaption}\item[{unsigned char}]{qdma\+Value,  }\item[{unsigned char}]{qdma\+Mask }\end{DoxyParamCaption})}
+
+
+
+This function do Sys Sys\+Qdma Init. 
+
+This function do Sys Sys\+Qdma Init. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em qdma\+Value} & qdma value. \\
+\hline
+\mbox{\tt in}  & {\em qdma\+Mask} & qdma mask. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do Sys Sys\+Qdma Init. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_aea050328fbd5c05dc9b3e6f273365e5d}\label{blapi__system_8h_aea050328fbd5c05dc9b3e6f273365e5d}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value@{blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value@{blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value()}{blapi\_system\_get\_CapabilityValue()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Capability\+Value (\begin{DoxyParamCaption}\item[{char $\ast$}]{temp\+Value }\end{DoxyParamCaption})}
+
+
+
+This function get the capability of lan port. 
+
+This function get the capability of lan port. submit by Zhen.\+Xu 2019.\+12.\+18 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em temp\+Value} & the capability of lan port. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the capability of lan port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ab3a91fc55598a8e8a43e070731da3ebf}\label{blapi__system_8h_ab3a91fc55598a8e8a43e070731da3ebf}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str@{blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str@{blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str()}{blapi\_system\_get\_clearHWNAT\_str()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+clear\+H\+W\+N\+A\+T\+\_\+str (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+This function get the command of clean the hw\+\_\+nat. 
+
+This function get the command of clean the hw\+\_\+nat. submit by Yifan.\+Chen 2020.\+1.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em buf} & the command of clean the hw\+\_\+nat. \\
+\hline
+\mbox{\tt in}  & {\em size} & the size of buf. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function get the command of clean the hw\+\_\+nat. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a4a8770b703588a545ae81b653707acb1}\label{blapi__system_8h_a4a8770b703588a545ae81b653707acb1}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity@{blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity@{blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity()}{blapi\_system\_get\_cpu\_default\_affinity()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+cpu\+\_\+default\+\_\+affinity (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+This function get cpu affinity. 
+
+This function get cpu affinity. submit by Jin\+Chao.\+Yao2019.\+12.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em the} & value of the affinity \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the cpu affinity 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ad4db2ff3887dc5adbf645e24571d9098}\label{blapi__system_8h_ad4db2ff3887dc5adbf645e24571d9098}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag@{blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag@{blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag()}{blapi\_system\_get\_current\_boot\_flag()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+current\+\_\+boot\+\_\+flag (\begin{DoxyParamCaption}\item[{char $\ast$}]{boot\+\_\+flag }\end{DoxyParamCaption})}
+
+
+
+This function get current boot flag. 
+
+This function get current boot flag. submit by Yifan.\+Chen 2020.\+1.\+17 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set get current boot flag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a224132e54979a7066e58eab759031f4f}\label{blapi__system_8h_a224132e54979a7066e58eab759031f4f}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_ether\_snmp\_countryCode\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+ether\+\_\+snmp\+\_\+country\+Code\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{ether\+Addr,  }\item[{long $\ast$}]{snmp\+Addr,  }\item[{long $\ast$}]{country\+Code\+Addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of mac addr ,snmp obj\+ID and country Code. 
+
+This function get the offest of mac addr ,snmp obj\+ID and country Code. submit by Lei.\+Zhang. 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__system_8h_aa145dc83cc2d96860a924cb815daaf9d}\label{blapi__system_8h_aa145dc83cc2d96860a924cb815daaf9d}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr()}{blapi\_system\_get\_EtherAddr()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{macaddr }\end{DoxyParamCaption})}
+
+
+
+This function get ether address. 
+
+This function get ether address. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em macaddr} & mac address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function get ether address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ab35aad0c8612555ea537763853349161}\label{blapi__system_8h_ab35aad0c8612555ea537763853349161}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset()}{blapi\_system\_get\_EtherAddr\_offset()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset (\begin{DoxyParamCaption}\item[{int $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of mac address. 
+
+This function get the offest of mac address. submit by Zhen.\+Xu 2019.\+12.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em addr} & The offest of mac address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the offest of mac address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a7e74cea8a2e0d0a165ac0a98d7916eb1}\label{blapi__system_8h_a7e74cea8a2e0d0a165ac0a98d7916eb1}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_EtherAddr\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of mac address. 
+
+This function get the offest of mac address. submit by Zhen.\+Xu 2019.\+12.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em addr} & The offest of mac address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the offest of mac address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a3ef91801e4679384d744be2fd7731e16}\label{blapi__system_8h_a3ef91801e4679384d744be2fd7731e16}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_EtherAddr\_range\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Ether\+Addr\+\_\+range\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of mac address range. 
+
+This function get the offest of mac address range. submit by Lei.\+Zhang. 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__system_8h_ade0d8ce7ad61c77aec87bec92cfaed13}\label{blapi__system_8h_ade0d8ce7ad61c77aec87bec92cfaed13}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size@{blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size@{blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size()}{blapi\_system\_get\_max\_receive\_file\_size()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+max\+\_\+receive\+\_\+file\+\_\+size (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+This function get max receive file size. 
+
+This function get This function get max receive file size. submit by Jin\+Chao.\+Yao2019.\+12.\+23 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em the} & value of the the max size \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the max receive file size 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a40c67d335d64fce464d3a048726755ef}\label{blapi__system_8h_a40c67d335d64fce464d3a048726755ef}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+mtdsize@{blapi\+\_\+system\+\_\+get\+\_\+mtdsize}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+mtdsize@{blapi\+\_\+system\+\_\+get\+\_\+mtdsize}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+mtdsize()}{blapi\_system\_get\_mtdsize()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+mtdsize (\begin{DoxyParamCaption}\item[{char $\ast$}]{mtd,  }\item[{int $\ast$}]{mtd\+\_\+size,  }\item[{int $\ast$}]{mtd\+\_\+erasesize }\end{DoxyParamCaption})}
+
+
+
+This function get mtdsize. 
+
+This function get mtdsize. submit by Zhen.\+Xu 2020.\+03.\+03 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mtd} & the name of image. \\
+\hline
+\mbox{\tt out}  & {\em mtd\+\_\+size} & the sizeof of mtd. \\
+\hline
+\mbox{\tt out}  & {\em mtd\+\_\+erasesize} & the size of mtd erase. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function get mtdsize. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ad3c4ba83227baeca17e160814cbf990e}\label{blapi__system_8h_ad3c4ba83227baeca17e160814cbf990e}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_OnuType\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Onu\+Type\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of onu type. 
+
+This function get the offest of onu type. submit by Zhen.\+Xu 2019.\+12.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em addr} & The offest of onu type. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the offest of onu type. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a5dc3cad4c7d109cb80dbb943aaf3b862}\label{blapi__system_8h_a5dc3cad4c7d109cb80dbb943aaf3b862}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_product\_vendor\_name\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+product\+\_\+vendor\+\_\+name\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{product\+Addr,  }\item[{long $\ast$}]{vendor\+Addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of product and vendor name. 
+
+This function get the offest of product and vendor name.. submit by Lei.\+Zhang. 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__system_8h_a2b510331c0910d8409e3cc1893b0f21a}\label{blapi__system_8h_a2b510331c0910d8409e3cc1893b0f21a}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L@{blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+\+L()}{blapi\_system\_get\_sn\_offset\_L()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+sn\+\_\+offset\+\_\+L (\begin{DoxyParamCaption}\item[{long $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This function get the offest of SN. 
+
+This function get the offest of SN. submit by Lei.\+Zhang. 2019.\+12.\+25 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{blapi__system_8h_ad473e0f4d203f2bfbaad1090e3b6230f}\label{blapi__system_8h_ad473e0f4d203f2bfbaad1090e3b6230f}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size@{blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size@{blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size()}{blapi\_system\_get\_tcboot\_size()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+tcboot\+\_\+size (\begin{DoxyParamCaption}\item[{int $\ast$}]{size }\end{DoxyParamCaption})}
+
+
+
+This function get the size of tcboot. 
+
+This function get the size of tcboot. submit by Zhen.\+Xu 2019.\+12.\+04 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em size} & The size of tcboot. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get the size of tcboot. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ae8a8a6041ee97e4251866ffc3226c8b2}\label{blapi__system_8h_ae8a8a6041ee97e4251866ffc3226c8b2}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value@{blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value}}
+\index{blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value@{blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value()}{blapi\_system\_get\_UpLinkValue()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+get\+\_\+\+Up\+Link\+Value (\begin{DoxyParamCaption}\item[{char $\ast$}]{Mode,  }\item[{char $\ast$}]{Link\+Sta,  }\item[{char $\ast$}]{temp\+Value,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+This function get the status of uplink. 
+
+This function get the status of uplink.. submit by Zhen.\+Xu 2019.\+12.\+18 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Mode} & the mode of pon type. \\
+\hline
+\mbox{\tt in}  & {\em Link\+Sta} & the link status of pon. \\
+\hline
+\mbox{\tt out}  & {\em temp\+Value} & the status of uplink. \\
+\hline
+\mbox{\tt in}  & {\em len} & the size of parameter temp\+Value. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+get the status of uplink. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_af6a132a10c5262002cee4c2093eda79c}\label{blapi__system_8h_af6a132a10c5262002cee4c2093eda79c}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp@{blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp}}
+\index{blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp@{blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp()}{blapi\_system\_GetBosaTemp()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+\+Get\+Bosa\+Temp (\begin{DoxyParamCaption}\item[{int $\ast$}]{temp }\end{DoxyParamCaption})}
+
+
+
+This function gets bosa temp. 
+
+This function gets bosa temp. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em temp} & temperature. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function gets bosa temp. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ab3e30a4d3d8d15bab0528a725bc114d9}\label{blapi__system_8h_ab3e30a4d3d8d15bab0528a725bc114d9}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+secure\+\_\+upgrade@{blapi\+\_\+system\+\_\+secure\+\_\+upgrade}}
+\index{blapi\+\_\+system\+\_\+secure\+\_\+upgrade@{blapi\+\_\+system\+\_\+secure\+\_\+upgrade}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+secure\+\_\+upgrade()}{blapi\_system\_secure\_upgrade()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+secure\+\_\+upgrade (\begin{DoxyParamCaption}\item[{int}]{length,  }\item[{int}]{offset,  }\item[{char $\ast$}]{file\+\_\+path,  }\item[{unsigned char}]{firmware\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+This function set secure upgrade ioctl . 
+
+This function set secure upgrade ioctl . submit by Zhen.\+Xu 20200107 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em length} & the length of command. \\
+\hline
+\mbox{\tt in}  & {\em offset} & the offset of command \\
+\hline
+\mbox{\tt in}  & {\em file\+\_\+path} & the path of command \\
+\hline
+\mbox{\tt in}  & {\em firmware\+\_\+type} & the type of firmware. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set secure upgrade ioctl . 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a62e3461cf257fca543a7788cab5fdb28}\label{blapi__system_8h_a62e3461cf257fca543a7788cab5fdb28}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag@{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag}}
+\index{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag@{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag()}{blapi\_system\_set\_boot\_flag()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag (\begin{DoxyParamCaption}\item[{char $\ast$}]{mtd }\end{DoxyParamCaption})}
+
+
+
+This function set boot flag according to tclinux.\+bin or tclinux\+\_\+slave.\+bin. 
+
+This function set boot flag according to tclinux.\+bin or tclinux\+\_\+slave.\+bin.\+submit by Shengqian.\+Wang 2020.\+05.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mtd} & tclinux.\+bin or tclinux\+\_\+slave.\+bin. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set boot flag according to tclinux.\+bin or tclinux\+\_\+slave.\+bin. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a1b48b87abbad26a2944f21df01b1d887}\label{blapi__system_8h_a1b48b87abbad26a2944f21df01b1d887}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap@{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap}}
+\index{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap@{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap()}{blapi\_system\_set\_boot\_flag\_swap()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+set\+\_\+boot\+\_\+flag\+\_\+swap (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function set boot flag. 
+
+This function set boot flag. submit by Yifan.\+Chen 2020.\+1.\+17 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set boot flag. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_aa20372893dcaabccb968e9dc8b229c1f}\label{blapi__system_8h_aa20372893dcaabccb968e9dc8b229c1f}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led@{blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led}}
+\index{blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led@{blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led()}{blapi\_system\_set\_lan\_led()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+set\+\_\+lan\+\_\+led (\begin{DoxyParamCaption}\item[{int}]{lan\+Port,  }\item[{int}]{led\+\_\+st }\end{DoxyParamCaption})}
+
+
+
+This function is used to set lan led. 
+
+This function is used to set lan led.. submit by Jin\+Chao.\+Yao 2019.\+12.\+26 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em the} & lan\+Port \\
+\hline
+\mbox{\tt in}  & {\em the} & led\+\_\+st \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to set lan led. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a3926152e59ff0ad821cd9935a3f22e2f}\label{blapi__system_8h_a3926152e59ff0ad821cd9935a3f22e2f}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+setbootloader@{blapi\+\_\+system\+\_\+setbootloader}}
+\index{blapi\+\_\+system\+\_\+setbootloader@{blapi\+\_\+system\+\_\+setbootloader}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+setbootloader()}{blapi\_system\_setbootloader()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+setbootloader (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{mac\+\_\+addr,  }\item[{unsigned char $\ast$}]{mode\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+This function do setbootloader. 
+
+This function do setbootloader. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mac\+\_\+addr} & mac address. \\
+\hline
+\mbox{\tt in}  & {\em mode\+\_\+name} & model name . \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function do setbootloader. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_addfa45246198b6126092bf9f0be4a4bd}\label{blapi__system_8h_addfa45246198b6126092bf9f0be4a4bd}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code@{blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code}}
+\index{blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code@{blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code()}{blapi\_system\_show\_country\_Code()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+show\+\_\+country\+\_\+\+Code (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+This function show country Code. 
+
+This function show country Code. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fp} & boot file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function show country Code. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ac5118de80a897c79d77eed65c6c775c3}\label{blapi__system_8h_ac5118de80a897c79d77eed65c6c775c3}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr@{blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr}}
+\index{blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr@{blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr()}{blapi\_system\_show\_Mac\_Addr()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+show\+\_\+\+Mac\+\_\+\+Addr (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+This function show mac address. 
+
+This function show mac address. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fp} & boot file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function show mac address. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a2bb51b86f627a028feb437bf56915591}\label{blapi__system_8h_a2bb51b86f627a028feb437bf56915591}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name@{blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name}}
+\index{blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name@{blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name()}{blapi\_system\_show\_Product\_Name()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+show\+\_\+\+Product\+\_\+\+Name (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+This function show Product name. 
+
+This function show Product name. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fp} & boot file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function show Product name. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a36661d19f6710fc8618693fd066931f2}\label{blapi__system_8h_a36661d19f6710fc8618693fd066931f2}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID@{blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID}}
+\index{blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID@{blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+I\+D()}{blapi\_system\_show\_snmpObjID()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+show\+\_\+snmp\+Obj\+ID (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+This function show snmp\+Obj\+ID. 
+
+This function show snmp\+Obj\+ID. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fp} & boot file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function show snmp\+Obj\+ID. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a7d850ac6ed4b205906ad1f79d891e6f7}\label{blapi__system_8h_a7d850ac6ed4b205906ad1f79d891e6f7}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name@{blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name}}
+\index{blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name@{blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name()}{blapi\_system\_show\_Vendor\_Name()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+show\+\_\+\+Vendor\+\_\+\+Name (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+This function show Vendor name. 
+
+This function show Vendor name. submit by Sheng\+Qian.\+Wang 2020.\+05.\+19 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fp} & boot file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function show Vendor name. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_add1cbcb1b3729f2acd75876769eec4f8}\label{blapi__system_8h_add1cbcb1b3729f2acd75876769eec4f8}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule()}{blapi\_system\_url\_filter\_add\_url\_rule()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+add\+\_\+url\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$}]{cfg\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This function add urlfilter url rule. 
+
+This function add urlfilter url rule. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+data} & urlfilter data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function add urlfilter url rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a3012e7cc0af769748b6750a48240664e}\label{blapi__system_8h_a3012e7cc0af769748b6750a48240664e}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule()}{blapi\_system\_url\_filter\_clear\_all\_basicmac\_rule()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+basicmac\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$}]{cfg\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This function clear urlfilter all basic mac rule. 
+
+This function clear urlfilter all basic mac rule. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+data} & urlfilter data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function clear urlfilter all basic mac rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_abe78288b6451fa7f46e61f922aba45da}\label{blapi__system_8h_abe78288b6451fa7f46e61f922aba45da}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule()}{blapi\_system\_url\_filter\_clear\_all\_rule()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+all\+\_\+rule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function clear all urlfilter rule. 
+
+This function clear all urlfilter rule. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function clear all urlfilter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a59472da4dafd5f62b95b3eeccccb8f92}\label{blapi__system_8h_a59472da4dafd5f62b95b3eeccccb8f92}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting()}{blapi\_system\_url\_filter\_clear\_global\_setting()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+clear\+\_\+global\+\_\+setting (\begin{DoxyParamCaption}\item[{\hyperlink{struct__urlfilter__ioctl__cfg__data__s}{urlfilter\+\_\+ioctl\+\_\+cfg\+\_\+data} $\ast$}]{cfg\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This function clear urlfilter global setting. 
+
+This function clear urlfilter global setting. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+data} & urlfilter data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function clear all urlfilter rule. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a1f750a26b870e871e3d5e05931fbf5f2}\label{blapi__system_8h_a1f750a26b870e871e3d5e05931fbf5f2}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes()}{blapi\_system\_url\_filter\_get\_blocktimes()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+get\+\_\+blocktimes (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{int}]{datealen }\end{DoxyParamCaption})}
+
+
+
+This function gets urlfilter info. 
+
+This function gets urlfilter info. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em datealen} & urlfilter data lenth \\
+\hline
+\mbox{\tt out}  & {\em data} & urlfilter data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function gets urlfilter info. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a5294cca6c5e29c79dc3fdf6bbccd41b2}\label{blapi__system_8h_a5294cca6c5e29c79dc3fdf6bbccd41b2}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable()}{blapi\_system\_url\_filter\_set\_enable()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+enable (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{int}]{datealen }\end{DoxyParamCaption})}
+
+
+
+This function set urlfilter enable value. 
+
+This function set urlfilter enable status. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em datealen} & urlfilter data lenth \\
+\hline
+\mbox{\tt in}  & {\em data} & urlfilter enable value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set urlfilter enable status. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ad1bfa12bd7e104ada53acfc310e8333b}\label{blapi__system_8h_ad1bfa12bd7e104ada53acfc310e8333b}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode()}{blapi\_system\_url\_filter\_set\_mode()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{int}]{datealen }\end{DoxyParamCaption})}
+
+
+
+This function set urlfilter mode. 
+
+This function set urlfilter mode. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em datealen} & urlfilter data lenth \\
+\hline
+\mbox{\tt in}  & {\em data} & urlfilter mode value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set urlfilter mode. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_acc96e8b83b066117a8a1aab9728974d0}\label{blapi__system_8h_acc96e8b83b066117a8a1aab9728974d0}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host()}{blapi\_system\_url\_filter\_set\_url\_host()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+host (\begin{DoxyParamCaption}\item[{\hyperlink{struct__url__info__cfg}{url\+\_\+info\+\_\+cfg} $\ast$}]{cfg\+\_\+url\+Info }\end{DoxyParamCaption})}
+
+
+
+This function set urlfilter url host. 
+
+This function set urlfilter url host. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+url\+Info} & urlfilter url host data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set urlfilter url host. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_a1a7bd7949fe86ba37bfdcf19bf5cb512}\label{blapi__system_8h_a1a7bd7949fe86ba37bfdcf19bf5cb512}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path}}
+\index{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path@{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path()}{blapi\_system\_url\_filter\_set\_url\_path()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+url\+\_\+filter\+\_\+set\+\_\+url\+\_\+path (\begin{DoxyParamCaption}\item[{\hyperlink{struct__url__info__cfg}{url\+\_\+info\+\_\+cfg} $\ast$}]{cfg\+\_\+url\+Info }\end{DoxyParamCaption})}
+
+
+
+This function set urlfilter url path. 
+
+This function set urlfilter url host. submit by Lei.\+Zhang 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cfg\+\_\+url\+Info} & urlfilter url path data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function set urlfilter url path. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ae652741358aad53da42e89bf36b10359}\label{blapi__system_8h_ae652741358aad53da42e89bf36b10359}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap@{blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap}}
+\index{blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap@{blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap()}{blapi\_system\_vpn\_free\_ip\_hashmap()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+vpn\+\_\+free\+\_\+ip\+\_\+hashmap (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+This function is used to free vpn ip hashmap. 
+
+T\+This function is used to free vpn ip hashmap. submit by Jun.\+Wu 2020.\+08.\+20 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em idx} & vpn index. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is used to free vpn ip hashmap. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{blapi__system_8h_ae82e5f79937f319b39bfa9dfe3e40e63}\label{blapi__system_8h_ae82e5f79937f319b39bfa9dfe3e40e63}} 
+\index{blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}!blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash@{blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash}}
+\index{blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash@{blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash}!blapi\+\_\+system.\+h@{blapi\+\_\+system.\+h}}
+\subsubsection{\texorpdfstring{blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash()}{blapi\_system\_write\_bob\_to\_flash()}}
+{\footnotesize\ttfamily int blapi\+\_\+system\+\_\+write\+\_\+bob\+\_\+to\+\_\+flash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function will write bob to flash. 
+
+This function write bob to flash. submit by Lei.\+Zhang. 2019.\+12.\+25. 
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Success. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+write bob to flash. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

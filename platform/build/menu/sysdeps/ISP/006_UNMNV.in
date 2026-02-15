@@ -1,0 +1,12 @@
+config INCLUDE_UNMNV_OPTIONS
+	bool "UNMNV all options (B&C)"
+	depends on INCLUDE_UNMNV
+
+	######## SELECT Type B ##########
+	select INCLUDE_WIFI_MODE_EXTENDED
+	select INCLUDE_REDIRECT_HTTP_TO_HTTPS
+	select INCLUDE_WAN_VLAN_TAGGING
+
+	######## SELECT Type C ##########
+
+########## Define Type C ############

@@ -1,0 +1,847 @@
+
+#
+# Wireless options
+#
+menu 'Wireless Options'
+
+config INCLUDE_WIFI
+	bool "Build wireless"
+	default n
+
+config INCLUDE_WIFI_DUALBAND
+	bool "Build wifi dual band"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_ACS_WIFI_CONTROL
+	bool "Build ACS wifi control"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_QRCODE_SHARING
+	bool "Build wifi qrcode sharing"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIRELESS_UCI
+	bool "Build wifi use openwrt uci to set config"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_6G
+	bool "Build wifi 6G band"
+	depends on INCLUDE_WIFI
+	default n
+
+choice
+	prompt "Wireless Supplier"
+	default INCLUDE_WIFI_FAKE
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_MTK
+	bool "Build MTK WIFI"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_RTL
+	bool "Build Realtek WIFI"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_QCA
+	bool "Build Qualcomm WIFI"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_BCM
+	bool "Build Broadcom WIFI"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_LTQ
+	bool "Build Lantiq WIFI"
+	depends on INCLUDE_WIFI
+
+endchoice
+
+choice
+	prompt "WIFI Type - 2.4G"
+	default INCLUDE_WIFI_UNKNOW
+	depends on INCLUDE_WIFI
+	
+config WIFI_MTK_2_4G
+	bool "Build MTK WIFI as 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_MTK
+	
+config WIFI_QCA_2_4G
+	bool "Build QCA WIFI as 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_QCA
+	
+config WIFI_BCM_2_4G
+	bool "Build BCM WIFI as 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_BCM
+	
+config WIFI_LTQ_2_4G
+	bool "Build LTQ WIFI as 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_LTQ
+
+config WIFI_RTL_2_4G
+	bool "Build RTL WIFI as 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_RTL
+
+endchoice
+
+config WIFI_BCM_WIFI_DHD_2_4G
+	bool "2.4G Wifi of BCM is a dongle adapter"
+	depends on WIFI_BCM_2_4G
+	
+config INCLUDE_WIFI_256QAM
+	bool "Build 2.4G Wifi with 256QAM"
+	depends on WIFI_LTQ_2_4G || WIFI_BCM_2_4G || WIFI_QCA_2_4G || WIFI_RTL_2_4G || WIFI_MTK_2_4G
+
+config BCM_G_BAND_CHIP
+	depends on WIFI_BCM_2_4G
+	string "G BAND CHIP"
+	default "43602"
+
+config WIFI_2G_DRIVER_NAME
+	string "2.4G WiFi Driver Module file name"
+	default ""
+
+config WIFI_5G_DRIVER_NAME
+	depends on INCLUDE_WIFI_DUALBAND 
+	string "5G WiFi Driver Module file name"
+	default ""
+
+choice
+	prompt "WIFI Type - 5G"
+	default INCLUDE_WIFI_UNKNOW
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND
+	
+config WIFI_MTK_5G
+	bool "Build MTK WIFI as 5G"
+	depends on INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_MTK
+	
+config WIFI_QCA_5G
+	bool "Build QCA WIFI as 5G"
+	depends on INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_QCA
+	
+config WIFI_BCM_5G
+	bool "Build BCM WIFI as 5G"
+	depends on INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_BCM
+	
+config WIFI_LTQ_5G
+	bool "Build LTQ WIFI as 54G"
+	depends on INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_LTQ
+
+config WIFI_RTL_5G
+	bool "Build RTL WIFI as 54G"
+	depends on INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_RTL
+
+endchoice
+
+choice
+	prompt "WIFI Type - 6G"
+	default INCLUDE_WIFI_UNKNOW
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_6G
+
+config WIFI_MTK_6G
+	bool "Build MTK WIFI as 6G"
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_MTK
+
+config WIFI_QCA_6G
+	bool "Build QCA WIFI as 6G"
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_QCA
+
+config WIFI_BCM_6G
+	bool "Build BCM WIFI as 6G"
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_BCM
+
+config WIFI_LTQ_6G
+	bool "Build LTQ WIFI as 6G"
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_LTQ
+
+config WIFI_RTL_6G
+	bool "Build LTQ WIFI as 6G"
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_RTL
+
+endchoice
+
+config INCLUDE_WIFI_AX_2_4G
+	bool "Build wlan 802.11ax on 2.4G Band"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_AX_5G
+	bool "Build wlan 802.11ax on 5G Band"
+	depends on INCLUDE_WIFI_DUALBAND
+	default n
+	
+config INCLUDE_WIFI_WPA3
+	bool "Build WPA3-SAE Security for WiFi"
+	depends on INCLUDE_WIFI
+	default n
+
+config WIFI_BCM_WIFI_DHD_5G
+	bool "5G Wifi of BCM is a dongle adapter"
+	depends on WIFI_BCM_5G	
+	
+config BCM_A_BAND_CHIP
+	depends on WIFI_BCM_5G
+	string "A BAND CHIP"
+	default "4366"
+
+config MTK_WIFI_E2PMODE
+	depends on INCLUDE_WIFI_MTK
+	int "Set mtk wifi e2p mode (0~4, check help for more information)"
+	range 0 4
+	default 4
+	help
+		Please input number 0~4 for different e2p mode(default is 4):
+		 0 for none
+		 1 for efuse
+		 2 for flash
+		 3 for eeprom
+		 4 for bin
+		 
+config INCLUDE_MTK_7603_ANTI_INTERFERENCE
+	bool "Anti-interference optimization for MTK 7603"
+	default n
+	depends on INCLUDE_WIFI_MTK
+
+config INCLUDE_WIFI_MTK_MT7986
+	bool "Using WIFI MTK MT7986"
+	default n
+	depends on INCLUDE_WIFI_MTK
+
+config INCLUDE_WIFI_MTK_MT7916D
+	bool "Using ECONET Merlin Chip MT7916"
+	default n
+	depends on INCLUDE_WIFI_MTK
+	
+config INCLUDE_REAL_NAME_WL_5G_MAIN
+	string "Wifi 5G Interface Real Name - Main"
+	default "wl0" if WIFI_BCM_5G
+	default "rai0" if WIFI_MTK_5G
+	default "ath5" if WIFI_QCA_5G
+	default "wlan0" if WIFI_RTL_5G
+
+config INCLUDE_REAL_NAME_WL_5G_WDS
+	string "Wifi 5G Interface Real Name - WDS"
+	default "wl0" if WIFI_BCM_5G
+	default "apclii0" if WIFI_MTK_5G
+	default "ath6" if WIFI_QCA_5G
+	default "wlan0-vxd" if WIFI_RTL_5G
+
+config INCLUDE_REAL_NAME_WL_5G_GEUST1
+	string "Wifi 5G Interface Real Name - Guest 1"
+	default "wl0.2" if WIFI_BCM_5G
+	default "rai1" if WIFI_MTK_5G
+	default "ath7" if WIFI_QCA_5G
+	default "wlan0-vap0" if WIFI_RTL_5G
+
+config INCLUDE_REAL_NAME_WL_5G_GEUST2
+	string "Wifi 5G Interface Real Name - Guest 2"
+	default "wl0.3" if WIFI_BCM_5G
+	default "rai2" if WIFI_MTK_5G
+	default "ath8" if WIFI_QCA_5G
+	default "wlan0-vap1" if WIFI_RTL_5G
+
+config INCLUDE_REAL_NAME_WL_5G_GEUST3
+	string "Wifi 5G Interface Real Name - Guest 3"
+	default "wl0.4" if WIFI_BCM_5G
+	default "rai3" if WIFI_MTK_5G
+	default "ath9" if WIFI_QCA_5G
+	default "wlan0-vap2" if WIFI_RTL_5G
+
+config INCLUDE_REAL_NAME_WL_5G_GSSID
+	string "Wifi 5G Interface Real Name - Guest Network"
+	default "wl0.4" if WIFI_BCM_5G
+	default "rai3" if WIFI_MTK_5G
+	default "ath9" if WIFI_QCA_5G
+	default "wlan0-vap2" if WIFI_RTL_5G
+	depends on INCLUDE_WIFI_GSSID
+	
+config INCLUDE_REAL_NAME_WL_5G_BACKHAUL_R1
+	string "Wifi 5G Backhaul Interface For Multi-AP R1"
+	default "wl0.5" if WIFI_BCM_5G
+	default "rai4" if WIFI_MTK_5G
+	default "ath11" if WIFI_QCA_5G
+
+config INCLUDE_REAL_NAME_WL_5G_BACKHAUL_R2
+	string "Wifi 5G Backhaul Interface For Multi-AP R2"
+	default "wl0.5" if WIFI_BCM_5G
+	default "rai5" if WIFI_MTK_5G
+	default "ath12" if WIFI_QCA_5G
+
+config INCLUDE_REAL_NAME_WL_5G_BHSTA
+	string "Wifi 5G Backhaul Station Interface Real Name"
+	default "wl0" if WIFI_BCM_5G
+	default "apclii0" if WIFI_MTK_5G
+	default "ath6" if WIFI_QCA_5G
+
+config INCLUDE_REAL_NAME_WL_5G_CONFIGAP
+	string "Wifi 5G  Interface for Config AP for Pre-network"
+	default "wl1.6" if WIFI_BCM_2_4G
+	default "rai6" if WIFI_MTK_2_4G
+	default "ath13" if WIFI_QCA_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_MAIN
+	string "Wifi 2.4G Interface Real Name - Main"
+	default "wl1" if WIFI_BCM_2_4G
+	default "ra0" if WIFI_MTK_2_4G
+	default "ath0" if WIFI_QCA_2_4G
+	default "wlan1" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_WDS
+	string "Wifi 2.4G Interface Real Name - WDS"
+	default "wl1" if WIFI_BCM_2_4G
+	default "apcli0" if WIFI_MTK_2_4G
+	default "ath1" if WIFI_QCA_2_4G
+	default "wlan1-vxd" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_GEUST1
+	string "Wifi 2.4G Interface Real Name - Guest 1"
+	default "wl1.2" if WIFI_BCM_2_4G
+	default "ra1" if WIFI_MTK_2_4G
+	default "ath2" if WIFI_QCA_2_4G
+	default "wlan1-vap0" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_GEUST2
+	string "Wifi 2.4G Interface Real Name - Guest 2"
+	default "wl1.3" if WIFI_BCM_2_4G
+	default "ra2" if WIFI_MTK_2_4G
+	default "ath3" if WIFI_QCA_2_4G
+	default "wlan1-vap1" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_GEUST3
+	string "Wifi 2.4G Interface Real Name - Guest 3"
+	default "wl1.4" if WIFI_BCM_2_4G
+	default "ra3" if WIFI_MTK_2_4G
+	default "ath4" if WIFI_QCA_2_4G
+	default "wlan1-vap2" if WIFI_RTL_2_4G
+	
+config INCLUDE_REAL_NAME_WL_2_4G_GSSID
+	string "Wifi 2.4G Interface Real Name - Guest Network"
+	default "wl1.4" if WIFI_BCM_2_4G
+	default "ra3" if WIFI_MTK_2_4G
+	default "ath4" if WIFI_QCA_2_4G
+	default "wlan1-vap2" if WIFI_RTL_2_4G
+	depends on INCLUDE_WIFI_GSSID
+
+config INCLUDE_REAL_NAME_WL_2_4G_BACKHAUL_R1
+	string "Wifi 2.4G Backhaul Interface for Multi-AP R1"
+	default "wl1.5" if WIFI_BCM_2_4G
+	default "ra4" if WIFI_MTK_2_4G
+	default "ath01" if WIFI_QCA_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_BACKHAUL_R2
+	string "Wifi 2.4G Backhaul Interface for Multi-AP R2"
+	default "wl1.5" if WIFI_BCM_2_4G
+	default "ra5" if WIFI_MTK_2_4G
+	default "ath02" if WIFI_QCA_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_BHSTA
+	string "Wifi 2.4G Backhaul Station Interface Real Name"
+	default "wl1" if WIFI_BCM_2_4G
+	default "apcli0" if WIFI_MTK_2_4G
+	default "ath1" if WIFI_QCA_2_4G
+
+config INCLUDE_REAL_NAME_WL_2_4G_CONFIGAP
+	string "Wifi 2.4G  Interface for Config AP for Pre-network"
+	default "wl0.6" if WIFI_BCM_2_4G
+	default "ra6" if WIFI_MTK_2_4G
+	default "ath03" if WIFI_QCA_2_4G
+	
+config INCLUDE_REAL_NAME_WL_6G_MAIN
+	string "Wifi 6G Interface Real Name - Main"
+	default "wl1" if WIFI_BCM_6G
+	default "rai0" if WIFI_MTK_6G
+	default "ath20" if WIFI_QCA_6G
+	default "wlan2" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_WDS
+	string "Wifi 6G Interface Real Name - WDS"
+	default "wl1.1" if WIFI_BCM_6G
+	default "apcli0" if WIFI_MTK_6G
+	default "ath21" if WIFI_QCA_6G
+	default "wlan2-wds0" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_GEUST1
+	string "Wifi 6G Interface Real Name - Guest 1"
+	default "wl1.2" if WIFI_BCM_6G
+	default "rai1" if WIFI_MTK_6G
+	default "ath22" if WIFI_QCA_6G
+	default "wlan2-vap0" if WIFI_RTLL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_GEUST2
+	string "Wifi 6G Interface Real Name - Guest 2"
+	default "wl1.3" if WIFI_BCM_6G
+	default "rai2" if WIFI_MTK_6G
+	default "ath23" if WIFI_QCA_6G
+	default "wlan2-vap1" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_GEUST3
+	string "Wifi 6G Interface Real Name - Guest 3"
+	default "wl1.4" if WIFI_BCM_6G
+	default "rai3" if WIFI_MTK_6G
+	default "ath24" if WIFI_QCA_6G
+	default "wlan2-vap2" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_GSSID
+	string "Wifi 6G Interface Real Name - Guest Network"
+	default "wl1.4" if WIFI_BCM_6G
+	default "rai3" if WIFI_MTK_6G
+	default "ath24" if WIFI_QCA_6G
+	default "wlan2-vap2" if WIFI_RT_6G
+	depends on INCLUDE_WIFI_6G && INCLUDE_WIFI_GSSID
+
+config INCLUDE_REAL_NAME_WL_6G_BACKHAUL_R1
+	string "Wifi 6G Backhaul Interface For Multi-AP R1"
+	default "wl1.5" if WIFI_BCM_6G
+	default "rai4" if WIFI_MTK_6G
+	default "ath25" if WIFI_QCA_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_BACKHAUL_R2
+	string "Wifi 6G Backhaul Interface For Multi-AP R2"
+	default "wl1.6" if WIFI_BCM_6G
+	default "rai5" if WIFI_MTK_6G
+	default "ath26" if WIFI_QCA_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_BHSTA
+	string "Wifi 6G Backhaul Station Interface Real Name"
+	default "wl1.1" if WIFI_BCM_6G
+	default "apclii0" if WIFI_MTK_6G
+	default "ath21" if WIFI_QCA_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_6G_CONFIGAP
+	string "Wifi 6G  Interface for Config AP for Pre-network"
+	default "wl1.6" if WIFI_BCM_6G
+	default "rai6" if WIFI_MTK_6G
+	default "ath27" if WIFI_QCA_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_PREFIX_WL_5G
+	string "Wifi 5G Interface Real Name Prefix"
+	default "wl" if WIFI_BCM_5G
+	default "rai" if WIFI_MTK_5G
+	default "ath" if WIFI_QCA_5G
+	default "wlan" if WIFI_RTL_5G
+	depends on INCLUDE_WIFI_DUALBAND
+
+
+config INCLUDE_REAL_NAME_PREFIX_WL_2_4G
+	string "Wifi 2.4G Interface Real Name Prefix"
+	default "wl" if WIFI_BCM_2_4G
+	default "ra" if WIFI_MTK_2_4G
+	default "ath" if WIFI_QCA_2_4G
+	default "wlan" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_PREFIX_WL_6G
+	string "Wifi 6G Interface Real Name Prefix"
+	default "wl" if WIFI_BCM_6G
+	default "rai" if WIFI_MTK_6G
+	default "ath" if WIFI_QCA_6G
+	default "wlan" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_REAL_NAME_WL_2G_RADIO
+	string "Wifi 2G Radio Name"
+	default "wl0" if WIFI_BCM_2_4G
+	default "ra0" if WIFI_MTK_2_4G
+	default "wifi0" if WIFI_QCA_2_4G
+	default "wlan1" if WIFI_RTL_2_4G
+
+config INCLUDE_REAL_NAME_WL_5G_RADIO
+	string "Wifi 5G Radio Name"
+	default "wl1" if WIFI_BCM_5G
+	default "rai0" if WIFI_MTK_5G
+	default "wifi1" if WIFI_QCA_5G
+	default "wlan0" if WIFI_RTL_5G
+	depends on INCLUDE_WIFI_DUALBAND
+
+config INCLUDE_REAL_NAME_WL_6G_RADIO
+	string "Wifi 6G Radio Name"
+	default "wl2" if WIFI_BCM_6G
+	default "rax0" if WIFI_MTK_6G
+	default "wifi2" if WIFI_QCA_6G
+	default "wlan2" if WIFI_RTL_6G
+	depends on INCLUDE_WIFI_6G
+
+config INCLUDE_DWDS_NAME_PREFIX_2_4G_BACKHAUL_R1
+	string "Wifi 2.4G DWDS Interface Name Prefix"
+	default "wds1.5"
+	depends on INCLUDE_WIFI_BCM
+
+config INCLUDE_DWDS_NAME_PREFIX_5G_BACKHAUL_R1
+	string "Wifi 5G DWDS Interface Name Prefix"
+	default "wds0.5"
+	depends on INCLUDE_WIFI_BCM
+
+config INCLUDE_DWDS_NAME_PREFIX_2_4G_BACKHAUL_R2
+	string "Wifi 2.4G DWDS Interface Name Prefix"
+	default "wds1.6"
+	depends on INCLUDE_WIFI_BCM
+
+config INCLUDE_DWDS_NAME_PREFIX_5G_BACKHAUL_R2
+	string "Wifi 5G DWDS Interface Name Prefix"
+	default "wds0.6"
+	depends on INCLUDE_WIFI_BCM
+
+config INCLUDE_ARCHER_D5_SPEC
+	bool "Archer D5 mimo spec"
+	depends on INCLUDE_WIFI_QCA
+	default n
+
+config QCA_G_BAND_MIMO_NUM
+	depends on WIFI_QCA_2_4G
+	int "G BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config QCA_A_BAND_MIMO_NUM
+	depends on WIFI_QCA_5G
+	int "A BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config BCM_G_BAND_MIMO_NUM
+	depends on WIFI_BCM_2_4G
+	int "G BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config BCM_A_BAND_MIMO_NUM
+	depends on WIFI_BCM_5G
+	int "A BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config MTK_G_BAND_MIMO_NUM
+	depends on WIFI_MTK_2_4G
+	int "G BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config MTK_A_BAND_MIMO_NUM
+	depends on WIFI_MTK_5G
+	int "A BAND MIMO NUM"
+	range 1 4
+	default 3
+
+config MTK_6G_BAND_MIMO_NUM
+	depends on WIFI_MTK_6G
+	int "A BAND MIMO NUM"
+	range 1 4
+	default 2
+
+config INCLUDE_WIFI_AP_INDEPENDENT
+	bool "include AP independent"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_WDS
+	bool "include WDS"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WDS_STATUS
+	bool "Check WDS status periodily"
+	depends on INCLUDE_RE_MODE
+	default n
+	
+config INCLUDE_RE_BRIDGE_STATUS
+	bool "Led action for bridge status"
+	depends on INCLUDE_WDS_STATUS
+	default n	
+	
+config INCLUDE_RE_WPS_CONNECT
+	bool "Wps connect under RE Mode"
+	depends on INCLUDE_RE_MODE
+	default n
+	
+
+
+config INCLUDE_WIFI_GUEST
+	bool "Build Guestnetwork"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_THREE_PPA
+	bool "Build wireless GuestNetwork for 3 PPA interfaces"
+	depends on INCLUDE_WIFI_GUEST
+	default n
+	
+config INCLUDE_WIFI_MSSID
+	bool "Build wireless Multi-SSID"
+	depends on INCLUDE_WIFI
+	default n
+	
+config INCLUDE_WIFI_GSSID
+        bool "enable guest network"
+		depends on INCLUDE_WIFI_GUEST
+        default n	
+	
+config  MSSID_NUM_PER_BAND
+        depends on INCLUDE_WIFI_MSSID
+        int "MSSID NUM PER BAND"
+        range 0 3
+        default 3
+
+choice
+	prompt "Wireless max station per band"
+	depends on INCLUDE_WIFI
+    default INCLUDE_WIFI_UNKNOW
+
+config INCLUDE_WIFI_MAX_STA_32
+	bool "Max 32 stations per band"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_MAX_STA_16
+	bool "Max 16 stations per band"
+	depends on INCLUDE_WIFI
+
+config INCLUDE_WIFI_MAX_STA_64
+	bool "Max 64 stations per band"
+	depends on INCLUDE_WIFI
+	
+config INCLUDE_WIFI_MAX_STA_128
+	bool "Max 128 stations per band"
+	depends on INCLUDE_WIFI
+
+endchoice
+
+config INCLUDE_WIFI_WDS_DETECT
+	bool "Build wireless wds address mode detect"
+	depends on INCLUDE_WIFI_WDS
+	default n
+
+config INCLUDE_WIFI_8021X
+	bool "Build wireless 802.1x"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_AC
+	bool "Build wlan 802.11ac"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_AX
+	bool "Build wlan 802.11ax"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_160MHZ
+	bool "Build wlan 160MHz"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND
+	default n
+
+config INCLUDE_WIFI_SCHEDULE
+	bool "Build wireless schedule"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_MULTI_SSID_TIMER
+	bool "Build multi-ssid wireless timer"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_MSSID
+	default n
+
+config INCLUDE_WIFI_BANDSTEERING
+	bool "Enable Band Steering"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND
+	default n
+
+	config INCLUDE_BANDSTERRING_5GTO24G
+	bool "Enable Band Steering 5G to 2.4G"
+	depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND && INCLUDE_WIFI_BANDSTEERING
+	default n
+
+config INCLUDE_AGINET_WIFI_PWD_CHECK
+	bool "Enable wifi password check for aginet2.1"
+	depends on INCLUDE_WIFI && INCLUDE_AGINET_APP_V2
+	default n
+	
+config INCLUDE_WIFI_TXBF
+    bool "Enable Tx Beamforming"
+    depends on INCLUDE_WIFI_AC
+    default n
+
+config INCLUDE_WIFI_MUMIMO
+    bool "Enable MU-MIMO"
+    depends on INCLUDE_WIFI_TXBF
+    default n
+
+config INCLUDE_WIFI_ATF
+    bool "Enable Airtime Fairness"
+    depends on INCLUDE_WIFI
+    default n
+
+config INCLUDE_WIFI_DFS
+    bool "Enable WIFI DFS"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND
+    default n
+
+config INCLUDE_WIFI_ZERO_WAIT_DFS
+    bool "Enable Zero-Wait DFS"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_DUALBAND
+    default n
+
+config INCLUDE_WIFI_OFDMA
+    bool "Enable OFDMA for 11AX"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_AX
+    default n
+
+config INCLUDE_WIFI_TWT
+    bool "Enable Target Wake Time for 11AX"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_AX
+    default n
+
+config INCLUDE_WIFI_BSSCOLOR
+    bool "Enable BSS Color for 11AX"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_AX
+    default n
+
+config INCLUDE_BCM_NAND_NVRAM
+    bool "Support BCM Nand Flash Nvram Settings"
+    depends on INCLUDE_WIFI && INCLUDE_WIFI_BCM
+    default n
+
+config INCLUDE_CORE_BINDING
+	bool "bcm core binding"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_NO_WEP_ENCRYPTION
+	bool "do not support WEP encryption"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_NO_NOSEC_ENCRYPTION
+	bool "do not support no security encryption"
+	depends on INCLUDE_WIFI
+	default n	
+	
+config INCLUDE_WIFI_11R
+	bool "802.11r support"
+	default n
+	
+config INCLUDE_NOT_SUPPORT_TRANSMITPOWER_APP_V2
+	bool "do not support transmit power for Aginet App v2"
+	default n
+
+config INCLUDE_WIFI_DBDC
+	bool "include for MTK/ECONET DBDC mode"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_ADT_WIFI_COMMON_OPTIMIZATION
+	bool "include optimization for rsl_setDev2AdtWifiCommonObj"
+	depends on INCLUDE_WIFI
+	default n
+	
+config INCLUDE_11AXONLY_SUPPORT
+	bool "wifi mode:11ax only support"
+	default n
+
+config INCLUDE_11NAX_SUPPORT
+	bool "wifi mode:support 11nax(for 2G) and 11nacax(for 5G), do not need 11a,11b and 11g."
+	default n
+
+config INCLUDE_PERCENT_TRANSMITPOWER
+	bool "The transmit power will be in percentage form."
+	default n
+	
+config INCLUDE_ACT_AUTO_CHAN_SELECTION
+	bool "There will be a button in the web, to act an automatic channel selection."
+	default n
+
+config INCLUDE_WIFI_QCA_SSR
+	bool "workaround for QCA WiFi Crash in Agent mode"
+	depends on INCLUDE_EASYMESH && INCLUDE_WIRELESS_UCI && INCLUDE_WIFI_QCA
+	default n
+
+config INCLUDE_WIFI_MODE_EXTENDED
+	bool "extended wifi mode"
+	default n
+
+config INCLUDE_WIRELESS_SURVEY
+	bool "There will be a page in the web, to scan neighboring wireless networks and see SSID, Channel etc information."
+	default n
+	
+config INCLUDE_TIMELY_AUTO_CHAN_SELECTION
+	bool "Act an automatic channel selection per 15 minutes, if there is no associated wireless clients."
+	default n
+	
+config INCLUDE_ADV_WIFI_SCAN
+	bool "Act an advanced wifi scan, to get more parameters from drivers."
+	default n
+	
+config INCLUDE_WIFI_MACFILTER
+	bool "Show macfilter page in webUI"
+	depends on INCLUDE_WIFI
+	default n
+	
+config INCLUDE_MACFILTER_SPLIT_2_4G_5G
+	bool "enable macfilter split 2.4G/5G"
+	depends on INCLUDE_WIFI_MACFILTER
+	default n
+
+config INCLUDE_WPS_ANTI_MISTOUCH
+	bool "Prevent accidentally pressing the wps switch"
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_IGNORE_WPS_BTN_TIME
+	int "Ignore WPS btn Press time"
+	range 1 8
+	depends on INCLUDE_WPS_ANTI_MISTOUCH
+	default 1
+	
+config INCLUDE_WIFI_PSK_FAILCOUNTS
+	bool "Count the number of times wireless password is entered incorrectly for every AP."
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_MAX_STA_EDITABLE
+	bool "Can set the max wireless stations for primary AP per band."
+	depends on INCLUDE_WIFI
+	default n
+	help
+		  Must set the following MACOR WIFI_MAX_STA_PERBAND.
+
+config WIFI_MAX_STA_PERBAND
+		depends on INCLUDE_WIFI_MAX_STA_EDITABLE
+		int "The max wireless stations per band."
+		range 1 256
+		default 64
+
+config INCLUDE_WIFI_SUPPORT_SSID_STAT
+	bool "Can collect the tx or rx information of every AP from wifi driver."
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_REDUCE_STATISTICS
+	bool "Reduce Tx Statistics and Monitor time"
+	depends on INCLUDE_WIFI_QCA
+	default n
+
+config INCLUDE_QUANTWIFI
+	bool "Build Support of QuantWiFi Function"
+	default n
+
+config INCLUDE_WIFI_WPS_STOP_ALL_ONCE_SUCC
+	bool "Stop the WPS in progress of other bands when anyone band WPS is successful."
+	depends on INCLUDE_WIFI
+	default n
+
+config INCLUDE_WIFI_EDIT_HE_GI
+	bool "Support to change HE guard interval"
+	depends on INCLUDE_WIFI
+	default n
+	
+endmenu
+

@@ -1,0 +1,9 @@
+config INCLUDE_PHPLDT_OPTIONS
+	bool "Philippines PLDT all options (B&C)"
+	depends on INCLUDE_PHPLDT
+
+	######## SELECT Type B ##########
+	
+	######## SELECT Type C ##########
+
+########## Define Type C ############

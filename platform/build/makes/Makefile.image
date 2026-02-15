@@ -1,0 +1,926 @@
+####################################################
+#
+# Build image
+#
+####################################################
+# grep -w ModelName: Find the model name
+# sed 's/.*d=\"*\([ 0-9a-zA-Z-]\{1,\}\).*/\1/': Normalize
+# sed 's/[ ]$$//': Delete last space character
+# sed 's/ /_/': Replace all of the ' ' to '_'
+MODEL_NAME = "$(shell cat $(DM_TG_PATH)/reduced_data_model.xml | grep -w ModelName | sed 's/.*d=\"*\([ \(\)\.0-9a-zA-Z-]\{1,\}\).*/\1/' | sed 's/[ ]$$//' | sed 's/ /_/')"
+BUILD_DATE = $(shell cat $(DM_TG_PATH)/reduced_data_model.xml | grep -w X_TP_BuildDate | sed 's/.*d=\([0-9a-fA-F]\{1,\}\).*/\1/')
+BUILD_TIME = $(shell cat $(DM_TG_PATH)/reduced_data_model.xml | grep -w X_TP_BuildTime | sed 's/.*d=\([0-9a-fA-F]\{1,\}\).*/\1/')
+ADD_HWVER_NUM=$(shell cat $(DM_TG_PATH)/reduced_data_model.xml | grep -w AdditionalHardwareVersion | sed 's/.*d=\([0-9a-fA-F]\{2\}\)\([0-9a-fA-F]\{2\}\)\([0-9a-fA-F]\{2\}\)\([0-9a-fA-F]\{2\}\).*/\\x\1\\x\2\\x\3\\x\4/')
+
+#ifeq ($(INCLUDE_MTD_TYPE_FS), y)
+# Calculate offset
+OTHER_OFS_IDX:="2"
+OTHER_OFS_ADDHVER_NUM:=$(shell printf "%d" "0xFF00")
+MTD_OFS_MISC_NUM:=$(shell printf "%d" $(MTD_BOOT_SIZE)) 
+MTD_BLOCK_SIZE_NUM:=$(shell printf "%d" $(MTD_BLOCK_SIZE))
+MTD_OFS_ADDHVER_NUM:=$(shell expr $(MTD_OFS_MISC_NUM) + $(OTHER_OFS_IDX) \* $(MTD_BLOCK_SIZE_NUM) + $(OTHER_OFS_ADDHVER_NUM))
+HWVER_FILE_NAME:=$(shell printf "0x%08X" $(MTD_OFS_ADDHVER_NUM))
+MFG_FILE_NAME:=$(shell printf "0x%08X" $(MTD_OFS_MISC_NUM))
+#endif
+
+
+BUILD_REGION=US
+ifeq ($(INCLUDE_REGION_EU), y)
+BUILD_REGION=EU
+endif
+ifeq ($(INCLUDE_REGION_AU), y)
+BUILD_REGION=AU
+endif
+
+RELEASE_FORMATE = $(BUILD_DATE)_Rel.$(BUILD_TIME)n\($(BUILD_REGION)\)
+
+ifeq ($(wildcard $(DEF_DM_PATH)/convertCfg/upgrade_exe),)
+MKIMAGE_PREHOOK_ARG = 
+else
+MKIMAGE_PREHOOK_ARG = -q $(IMG_TG_PATH)/upgrade_exe.tar
+endif
+
+####################################################
+#TODO mkimage3 not support RAW2 and UBI yet
+####################################################
+ifeq ($(INCLUDE_MTD_TYPE_FS), y)
+KIMAGE_TYPE =  bba_kernel_type_jffs2
+IMAGE_TYPE = bba_image_type_jffs2
+MKIMAGE_TYPE = 2
+else
+KIMAGE_TYPE = bba_kernel_type_squashfs
+IMAGE_TYPE  = bba_image_type_squashfs
+ifeq ($(INCLUDE_MTD_TYPE_RAW1), y)
+MKIMAGE_TYPE = 0
+endif
+ifeq ($(INCLUDE_MTD_TYPE_RAW2), y)
+MKIMAGE_TYPE = 1
+endif
+endif
+ifeq ($(INCLUDE_SPEC_EX220), y)
+IMAGE_TYPE = bba_bcm_boot_type_squashfs bcm_image_type_squashfs bba_bcm_image_type_squashfs
+endif
+
+ifeq ($(INCLUDE_SPEC_EX221), y)
+KIMAGE_TYPE = bba_kernel_type_jffs2
+IMAGE_TYPE  = bba_image_type_jffs2
+endif
+
+ifeq ($(INCLUDE_SPEC_EC223), y)
+KIMAGE_TYPE = bba_kernel_type_jffs2
+IMAGE_TYPE  = bba_image_type_jffs2
+endif
+
+ifeq ($(INCLUDE_SPEC_EX221), y)
+MFGFILE = $(MODEL_PATH)/mfg_config.bin
+else ifeq ($(INCLUDE_SPEC_EC223), y)
+MFGFILE = $(MODEL_PATH)/mfg_config.bin
+else
+MFGFILE = $(IMG_TG_PATH)/empty_rootfs
+endif
+
+ifeq ($(BCM_SDK_VERSION_ALL),5.04L.02P1)
+IMAGE_TYPE = bba_bcm_image_type_uni
+endif
+
+BBA_IMAGE_BUILD  =
+
+BBA_IMAGE_BUILD += supplier_image_pre
+BBA_IMAGE_BUILD += $(KIMAGE_TYPE)
+BBA_IMAGE_BUILD += $(IMAGE_TYPE)
+
+.PHONY: $(BBA_IMAGE_BUILD)
+bba_mkkernel_build: $(KIMAGE_TYPE)
+bba_mkimage_build: $(BBA_IMAGE_BUILD)
+
+$(info KIMAGE_TYPE=$(KIMAGE_TYPE) BBA_IMAGE_BUILD=$(BBA_IMAGE_BUILD))
+
+####################################################
+####################################################
+bba_kernel_type_squashfs:
+	# TODO: fix it later
+ifeq ($(INCLUDE_PON), y)
+	-cp $(MODEL_PATH)/mkimage4 $(TOOLS_PATH)/mkimage4
+endif
+ifeq ($(INCLUDE_MTK), y)
+	make supplier_image_build
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+endif
+
+	# kernel with tp tag: tag_kernel.bin
+ifneq ($(INCLUDE_PON), y)
+	$(TOOLS_PATH)/mkkernel3 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/linux.7z \
+		-f $(IMG_TG_PATH)/rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(IMG_TG_PATH)
+else
+	$(TOOLS_PATH)/mkimage4 \
+		-m $(MTD_KERNEL_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-k $(KERNEL_TG_PATH)/linux.7z \
+		-o temp \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(KERNEL_TG_PATH)
+endif
+
+ifneq ($(INCLUDE_CUSTOMIZED_SP),)
+SQUASHFS_CSP_SUFFIX:= -x $(CSP)
+endif
+
+bba_bcm_boot_type_squashfs:
+	cd $(PROFILE_DIR) && \
+	$(HOSTTOOLS_DIR)/scripts/bcmImageMaker --cferom $(CFE_FILE) --bootofs 0 --bootsize $$(( $(BRCM_FLASHBLK_SIZE) * 1024 )) --blocksize 2048 --image $(PROFILE_DIR)/.tmpimage --unsecurehdr --mediatype nor && \
+	$(TOOLS_PATH)/mkboot5 \
+		-l $(MTD_BOOT_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-b $(PROFILE_DIR)/.tmpimage.bin \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-i $(IMG_TG_PATH) && \
+	rm -f $(PROFILE_DIR)/.tmpimage.bin
+
+bcm_image_type_squashfs: bba_bcm_boot_type_squashfs
+	cd $(PROFILE_DIR) && \
+	$(HOSTTOOLS_DIR)/bcmImageBuilder $(BRCM_ENDIAN_FLAGS) --output $(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --board $(BRCM_BOARD_ID) --blocksize $(BRCM_FLASHBLK_SIZE) --image-version $(IMAGE_VERSION) --cfefile $(IMG_TG_PATH)/boot.bin --rootfsfile $(IMG_TG_PATH)/rootfs --kernelfile $(KERNEL_TG_PATH)/linux.7z --dtbfile $(DTB_FILE) --include-cfe $(IMG_DDR_TYPE_OPT) && \
+	$(HOSTTOOLS_DIR)/createimg.pl --set memoryConfig=0x20000327 bootline="e=192.168.0.1:ffffff00 h=192.168.0.100 g= r=f f=vmlinux i=bcm963xx_fs_kernel d=1 p=0 c= a= " wlanfeature=0 boardid=$(BRCM_BOARD_ID) voiceboardid=$(BRCM_VOICE_BOARD_ID) numbermac=$(BRCM_NUM_MAC_ADDRESSES) macaddr=$(BRCM_BASE_MAC_ADDRESS) tp=$(BRCM_MAIN_TP_NUM) psisize=$(BRCM_PSI_SIZE) logsize=$(BRCM_LOG_SECTION_SIZE) auxfsprcnt=$(BRCM_AUXFS_PERCENT) gponsn=$(BRCM_GPON_SERIAL_NUMBER) gponpw=$(BRCM_GPON_PASSWORD) --inputfile=$(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot --outputfile=$(FLASH_IMAGE_NAME)_bootromboot --nvramfile $(HOSTTOOLS_DIR)/nvram.h --nvramdefsfile $(HOSTTOOLS_DIR)/nvram_defaults.h --config=$(HOSTTOOLS_DIR)/local_install/conf/$(TOOLCHAIN_PREFIX).conf && \
+	$(HOSTTOOLS_DIR)/addvtoken --endian $(ARCH_ENDIAN) --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --flashtype NOR $(IMG_DDR_TYPE_OPT) $(FLASH_IMAGE_NAME)_bootromboot $(FLASH_IMAGE_NAME)_bootromboot.w
+	
+ifneq ($(BETA), n)
+	cd $(PROFILE_DIR) && \
+	$(HOSTTOOLS_DIR)/bcmImageBuilder $(BRCM_ENDIAN_FLAGS) --output $(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_beta --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --board $(BRCM_BOARD_ID) --blocksize $(BRCM_FLASHBLK_SIZE) --image-version $(IMAGE_VERSION) --cfefile $(IMG_TG_PATH)/boot.bin --rootfsfile $(IMG_TG_PATH)/rootfs.beta --kernelfile $(KERNEL_TG_PATH)/linux.7z --dtbfile $(DTB_FILE) --include-cfe $(IMG_DDR_TYPE_OPT) && \
+	$(HOSTTOOLS_DIR)/createimg.pl --set memoryConfig=0x20000327 bootline="e=192.168.0.1:ffffff00 h=192.168.0.100 g= r=f f=vmlinux i=bcm963xx_fs_kernel d=1 p=0 c= a= " wlanfeature=0 boardid=$(BRCM_BOARD_ID) voiceboardid=$(BRCM_VOICE_BOARD_ID) numbermac=$(BRCM_NUM_MAC_ADDRESSES) macaddr=$(BRCM_BASE_MAC_ADDRESS) tp=$(BRCM_MAIN_TP_NUM) psisize=$(BRCM_PSI_SIZE) logsize=$(BRCM_LOG_SECTION_SIZE) auxfsprcnt=$(BRCM_AUXFS_PERCENT) gponsn=$(BRCM_GPON_SERIAL_NUMBER) gponpw=$(BRCM_GPON_PASSWORD) --inputfile=$(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_beta --outputfile=$(FLASH_IMAGE_NAME)_bootromboot_beta --nvramfile $(HOSTTOOLS_DIR)/nvram.h --nvramdefsfile $(HOSTTOOLS_DIR)/nvram_defaults.h --config=$(HOSTTOOLS_DIR)/local_install/conf/$(TOOLCHAIN_PREFIX).conf && \
+	$(HOSTTOOLS_DIR)/addvtoken --endian $(ARCH_ENDIAN) --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --flashtype NOR $(IMG_DDR_TYPE_OPT) $(FLASH_IMAGE_NAME)_bootromboot_beta $(FLASH_IMAGE_NAME)_bootromboot_beta.w
+
+	cd $(PROFILE_DIR) && \
+	$(HOSTTOOLS_DIR)/bcmImageBuilder $(BRCM_ENDIAN_FLAGS) --output $(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_trans --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --board $(BRCM_BOARD_ID) --blocksize $(BRCM_FLASHBLK_SIZE) --image-version $(IMAGE_VERSION) --cfefile $(IMG_TG_PATH)/boot.bin --rootfsfile $(IMG_TG_PATH)/rootfs.trans --kernelfile $(KERNEL_TG_PATH)/linux.7z --dtbfile $(DTB_FILE) --include-cfe $(IMG_DDR_TYPE_OPT) && \
+	$(HOSTTOOLS_DIR)/createimg.pl --set memoryConfig=0x20000327 bootline="e=192.168.0.1:ffffff00 h=192.168.0.100 g= r=f f=vmlinux i=bcm963xx_fs_kernel d=1 p=0 c= a= " wlanfeature=0 boardid=$(BRCM_BOARD_ID) voiceboardid=$(BRCM_VOICE_BOARD_ID) numbermac=$(BRCM_NUM_MAC_ADDRESSES) macaddr=$(BRCM_BASE_MAC_ADDRESS) tp=$(BRCM_MAIN_TP_NUM) psisize=$(BRCM_PSI_SIZE) logsize=$(BRCM_LOG_SECTION_SIZE) auxfsprcnt=$(BRCM_AUXFS_PERCENT) gponsn=$(BRCM_GPON_SERIAL_NUMBER) gponpw=$(BRCM_GPON_PASSWORD) --inputfile=$(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_trans --outputfile=$(FLASH_IMAGE_NAME)_bootromboot_trans --nvramfile $(HOSTTOOLS_DIR)/nvram.h --nvramdefsfile $(HOSTTOOLS_DIR)/nvram_defaults.h --config=$(HOSTTOOLS_DIR)/local_install/conf/$(TOOLCHAIN_PREFIX).conf && \
+	$(HOSTTOOLS_DIR)/addvtoken --endian $(ARCH_ENDIAN) --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --flashtype NOR $(IMG_DDR_TYPE_OPT) $(FLASH_IMAGE_NAME)_bootromboot_trans $(FLASH_IMAGE_NAME)_bootromboot_trans.w
+	
+	cd $(PROFILE_DIR) && \
+	$(HOSTTOOLS_DIR)/bcmImageBuilder $(BRCM_ENDIAN_FLAGS) --output $(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_datecode --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --board $(BRCM_BOARD_ID) --blocksize $(BRCM_FLASHBLK_SIZE) --image-version $(IMAGE_VERSION) --cfefile $(IMG_TG_PATH)/boot.bin --rootfsfile $(IMG_TG_PATH)/rootfs.datecode --kernelfile $(KERNEL_TG_PATH)/linux.7z --dtbfile $(DTB_FILE) --include-cfe $(IMG_DDR_TYPE_OPT) && \
+	$(HOSTTOOLS_DIR)/createimg.pl --set memoryConfig=0x20000327 bootline="e=192.168.0.1:ffffff00 h=192.168.0.100 g= r=f f=vmlinux i=bcm963xx_fs_kernel d=1 p=0 c= a= " wlanfeature=0 boardid=$(BRCM_BOARD_ID) voiceboardid=$(BRCM_VOICE_BOARD_ID) numbermac=$(BRCM_NUM_MAC_ADDRESSES) macaddr=$(BRCM_BASE_MAC_ADDRESS) tp=$(BRCM_MAIN_TP_NUM) psisize=$(BRCM_PSI_SIZE) logsize=$(BRCM_LOG_SECTION_SIZE) auxfsprcnt=$(BRCM_AUXFS_PERCENT) gponsn=$(BRCM_GPON_SERIAL_NUMBER) gponpw=$(BRCM_GPON_PASSWORD) --inputfile=$(CFE_FS_KERNEL_IMAGE_NAME)_bootromboot_datecode --outputfile=$(FLASH_IMAGE_NAME)_bootromboot_datecode --nvramfile $(HOSTTOOLS_DIR)/nvram.h --nvramdefsfile $(HOSTTOOLS_DIR)/nvram_defaults.h --config=$(HOSTTOOLS_DIR)/local_install/conf/$(TOOLCHAIN_PREFIX).conf && \
+	$(HOSTTOOLS_DIR)/addvtoken --endian $(ARCH_ENDIAN) --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --flashtype NOR $(IMG_DDR_TYPE_OPT) $(FLASH_IMAGE_NAME)_bootromboot_datecode $(FLASH_IMAGE_NAME)_bootromboot_datecode.w
+endif
+
+bba_bcm_image_type_squashfs: bcm_image_type_squashfs
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+	$(TOOLS_PATH)/mkimage5 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l 0 \
+		-m 0 \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(PROFILE_DIR)/$(FLASH_IMAGE_NAME)_bootromboot.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH) $(SQUASHFS_CSP_SUFFIX)
+	$(HOSTTOOLS_DIR)/addvtoken --endian $(ARCH_ENDIAN) --chip $(or $(TAG_OVERRIDE),$(BRCM_CHIP)) --flashtype NOR $(IMG_DDR_TYPE_OPT) $(IMG_TG_PATH)/$(MODEL_NAME)_FLASH.bin $(IMG_TG_PATH)/$(MODEL_NAME)_FLASH.bin.w;
+
+ifneq ($(BETA), n)
+	$(TOOLS_PATH)/mkimage5 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l 0 \
+		-m 0 \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(PROFILE_DIR)/$(FLASH_IMAGE_NAME)_bootromboot_beta.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH) $(SQUASHFS_CSP_SUFFIX)
+
+	$(TOOLS_PATH)/mkimage5 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l 0 \
+		-m 0 \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(PROFILE_DIR)/$(FLASH_IMAGE_NAME)_bootromboot_trans.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH) $(SQUASHFS_CSP_SUFFIX)
+		
+	$(TOOLS_PATH)/mkimage5 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l 0 \
+		-m 0 \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode.xml \
+		-b $(PROFILE_DIR)/$(FLASH_IMAGE_NAME)_bootromboot_datecode.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH) $(SQUASHFS_CSP_SUFFIX)
+endif
+
+bba_image_type_squashfs:
+	$(MAKE) bba_image_type_squashfs_orign
+
+bba_image_type_squashfs_orign:
+ifeq ($(INCLUDE_ECONET), y)
+	# make boot+kernl+rootfs image: UP.bin UP_BOOT.bin FLASH.bin
+	countt=`expr $$(($(MTD_BLOCK_SIZE)))` && \
+	dd if=/dev/zero ibs=1 count=$$countt | tr "\000" "\377" > $(IMG_TG_PATH)/mfg_config.bin
+	-cp $(MODEL_PATH)/mfg_config.bin $(IMG_TG_PATH)/
+
+ifneq ($(BETA), n)
+ifneq ($(INCLUDE_PON), y)
+ifeq ($(INCLUDE_DATECODE_UPGRATE),y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.datecode \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_Datecode\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+ifeq ($(INCLUDE_TTNET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode_official.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.datecode_official \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_Datecode_official\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode_official_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.datecode_official_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_Datecode_official_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode_dev.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.datecode_dev \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_Datecode_dev\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode_dev_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.datecode_dev_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_Datecode_dev_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+endif # INCLUDE_TTNET
+endif # INCLUDE_DATECODE_UPGRATE
+endif # INCLUDE_PON
+endif # BETA
+
+ifneq ($(INCLUDE_PON), y)
+	# TODO: remove mkimage4_econet, use mkimage4 instead of mkimage4_econet?
+ifeq ($(INCLUDE_TTNET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_official.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.official \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_official\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_official_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.official_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_official_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_dev.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.dev \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_dev\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_dev_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.dev_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_dev_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+	# These commands generate FLASH.bin. Let normal command in last one since we need version of normal FLASH.bin
+endif # INCLUDE_TTNET
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+endif
+
+ifneq ($(BETA), n)
+ifneq ($(INCLUDE_PON), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+
+ifeq ($(INCLUDE_TTNET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta_official.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta_official \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_BETA\(/_beta_official\(/' $(IMG_TG_PATH)/*UP_BOOT_BETA*.bin
+
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta_official_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta_official_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_BETA\(/_beta_official_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT_BETA*.bin
+
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta_dev.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta_dev \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_BETA\(/_beta_dev\(/' $(IMG_TG_PATH)/*UP_BOOT_BETA*.bin
+
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta_dev_uptest.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta_dev_uptest \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+	rename -f 's/_BETA\(/_beta_dev_uptest\(/' $(IMG_TG_PATH)/*UP_BOOT_BETA*.bin
+endif # INCLUDE_TTNET
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(IMG_TG_PATH)/*_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.trans \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		-i $(IMG_TG_PATH)
+else # INCLUDE_PON
+	# Generate UP_BOOT.bin FLASH.bin
+	# UP_BOOT.bin: tpheader + boot + tag_kerenl + rootfs
+	# FLASH.bin_RAW1: boot + tag_kerenl + rootfs + misc
+	# FLASH.bin_RAW2: boot + misc + tag_kerenl + rootfs
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/temp_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.beta \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH)
+	mv -f $(IMG_TG_PATH)/$(MODEL_NAME)_UP_BOOT.bin $(IMG_TG_PATH)/$(MODEL_NAME)_UP_BOOT\(beta\).bin
+
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/temp_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs.trans \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH)
+	mv -f $(IMG_TG_PATH)/$(MODEL_NAME)_UP_BOOT.bin $(IMG_TG_PATH)/$(MODEL_NAME)_UP_BOOT\(trans\).bin
+endif # INCLUDE_PON
+endif # BETA
+
+ifeq ($(INCLUDE_PON), y)
+	# Generate UP.bin
+	$(TOOLS_PATH)/mkimage4 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-k $(KERNEL_TG_PATH)/temp_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH)
+
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/temp_tag_kernel.bin \
+		-f $(IMG_TG_PATH)/rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(IMG_TG_PATH)/mfg_config.bin \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH)
+
+ifneq ($(INCLUDE_MTD_TYPE_FS), y)
+	echo -ne "$(ADD_HWVER_NUM)" > $(IMG_TG_PATH)/addHwVer.bin
+	dd if=$(IMG_TG_PATH)/addHwVer.bin of=$(IMG_TG_PATH)/$(MODEL_NAME)_FLASH.bin seek=$(MTD_OFS_ADDHVER_NUM) bs=1 conv=notrunc
+endif
+endif # INCLUDE_PON
+
+else
+	# make boot+kernl+rootfs image: UP.bin UP_BOOT.bin FLASH.bin
+	$(TOOLS_PATH)/mkimage3 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/linux.7z \
+		-f $(IMG_TG_PATH)/rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH) $(SQUASHFS_CSP_SUFFIX)
+
+ifneq ($(BETA), n)
+	$(TOOLS_PATH)/mkimage3 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/linux.7z \
+		-f $(IMG_TG_PATH)/rootfs.beta \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH)  $(SQUASHFS_CSP_SUFFIX)
+	$(TOOLS_PATH)/mkimage3 \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(BOOT_TG_PATH)/boot.bin \
+		-k $(KERNEL_TG_PATH)/linux.7z \
+		-f $(IMG_TG_PATH)/rootfs.trans \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-c $(DM_TG_PATH)/flash_config.xml \
+		-i $(IMG_TG_PATH)  $(SQUASHFS_CSP_SUFFIX)
+endif
+endif
+
+ifeq ($(INCLUDE_BOOT_AGINETCONFIG), y)
+	rename -f 's/_UP_BOOT\(/_UP_BOOT_$(INCLUDE_BOOT_AGINETCONFIG_PLATFORM)\(/' $(IMG_TG_PATH)/*UP_BOOT\(*.bin
+endif #INCLUDE_BOOT_AGINETCONFIG
+	
+# ubinize
+#	-p(byte): PEB Size
+#	-m(byte): Min-I/O Size of flash
+#	-s(byte): Page Size
+#	-o: ouput file
+#	ubinize.cfg: UBI partition layout
+bba_image_type_ubi:
+	@echo "#####################################"
+	@echo "Generate UBI image"
+	@echo "#####################################"
+	rm -rf $(IMG_TG_PATH)/FLASH.bin && \
+	cp $(IMG_TG_PATH)/$(MODEL_NAME)_tag_kernel.bin $(IMG_TG_PATH)/kernel.img && \
+	mkdir -p $(IMG_TG_PATH)/blankdir && \
+	echo 1 > $(IMG_TG_PATH)/blankdir/blankfile && \
+	$(TOOLS_PATH)/mkfs.jffs2 \
+		-r $(IMG_TG_PATH)/blankdir \
+		-o $(IMG_TG_PATH)/blankfile.img \
+		-p -n \
+		-m none \
+		$(INCLUDE_ENDIAN_FLAG_ROOTFS) \
+		-e $(MTD_BLOCK_SIZE)
+	cd $(IMG_TG_PATH) && \
+	$(TOOLS_PATH)/ubinize \
+		-p 128KiB \
+		-m 2048 \
+		-s 2048 \
+		-o $(IMG_TG_PATH)/ubi_system.img \
+		$(MODEL_PATH)/ubinize.cfg
+	@echo "#####################################"
+	@echo "Generate FLASH image"
+	@echo "#####################################"
+	@echo "BOOT part:"
+	@echo "#####################################"
+	len=`wc -c $(BOOT_TG_PATH)/boot.bin | awk '{ printf $$1 }'` && \
+	countt=`expr $$(($(MTD_BOOT_SIZE))) - $$len` && \
+	cat $(BOOT_TG_PATH)/boot.bin > $(IMG_TG_PATH)/boot.padded && \
+	dd if=/dev/zero of=$(IMG_TG_PATH)/boot.padded bs=1 count=$$countt seek=$$len;
+	cat $(IMG_TG_PATH)/boot.padded >> $(IMG_TG_PATH)/FLASH.bin
+	@echo "#####################################"
+	@echo "MISC part:"
+	@echo "#####################################"
+	len=`wc -c $(IMG_TG_PATH)/blankfile.img | awk '{ printf $$1 }'` && \
+	countt=`expr $$(($(MTD_MISC_SIZE))) - $$len` && \
+	cat $(IMG_TG_PATH)/blankfile.img > $(IMG_TG_PATH)/misc.padded && \
+	dd if=/dev/zero of=$(IMG_TG_PATH)/misc.padded bs=1 count=$$countt seek=$$len;
+	cat $(IMG_TG_PATH)/misc.padded >> $(IMG_TG_PATH)/FLASH.bin
+	@echo "#####################################"
+	@echo "UBI part:"
+	@echo "#####################################"
+	cat $(IMG_TG_PATH)/ubi_system.img  >> $(IMG_TG_PATH)/FLASH.bin
+	mv $(IMG_TG_PATH)/rootfs $(IMG_TG_PATH)/rootfs.img
+	rm -rf $(IMG_TG_PATH)/*.padded $(IMG_TG_PATH)/blankdir
+	@echo "#####################################"
+	@echo "Convert Flash.bin with ECC"
+	@echo "#####################################"
+	$(TOOLS_PATH)/nand_ecc -i $(IMG_TG_PATH)/FLASH.bin -o $(IMG_TG_PATH)/FLASH_ECC.bin -p 2048 -s 4 -b 64
+
+
+bba_kernel_type_jffs2:
+	make supplier_mkkernel_build
+
+bba_image_type_jffs2:
+	make supplier_image_build
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+
+ifneq ($(BETA), n)
+ifeq ($(INCLUDE_DATECODE_UPGRATE),y)
+
+ifeq ($(INCLUDE_ECONET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_datecode.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+
+else ifeq ($(INCLUDE_MTK), y)
+		$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode.xml \
+		-k $(IMG_TG_PATH)/$(MODEL)_UP_datecode.w \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_datecode.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_datecode.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+endif		
+	mv $(IMG_TG_PATH)/$(MODEL)_UP.bin $(IMG_TG_PATH)/$(MODEL)_UP_datecode.bin
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+endif	
+
+ifeq ($(INCLUDE_BETA_UPGRATE),y)
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+
+ifeq ($(INCLUDE_ECONET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_beta.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+
+else ifeq ($(INCLUDE_MTK), y)
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-k $(IMG_TG_PATH)/$(MODEL)_UP_beta.w \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_beta.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_beta.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+endif
+		mv $(IMG_TG_PATH)/$(MODEL)_UP.bin $(IMG_TG_PATH)/$(MODEL)_UP_beta.bin
+endif
+
+ifeq ($(INCLUDE_TRANS_UPGRATE),y)
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	touch $(IMG_TG_PATH)/empty_kernel;
+	touch $(IMG_TG_PATH)/empty_rootfs;
+
+ifeq ($(INCLUDE_ECONET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_trans.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else ifeq ($(INCLUDE_MTK), y)
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-k $(IMG_TG_PATH)/$(MODEL)_UP_trans.w \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model_trans.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT_trans.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+endif
+	mv $(IMG_TG_PATH)/$(MODEL)_UP.bin $(IMG_TG_PATH)/$(MODEL)_UP_trans.bin
+endif
+endif
+
+ifeq ($(INCLUDE_ECONET), y)
+	$(TOOLS_PATH)/mkimage4_econet \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT.w \
+		-k $(IMG_TG_PATH)/empty_kernel \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else ifeq ($(INCLUDE_MTK), y)
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_BOOT_SIZE) \
+		-m $(MTD_KERNEL_SIZE) \
+		-n $(MTD_MISC_SIZE) \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-k $(IMG_TG_PATH)/$(MODEL)_UP.w \
+		-f $(IMG_TG_PATH)/empty_rootfs \
+		-c $(MFGFILE) \
+		-a $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+else
+	$(TOOLS_PATH)/mkimage4 \
+		-t $(MKIMAGE_TYPE) \
+		-s $(INCLUDE_FLASH_BIN_SIZE) \
+		-l $(MTD_IMAGE_SIZE) \
+		-m 0 \
+		-e $(INCLUDE_ENDIAN_FLAG_IMAGE) \
+		-p $(DM_TG_PATH)/reduced_data_model.xml \
+		-b $(IMG_TG_PATH)/$(MODEL)_UP_BOOT.w \
+        -k $(IMG_TG_PATH)/empty_kernel \
+        -f $(IMG_TG_PATH)/empty_rootfs \
+		-v $(KERNEL_TG_PATH)/vmlinux \
+		$(MKIMAGE_PREHOOK_ARG) \
+		-i $(IMG_TG_PATH) \
+		-o $(MODEL);
+endif
+
+	rm -f $(IMG_TG_PATH)/empty_kernel;
+	rm -f $(IMG_TG_PATH)/empty_rootfs;
+	
+release_build:
+	mkdir -p $(RELEASE_IMG_PATH)
+	# why supplier_xxx?
+	make supplier_release_build
+

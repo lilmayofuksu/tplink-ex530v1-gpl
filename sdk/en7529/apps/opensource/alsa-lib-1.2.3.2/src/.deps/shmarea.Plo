@@ -1,0 +1,133 @@
+shmarea.lo: shmarea.c \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h \
+ ../include/config.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/malloc.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/string.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/xlocale.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/string.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/string2.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdlib.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/linux/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno-base.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/poll.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sigset.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/time.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/mman.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mman.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mman-linux.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/shm.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/ipc.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/ipctypes.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/ipc.h \
+ /mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/shm.h \
+ ../include/list.h
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdc-predef.h:
+
+../include/config.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/features.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/cdefs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/wordsize.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stddef.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/types.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/typesizes.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/libio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/_G_config.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/wchar.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/lib/gcc/arm-buildroot-linux-gnueabi/4.9.3/include/stdarg.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/stdio.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/malloc.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/string.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/xlocale.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/string.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/string2.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/stdlib.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/linux/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/asm-generic/errno-base.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/poll.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/sigset.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/time.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/mman.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mman.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/mman-linux.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/shm.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/sys/ipc.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/ipctypes.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/ipc.h:
+
+/mtkeda/bbn/trendchip/buildroot-gcc493_glibc222_arm32_32bServer/usr/arm-buildroot-linux-gnueabi/sysroot/usr/include/bits/shm.h:
+
+../include/list.h:

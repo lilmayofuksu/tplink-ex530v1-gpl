@@ -1,0 +1,4 @@
+'' 'AT+CGDCONT=1, "IP","cmnet"'
+'' 'AT+CFUN=1'
+'' 'AT+CEREG=1'
+'' 'AT+ZGACT=1,1'

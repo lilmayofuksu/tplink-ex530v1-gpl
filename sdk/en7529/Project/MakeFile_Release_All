@@ -1,0 +1,3 @@
+release:
+	make -f Project/MakeFile_Release_BSP release_sdk_bsp
+	make -f Project/MakeFile_Release_APP release_sdk_sdk

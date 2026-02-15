@@ -1,0 +1,168 @@
+menu 'TP Mesh Options'
+
+config INCLUDE_WIFI_MESH_SUPPORT
+	bool "Build Wi-Fi Mesh"
+	default n
+
+config INCLUDE_TP_MESH_NO_EXECUTE
+	bool "TP Mesh will be disabled by default, but we keep related node in DM for further upgrade, do not execute mesh code by default"
+	default n
+	depends on (!INCLUDE_WIFI_MESH_SUPPORT)
+
+config INCLUDE_EASYMESH
+	bool "EasyMesh support"
+	depends on INCLUDE_WIFI_MESH_SUPPORT
+	default n
+
+config INCLUDE_EASYMESH_TS
+	bool "Traffic Separation support. Through adding Vlan tag, stations connecting to different ssid can be disallowed to access to others"
+	depends on INCLUDE_EASYMESH
+	default n
+	help
+	  For example:
+	  Router )))) Guest Network1 (((( sta1
+	         )))) Guest Network1 (((( sta2
+	         )))) Multi Network1 (((( sta3
+	  Packages from sta1 and sta2 will have same Vlan tag(For example 1), so they can access to each other.
+	  Packages from sta3 will have a different Vlan tag(For example 2), sta3 can not access to sta1 or sta2.
+
+config INCLUDE_EASYMESH_ETH_BINDING
+	bool "Ethernet Port Binding (in controller or agent) support. Through binding specific Lan ports with Wan, client can decide which Lan ports can access to Server"
+	depends on INCLUDE_EASYMESH_TS
+	default n
+	help
+	  For Example:
+	  In Router mode, HC220 has WAN LAN1 LAN2.
+	  If bind WAN and LAN1, station connecting to LAN2 will not be able to access Internet through WAN port.
+	
+config INCLUDE_EASYMESH_PORT_NUM
+	string "Port number of this device for Ethernet Port Binding"
+	depends on INCLUDE_EASYMESH_ETH_BINDING
+	default "3"
+	
+config INCLUDE_EASYMESH_PORT_MAP
+	string "Port map of this device for Ethernet Port Binding"
+	depends on INCLUDE_EASYMESH_ETH_BINDING
+	default "WAN/LAN_LAN1_LAN2"
+	
+config INCLUDE_DHCP_OPTION60_AUTOBIND
+	bool "Auto Port Binding by DHCP option 60 support, Dut can bind LAN with WAN automatically when recived DHCP request with Option 60"
+	depends on INCLUDE_EASYMESH_ETH_BINDING
+	default n
+	help
+	  Some ISP Client has such request: STB send DHCP request with Option 60 to DUT, the Vender ID can identifies this STB. The DUT confirms 
+	  the LAN port to which the STB is connected, and bind it with WAN automatically.
+	
+config INCLUDE_HYFI_BRIDGE_MC
+	bool "Enable Hyfi-Bridge Multicast or not"
+	default n
+	depends on INCLUDE_EASYMESH
+
+config INCLUDE_EASYMESH_DEVICE_ONBOARDED
+	bool "Disable backhaul BSS when no Agent onboarded, for MTK scheme only"
+	depends on INCLUDE_EASYMESH
+	default n
+
+config INCLUDE_EASYMESH_MULTI_UPGRADE
+    bool "EasyMesh multi firmware upgrade support, allow client to see firmware vrsion of all devices in mesh network, and upgrade any of them"
+    default n
+    depends on INCLUDE_EASYMESH
+
+config INCLUDE_AGENT_DOMAIN_FORCED_CONTROLLER_IP
+    bool "Agent domain redirect controller ip support, when a client connecting to agent login domain name, he will finally login controller's web page"
+    default n
+    depends on INCLUDE_EASYMESH
+
+config INCLUDE_ONEMESH
+	bool "OneMesh support"
+	depends on INCLUDE_WIFI_MESH_SUPPORT
+	default n
+
+config INCLUDE_AI_ROAMING
+	bool "AI Roaming support"
+	depends on INCLUDE_WIFI_MESH_SUPPORT
+	default n
+
+config INCLUDE_EASYMESH_CONTROLLERONLY
+	bool "Only works as a controller"
+	depends on INCLUDE_WIFI_MESH_SUPPORT
+	default n
+
+config INCLUDE_EASYMESH_CERTIFICATION
+	bool "EasyMesh certification support"
+	depends on INCLUDE_EASYMESH
+	default n
+
+config INCLUDE_EASYMESH_TPVDMP
+	bool "EasyMesh TPVDMP support, Tplink vendor management protocol, for private configuration message interaction "
+	depends on INCLUDE_EASYMESH
+	default n
+
+config INCLUDE_TMP_EASYMEHS_TS_ENABLE_AGENT_MAC_VLAN
+	bool "Temp macro, enable mac vlan on agent mode(For A1 tender customization)"
+	depends on INCLUDE_EASYMESH_TS && INCLUDE_MULTIMODE
+	default n
+
+config INCLUDE_EASYMESH_WORKAROUND_MAP_RELOAD
+	bool "Workaround for easymesh if the mapController/mapAgent is dead"
+	default n
+	depends on INCLUDE_EASYMESH
+
+menu 'TP Multi-BackhaulLinks Options'
+config INCLUDE_EASYMESH_MULTI_BHLINKS_SUPPORT
+	bool 'TP Multi-BackhaulLinks support'
+	default n
+	depends on INCLUDE_EASYMESH
+
+	config INCLUDE_EASYMESH_MULTI_BHLINKS_2G
+		bool 'TP Multi-BackhaulLinks 2G support'
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_EASYMESH_MULTI_BHLINKS_SUPPORT
+
+	config INCLUDE_EASYMESH_MULTI_BHLINKS_5G
+		bool 'TP Multi-BackhaulLinks 5G support'
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_EASYMESH_MULTI_BHLINKS_SUPPORT
+
+	config INCLUDE_EASYMESH_MULTI_BHLINKS_6G
+		bool 'TP Multi-BackhaulLinks 6G support'
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_EASYMESH_MULTI_BHLINKS_SUPPORT && INCLUDE_WIFI_6G
+endmenu
+
+menu 'TP Onboarding Options'
+config INCLUDE_EASYMESH_TP_ONBOARDING
+	bool "TP Onboarding support, support the onboarding method of TP-Link"
+	default n
+	depends on INCLUDE_EASYMESH
+	
+	config INCLUDE_EASYMESH_PRE_NETWORKING_TAUC
+		bool "TAUC Pre Networking support, allow client to add agent by deliverying configuration to controller through our own ACS server(TAUC)"
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_PRE_CONFIG && INCLUDE_EASYMESH_TP_ONBOARDING
+
+	config INCLUDE_EASYMESH_TP_ONBOARDING_AGINET
+		bool "AGINET Onboarding support, allow client to add agent through Aginet APP"
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_AGINET_APP_V2 && INCLUDE_EASYMESH_TP_ONBOARDING
+
+	config INCLUDE_EASYMESH_TP_ONBOARDING_ZERO_TOUCH
+		bool "TP Onboarding A + A V2"
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_EASYMESH_TP_ONBOARDING
+		help
+		  After factory restore, mode of DUT will be Router + UnConfAgent. Dut can work as Agent, and can change to Controller mode automatically
+		  without rebooting.
+		  Only ISP.mesh and ISP.wirelessRouter need to turn on this macro.
+
+	config INCLUDE_FACTORY_PRE_PAIRED
+		bool "factory prepair support"
+		default n
+		depends on INCLUDE_EASYMESH && INCLUDE_EASYMESH_TP_ONBOARDING
+		help
+		  For multi-pack product only, a certain backhaul ssid and key will be written to flash, once one DUT of them becomes a controller, other 
+		  Dut will onboard as Agent automatically.
+endmenu
+	
+endmenu
+

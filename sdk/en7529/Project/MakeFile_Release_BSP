@@ -1,0 +1,265 @@
+ifneq ($(strip $(CUSTOM)),)
+ifneq ($(strip $(PROFILE)),)
+include Project/profile/$(CUSTOM)/$(PROFILE)/$(PROFILE).profile
+endif
+endif
+
+include Project/dir.mak
+include Project/rule.mak
+include $(PROJECT_DIR)/release_bsp.mak
+
+ifneq ($(strip $(RELEASEBSP)),)	
+ifeq ($(strip $(CUSTOMERRELEASE)),)
+ifneq ($(strip $(OPENWRT_RELEASE)),)
+release_sdk_bsp:confirm_infor release_dir_delete release_all_check 
+else
+release_sdk_bsp:confirm_infor release_dir_delete release_all_check release_backup_bsp release_profile_bsp release_makefile_bsp release_config_bsp release_doc release_swept_bsp release_tar_bsp
+endif
+endif
+endif
+
+PROFILE_SET=UNION_EN7580_7592_7615_MAP_KERNEL_4_4_demo CMCC_7526F_4P7592_7612_CFG2_demo UNION_EN7523_GLIBC_7592_7615_demo UNION_EN7580_7592_7615_MAP_KERNEL_4_4_TR181_demo UNION_EN7523_GLIBC_7592_7615_TR181_MAP_demo UNION_EN7523_GLIBC_7915_7915_ActiveEthWan_demo UNION_EN7523_GLIBC_7592_7615_KERNEL_5_4_demo UNION_EN7580_7592_7615_MAP_KERNEL_5_4_demo UNION_EN7523_GLIBC_7915D_KERNEL_5_4_demo UNION_EN7562_7915D_KERNEL_5_4_demo UNION_EN7523_GLIBC_7915D_ActiveEthWan_KERNEL_5_4_demo UNION_EN7562_7915D_ActiveEthWan_KERNEL_5_4_demo
+
+
+
+INFOR0="Attention!!!!"
+INFOR3="This command will release Multi-chip SDK, which will remove the un-open files and can't be recovered!!!!!"
+INFOR4="Please select the release profile desired. Example: 1 2 3"
+INFOR5="Please input your selection:"
+INFOR6="Profile you selected is as following:"
+INFOR7="if you agree, please input "y",else if you wanna break please input "N". [y/N] ?"
+EXIT_INFOR="Your input is not y! The make process will be breaked!"
+CONTINUE_INFOR="Entering make process......"
+INFOR_CUSTOM="If you wanan release a customer version from SDK, please make sure your command is: "make -f MultiChip.make CUSTOM_RELASE=y""
+SEPARATOR="....................................................................................................."
+
+
+
+ifneq ($(strip $(PROFILE)),)
+PROFILE_SELECT = $(PROFILE)
+confirm_infor:
+	@echo "release with $(PROFILE) profile now..."
+	@sleep 1
+else
+#if RD wanna release with some dedicated profiles, the select and confirm will be triggerd
+confirm_infor:
+	@echo "****************************************************************************************************"
+	@echo $(INFOR0)
+	@echo "....................................................................................................."
+	@echo $(INFOR3)
+	@echo $(INFOR4)
+	@id=0;\
+	for profile in $(PROFILE_SET);\
+	do \
+		echo [$$id] $$profile;\
+		id=`expr $$id + 1`; \
+	done;
+	@echo "****************************************************************************************************"
+	@echo $(INFOR5);
+	@rm -rf "./.profile_select.tmp";
+	@profile_set=(${PROFILE_SET}); \
+	PROFILE_SET_NUM=$${profile_set[@]}; \
+	read select;\
+	echo $(SEPARATOR);\
+	while [ "$$select"x == ""x ] ;\
+	do \
+		echo $(INFOR5);read select;\
+	done; \
+	while [ "$$select"x == ""x ] ;\
+	do \
+		fail=0;\
+		for index in $$select; \
+		do \
+			if [[ ( $$index -lt 0 ) || ( $$index -ge $${PROFILE_SET_NUM} ) ]]; \
+			then\
+				echo "******Wrong input! Please check again!*****"; \
+				fail=1; \
+				echo $(INFOR5);read select;\
+				while [ "$$select"x == ""x ]];\
+				do \
+					echo $(INFOR5);read select;\
+				done; \
+				break; \
+			fi; \
+		done ;\
+		if [ $$fail -eq 1 ];\
+		then \
+			continue; \
+		else \
+			break; \
+		fi; \
+	done;\
+	echo $(INFOR6);\
+	for index in $$select; \
+	do \
+		echo "******$${profile_set[$$index]}*****"; \
+		echo $${profile_set[$$index]}>>"./.profile_select.tmp"; \
+	done
+	@echo $(INFOR7);
+	@read var ;\
+	if [[ $$var == y ]]; \
+	then \
+		echo $(CONTINUE_INFOR); \
+	else \
+		echo "" >"./.profile_select.tmp";\
+		echo $(EXIT_INFOR);\
+		exit 1;\
+	fi
+	@echo $(SEPARATOR)
+	@sleep 1;
+
+PROFILE_SELECT=`cat ./.profile_select.tmp`
+endif	
+
+release_dir_delete:
+	rm -rf ./.profile_summary
+	
+	for release in ${PROFILE_SELECT} ; \
+	do \
+		cat Project/profile/$(CUSTOM)/$${release}/$${release}.profile >>./.profile_summary ;\
+	done
+
+	echo "********************release_dir_swept begin:*****************************"; \
+	${MAKE} -f "$(PROJECT_DIR)/release_dir_swept" ALL ; if [ $$? != 0 ];then exit 1;fi;\
+	echo "*********************release_bsp_swept finish:****************************"; \
+	
+release_all_check:release_checktools
+	if test -e $(TOOLS_DIR)/cplopts_checktool/tmp/restore.sh; \
+	then echo "Please restore the files first before any modification!"; exit 1; \
+	else echo "executing all check"; \
+	fi
+
+ifneq ($(strip $(CHKDIR)),)
+	echo "checking CHDIR"
+ifeq ($(CUSTOM),CT)
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR)/$(CHKDIR) ./.profile_summary $(PROJECT_MENUCONFIG_DIR)/$(CUSTOM).config
+else
+ifeq ($(CUSTOM),RJO)
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR)/$(CHKDIR) ./.profile_summary $(PROJECT_MENUCONFIG_DIR)/CT.config
+else
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR)/$(CHKDIR) ./.profile_summary
+endif
+endif
+else
+	echo "checking all files in trunk dir"
+ifeq ($(CUSTOM),CT)
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR) ./.profile_summary $(PROJECT_MENUCONFIG_DIR)/$(CUSTOM).config
+else
+ifeq ($(CUSTOM),RJO)
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR) ./.profile_summary $(PROJECT_MENUCONFIG_DIR)/CT.config
+else
+	$(TOOLS_DIR)/cplopts_begin $(TRUNK_DIR) ./.profile_summary
+endif
+endif
+endif
+	if test -e $(TOOLS_DIR)/cplopts_checktool/tmp/error; \
+	then echo "Compile code error"; exit 1; \
+	fi
+	if test -e $(TOOLS_DIR)/cplopts_checktool/tmp/parsingfile; \
+	then echo "Tool couldn't work totally! The error filename is";\
+			 cat $(TOOLS_DIR)/cplopts_checktool/tmp/parsingfile;rm -f $(TOOLS_DIR)/cplopts_checktool/tmp/parsingfile;exit 1; \
+	else echo "Tool works totally and Compile code success"; \
+	fi
+
+release_checktools:
+	echo making compile options checking  tools
+#       make -C $(TOOLS_DIR)/cplopts_checktool clean
+	make -C $(TOOLS_DIR)/cplopts_checktool
+	cp -f $(TOOLS_DIR)/cplopts_checktool/cplopts_begin $(TOOLS_DIR)
+	cp -f $(TOOLS_DIR)/cplopts_checktool/cplopts_formcheck $(TOOLS_DIR)
+	cp -f $(TOOLS_DIR)/cplopts_checktool/cplopts_remove $(TOOLS_DIR)
+
+release_backup_bsp:
+	for release in ${PROFILE_SELECT} ; \
+	do \
+		echo "*************************************************"; \
+		echo "*************************************************"; \
+		echo "*****$$release making and backup in progress********"; \
+		echo "*************************************************"; \
+		sleep 3;\
+		echo "*************************************************"; \
+		${MAKE} -f "$(APP_BSP_DIR)/MakeFile_Main_BSP" PROFILE=$${release} CUSTOM=${CUSTOM} bsp_sdk_clean ; if [ $$? != 0 ];then exit 1;fi; \
+		echo "**********************making***************************"; \
+		${MAKE} -f "$(APP_BSP_DIR)/MakeFile_Main_BSP"  PROFILE=$${release} CUSTOM=${CUSTOM} RELEASEBSP=y bsp_prepare clean_fs bootbase kernel modules_unopen app_bsp bspcopy; if [ $$? != 0 ];then exit 1;fi; \
+		echo "**************************************************"; \
+	done
+	
+release_profile_bsp:
+	find $(TRUNK_DIR)/Project/profile/* -maxdepth 0 -type d -not -name "$(CUSTOM)" | xargs rm -rf
+	find $(TRUNK_DIR)/Project/profile/$(CUSTOM)/* -maxdepth 0 -not -name '*_demo' | xargs rm -rf
+	
+release_makefile_bsp:
+#copy makefiles
+ifeq ($(strip $(TCSUPPORT_UBOOT)),)
+	cp $(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/Makefile.release $(MODULES_PRIV_SRC_DIR)/tc3162l2hp2h/Makefile
+	cp $(BOOTROM_DIR)/ddr_cal/Makefile.release $(BOOTROM_DIR)/ddr_cal/Makefile
+	cp $(BOOTROM_DIR)/ddr_cal_mt7505/Makefile.release $(BOOTROM_DIR)/ddr_cal_mt7505/Makefile
+	cp $(BOOTROM_DIR)/ddr_cal_en7512/Makefile.release $(BOOTROM_DIR)/ddr_cal_en7512/Makefile
+	cp $(BOOTROM_DIR)/ram_init/Makefile.release $(BOOTROM_DIR)/ram_init/Makefile
+endif
+
+release_config_bsp:
+	echo "choice" >> Project/config/menuconfig/Config.in
+	echo "	  prompt \"Release Type\""  >> Project/config/menuconfig/Config.in
+	echo "config TCSUPPORT_RELEASED_CODE" >> Project/config/menuconfig/Config.in
+	echo "    bool \"TCSUPPORT_RELEASED_CODE RT\"" >> Project/config/menuconfig/Config.in
+	echo "    help"  >> Project/config/menuconfig/Config.in
+	echo "         The flag of code release" >> Project/config/menuconfig/Config.in
+	echo "endchoice" >> Project/config/menuconfig/Config.in
+ifneq ($(strip $(TCSUPPORT_CT_CUSTOMMENU)),)
+	cp -f Project/config/menuconfig/CTRelPONMenuConfig Project/config/menuconfig/CT.config
+endif
+	rm -f Project/config/menuconfig/CTRelPONMenuConfig	
+
+release_doc:
+	chmod 777 -R $(TRUNK_DIR)/doc
+	cp -f $(TRUNK_DIR)/doc/MediaTek_Linux_SDK_Release_Notes.pdf $(TRUNK_DIR)/
+	find $(TRUNK_DIR)/doc -mindepth 1 -maxdepth 1 -not -name "*SOP" -not -name "*MANUAL" -not -name "*doxygen_conf" | xargs rm -rf
+	find $(TRUNK_DIR)/doc/SOP -type f -not -name "*.pdf" |xargs rm -rf
+	find $(TRUNK_DIR)/doc/MANUAL -type f -not -name "*.pdf" |xargs rm -rf
+	rm -rf $(TRUNK_DIR)/*.pdf
+
+release_swept_bsp:
+	echo "********************release_bsp_swept begin:*****************************"; \
+	${MAKE} -f "$(PROJECT_DIR)/release_bsp_swept" ALL ; if [ $$? != 0 ];then exit 1;fi;\
+	echo "*********************release_bsp_swept finish:****************************"; \
+
+release_tar_bsp:
+ifneq ("$(IS_APPS_DIR_EXIST)", "Y")
+ifneq ($(strip $(CUSTOM)),)
+	tt=0 ;\
+	date=`date +%Y%m%d`; \
+	tar -czvf ../releasesdk_$(CUSTOM)_$$date.tgz ./ ; \
+	while [ $$? -ne 0 ]; \
+	do\
+		echo "tar failed,will retry" ; \
+		let "tt=tt+1" ; \
+		echo $$tt ;\
+		chmod 777 -R $(TRUNK_DIR)/ ; \
+		rm ../releasesdk_$(CUSTOM)_$$date.tgz ; \
+		tar -czvf ../releasesdk_$(CUSTOM)_$$date.tgz ./ ; \
+	done
+else
+	tt=0 ;\
+	date=`date +%Y%m%d`; \
+	tar -czvf ../releasesdk_$$date.tgz ./ ; \
+	while [ $$? -ne 0 ]; \
+	do\
+		echo "tar failed,will retry" ; \
+		let "tt=tt+1" ; \
+		echo $$tt ;\
+		chmod 777 -R $(TRUNK_DIR)/ ; \
+		rm ../releasesdk_$$date.tgz ; \
+		tar -czvf ../releasesdk_$$date.tgz ./ ; \
+	done
+endif
+endif
+
+release_restore:release_checktools
+	if test -e $(TOOLS_DIR)/cplopts_checktool/tmp/restore.sh; \
+	then echo "Compile bootbase success"; \
+	/bin/sh $(TOOLS_DIR)/cplopts_checktool/tmp/restore.sh; \
+	rm -f $(TOOLS_DIR)/cplopts_checktool/tmp/restore.sh; \
+	rm -rf $(TRUNK_DIR)/backup; \
+	fi
+	echo "Files  restored!"

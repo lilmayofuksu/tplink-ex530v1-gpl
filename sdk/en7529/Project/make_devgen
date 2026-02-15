@@ -1,0 +1,335 @@
+devgen:
+	echo "mknod for dev"
+	-rm -rf $(FS_GEN_DIR)/dev/*
+	mkdir $(FS_GEN_DIR)/dev/pts
+	mkdir $(FS_GEN_DIR)/dev/shm
+	mknod $(FS_GEN_DIR)/dev/console c 4 64
+	mknod $(FS_GEN_DIR)/dev/gpio c 10 123
+	mknod $(FS_GEN_DIR)/dev/led c 10 151
+ifneq ($(strip $(TCSUPPORT_I2S)),)
+	mkdir $(FS_GEN_DIR)/dev/snd
+	mknod $(FS_GEN_DIR)/dev/snd/controlC0 c 116 0
+	mknod $(FS_GEN_DIR)/dev/snd/pcmC0D0p c 116 16
+	mknod $(FS_GEN_DIR)/dev/snd/pcmC0D1c c 116 25
+endif
+ifneq ($(strip $(TCSUPPORT_UBIFS)),)
+	mknod $(FS_GEN_DIR)/dev/ubi_ctrl c 10 59
+	mknod $(FS_GEN_DIR)/dev/ubi0 c 253 0
+endif
+	if test -e $(PROFILE_APP_DIR)/fstab; \
+	then cp $(PROFILE_APP_DIR)/fstab $(FS_GEN_DIR)/usr/etc/; \
+	rm -rf $(FS_GEN_DIR)/sys; \
+	mkdir $(FS_GEN_DIR)/sys; \
+	fi
+ifneq ($(strip $(TCSUPPORT_PORTBIND)),)
+	mknod $(FS_GEN_DIR)/dev/pmap c 200 0
+endif
+ifneq ($(strip $(TCSUPPORT_QOS)),)
+	mknod $(FS_GEN_DIR)/dev/qostype c 111 2
+endif
+ifneq ($(strip $(TCSUPPORT_CT_DS_LIMIT)),)
+	mknod $(FS_GEN_DIR)/dev/qos_dslimit c 112 0
+endif
+ifneq ($(strip $(TCSUPPORT_CMCCV2)),)
+	mknod $(FS_GEN_DIR)/dev/speed_test c 114 0
+endif
+ifneq ($(strip $(TCSUPPORT_PON_VLAN)),)
+	mknod $(FS_GEN_DIR)/dev/ponvlan c 215 0
+endif
+ifneq ($(strip $(TCSUPPORT_PON_MAC_FILTER)),)
+	mknod $(FS_GEN_DIR)/dev/ponmacfilter c 216 0
+endif
+	mknod $(FS_GEN_DIR)/dev/vdsp c 232 0
+	mknod $(FS_GEN_DIR)/dev/slic c 231 0
+	mknod $(FS_GEN_DIR)/dev/spi c 233 0
+ifneq ($(TCSUPPORT_CT_SIMCARD_SEPARATION)$(TCSUPPORT_SIMCARD_GENERAL),)
+	mknod $(FS_GEN_DIR)/dev/simcard c 168 0
+endif
+	mknod $(FS_GEN_DIR)/dev/mtd b 31 0
+ifneq ($(strip $(TCSUPPORT_MTD_PARTITIONS_CMDLINE)),)
+	if test -e $(TOOLS_APP_DIR)/mknod_mtd.sh; \
+	then echo " mknod mtd partitions"; \
+		chmod 777 $(TOOLS_APP_DIR)/mknod_mtd.sh; \
+		/bin/sh $(TOOLS_APP_DIR)/mknod_mtd.sh $(TCSUPPORT_MTD_PARTITION_NUM) $(FS_GEN_DIR); \
+	fi
+else
+ifneq ($(strip $(TCSUPPORT_FWC_ENV)),)
+	mknod $(FS_GEN_DIR)/dev/mtd0 c 90 0
+	mknod $(FS_GEN_DIR)/dev/mtd1 c 90 2
+	mknod $(FS_GEN_DIR)/dev/mtd2 c 90 4
+	mknod $(FS_GEN_DIR)/dev/mtd3 c 90 6
+	mknod $(FS_GEN_DIR)/dev/mtd4 c 90 8
+	mknod $(FS_GEN_DIR)/dev/mtd5 c 90 10
+	mknod $(FS_GEN_DIR)/dev/mtd6 c 90 12
+	mknod $(FS_GEN_DIR)/dev/mtd7 c 90 14
+	mknod $(FS_GEN_DIR)/dev/mtd8 c 90 16
+	mknod $(FS_GEN_DIR)/dev/mtd9 c 90 18
+	mknod $(FS_GEN_DIR)/dev/mtd10 c 90 20
+	mknod $(FS_GEN_DIR)/dev/mtd11 c 90 22
+	mknod $(FS_GEN_DIR)/dev/mtd12 c 90 24
+	mknod $(FS_GEN_DIR)/dev/mtd13 c 90 26
+	mknod $(FS_GEN_DIR)/dev/mtd14 c 90 28
+	mknod $(FS_GEN_DIR)/dev/mtd15 c 90 30
+	mknod $(FS_GEN_DIR)/dev/mtd16 c 90 32
+	mknod $(FS_GEN_DIR)/dev/mtd17 c 90 34
+else
+	mknod $(FS_GEN_DIR)/dev/mtd0 c 90 0
+	mknod $(FS_GEN_DIR)/dev/mtd1 c 90 2
+	mknod $(FS_GEN_DIR)/dev/mtd2 c 90 4
+	mknod $(FS_GEN_DIR)/dev/mtd3 c 90 6
+	mknod $(FS_GEN_DIR)/dev/mtd4 c 90 8
+	mknod $(FS_GEN_DIR)/dev/mtd5 c 90 10
+	mknod $(FS_GEN_DIR)/dev/mtd6 c 90 12
+ifneq ($(strip $(TCSUPPORT_DUAL_IMAGE)),)
+	mknod $(FS_GEN_DIR)/dev/mtd7 c 90 14
+	mknod $(FS_GEN_DIR)/dev/mtd8 c 90 16
+	mknod $(FS_GEN_DIR)/dev/mtd9 c 90 18
+ifneq ($(strip $(TCSUPPORT_JFFS2_BLOCK)),)
+	mknod $(FS_GEN_DIR)/dev/mtd10 c 90 20
+endif
+endif
+endif
+
+ifneq ($(strip $(TCSUPPORT_FWC_ENV)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock0 b 31 0
+	mknod $(FS_GEN_DIR)/dev/mtdblock1 b 31 1
+	mknod $(FS_GEN_DIR)/dev/mtdblock2 b 31 2
+	mknod $(FS_GEN_DIR)/dev/mtdblock3 b 31 3
+	mknod $(FS_GEN_DIR)/dev/mtdblock4 b 31 4
+	mknod $(FS_GEN_DIR)/dev/mtdblock5 b 31 5
+	mknod $(FS_GEN_DIR)/dev/mtdblock6 b 31 6
+	mknod $(FS_GEN_DIR)/dev/mtdblock7 b 31 7
+	mknod $(FS_GEN_DIR)/dev/mtdblock8 b 31 8
+	mknod $(FS_GEN_DIR)/dev/mtdblock9 b 31 9
+	mknod $(FS_GEN_DIR)/dev/mtdblock10 b 31 10
+	mknod $(FS_GEN_DIR)/dev/mtdblock11 b 31 11
+	mknod $(FS_GEN_DIR)/dev/mtdblock12 b 31 12
+	mknod $(FS_GEN_DIR)/dev/mtdblock13 b 31 13
+	mknod $(FS_GEN_DIR)/dev/mtdblock14 b 31 14
+	mknod $(FS_GEN_DIR)/dev/mtdblock15 b 31 15
+	mknod $(FS_GEN_DIR)/dev/mtdblock16 b 31 16
+	mknod $(FS_GEN_DIR)/dev/mtdblock17 b 31 17
+else
+	mknod $(FS_GEN_DIR)/dev/mtdblock0 b 31 0
+	mknod $(FS_GEN_DIR)/dev/mtdblock1 b 31 1
+	mknod $(FS_GEN_DIR)/dev/mtdblock2 b 31 2
+	mknod $(FS_GEN_DIR)/dev/mtdblock3 b 31 3
+	mknod $(FS_GEN_DIR)/dev/mtdblock4 b 31 4
+	mknod $(FS_GEN_DIR)/dev/mtdblock5 b 31 5
+ifneq ($(strip $(TCSUPPORT_DUAL_IMAGE)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock6 b 31 6
+	mknod $(FS_GEN_DIR)/dev/mtdblock7 b 31 7
+	mknod $(FS_GEN_DIR)/dev/mtdblock8 b 31 8
+ifneq ($(strip $(TCSUPPORT_JFFS2_BLOCK)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock9 b 31 9
+endif
+ifneq ($(strip $(TCSUPPORT_SQUASHFS_ADD_YAFFS)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock10 b 31 10
+endif
+ifneq ($(strip $(TCSUPPORT_MULTI_BOOT)),)
+ifneq ($(strip $(TCSUPPORT_DUAL_IMAGE)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock9 b 31 9
+ifneq ($(strip $(TCSUPPORT_SQUASHFS_ADD_YAFFS)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock10 b 31 10
+endif
+else
+	mknod $(FS_GEN_DIR)/dev/mtdblock6 b 31 6
+ifneq ($(strip $(TCSUPPORT_SQUASHFS_ADD_YAFFS)),)
+	mknod $(FS_GEN_DIR)/dev/mtdblock7 b 31 7
+endif
+endif
+endif
+endif
+endif
+endif
+ifneq ($(strip $(TCSUPPORT_INIC_HOST)),)
+	$(MAKE) -C $(MODULES_FTTDP_INIC_DIR) devgen
+endif
+	mknod $(FS_GEN_DIR)/dev/null c 1 3
+	mknod $(FS_GEN_DIR)/dev/ppp c 108 0
+	mknod $(FS_GEN_DIR)/dev/ptmx c 5 2
+	mknod $(FS_GEN_DIR)/dev/ptyp0 c 2 0
+	mknod $(FS_GEN_DIR)/dev/ptyp1 c 2 1
+	mknod $(FS_GEN_DIR)/dev/ptyp2 c 2 2
+	mknod $(FS_GEN_DIR)/dev/sda b 8 0
+	mknod $(FS_GEN_DIR)/dev/sda1 b 8 1
+	mknod $(FS_GEN_DIR)/dev/sda2 b 8 2
+	mknod $(FS_GEN_DIR)/dev/sdb b 8 16
+	mknod $(FS_GEN_DIR)/dev/sdb1 b 8 17
+	mknod $(FS_GEN_DIR)/dev/sdb2 b 8 18
+	mknod $(FS_GEN_DIR)/dev/sdc b 8 32
+	mknod $(FS_GEN_DIR)/dev/sdc1 b 8 33
+	mknod $(FS_GEN_DIR)/dev/sdc2 b 8 34
+	mknod $(FS_GEN_DIR)/dev/tty c 5 0
+	mknod $(FS_GEN_DIR)/dev/tty0 c 4 0
+	mknod $(FS_GEN_DIR)/dev/ttyp0 c 3 0
+	mknod $(FS_GEN_DIR)/dev/ttyp1 c 3 1
+	mknod $(FS_GEN_DIR)/dev/ttyp2 c 3 2
+	mknod $(FS_GEN_DIR)/dev/ttyS0 c 4 64
+ifneq ($(strip $(TCSUPPORT_UART2)),)
+	mknod $(FS_GEN_DIR)/dev/ttyS20 c 4 65
+ifneq ($(strip $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527)),)
+	mknod $(FS_GEN_DIR)/dev/ttyS30 c 4 66
+endif
+ifneq ($(strip $(TCSUPPORT_CPU_EN7580)),)
+	mknod $(FS_GEN_DIR)/dev/ttyS30 c 4 66
+	mknod $(FS_GEN_DIR)/dev/ttyS40 c 4 67
+	mknod $(FS_GEN_DIR)/dev/ttyS50 c 4 68
+endif
+endif
+	mknod $(FS_GEN_DIR)/dev/urandom c 1 9
+	mknod $(FS_GEN_DIR)/dev/watchdog c 10 130
+ifneq ($(strip $(TCSUPPORT_NEW_WDOG)),)
+	mknod $(FS_GEN_DIR)/dev/wdog0 c 10 126
+	mknod $(FS_GEN_DIR)/dev/wdog1 c 10 127
+	mknod $(FS_GEN_DIR)/dev/wdog2 c 10 128
+	mknod $(FS_GEN_DIR)/dev/wdog3 c 10 129
+endif
+ifneq ($(strip $(TCSUPPORT_MUH_TEST)),)
+	mknod $(FS_GEN_DIR)/dev/cli c 234 0
+endif
+	mknod $(FS_GEN_DIR)/dev/zero c 1 5
+ifneq ($(strip $(TCSUPPORT_FON)),)
+	mknod $(FS_GEN_DIR)/dev/tun c 10 200
+endif
+ifneq ($(strip $(TCSUPPORT_USB_NTFS)),)
+	mknod $(FS_GEN_DIR)/dev/fuse c 10 229
+	mkdir $(FS_GEN_DIR)/dev/misc
+	mknod $(FS_GEN_DIR)/dev/misc/fuse c 10 229
+endif
+	mkdir $(FS_GEN_DIR)/dev/usb
+ifneq ($(strip $(TCSUPPORT_USB_3G_DONGLE)),)
+	mknod $(FS_GEN_DIR)/dev/ttyUSB0 c 188 0
+	mknod $(FS_GEN_DIR)/dev/ttyUSB1 c 188 1
+	mknod $(FS_GEN_DIR)/dev/ttyUSB2 c 188 2
+	mknod $(FS_GEN_DIR)/dev/ttyUSB3 c 188 3
+	mknod $(FS_GEN_DIR)/dev/ttyUSB4 c 188 4
+else
+ifneq ($(strip $(TCSUPPORT_CT_JOYME4)),)
+	mknod $(FS_GEN_DIR)/dev/ttyUSB0 c 188 0
+	mknod $(FS_GEN_DIR)/dev/ttyUSB1 c 188 1
+endif
+endif
+ifneq ($(strip $(TCSUPPORT_USB_PRINTER_SERVER)),)	
+	mknod $(FS_GEN_DIR)/dev/usb/lp0 c 180 0
+	chmod 666 $(FS_GEN_DIR)/dev/usb/lp0
+endif
+
+ifneq ($(strip $(TCSUPPORT_USB_CAMERA)),)
+	mknod $(FS_GEN_DIR)/dev/usb/video0 c 81 0
+	chmod 666 $(FS_GEN_DIR)/dev/usb/video0
+	ln -s /dev/usb/video0 $(FS_GEN_DIR)/dev/video0
+endif
+
+ifneq ($(strip $(TCSUPPORT_EIP93_VERIFY)),)
+ifeq ($(strip $(TC_BUILD_RELEASECODE)),)
+	mknod $(FS_GEN_DIR)/dev/slad_test c 239 0
+endif
+endif
+
+ifneq ($(strip $(TCSUPPORT_CT_BUTTONDETECT)),)
+	mknod $(FS_GEN_DIR)/dev/led_button c 248 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_CT_ACCESSLIMIT)),)
+	mknod $(FS_GEN_DIR)/dev/accesslimit c 123 0
+endif
+ifneq ($(strip $(TCSUPPORT_CT_URL_FILTER)),)
+	mknod $(FS_GEN_DIR)/dev/urlfilter c 124 0
+endif
+ifneq ($(strip $(TCSUPPORT_CT)),)
+ifneq ($(strip $(TCSUPPORT_SYSLOG)),)
+	ln -s /tmp/log $(FS_GEN_DIR)/dev/log
+endif
+else
+ifneq ($(strip $(TCSUPPORT_SYSLOG)),)
+	ln -s /var/log/log $(FS_GEN_DIR)/dev/log
+endif
+endif
+
+	echo "buildimage: copy voip PCM ,DSP and SLIC drivers"
+ifneq ($(strip $(TCSUPPORT_VOIP)),)
+#	mknod $(FS_GEN_DIR)/dev/AclDsp c 234 0
+#	mknod $(FS_GEN_DIR)/dev/FxsDrv c 235 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_RA_HWNAT)),)
+	mknod $(FS_GEN_DIR)/dev/hwnat0 c 220 0
+	mknod $(FS_GEN_DIR)/dev/acl0 c 230 0
+	mknod $(FS_GEN_DIR)/dev/ac0 c 240 0
+	mknod $(FS_GEN_DIR)/dev/mtr0 c 250 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_PONMGR)),)
+ifneq ($(strip $(TCSUPPORT_XPON_HAL_API_EXT)),)
+	mknod $(FS_GEN_DIR)/dev/pon0 c 190 0
+else
+	mknod $(FS_GEN_DIR)/dev/pon c 190 0
+endif
+endif
+
+ifneq ($(TCSUPPORT_XPON_HAL_API_EXT),)
+	mknod $(FS_GEN_DIR)/dev/pon_fh c 191 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_WAN_PTM)),)
+	mknod $(FS_GEN_DIR)/dev/ptm c 191 0
+endif
+ifneq ($(strip $(TCSUPPORT_WAN_EPON)),)
+	mknod $(FS_GEN_DIR)/dev/epon_mac c 221 0
+endif
+ifneq ($(strip $(TCSUPPORT_GPON_MAPPING) $(TCSUPPORT_EPON_MAPPING)),)
+	mknod $(FS_GEN_DIR)/dev/xponmap c 210 0
+endif
+
+	mknod $(FS_GEN_DIR)/dev/gpon_flow c 184 0
+ifneq ($(strip $(TCSUPPORT_XPON_IGMP)),)
+	mknod $(FS_GEN_DIR)/dev/xpon_igmp c 185 0
+endif	
+ifneq ($(strip $(TCSUPPORT_XPON_HAL_API_EXT)),)
+	mknod $(FS_GEN_DIR)/dev/vlanfilter c 238 0
+	mknod $(FS_GEN_DIR)/dev/fhvlan c 252 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_DRIVER_API) $(TCSUPPORT_XPON_HAL_API_EXT)),)
+	mknod $(FS_GEN_DIR)/dev/fe c 226 0	
+endif
+
+ifneq ($(strip $(TCSUPPORT_DRIVER_API)),)	
+	mknod $(FS_GEN_DIR)/dev/atm c 113 0
+	chmod 777 $(FS_GEN_DIR)/dev/atm
+ifneq ($(strip $(TCSUPPORT_WLAN)),)
+	mknod $(FS_GEN_DIR)/dev/pcie c 225 0
+endif	
+endif
+
+#ifneq ($(strip $(TCSUPPORT_MIPS_1004K)),)
+	mknod $(FS_GEN_DIR)/dev/cpu_interrupt c 224 0
+#endif
+
+ifneq ($(strip $(TCSUPPORT_QDMA_BUFMGR)),)
+	mknod $(FS_GEN_DIR)/dev/qdma_lan c 119 0
+	mknod $(FS_GEN_DIR)/dev/qdma_wan c 120 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_FWC_MCST) $(TCSUPPORT_XPON_HAL_API_MCST)),)
+	mknod $(FS_GEN_DIR)/dev/ecnt_igmp c 253 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_FWC_TRAFFIC_CLASSIFY) $(TCSUPPORT_CMCCV2)$(TCSUPPORT_CUC)),)
+	mknod $(FS_GEN_DIR)/dev/traffic_classify c 236 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_FWC_ENV)),)
+	mknod $(FS_GEN_DIR)/dev/personality_parm c 237 0
+endif
+
+ifneq ($(strip $(TCSUPPORT_IFC_EN)),)
+	mknod $(FS_GEN_DIR)/dev/ifc c 241 0 
+endif
+ifneq ($(strip $(TCSUPPORT_CMCCV2)$(TCSUPPORT_CUC)),)
+	mknod $(FS_GEN_DIR)/dev/traffic_process c 251 0
+endif
+ifneq ($(strip $(TCSUPPORT_SECURE_BOOT) $(TCSUPPORT_ARM_SECURE_BOOT)),)
+	mknod $(FS_GEN_DIR)/dev/secure_upgrade c 160 0
+endif

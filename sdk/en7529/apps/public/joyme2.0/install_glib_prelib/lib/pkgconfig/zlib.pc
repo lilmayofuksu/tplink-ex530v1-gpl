@@ -1,0 +1,13 @@
+prefix=/proj/mtk14508/workspace/branch_joyme3_0711/tclinux_phoenix/apps/public/joyme2.0/install_glib_prelib
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+sharedlibdir=${libdir}
+includedir=${prefix}/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.8
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

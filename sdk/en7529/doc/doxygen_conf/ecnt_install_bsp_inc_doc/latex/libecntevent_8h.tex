@@ -1,0 +1,168 @@
+\hypertarget{libecntevent_8h}{}\section{libecntevent.\+h File Reference}
+\label{libecntevent_8h}\index{libecntevent.\+h@{libecntevent.\+h}}
+
+
+This file is ecnt lib event header file that will be exported for others to use.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{libecntevent_8h_a3911448bf056ca464099872998400179}{ecnt\+\_\+event\+\_\+execute} (struct ecnt\+\_\+data $\ast$in\+\_\+data, struct ecnt\+\_\+event\+\_\+handle $\ast$event\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em This function execute ecnt event. \end{DoxyCompactList}\item 
+struct ecnt\+\_\+event\+\_\+source $\ast$ \hyperlink{libecntevent_8h_afc652191143bfc10104c674b65ac6ef1}{ecnt\+\_\+event\+\_\+register} (char $\ast$name, int($\ast$hook)(struct ecnt\+\_\+data $\ast$in\+\_\+data))
+\begin{DoxyCompactList}\small\item\em This function register ecnt event. \end{DoxyCompactList}\item 
+int \hyperlink{libecntevent_8h_ae42256cdc5be5eb5174395ca21b95897}{ecnt\+\_\+event\+\_\+unregister} (struct ecnt\+\_\+event\+\_\+source $\ast$source)
+\begin{DoxyCompactList}\small\item\em This function unregister ecnt event. \end{DoxyCompactList}\item 
+int \hyperlink{libecntevent_8h_a49db303a169b99e12fb6e1da2579f517}{ecnt\+\_\+event\+\_\+send} (int main\+\_\+type, int sub\+\_\+type, struct ecnt\+\_\+event\+\_\+data $\ast$in\+\_\+data, int len)
+\begin{DoxyCompactList}\small\item\em This function send ecnt event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is ecnt lib event header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+Lei.\+Zhang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/23 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libecntevent_8h_a3911448bf056ca464099872998400179}\label{libecntevent_8h_a3911448bf056ca464099872998400179}} 
+\index{libecntevent.\+h@{libecntevent.\+h}!ecnt\+\_\+event\+\_\+execute@{ecnt\+\_\+event\+\_\+execute}}
+\index{ecnt\+\_\+event\+\_\+execute@{ecnt\+\_\+event\+\_\+execute}!libecntevent.\+h@{libecntevent.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+event\+\_\+execute()}{ecnt\_event\_execute()}}
+{\footnotesize\ttfamily int ecnt\+\_\+event\+\_\+execute (\begin{DoxyParamCaption}\item[{struct ecnt\+\_\+data $\ast$}]{in\+\_\+data,  }\item[{struct ecnt\+\_\+event\+\_\+handle $\ast$}]{event\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+This function execute ecnt event. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in\+\_\+data} & ecnt data \\
+\hline
+\mbox{\tt in}  & {\em event\+\_\+handle} & ecnt event handle info \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 1} & Success. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Execute ecnt event. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libecntevent_8h_afc652191143bfc10104c674b65ac6ef1}\label{libecntevent_8h_afc652191143bfc10104c674b65ac6ef1}} 
+\index{libecntevent.\+h@{libecntevent.\+h}!ecnt\+\_\+event\+\_\+register@{ecnt\+\_\+event\+\_\+register}}
+\index{ecnt\+\_\+event\+\_\+register@{ecnt\+\_\+event\+\_\+register}!libecntevent.\+h@{libecntevent.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+event\+\_\+register()}{ecnt\_event\_register()}}
+{\footnotesize\ttfamily struct ecnt\+\_\+event\+\_\+source$\ast$ ecnt\+\_\+event\+\_\+register (\begin{DoxyParamCaption}\item[{char $\ast$}]{name,  }\item[{int($\ast$)(struct ecnt\+\_\+data $\ast$in\+\_\+data)}]{hook }\end{DoxyParamCaption})}
+
+
+
+This function register ecnt event. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & ecnt event name \\
+\hline
+\mbox{\tt in}  & {\em hook} & function pointer of handle event \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em source} & ecnt event source pointer \\
+\hline
+{\em N\+U\+LL} & fail \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Register ecnt event. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libecntevent_8h_a49db303a169b99e12fb6e1da2579f517}\label{libecntevent_8h_a49db303a169b99e12fb6e1da2579f517}} 
+\index{libecntevent.\+h@{libecntevent.\+h}!ecnt\+\_\+event\+\_\+send@{ecnt\+\_\+event\+\_\+send}}
+\index{ecnt\+\_\+event\+\_\+send@{ecnt\+\_\+event\+\_\+send}!libecntevent.\+h@{libecntevent.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+event\+\_\+send()}{ecnt\_event\_send()}}
+{\footnotesize\ttfamily int ecnt\+\_\+event\+\_\+send (\begin{DoxyParamCaption}\item[{int}]{main\+\_\+type,  }\item[{int}]{sub\+\_\+type,  }\item[{struct ecnt\+\_\+event\+\_\+data $\ast$}]{in\+\_\+data,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+This function send ecnt event. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em main\+\_\+type} & main ecnt event type \\
+\hline
+\mbox{\tt in}  & {\em sub\+\_\+type} & sub ecnt event type \\
+\hline
+\mbox{\tt in}  & {\em in\+\_\+data} & ecnt event data \\
+\hline
+\mbox{\tt in}  & {\em len} & ecnt event data lenth \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & success \\
+\hline
+{\em -\/1} & fail \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Send ecnt event. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{libecntevent_8h_ae42256cdc5be5eb5174395ca21b95897}\label{libecntevent_8h_ae42256cdc5be5eb5174395ca21b95897}} 
+\index{libecntevent.\+h@{libecntevent.\+h}!ecnt\+\_\+event\+\_\+unregister@{ecnt\+\_\+event\+\_\+unregister}}
+\index{ecnt\+\_\+event\+\_\+unregister@{ecnt\+\_\+event\+\_\+unregister}!libecntevent.\+h@{libecntevent.\+h}}
+\subsubsection{\texorpdfstring{ecnt\+\_\+event\+\_\+unregister()}{ecnt\_event\_unregister()}}
+{\footnotesize\ttfamily int ecnt\+\_\+event\+\_\+unregister (\begin{DoxyParamCaption}\item[{struct ecnt\+\_\+event\+\_\+source $\ast$}]{source }\end{DoxyParamCaption})}
+
+
+
+This function unregister ecnt event. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em source} & ecnt event source \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & success \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Unregister ecnt event. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

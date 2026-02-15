@@ -1,0 +1,125 @@
+#!/bin/sh
+echo 3 > /proc/sys/vm/drop_caches
+echo 4096 > /proc/net/skbmgr_hot_list_len
+echo 16384 > /proc/net/skbmgr_4k_limit
+echo 42000 > /proc/net/skbmgr_driver_max_skb
+echo 25000 > /proc/net/skbmgr_limit
+
+/bin/mkdir -m 0777 -p /var/Wireless/RT2860AP
+#/bin/mkdir -m 0777 -p /var/Wireless/RT2860AP_AC
+#cp /etc_conf/Wireless/RT2860AP_AC/* /var/Wireless/RT2860AP_AC/
+#cp /etc_conf/Wireless/RT2860AP/RT30xxEEPROM.bin /var/Wireless/RT2860AP/
+#cp /etc/CALDATA_default.bin /var/Wireless/RT2860AP_AC/CALDATA_default.bin
+#
+if [ -n "$INCLUDE_USB_TSO" ]; then
+cp -a /etc_conf/samba/codepages /var/samba/codepages
+fi
+# USB Driver
+#insmod /lib/modules/kmdir/kernel/drivers/usb/host/mtk_xhci/xhci-hcd.ko
+#add for XPON related APP
+if [ -n "$INCLUDE_PON" ]; then
+echo "start XPON related APP"
+#start ubusd & cfg_ng service
+taskset 0xf /userfs/bin/ubusd & 
+echo 1 > /tmp/use_cfg_ng
+sleep 1
+
+taskset 0xf /userfs/bin/svchost -c /etc/cfg.svc &
+echo $! > /var/run/cfg_svc.pid
+
+uptime=30;
+while [ ! -f "/tmp/cfg_load" ] && [ $uptime -gt 0 ]; do
+echo "/tmp/cfg_load is not exist,left time $uptime"; 
+sleep 1;
+uptime=$(( $uptime - 1 ))
+done;
+
+taskset 0xf /userfs/bin/svchost -c /etc/pon.svc &
+echo $! > /var/run/pon_svc.pid
+taskset 0xf /userfs/bin/svchost -c /etc/other.svc &
+echo $! > /var/run/other_svc.pid
+taskset 0xf /userfs/bin/svchost -c /etc/central_ctrl.svc &
+echo $! > /var/run/central_ctrl_svc.pid
+echo 4 > /tmp/svc_num
+#end start cfg_ng
+
+echo "start omci" 
+taskset 2 /userfs/bin/omci & 
+fi #INCLUDE_PON
+# echo "---- romfile.cfg ----"
+# cp -f /userfs/romfile.cfg /var/
+
+#add by Zhao Mengqing, 2016-4-2
+insmod /lib/modules/module_sel.ko
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+echo 4000 > /proc/sys/net/netfilter/nf_conntrack_expect_max
+echo 20000 > /proc/sys/net/nf_conntrack_max
+echo 0 > /proc/sys/net/ipv4/conf/default/accept_source_route
+echo 0 > /proc/sys/net/ipv4/conf/all/accept_source_route
+
+#echo "tce emiiw"
+#tce emiiw 9 7 3c 0
+#tce emiiw 10 7 3c 0
+#tce emiiw 11 7 3c 0
+#tce emiiw 12 7 3c 0
+
+# echo "close power saving..."
+# tce emiiw 12 1f 269 444f
+# tce emiiw 12 1f 271 7e14
+# tce emiiw 12 1f 272 7cff
+# tce emiiw 9 1e 3e f800
+# tce emiiw 10 1e 3e f800
+# tce emiiw 11 1e 3e f800
+# tce emiiw 12 1e 3e f800
+# tce miiw 9 0 1200
+# tce miiw 10 0 1200
+# tce miiw 11 0 1200
+# tce miiw 12 0 1200
+
+ifconfig eth0 0.0.0.0
+
+brctl addbr br0
+brctl addif br0 eth0
+
+brctl setfd br0 0
+brctl stp br0 off
+
+/userfs/bin/ethphxcmd eth0 vlanpt disable
+/bin/echo 1 > /proc/tc3162/stag_to_vtag
+/userfs/bin/ethphxcmd eth0 vlanpt enable
+
+insmod /lib/modules/igmpsnoop.ko
+insmod /lib/modules/mldsnooping.ko
+
+insmod /lib/modules/lro_lan.ko
+insmod /lib/modules/lro_wan.ko
+echo 1600000 > /proc/sys/net/core/rmem_max
+
+ifconfig eth0 mtu 2000
+ifconfig eth0.1 mtu 2000
+ifconfig eth0.2 mtu 2000
+ifconfig eth0.3 mtu 2000
+ifconfig eth0.4 mtu 2000
+ifconfig ra0 mtu 2000
+ifconfig br0 mtu 2000
+
+echo 2 > /sys/class/net/br0/bridge/multicast_router
+
+echo restoresw 1 >/proc/tc3162/vlan_tag_dbg 
+
+insmod /lib/modules/dying_gasp.ko
+
+ifconfig lo 127.0.0.1
+route add -net 127.0.0.0 netmask 255.255.0.0 lo
+insmod /lib/modules/speedtest.ko
+#insmod /lib/modules/hw_nat.ko FOE_NUM=16
+
+if [ -n "$INCLUDE_PON" ]; then
+echo "start ponmgr_cfg"
+taskset 1 /userfs/bin/ponmgr_cfg & 
+#end xpon app start
+fi # INCLUDE_PON
+echo "MTK DSP support"
+echo 3 > /proc/sys/vm/drop_caches
+echo 1 > /proc/tc3162/pptp_offload_enable

@@ -1,0 +1,113 @@
+
+menu 'ISP Options'
+
+choice
+	prompt "Build SPEC for "
+	default INCLUDE_NO_ISP
+
+config INCLUDE_NO_ISP
+	bool "NO ISP"
+
+config INCLUDE_TTNET
+	bool "TTNET"
+	select INCLUDE_TTNET_OPTIONS
+
+config INCLUDE_RUMTS
+	bool "RUMTS"
+	select INCLUDE_RUMTS_OPTIONS
+
+config INCLUDE_ATA1
+	bool "ATA1"
+	select INCLUDE_ATA1_OPTIONS
+
+config INCLUDE_WISP_DE
+	bool "WISP(DE)"
+	select INCLUDE_WISP_DE_OPTIONS
+
+config INCLUDE_MYTM
+	bool "MYTM"
+	select INCLUDE_MYTM_OPTIONS
+
+config INCLUDE_UNMNV
+	bool "UNMNV"
+	select INCLUDE_UNMNV_OPTIONS
+
+config INCLUDE_TRTS
+	bool "TRTS"
+	select INCLUDE_TRTS_OPTIONS
+
+config INCLUDE_HKPCCW
+	bool "HKPCCW"
+	select INCLUDE_HKPCCW_OPTIONS
+
+config INCLUDE_WE
+	bool "WE"
+	select INCLUDE_WE_OPTIONS
+
+config INCLUDE_DOCLARO
+	bool "DOCLARO"
+	select INCLUDE_DOCLARO_OPTIONS
+
+config INCLUDE_ITEO
+	bool "ITEO"
+	select INCLUDE_ITEO_OPTIONS
+
+config INCLUDE_ITWIND3
+	bool "ITWIND3"
+	select INCLUDE_ITWIND3_OPTIONS
+
+config INCLUDE_WISP_RU
+	bool "WISP(RU)"
+	select INCLUDE_WISP_RU_OPTIONS
+
+config INCLUDE_AUTPG
+	bool "AU TPG"
+	select INCLUDE_AUTPG_OPTIONS
+
+config INCLUDE_AUVOCUS
+	bool "AU Vocus"
+	select INCLUDE_AUVOCUS_OPTIONS
+
+config INCLUDE_PHPLDT
+	bool "Philippines PLDT"
+	select INCLUDE_PHPLDT_OPTIONS
+
+config INCLUDE_FRBYT
+	bool "FR BYT"
+	select INCLUDE_FRBYT_OPTIONS
+
+config INCLUDE_WISP_AU
+	bool "WISP(AU)"
+	select INCLUDE_WISP_AU_OPTIONS
+
+config INCLUDE_HKBN
+	bool "HKBN"
+	select INCLUDE_HKBN_OPTIONS
+
+config INCLUDE_TRTC
+	bool "TRTC"
+	select INCLUDE_TRTC_OPTIONS
+endchoice
+
+source menu/sysdeps/ISP/001_TTNET.in
+source menu/sysdeps/ISP/002_RUMTS.in
+source menu/sysdeps/ISP/003_ATA1.in
+source menu/sysdeps/ISP/004_WISP_DE.in
+source menu/sysdeps/ISP/005_MYTM.in
+source menu/sysdeps/ISP/006_UNMNV.in
+source menu/sysdeps/ISP/007_TRTS.in
+source menu/sysdeps/ISP/008_HKPCCW.in
+source menu/sysdeps/ISP/009_WE.in
+source menu/sysdeps/ISP/010_DOCLARO.in
+source menu/sysdeps/ISP/011_ITEO.in
+source menu/sysdeps/ISP/012_ITWIND3.in
+source menu/sysdeps/ISP/013_WISP_RU.in
+source menu/sysdeps/ISP/014_AUTPG.in
+source menu/sysdeps/ISP/015_AUVOCUS.in
+source menu/sysdeps/ISP/016_PHPLDT.in
+source menu/sysdeps/ISP/017_FRBYT.in
+source menu/sysdeps/ISP/018_WISP_AU.in
+source menu/sysdeps/ISP/019_HKBN.in
+source menu/sysdeps/ISP/020_TRTC.in
+
+endmenu

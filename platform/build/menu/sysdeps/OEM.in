@@ -1,0 +1,22 @@
+
+
+menu 'OEM/Case Options'
+
+config INCLUDE_BETA_SIGNAL
+	bool "Firmware version include beta signal"
+	default n
+
+config INCLUDE_WEB_WATERMARK
+	bool "Add watermark to web page for OEM test"
+	default n
+	
+config INCLUDE_BCM_IPTABLES
+	bool "use the BCM SDK iptables instead of the BBA platform iptables"
+	default n
+
+config INCLUDE_CUSTOMER_OUI
+	bool "Use OUI in reduct_date_model.xml instead of first six digits of MAC address"
+	default n
+
+endmenu
+

@@ -1,0 +1,132 @@
+###############################################################################
+#
+# Build public kernel modules
+#
+###############################################################################
+
+PUB_KMOD =
+
+ifneq ($(strip $(INCLUDE_USB_OVER_IP_TPLINK)),)
+PUB_KMOD += usbip_modules
+endif
+ifneq ($(strip $(INCLUDE_PPTP)),)
+PUB_KMOD += pptp_modules
+endif
+ifneq ($(strip $(INCLUDE_L2TP)),)
+PUB_KMOD += l2tp_modules
+endif
+ifneq ($(strip $(INCLUDE_IPV6)),)
+PUB_KMOD += map_mod
+endif
+ifneq ($(strip $(INCLUDE_PARENTCONTROL_V2)),)
+PUB_KMOD += pctl_modules
+endif
+PUB_KMOD_INSTALL = $(addsuffix _install,$(PUB_KMOD))
+PUB_KMOD_CLEAN = $(addsuffix _clean,$(PUB_KMOD))
+PUB_KMOD_VER = $(addsuffix _ver,$(PUB_KMOD))
+
+
+###############################################################################
+# Target Label Hooking
+###############################################################################
+
+.PHONY: $(PUB_KMOD) $(PUB_KMOD_INSTALL) $(PUB_KMOD_CLEAN) $(PUB_KMOD_VER)
+
+public_modules_build: 
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) public_modules_build_inner
+public_modules_install: 
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) public_modules_install_inner
+public_modules_clean: 
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) public_modules_clean_inner
+public_modules_ver: 
+	CURRENT_ARCH=$(KERNEL_ARCH) TOOLCHAIN_TOP= $(MAKE) public_modules_ver_inner
+	
+public_modules_build_inner: $(PUB_KMOD)
+public_modules_install_inner: $(PUB_KMOD_INSTALL)
+public_modules_clean_inner: $(PUB_KMOD_CLEAN)
+public_modules_ver_inner: $(PUB_KMOD_VER)
+###############################################################################
+
+usbip_modules:
+	cd $(PUBLIC_MODULES_PATH)/usbip-0.1.7 && $(MAKE) KCFLAGS="$(SDK_FLAGS)"
+usbip_modules_install:
+	cp -f $(PUBLIC_MODULES_PATH)/usbip-0.1.7/usbip.ko $(FS_TG_PATH)/lib/modules
+	cp -p $(PUBLIC_MODULES_PATH)/usbip-0.1.7/usbip_common_mod.ko $(FS_TG_PATH)/lib/modules
+usbip_modules_clean:
+	cd $(PUBLIC_MODULES_PATH)/usbip-0.1.7 && $(MAKE) clean
+usbip_modules_ver:
+	echo "usbip module version : 0.1.7" >> $(BBA_PRODUCT_VER_FILE)
+
+
+pptp_modules:
+	@if [ $(KERNELVERSION) -lt 132631 -o "$(SDK_DIR)" = "en7513" ]; \
+	then \
+		cd $(PUBLIC_MODULES_PATH)/pptp && $(MAKE) KCFLAGS="$(SDK_FLAGS)"; \
+	else \
+		echo "Kernel version is not lower than 2.6.23, use pptp driver in kernel"; \
+	fi
+pptp_modules_install:
+	@if [ $(KERNELVERSION) -lt 132631 -o "$(SDK_DIR)" = "en7513" ]; \
+	then \
+		cp -f $(PUBLIC_MODULES_PATH)/pptp/pptp.ko $(FS_TG_PATH)/lib/modules; \
+	else \
+		echo "Kernel version is not lower than 2.6.23, use pptp driver in kernel"; \
+	fi
+
+pptp_modules_clean:
+	@if [ $(KERNELVERSION) -lt 132631 -o "$(SDK_DIR)" = "en7513" ]; \
+	then \
+		cd $(PUBLIC_MODULES_PATH)/pptp && $(MAKE) clean; \
+	fi
+pptp_modules_ver:
+	echo "accel-pptp module version : 0.8.5" >> $(BBA_PRODUCT_VER_FILE)
+
+
+l2tp_modules:
+	# less then 2.6.23
+	@if [ $(KERNELVERSION) -lt 132631 ]; \
+	then \
+		cd $(PUBLIC_MODULES_PATH)/pppol2tp-kmod-0.17 && $(MAKE) KCFLAGS="$(SDK_FLAGS)"; \
+	else \
+		echo "Kernel version is not lower than 2.6.23, use pppol2tp v1.0 driver in kernel"; \
+	fi
+l2tp_modules_install:
+	# less then 2.6.23
+	@if [ $(KERNELVERSION) -lt 132631 ]; \
+	then \
+		cp -f $(PUBLIC_MODULES_PATH)/pppol2tp-kmod-0.17/pppol2tp.ko $(FS_TG_PATH)/lib/modules; \
+	else \
+		echo "Kernel version is not lower than 2.6.23, use pppol2tp v1.0 driver in kernel"; \
+	fi
+l2tp_modules_clean:
+	# less then 2.6.23
+	@if [ $(KERNELVERSION) -lt 132631 ]; \
+	then \
+		cd $(PUBLIC_MODULES_PATH)/pppol2tp-kmod-0.17 && $(MAKE) clean; \
+	fi
+l2tp_modules_ver:
+	@if [ $(KERNELVERSION) -lt 132631 ]; \
+	then \
+		echo "pppol2tp module version : 0.17" >> $(BBA_PRODUCT_VER_FILE); \
+	fi
+
+map_mod:
+	cd $(PUBLIC_APPS_PATH)/MAP/modules && $(MAKE)
+	#cd $(PUBLIC_APPS_PATH)/MAP/utils && $(MAKE)
+map_mod_install:
+	cp -p $(PUBLIC_APPS_PATH)/MAP/modules/ivi.ko $(FS_TG_PATH)/lib/modules/ivi.ko
+	#cp -p $(PUBLIC_APPS_PATH)/MAP/utils/ivictl $(FS_TG_PATH)/usr/sbin
+map_mod_clean:
+	$(MAKE) -C $(PUBLIC_APPS_PATH)/MAP/modules clean
+	#$(MAKE) -C $(PUBLIC_APPS_PATH)/MAP/utils clean
+map_mod_ver:
+	echo "MAP_ivi module version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE);
+
+pctl_modules:
+	cd $(PUBLIC_MODULES_PATH)/pctl/ && $(MAKE) KCFLAGS="$(SDK_FLAGS)"
+pctl_modules_install:
+	cd $(PUBLIC_MODULES_PATH)/pctl && cp xt_pctl.ko $(FS_TG_PATH)/lib/modules && cp url_lib $(FS_TG_PATH)/lib/modules
+pctl_modules_clean:
+	cd $(PUBLIC_MODULES_PATH)/pctl/ && $(MAKE) clean
+pctl_modules_ver:
+	echo "pctl module version : 1.0.0" >> $(BBA_PRODUCT_VER_FILE);

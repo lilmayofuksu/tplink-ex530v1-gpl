@@ -1,0 +1,365 @@
+libntfs_3g_la-ioctl.lo: ioctl.c ../config.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdio.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/features.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_config.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/cdefs.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stddef.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/wordsize.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/typesizes.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/pthreadtypes.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/endian.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/endian.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/byteswap.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/byteswap.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/byteswap-common.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sgidefs.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_stdio.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/wchar.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/wchar.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_mutex.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/pthread.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sched.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/time.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/sched.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/time.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_clk_tck.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/xlocale.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/locale.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_locale.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/signal.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/sigset.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/setjmp.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_pthread.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stdarg.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/stdio_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/inttypes.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stdint.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdint.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/string.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/errno.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/errno.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/errno.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/errno.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/errno-base.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/fcntl.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/fcntl.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/select.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/select.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/sysmacros.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uio.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/stat.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/stat.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/unistd.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix_opt.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/environments.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/confname.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/getopt.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdlib.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/waitflags.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/waitstatus.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/alloca.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include-fixed/limits.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include-fixed/syslimits.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/limits.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix1_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/local_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/limits.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_local_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix2_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/xopen_lim.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/syslog.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/syslog.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/fs.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/ioctl.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/ioctl.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/ioctl.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/int-ll64.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/bitsperlong.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/bitsperlong.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/posix_types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/stddef.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/posix_types.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/sgidefs.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/posix_types.h \
+ ../include/ntfs-3g/compat.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/param.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/param.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/param.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/param.h \
+ ../include/ntfs-3g/debug.h ../include/ntfs-3g/logging.h \
+ ../include/ntfs-3g/types.h ../include/ntfs-3g/bitmap.h \
+ ../include/ntfs-3g/attrib.h ../include/ntfs-3g/inode.h \
+ ../include/ntfs-3g/layout.h ../include/ntfs-3g/endians.h \
+ ../include/ntfs-3g/support.h ../include/ntfs-3g/volume.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/mntent.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/paths.h \
+ ../include/ntfs-3g/param.h ../include/ntfs-3g/device.h \
+ ../include/ntfs-3g/device_io.h ../include/ntfs-3g/index.h \
+ ../include/ntfs-3g/mft.h ../include/ntfs-3g/ntfstime.h \
+ /mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/time.h \
+ ../include/ntfs-3g/unistr.h ../include/ntfs-3g/runlist.h \
+ ../include/ntfs-3g/debug.h ../include/ntfs-3g/attrib.h \
+ ../include/ntfs-3g/inode.h ../include/ntfs-3g/layout.h \
+ ../include/ntfs-3g/volume.h ../include/ntfs-3g/index.h \
+ ../include/ntfs-3g/logging.h ../include/ntfs-3g/ntfstime.h \
+ ../include/ntfs-3g/unistr.h ../include/ntfs-3g/dir.h \
+ ../include/ntfs-3g/security.h ../include/ntfs-3g/dir.h \
+ ../include/ntfs-3g/ioctl.h ../include/ntfs-3g/misc.h
+
+../config.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdio.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/features.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_config.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/cdefs.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stddef.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/wordsize.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/typesizes.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/pthreadtypes.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/endian.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/endian.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/byteswap.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/byteswap.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/byteswap-common.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sgidefs.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_stdio.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/wchar.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/wchar.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_mutex.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/pthread.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sched.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/time.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/sched.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/time.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_clk_tck.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/xlocale.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/locale.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_locale.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/signal.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/sigset.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/setjmp.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_pthread.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stdarg.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/stdio_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/inttypes.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include/stdint.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdint.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/string.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/errno.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/errno.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/errno.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/errno.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/errno-base.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/fcntl.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/fcntl.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/select.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/select.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/sysmacros.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uio.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/stat.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/stat.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/unistd.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix_opt.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/environments.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/confname.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/getopt.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/stdlib.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/waitflags.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/waitstatus.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/alloca.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include-fixed/limits.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3/include-fixed/syslimits.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/limits.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix1_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/local_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/limits.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/uClibc_local_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/posix2_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/bits/xopen_lim.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/syslog.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/syslog.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/fs.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/ioctl.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/ioctl.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/ioctl.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/int-ll64.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/bitsperlong.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/bitsperlong.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/posix_types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/stddef.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/posix_types.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/sgidefs.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/posix_types.h:
+
+../include/ntfs-3g/compat.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/param.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/linux/param.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm/param.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/asm-generic/param.h:
+
+../include/ntfs-3g/debug.h:
+
+../include/ntfs-3g/logging.h:
+
+../include/ntfs-3g/types.h:
+
+../include/ntfs-3g/bitmap.h:
+
+../include/ntfs-3g/attrib.h:
+
+../include/ntfs-3g/inode.h:
+
+../include/ntfs-3g/layout.h:
+
+../include/ntfs-3g/endians.h:
+
+../include/ntfs-3g/support.h:
+
+../include/ntfs-3g/volume.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/mntent.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/paths.h:
+
+../include/ntfs-3g/param.h:
+
+../include/ntfs-3g/device.h:
+
+../include/ntfs-3g/device_io.h:
+
+../include/ntfs-3g/index.h:
+
+../include/ntfs-3g/mft.h:
+
+../include/ntfs-3g/ntfstime.h:
+
+/mtkeda/bbn/trendchip/mipsel-linux-uclibc-4.6.3-kernel3.18/usr/bin/../mipsel-buildroot-linux-uclibc/sysroot/usr/include/sys/time.h:
+
+../include/ntfs-3g/unistr.h:
+
+../include/ntfs-3g/runlist.h:
+
+../include/ntfs-3g/debug.h:
+
+../include/ntfs-3g/attrib.h:
+
+../include/ntfs-3g/inode.h:
+
+../include/ntfs-3g/layout.h:
+
+../include/ntfs-3g/volume.h:
+
+../include/ntfs-3g/index.h:
+
+../include/ntfs-3g/logging.h:
+
+../include/ntfs-3g/ntfstime.h:
+
+../include/ntfs-3g/unistr.h:
+
+../include/ntfs-3g/dir.h:
+
+../include/ntfs-3g/security.h:
+
+../include/ntfs-3g/dir.h:
+
+../include/ntfs-3g/ioctl.h:
+
+../include/ntfs-3g/misc.h:

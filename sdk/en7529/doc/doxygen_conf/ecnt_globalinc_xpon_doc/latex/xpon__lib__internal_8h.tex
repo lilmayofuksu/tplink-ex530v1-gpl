@@ -1,0 +1,202 @@
+\hypertarget{xpon__lib__internal_8h}{}\section{public/xpon\+\_\+lib\+\_\+internal.h File Reference}
+\label{xpon__lib__internal_8h}\index{public/xpon\+\_\+lib\+\_\+internal.\+h@{public/xpon\+\_\+lib\+\_\+internal.\+h}}
+
+
+This file is xpon lib internal header file that will be exported for others to use.  
+
+
+{\ttfamily \#include \char`\"{}libcompileoption.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_a2e1e0c01150d157ff754fc0649a1364a}\label{xpon__lib__internal_8h_a2e1e0c01150d157ff754fc0649a1364a}} 
+\#define {\bfseries E\+C\+O\+N\+E\+T\+\_\+\+E\+\_\+\+S\+U\+C\+C\+E\+SS}~(0)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_abfee303bc08a552337c116bfa7ca39b5}\label{xpon__lib__internal_8h_abfee303bc08a552337c116bfa7ca39b5}} 
+\#define {\bfseries E\+C\+O\+N\+E\+T\+\_\+\+E\+\_\+\+F\+A\+IL}~(-\/1)
+\item 
+\#define {\bfseries X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}(level,  fmt, ...)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_a3d39e034415a16ef6fe7a162588ebc8a}\label{xpon__lib__internal_8h_a3d39e034415a16ef6fe7a162588ebc8a}} 
+\#define {\bfseries L\+I\+B\+\_\+\+X\+P\+O\+N\+\_\+\+E\+R\+R\+OR}(fmt, ...)~X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+E\+R\+R\+OR, fmt, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_a51b0854244fe4e32778d9b5825528e0f}\label{xpon__lib__internal_8h_a51b0854244fe4e32778d9b5825528e0f}} 
+\#define {\bfseries L\+I\+B\+\_\+\+X\+P\+O\+N\+\_\+\+W\+A\+RN}(fmt, ...)~X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+W\+A\+RN, fmt, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_aabc7002a37db03b0364dbf3154eddfa2}\label{xpon__lib__internal_8h_aabc7002a37db03b0364dbf3154eddfa2}} 
+\#define {\bfseries L\+I\+B\+\_\+\+X\+P\+O\+N\+\_\+\+N\+O\+T\+I\+CE}(fmt, ...)~X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+N\+O\+T\+I\+CE, fmt,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_ac8821ef580fa0efa9586e3544af35fbf}\label{xpon__lib__internal_8h_ac8821ef580fa0efa9586e3544af35fbf}} 
+\#define {\bfseries L\+I\+B\+\_\+\+X\+P\+O\+N\+\_\+\+D\+E\+B\+UG}(fmt, ...)~X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG, fmt,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_af35d30065bd8ac4995f314e96f521e9f}\label{xpon__lib__internal_8h_af35d30065bd8ac4995f314e96f521e9f}} 
+\#define {\bfseries P\+R\+I\+N\+T\+\_\+\+A\+R\+GS}(fmt, ...)~X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG, \char`\"{}\mbox{[}in args\mbox{]} \char`\"{}fmt,\#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_a71a605176eef42e9aea96115136299cc}\label{xpon__lib__internal_8h_a71a605176eef42e9aea96115136299cc}} 
+\#define {\bfseries F\+U\+N\+C\+\_\+\+T\+R\+A\+C\+E\+\_\+\+E\+N\+T\+ER}~L\+I\+B\+\_\+\+X\+P\+O\+N\+\_\+\+D\+E\+B\+UG(\char`\"{}===Enter===\textbackslash{}n\char`\"{})
+\item 
+\#define {\bfseries R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG}(fmt, ...)
+\item 
+\#define {\bfseries R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL}
+\item 
+\#define {\bfseries R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_aea124c289ed7167158f56739536f8b08}\label{xpon__lib__internal_8h_aea124c289ed7167158f56739536f8b08}} 
+typedef enum xpon\+\_\+lib\+\_\+debug\+\_\+level\+\_\+s {\bfseries xpon\+\_\+lib\+\_\+debug\+\_\+level\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{xpon__lib__internal_8h_a65d6b1268ba359f4578b8a47c3ed6448}\label{xpon__lib__internal_8h_a65d6b1268ba359f4578b8a47c3ed6448}} 
+enum {\bfseries xpon\+\_\+lib\+\_\+debug\+\_\+level\+\_\+s} \{ {\bfseries X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+E\+R\+R\+OR} = 1 $<$$<$ 0, 
+{\bfseries X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+W\+A\+RN} = 1 $<$$<$ 1, 
+{\bfseries X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+N\+O\+T\+I\+CE} = 1 $<$$<$ 2, 
+{\bfseries X\+P\+O\+N\+\_\+\+D\+B\+G\+\_\+\+D\+E\+B\+UG} = 1 $<$$<$ 3
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{xpon__lib__internal_8h_acb85fab83e7727ba8bf5e5e3f7b09113}{get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to get xpon lib debug level. \end{DoxyCompactList}\item 
+void \hyperlink{xpon__lib__internal_8h_a14b70f787767bb0b79834cc9b43c83e3}{xpon\+\_\+lib\+\_\+printf} (char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em This function is used to output information to the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is xpon lib internal header file that will be exported for others to use. 
+
+\begin{DoxyAuthor}{Author}
+jun.\+wu 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/09-\/22 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+A001 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Eco\+Net Inc 
+\end{DoxyCopyright}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xpon__lib__internal_8h_a837fc3a8b3b8209d20399ad2a02c1ae7}\label{xpon__lib__internal_8h_a837fc3a8b3b8209d20399ad2a02c1ae7}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL@{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL}}
+\index{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL@{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL}{RETURN\_FAIL}}
+{\footnotesize\ttfamily \#define R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+IL}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        LIB\_XPON\_DEBUG(\textcolor{stringliteral}{"===Fail Exit===\(\backslash\)n"}); \(\backslash\)
+        return ECONET\_E\_FAIL; \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{xpon__lib__internal_8h_ab1ea3679fc13e8769af6c6491a9a2a78}\label{xpon__lib__internal_8h_ab1ea3679fc13e8769af6c6491a9a2a78}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG@{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG}}
+\index{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG@{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG}{RETURN\_FAIL\_MSG}}
+{\footnotesize\ttfamily \#define R\+E\+T\+U\+R\+N\+\_\+\+F\+A\+I\+L\+\_\+\+M\+SG(\begin{DoxyParamCaption}\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        LIB\_XPON\_ERROR(\textcolor{stringliteral}{"===Fail Exit==="}fmt,##\_\_VA\_ARGS\_\_); \(\backslash\)
+        return ECONET\_E\_FAIL; \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{xpon__lib__internal_8h_a9d37d43ac2717b06ef7120784465e56f}\label{xpon__lib__internal_8h_a9d37d43ac2717b06ef7120784465e56f}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS@{R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS}}
+\index{R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS@{R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS}{RETURN\_SUCCESS}}
+{\footnotesize\ttfamily \#define R\+E\+T\+U\+R\+N\+\_\+\+S\+U\+C\+C\+E\+SS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+        LIB\_XPON\_DEBUG(\textcolor{stringliteral}{"===Success Exit===\(\backslash\)n"}); \(\backslash\)
+        return ECONET\_E\_SUCCESS; \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{xpon__lib__internal_8h_a9a65f9cdea2b0a2803ba0b862e303dfd}\label{xpon__lib__internal_8h_a9a65f9cdea2b0a2803ba0b862e303dfd}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}}
+\index{X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT@{X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT}{XPON\_LIB\_DBG\_PRINT}}
+{\footnotesize\ttfamily \#define X\+P\+O\+N\+\_\+\+L\+I\+B\+\_\+\+D\+B\+G\+\_\+\+P\+R\+I\+NT(\begin{DoxyParamCaption}\item[{}]{level,  }\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{\(\backslash\)
+                                            if(\hyperlink{xpon__lib__internal_8h_acb85fab83e7727ba8bf5e5e3f7b09113}{get\_xpon\_lib\_dbg\_level}() & (level))\(\backslash\)
+                                                xpon\_lib\_printf(\textcolor{stringliteral}{"[%s][%d]:"} fmt,\_\_FUNCTION\_\_, \_\_LINE\_\_,##
+      \_\_VA\_ARGS\_\_);\(\backslash\)
+                                         \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{xpon__lib__internal_8h_acb85fab83e7727ba8bf5e5e3f7b09113}\label{xpon__lib__internal_8h_acb85fab83e7727ba8bf5e5e3f7b09113}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level@{get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level}}
+\index{get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level@{get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level()}{get\_xpon\_lib\_dbg\_level()}}
+{\footnotesize\ttfamily int get\+\_\+xpon\+\_\+lib\+\_\+dbg\+\_\+level (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to get xpon lib debug level. 
+
+This function is used to get xpon lib debug level. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em void.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em debug} & level. \\
+\hline
+{\em -\/1} & Fail. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Get xpon lib debug level. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\mbox{\Hypertarget{xpon__lib__internal_8h_a14b70f787767bb0b79834cc9b43c83e3}\label{xpon__lib__internal_8h_a14b70f787767bb0b79834cc9b43c83e3}} 
+\index{xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}!xpon\+\_\+lib\+\_\+printf@{xpon\+\_\+lib\+\_\+printf}}
+\index{xpon\+\_\+lib\+\_\+printf@{xpon\+\_\+lib\+\_\+printf}!xpon\+\_\+lib\+\_\+internal.\+h@{xpon\+\_\+lib\+\_\+internal.\+h}}
+\subsubsection{\texorpdfstring{xpon\+\_\+lib\+\_\+printf()}{xpon\_lib\_printf()}}
+{\footnotesize\ttfamily void xpon\+\_\+lib\+\_\+printf (\begin{DoxyParamCaption}\item[{char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+This function is used to output information to the serial port. 
+
+This function is used to output information to the serial port. submit by Jun.\+Wu 2020.\+09.\+22 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fmt} & format string. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void.} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Output information to the serial port. 
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCodeInclude}
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}

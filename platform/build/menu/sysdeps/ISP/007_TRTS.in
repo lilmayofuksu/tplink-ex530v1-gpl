@@ -1,0 +1,31 @@
+config INCLUDE_TRTS_OPTIONS
+	bool "Turksat all options (B&C)"
+	depends on INCLUDE_TRTS
+
+	######## SELECT Type B ##########
+	select INCLUDE_WIFI_NO_NOSEC_ENCRYPTION
+	select INCLUDE_PERCENT_TRANSMITPOWER
+	select INCLUDE_ACT_AUTO_CHAN_SELECTION
+	select INCLUDE_WIRELESS_SURVEY
+	select INCLUDE_TIMELY_AUTO_CHAN_SELECTION
+	select INCLUDE_REDIRECT_HTTP_TO_HTTPS
+	select INCLUDE_IP_RESTRIC_FORWARD_VS
+	select INCLUDE_INTF_MULTIPLEXER
+	select INCLUDE_ADSL_VDSL_IN_ONECONN
+	select INCLUDE_PACKET_CAPTURE
+	select INCLUDE_PKTCAP_UPLOAD
+	
+	######## SELECT Type C ##########
+	select INCLUDE_TRTS_WIFI_PWD
+	select INCLUDE_TRTS_PPPOE_USERNAME_VERIFICATION
+
+########## Define Type C ############
+config INCLUDE_TRTS_WIFI_PWD
+	bool "WiFi Password combined by 12 apha/numbers, exclude '1,i,l,I,o,0,O,Q,B,8,6,G,5,s,Z,2"
+	default n
+	depends on INCLUDE_TRTS_OPTIONS
+
+config INCLUDE_TRTS_PPPOE_USERNAME_VERIFICATION
+	bool "Supoort special check rules for TRTS PPPoE username and username suffix"
+	default n
+	depends on INCLUDE_TRTS_OPTIONS

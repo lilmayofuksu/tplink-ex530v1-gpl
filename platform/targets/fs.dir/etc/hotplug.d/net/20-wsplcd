@@ -1,0 +1,97 @@
+#!/bin/sh
+
+WSPLCD_RUN_FILE="/var/run/.wsplcd"
+
+. /lib/functions.sh
+. /lib/functions/hyfi-iface.sh
+wsplc_restart_aggr() {
+	local oldsec
+	local newsec
+	local fileflag="/tmp/.wsplc.restart.pending"
+	local oldsecfile="/tmp/.wsplc.wifisec"
+	local confile="/tmp/wsplcd.conf"
+	local vifnum=0
+	local actnum=0
+	local ieee1905managed_bridge
+
+	# File existing checking is not precise
+	# We may use 'flock' to get more precise control.
+	[ -f "$fileflag" ] && return
+	touch "$fileflag"
+
+	sleep 2
+
+	# wsplcd need to restart when:
+	# 1. WLAN interfaces changed
+	# 2. WLAN security changed for Registrar
+
+	lock -w /var/run/wifi.lock
+
+	# Intefaces changed
+	hyfi_get_ieee1905_managed_iface ieee1905managed_bridge
+	hyfi_get_wlan_vifnum $ieee1905managed_bridge vifnum
+	ifwlan=`iwconfig 2>/dev/null | grep ath | awk '{ print \$1}'| sort`
+	actnum=`echo $ifwlan | wc -w`
+
+	if [ -z "$ifwlan" -o "$actnum" -lt "$vifnum" ]; then
+		echo "WLAN interface(s) $((vifnum - $actnum))/$vifnum are not ready" > /dev/console
+		rm -f $fileflag
+		return
+	fi
+
+	oldvifs=`cat $confile | grep '^1905InterfacesWlan' | sed -e 's/1905InterfacesWlan=//' -e 's/,/\n/g' -e 's/:WLAN//g' | sort`
+
+	if [ "$ifwlan" != "$oldvifs" ] ; then
+		echo "WLAN interfaces changed, restart wsplcd" > /dev/console
+		/etc/init.d/wsplcd restart&
+		rm -f $fileflag
+		return
+	fi
+
+	# Security changed
+	runmode=`uci -q get wsplcd.config.RunMode`
+	if [ "$runmode" == "REGISTRAR" -a -f "$oldsecfile" ]; then
+		oldsec=`md5sum $oldsecfile | awk '{print \$1}'`
+		newsec=`/sbin/uci2cfg.sh wifisec | md5sum | awk '{print \$1}'`
+
+		if [ -n "$oldsec" -a "$oldsec" != "$newsec" ]; then
+			echo "WLAN security changed, restart wsplcd" > /dev/console
+			/etc/init.d/wsplcd restart&
+		fi
+	fi
+
+	rm -f $fileflag
+}
+
+wsplc_restart() {
+	local enabled
+	local runmode
+	local exescript
+
+	[ -f "$WSPLCD_RUN_FILE" ] || return
+	enabled=`uci_get wsplcd config HyFiSecurity`
+	if [ -z "$enabled" -o "$enabled" -eq 0 ]; then
+		return
+	fi
+
+	exescript=`ls /etc/hotplug.d/net/*wsplc* 2>&-`
+	[ -n "$exescript" ] || return
+
+	# Restart with aggregation(background)
+	exescript="$exescript &"
+	eval $exescript
+
+}
+
+if [ -n "$1" ] ; then # Called by hotplugd
+	if [ "$ACTION" = "add" ]; then
+		case "$INTERFACE" in
+			wifi*|ath*)
+			wsplc_restart
+			;;
+		esac
+	fi
+else                  # Called directly
+	wsplc_restart_aggr
+fi
+

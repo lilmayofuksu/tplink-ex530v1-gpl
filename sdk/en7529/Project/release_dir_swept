@@ -1,0 +1,180 @@
+include Project/dir.mak
+include $(TRUNK_DIR)/.profile_summary
+
+#MS_SDK.perl
+UNOPEN_DIR_DELETE += $(TRUNK_DIR)/Project/MS_SDK.pl
+
+#kernel 
+ifeq ($(strip $(TCSUPPORT_2_6_36_KERNEL)),)
+UNOPEN_DIR_DELETE += $(TRUNK_DIR)/linux-2.6.36
+endif
+
+ifeq ($(strip $(TCSUPPORT_3_18_21_KERNEL)),)
+UNOPEN_DIR_DELETE += $(TRUNK_DIR)/linux-3.18.21
+endif
+
+ifeq ($(strip $(TCSUPPORT_4_4_KERNEL)),)
+UNOPEN_DIR_DELETE += $(TRUNK_DIR)/linux-4.4.115
+endif
+
+ifeq ($(strip $(TCSUPPORT_5_4_KERNEL)),)
+UNOPEN_DIR_DELETE += $(TRUNK_DIR)/linux-5.4.55
+endif
+
+ifneq ($(strip $(TCSUPPORT_2_6_36_KERNEL) $(TCSUPPORT_3_18_21_KERNEL) $(TCSUPPORT_4_4_KERNEL) $(TCSUPPORT_5_4_KERNEL)),)
+UNOPEN_DIR_DELETE += $=$(TRUNK_DIR)/linux
+endif
+
+UNOPEN_DIR_DELETE += $(APP_COREMARK_DIR) \
+$(APP_DMIPS_DIR) \
+$(APP_DIFF_DIR) \
+$(APP_DPROXY_DIR) \
+$(APP_OPENSSL_VPN_DIR) \
+$(APP_LIBNETCONF_DIR) \
+$(APP_LIBSSH_DIR) \
+$(APP_LIBXML2_DIR) \
+$(APP_OPENSSL_VPN_DIR) \
+$(APP_OPENSOURCE_DIR)/netopeer \
+$(APP_GDB_DIR)
+
+ifeq ($(strip $(TCSUPPORT_FON)),)
+UNOPEN_DIR_DELETE += $(APP_FONSMCD_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_USB_CAMERA)),)
+UNOPEN_DIR_DELETE += $(APP_MJPEG_LIB_DIR) \
+$(APP_USB_MJPEG_STREAM_SERVER_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_AUTO_IP)),)
+UNOPEN_DIR_DELETE += $(APP_LIBDAEMON_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_SIPROXD)),)
+UNOPEN_DIR_DELETE += $(APP_LIBOSIP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_USB_MODESWITCH)),)
+UNOPEN_DIR_DELETE += $(APP_PUBLIC_DIR)/libusb-1.0.8 \
+$(APP_PUBLIC_DIR)/libusb-compat-0.1.3 \
+$(APP_PUBLIC_DIR)/usb-modeswitch-1.2.3 \
+$(APP_PUBLIC_DIR)/usb-modeswitch-data-20120120 \
+$(APP_PUBLIC_DIR)/usb-modeswitch-data-20120531
+endif
+
+ifeq ($(strip $(TCSUPPORT_UBIFS)),)
+UNOPEN_DIR_DELETE += $(APP_MTDUTILS_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_SNMP)),)
+UNOPEN_DIR_DELETE += $(APP_PUBLIC_DIR)/net-snmp-5.3.1
+endif
+
+ifeq ($(strip $(TCSUPPORT_ENCRYPT_ROMFILE_AES)),)
+UNOPEN_DIR_DELETE += $(APP_OPENSSL_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_SDN_OVS)),)
+UNOPEN_DIR_DELETE += $(APP_OVS_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_USB_PRINTER_SERVER)),)
+UNOPEN_DIR_DELETE += $(APP_USB_PRINTER_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_FON_V2)),)
+UNOPEN_DIR_DELETE += $(APP_PCRE_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_SIPROXD)),)
+UNOPEN_DIR_DELETE += $(APP_SIPROXD_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_BUSYBOX_1_26_2)),)
+UNOPEN_DIR_DELETE += $(APP_BSP_EXCLUSIVE_PUBLIC_DIR)/busybox-1.26.2
+else
+UNOPEN_DIR_DELETE += $(APP_BSP_EXCLUSIVE_PUBLIC_DIR)/busybox-1.00
+endif
+
+ifneq ($(strip $(TCSUPPORT_CPU_EN7516) $(TCSUPPORT_CPU_EN7527) $(TCSUPPORT_CPU_EN7580)),)
+UNOPEN_DIR_DELETE += $(APP_SAMBA_DIR)
+endif
+ifeq ($(strip $(TCSUPPORT_SAMBA_IPv6)),)
+UNOPEN_DIR_DELETE += $(APP_SAMBA_IPv6_DIR)
+endif
+
+#wifi
+UNOPEN_DIR_DELETE += \
+$(MODULES_PRIV_SRC_DIR)/wifi/ATHR-GEMINI-AP9.0.0.33.tgz \
+$(MODULES_PRIV_SRC_DIR)/wifi/2008_0506_RT61_Linux_SoftAP_Drv1.1.3.0 \
+$(MODULES_PRIV_SRC_DIR)/wifi/2009_0209_RT3090_LinuxAP_V2.1.3.0 \
+$(MODULES_PRIV_SRC_DIR)/wifi/2009_0904_RT3090_LinuxAP_v2.3.0.0_TC_for_3092 \
+
+ifeq ($(strip $(TCSUPPORT_WLAN_RT3390)),)
+UNOPEN_DIR_DELETE += $(RT3390AP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_WLAN_RT2561)),)
+UNOPEN_DIR_DELETE += $(MODULES_PRIV_SRC_DIR)/wifi/rt61ap
+endif
+
+ifeq ($(strip $(TCSUPPORT_WLAN_RT5392)),)
+UNOPEN_DIR_DELETE += $(RT5392AP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_DUAL_WLAN_RT5592)),)
+UNOPEN_DIR_DELETE += $(RT5592AP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_DUAL_WLAN_RT3593)),)
+UNOPEN_DIR_DELETE += $(RT3593AP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_WLAN_MT7601E)),)
+UNOPEN_DIR_DELETE += $(MT7601EAP_DIR)
+endif
+
+
+ifeq ($(strip $(TCSUPPORT_WLAN_MULTIDRIVER)),)
+UNOPEN_DIR_DELETE += $(WIFI_MULTI_DRIVER_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_WLAN_MT7592)),)
+UNOPEN_DIR_DELETE += $(MT7592AP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_DUAL_WLAN_MT7610E)),)
+UNOPEN_DIR_DELETE += $(MT7610EAP_DIR)
+endif
+
+ifeq ($(strip $(TCSUPPORT_WPA_SUPPLICANT)),)
+UNOPEN_DIR_DELETE += $(APP_WPA_SUPP_DIR) \
+$(APP_8021X_PARA_DIR)
+endif
+
+ifneq ($(strip $(TCSUPPORT_CFG_NG)),)
+UNOPEN_DIR_DELETE += $(APP_TCAPILIB_ENHANCE_DIR)
+UNOPEN_DIR_DELETE += $(APP_PRIVATE_DIR)/cfg_manager
+UNOPEN_DIR_DELETE += $(APP_PRIVATE_DIR)/cfg_manager_ct
+endif
+
+ALL:
+
+	for FILE in $(UNOPEN_DIR_DELETE); \
+	do\
+		echo "******rm -rf $$FILE***********************************";\
+		rm -rf $$FILE; \
+		echo "******************************************************";\
+	done \
+
+	rm -rf $(PROFILE_APP_DIR)
+	install -d $(PROFILE_APP_DIR)
+	cp -rf $(PROFILE_DIR)/* $(PROFILE_APP_DIR)
+	cp -rf $(PROJECT_DIR)/make_devgen $(PROJECT_APP_DIR)
+	cp -rf $(PROJECT_DIR)/rule.mak $(PROJECT_APP_DIR)
+	install -d $(TOOLS_APP_DIR)
+	cp -rf $(TOOLS_DIR)/* $(TOOLS_APP_DIR)
+	install -d $(PROJECT_MAKE_INC_APP_DIR)
+	cp -rf $(PROJECT_MAKE_INC_DIR)/* $(PROJECT_MAKE_INC_APP_DIR)
+	install -d $(PROJECT_LIB_APP_DIR)
+	cp -rf $(PROJECT_LIB_DIR)/* $(PROJECT_LIB_APP_DIR)

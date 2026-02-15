@@ -1,0 +1,38 @@
+Version 1.0
+17 Oct 2010
+yangxv(yangxu@tp-link.com.cn)
+
+Take ArcherVR2600v 1.0 for example
+
+make MODEL=ArcherVR2600V1 env_build
+make MODEL=ArcherVR2600V1 boot_build
+make MODEL=ArcherVR2600V1 kernel_build(kernel_menuconfig)
+make MODEL=ArcherVR2600V1 modules_build
+make MODEL=ArcherVR2600V1 wlan_modules
+make MODEL=ArcherVR2600V1 apps_build
+make MODEL=ArcherVR2600V1 fs_build
+make MODEL=ArcherVR2600V1 image_build
+
+/* to create .oob file, do the flowing commands after image_build*/
+make MODEL=VC430 supplier_image_build
+make MODEL=VC430 release_build
+make MODEL=VC430 supplier_flash_build
+
+##########################################################
+EX510(THSP) 1.0
+
+toolchain directory:
+sdk/ipq5018_11.4_cs/qsdk/staging_dir/toolchain-arm_cortex-a7_gcc-5.2.0_musl-1.1.16_eabi/bin/arm-openwrt-linux-xxx
+
+compile commands:
+
+./qca_env_pre.sh ipq5018_11.4_cs
+make MODEL=EX510 env_build
+make MODEL=EX510 boot_build
+make MODEL=EX510 kernel_build
+make MODEL=EX510 modules_build
+make MODEL=EX510 apps_build
+make MODEL=EX510 fs_build
+make MODEL=EX510 image_build
+make MODEL=EX510 supplier_flash_build
+
