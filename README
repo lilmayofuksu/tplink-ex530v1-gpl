@@ -8,4 +8,9 @@ TP-LINK GPL code readme
  
 Build Command 
 1. All build targets are in ./bba_3_0_platform/platform/build/, you should enter this directory to build components. 
-2. Enter "make MODEL=EX530v SPEC=EU1 env_build boot_build kernel_build modules_build apps_build fs_build image_build"
+2. Enter "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 env_build boot_build kernel_build modules_build apps_build fs_build image_build"
+
+Required dependencies (Ubuntu Server 18.04.6:
+apt install qemu-guest-agent git-lfs build-essential python2.7 zlib1g-dev uuid-dev libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm device-tree-compiler tcl gettext libtool cmake autogen pkgconf rename zip texinfo
+dpkg --add-architecture i386 && apt update
+apt install libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386 gcc-multilib g++-multilib 
