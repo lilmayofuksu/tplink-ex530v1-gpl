@@ -1,0 +1,11 @@
+TP-LINK GPL code readme
+ 
+1. This package contains all GPL code used by TP-LINK Routers with Linux OS.
+2. All components have been built successfully on Ubuntu 18.04 Workstation. 
+3. Compiling components in this package on platforms other than Ubuntu 18.04 Workstation may cause unexpected results. 
+4. Recommended using "root" or "sudo" command to build the code. 
+5. After building the code, you will get the uboot, linux kernel, rootfs and image, but you can't upgrade these images to your router through web management page. 
+ 
+Build Command 
+1. All build targets are in ./bba_3_0_platform/platform/build/, you should enter this directory to build components. 
+2. Enter "make MODEL=EX530v SPEC=EU1 env_build boot_build kernel_build modules_build apps_build fs_build image_build"
