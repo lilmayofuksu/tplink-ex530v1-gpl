@@ -509,13 +509,13 @@ libtiff: libtiff_configure
 ###minidlna
 CFLAGS += \
 	-I$(MEDIA_SERVER_INSTALL)/include \
-	-I$(MEDIA_SERVER_INSTALL)/include/FLAC \
-	-I$(MEDIA_SERVER_INSTALL)/include/libavcodec \
-	-I$(MEDIA_SERVER_INSTALL)/include/libavformat \
-	-I$(MEDIA_SERVER_INSTALL)/include/libavutil \
-	-I$(MEDIA_SERVER_INSTALL)/include/libexif \
-	-I$(MEDIA_SERVER_INSTALL)/include/uuid \
-	-I$(MEDIA_SERVER_INSTALL)/include/vorbis \
+#	-I$(MEDIA_SERVER_INSTALL)/include/FLAC \
+#	-I$(MEDIA_SERVER_INSTALL)/include/libavcodec \
+#	-I$(MEDIA_SERVER_INSTALL)/include/libavformat \
+#	-I$(MEDIA_SERVER_INSTALL)/include/libavutil \
+#	-I$(MEDIA_SERVER_INSTALL)/include/libexif \
+#	-I$(MEDIA_SERVER_INSTALL)/include/uuid \
+#	-I$(MEDIA_SERVER_INSTALL)/include/vorbis \
 	-I$(MEDIA_SERVER_PATH)/../os_libs/include  
 
 .PHONY: minidlna_prepare

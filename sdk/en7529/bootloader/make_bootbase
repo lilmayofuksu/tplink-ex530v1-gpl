@@ -1,11 +1,11 @@
 SERVER = $(shell uname -m)
-MAKE_VSERION = $(shell make --v | awk 'NR==1 { print $3 }')
-MAKE_3.81 = $(shell [$(MAKE_VSERION) -gt 3.80 ] && echo true)
-ifeq ($(MAKE_3.81), true)
-ATF_MAKE = make
-else
+#MAKE_VSERION = $(shell make --v | awk 'NR==1 { print $3 }')
+#MAKE_3.81 = $(shell [$(MAKE_VSERION) -gt 3.80 ] && echo true)
+#ifeq ($(MAKE_3.81), true)
+#ATF_MAKE = make
+#else
 ATF_MAKE = $(ATF_DIR)/make
-endif
+#endif
 
 ifeq ($(TCSUPPORT_OPENWRT),)
 LAMZ_DIR=$(TOOLS_DIR)
@@ -58,7 +58,7 @@ uboot: uboot_clean atf
 	cp $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/tools/mkimage $(TOOLS_UBOOT_DIR)
 
 uboot_clean:
-	make -C $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION) distclean
+	make -C $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION) ARCH=aarch32 distclean
 	-rm -f $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/common/ecnt/arm_v7_pmu.S
 	-rm -f $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/common/ecnt/ecnt_avs.c
 	-rm -f $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/common/ecnt/ecnt_scu_phy.c
@@ -96,7 +96,7 @@ endif
 endif
 
 distclean:
-	$(ATF_MAKE) -C $(ATF_DIR)/arm-trusted-firmware-2.3 PLAT=$(TCSOCNAME) distclean
+	$(ATF_MAKE) -C $(ATF_DIR)/arm-trusted-firmware-2.3 PLAT=$(TCSOCNAME) ARCH=aarch32 distclean
 ifeq ($(TCSUPPORT_BB_FIX_UNOPEN),0)
 	make -C $(ATF_DIR)/arm-trusted-firmware-2.3/plat/ecnt/common/drivers/NPU/md32rv-sdk software_clean NPU_INIC_CLIENT_SUPPORT=1 NPU_CODE_IN_SRAM=1
 endif

@@ -43,6 +43,9 @@ endif
 TFW_NVCTR_VAL		?=	0
 NTFW_NVCTR_VAL		?=	0
 
+# Rot key
+ROT_KEY			?=	${BUILD_PLAT}/rot_key.pem
+
 # Pass the non-volatile counters to the cert_create tool
 $(eval $(call CERT_ADD_CMD_OPT,${TFW_NVCTR_VAL},--tfw-nvctr))
 $(eval $(call CERT_ADD_CMD_OPT,${NTFW_NVCTR_VAL},--ntfw-nvctr))

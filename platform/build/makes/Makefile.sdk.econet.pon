@@ -94,12 +94,6 @@ SUPPILER_LD  =
 SUPPLIER_FLAGS  =
 
 MODEL_LED_CONF = $(MODEL_PATH)/led_def.conf
-ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
-BOOT_LED_CONF = $(BOOTROM_DIR)/bootram/init/tp_led_gpio_def.h
-else
-BOOT_LED_CONF = $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/include/tp_led_gpio_def.h
-$(warning "BOOT_LED_CONF" $(BOOT_LED_CONF))
-endif # UNION_EN7580_SFU_KERNEL_4_4_demo
 
 # Remove "_demo" to get chip number
 ifeq ($(SDK_CONFIG), UNION_EN7523_GLIBC_7915D_MAP_demo)
@@ -142,6 +136,13 @@ $(shell sed -i 's/TRUNK_DIR=.*/TRUNK_DIR=$(SDK_PATH2)/g' $(SDK_PATH)/apps/privat
 -include $(SDK_PATH)/Project/dir.mak
 #-include $(SDK_PATH)/apps/private/apps_rule.mak
 #-include $(SDK_PATH)/apps/private/apps_dir.mak
+
+ifeq (UNION_EN7580_SFU_KERNEL_4_4_demo, $(SDK_CONFIG))
+BOOT_LED_CONF = $(BOOTROM_DIR)/bootram/init/tp_led_gpio_def.h
+else
+BOOT_LED_CONF = $(UBOOT_DIR)/$(TCSUPPORT_UBOOT_VERSION)/include/tp_led_gpio_def.h
+$(warning "BOOT_LED_CONF" $(BOOT_LED_CONF))
+endif # UNION_EN7580_SFU_KERNEL_4_4_demo
 
 
 ###############################################################################
@@ -198,12 +199,12 @@ supplier_boot_clean:
 
 gen_$(BOOT_LED_CONF):
 	@echo "Generating $(BOOT_LED_CONF)"
-	@echo -ne 'typedef struct _TP_BOOT_LED_DEF\n{\n\tunsigned int id;\n\tunsigned char gpio;\n\tunsigned char reverse;\n} TP_BOOT_LED_DEF;\n' > $(BOOT_LED_CONF)
-	@echo -ne '\n#define CHAR2ID(a,b,c,d) (((a) << 24) | ((b) << 16) | ((c) << 8) | (d))\n' >> $(BOOT_LED_CONF)
-	@echo -ne 'static struct _TP_BOOT_LED_DEF tp_boot_led_def[] = \n{\n' >> $(BOOT_LED_CONF)
+	@printf 'typedef struct _TP_BOOT_LED_DEF\n{\n\tunsigned int id;\n\tunsigned char gpio;\n\tunsigned char reverse;\n} TP_BOOT_LED_DEF;\n' > $(BOOT_LED_CONF)
+	@printf '\n#define CHAR2ID(a,b,c,d) (((a) << 24) | ((b) << 16) | ((c) << 8) | (d))\n' >> $(BOOT_LED_CONF)
+	@printf 'static struct _TP_BOOT_LED_DEF tp_boot_led_def[] = \n{\n' >> $(BOOT_LED_CONF)
 	@grep -v "^#" $(MODEL_LED_CONF) | grep -v "^loops_per_sec=" | sed 's/\r//g' | grep -v "^$$" | awk '{x=length($$1);y=4-x;printf "\t{CHAR2ID(";for(i=1;i<=x;i++) printf "'\''"substr($$1,i,1)"'\''"; for(i=1;i<=y;i++) printf "'\'\''"; printf "), "$$2", "$$5"},\n"}' | sed -e "s/''/','/g" -e "s/''/0/g" >> $(BOOT_LED_CONF)
-	@echo -ne '};\n' >> $(BOOT_LED_CONF)
-	
+	@printf '};\n' >> $(BOOT_LED_CONF)
+
 ###############################################################################
 supplier_kernel_menuconfig:
 	cp -pfT $(MODEL_PATH)/config.kernel $(PROFILE_DIR)/$(KERNEL_CONF)
