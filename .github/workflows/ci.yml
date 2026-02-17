@@ -1,0 +1,74 @@
+name: Build Firmware
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker container
+        run: |
+          docker run -d --name build_container \
+            --privileged \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            --entrypoint /sbin/init \
+            ubuntu:18.04 \
+            sleep infinity
+
+      - name: Update repositories
+        run: |
+          docker exec build_container bash -c "dpkg --add-architecture i386 && apt-get update"
+
+      - name: Configure timezone
+        run: |
+          docker exec build_container bash -c "\
+            DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && \
+            ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+            dpkg-reconfigure --frontend noninteractive tzdata"
+
+      - name: Install dependencies
+        run: |
+          docker exec build_container bash -c "\
+            apt-get install -y git-lfs bc build-essential python2.7 zlib1g-dev uuid-dev libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm device-tree-compiler tcl gettext libtool cmake autogen pkgconf rename zip texinfo && \
+            apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386 gcc-multilib g++-multilib"
+
+      - name: Prepare environment and build host tools
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 env_build"
+
+      - name: Build U-Boot and Firmware
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 boot_build"
+
+      - name: Build the kernel
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 kernel_build"
+
+      - name: Build the external kernel modules
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 modules_build"
+
+      - name: Build the apps
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 apps_build"
+
+      - name: Prepare the filesystem
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 fs_build"
+
+      - name: Make the final image
+        run: |
+          docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 image_build"
+
+      - name: Cleanup container
+        if: always()
+        run: |
+          docker rm -f build_container
