@@ -13,15 +13,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Docker container
+      - name: Pull Ubuntu 18.04
+        run: |
+          docker pull ubuntu:18.04
+
+      - name: Build container with dumb-init
+        run: |
+          # Create a Dockerfile on-the-fly with dumb-init installed
+          echo '
+          FROM ubuntu:18.04
+          RUN apt-get update && apt-get install -y dumb-init
+          ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+          WORKDIR /workspace
+          ' > Dockerfile
+
+          docker build -t ubuntu-dumb-init:18.04 .
+
+      - name: Start container
         run: |
           docker run -d --name build_container \
             --privileged \
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
-            --entrypoint /sbin/init \
-            ubuntu:18.04 \
-            sleep infinity
+            ubuntu-dumb-init:18.04 sleep infinity
 
       - name: Update repositories
         run: |
