@@ -84,6 +84,12 @@ jobs:
         run: |
           docker exec -w /workspace/platform/build build_container bash -c "make SHELL=/bin/bash MODEL=EX530v SPEC=EU1 image_build"
 
+      - name: Upload the images for EX530v-EU1
+        uses: actions/upload-artifact@v4
+        with:
+          name: EX530v-EU1
+          path: platform/targets/EX530v/EU1/image/
+
       - name: Cleanup container
         if: always()
         run: |
